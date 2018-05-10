@@ -90,6 +90,6 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoS1gqhMlEujhhtj3i5QJl9GJ28dEHHM&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initMap"></script>
 
 <% include ../partials/footer %>
