@@ -15,6 +15,16 @@ var flash           = require("connect-flash"),
 //GENERIC APP CONFIG
 // ==========================
 var app = express();
+
+// Force https redirect
+app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+        res.redirect('https://' + req.hostname + req.url);
+    } else {
+        next();
+    }
+});
+
 app.use(flash());
 app.set("view engine", "ejs"); // don't need to add .ejs to the end of all those files when routing
 app.use(methodOverride("_method")); // method override needed for HTML forms that can't do PUT so have to be POST, then overrided to PUT once submitted with this override added to the URL
