@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+    <% if(currentUser && currentUser.isAdmin){ %>
+        <h1>You're an admin!</h1>
+    <% } %>
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Sociable Life</h1>
+            <p>View our hand-picked activities from all over the UK!</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/activities/new">Add new activity</a>
+            </p>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% activities.forEach(function(activity){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= activity.image %>">
+                    <div class="caption">
+                        <h4><%= activity.name %></h4>
+                    </div>
+                    <p>
+                        <a href="/activities/<%= activity._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

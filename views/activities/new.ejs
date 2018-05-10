@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <header class="jumbotron">
+           <h1 style="text-align: center;">Create a New Activity</h1> 
+        </header>
+        
+        <div style="width:30%; margin: 0 auto;">
+            <form action="/activities" method="POST">
+                <div class="form-group">
+                    <label for="name">Activity Name</label>
+                    <input class="form-control" type="text" name="newActivity[name]" id="name" placeholder="e.g. Woodlarks Campsite">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price per Night (£)</label>
+                    <input class="form-control" type="number" name="newActivity[price]" id="price" placeholder="e.g. 15" min="1" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input class="form-control" type="text" name="newActivity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input class="form-control" type="text" name="newActivity[image]" id="image" placeholder="e.g. https://images.unsplash.com/...">
+                </div>
+                <div class="form-group">
+                    <label for="image">Description</label>
+                    <input class="form-control" type="text" name="newActivity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!">
+                </div>   
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/activities">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
