@@ -9,34 +9,30 @@ var middleware = require("../middleware"); //don't need to specify index.js, it'
 // ==========================
 // RESTFUL ROUTES
 // ==========================
+// From app.js: app.use("/activities/:id/comments", commentRoutes);
 
 // INDEX COMMENT ROUTE
 // No show all comments page
 
 
 // NEW COMMENT ROUTE
-var newRoute = require("./comments/new");
-router.get("/new", middleware.isLoggedIn, newRoute);
+router.get("/new", middleware.isLoggedIn, require("./comments/new"));
 
 // CREATE COMMENT ROUTE
-var createRoute = require("./comments/create");
-router.post("/", middleware.isLoggedIn, createRoute);
+router.post("/", middleware.isLoggedIn, require("./comments/create"));
 
 // SHOW COMMENT ROUTE
 // No show single comment page
 
 
 // EDIT COMMENT ROUTE
-var editRoute = require("./comments/edit");
-router.get("/:comment_id/edit", middleware.checkCommentOwnership, editRoute);
+router.get("/:comment_id/edit", middleware.checkCommentOwnership, require("./comments/edit"));
 
 // UPDATE COMMENT ROUTE
-var updateRoute = require("./comments/update");
-router.put("/:comment_id", middleware.checkCommentOwnership, updateRoute);
+router.put("/:comment_id", middleware.checkCommentOwnership, require("./comments/update"));
 
 // DESTROY COMMENT ROUTE
-var destroyRoute = require("./comments/destroy");
-router.delete("/:comment_id", middleware.checkCommentOwnership, destroyRoute);
+router.delete("/:comment_id", middleware.checkCommentOwnership, require("./comments/destroy"));
 
 
 // ==========================

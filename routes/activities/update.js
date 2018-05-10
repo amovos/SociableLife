@@ -2,7 +2,7 @@
 // ACTIVITY UPDATE ROUTE
 // ==========================
 
-var dbErrorResponse = require("../shared/dbErrorResponse"); //require the shared function for a database error
+var genericErrorResponse = require("../shared/genericErrorResponse"); //require the shared function for a database error
 var Activity = require("../../models/activity"); //require the activity database model
 var geocoder = require("../shared/geocoder");
 
@@ -22,7 +22,7 @@ var updateRoute = function(req, res){
         //find and update the correct activity
         Activity.findByIdAndUpdate(req.params.id, req.body.Activity, function(err, updatedActivity){
             if(err){
-                dbErrorResponse(req, res, err);
+                genericErrorResponse(req, res, err);
             } else {
                 req.flash("successMessage", "Successfully updated activity");
                 res.redirect("/activities/" + req.params.id);

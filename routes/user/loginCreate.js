@@ -7,7 +7,6 @@ var passport = require("passport");
 var createRoute = function(req, res) {
     passport.authenticate("local", function(err, user, info) {
         if (err) {
-            console.log(err);
             req.flash("errorMessage", err.message);
             return res.redirect("/login");
         } else if (!user) {
@@ -16,7 +15,6 @@ var createRoute = function(req, res) {
         } else {
             req.logIn(user, function(err) { //as this is a custom callback we need to explicitly log the user in
                 if (err) {
-                    console.log(err);
                     req.flash("errorMessage", err.message);
                     return res.redirect("/login");
                 } else {

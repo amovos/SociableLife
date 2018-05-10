@@ -6,32 +6,51 @@ var express = require("express");
 var router = express.Router();
 
 // ==========================
-// RESTFUL ROUTES
+// ROUTES
 // ==========================
+// From app.js: app.use("/", userRoutes);
 
+
+// ==========================
+// USER CREATION & LOGIN/OUT
+// ==========================
 // USER NEW
-var newUserRoute = require("./user/userNew");
-router.get("/register", newUserRoute);
+router.get("/register", require("./user/userNew"));
 
 // USER CREATE
-var createUserRoute = require("./user/userCreate");
-router.post("/register", createUserRoute);
+router.post("/register", require("./user/userCreate"));
 
 // LOGIN NEW
-var newLoginRoute = require("./user/loginNew");
-router.get("/login", newLoginRoute);
+router.get("/login", require("./user/loginNew"));
 
 // LOGIN CREATE
-var createLoginRoute = require("./user/loginCreate");
-router.post("/login", createLoginRoute);
+router.post("/login", require("./user/loginCreate"));
 
 // LOGOUT
-var logoutRoute = require("./user/logout");
-router.get("/logout", logoutRoute);
+router.get("/logout", require("./user/logout"));
 
+
+// ==========================
 // USER PROFILE
-var userProfileRoute = require("./user/userProfile");
-router.get("/users/:id", userProfileRoute);
+// ==========================
+// USER PROFILE
+router.get("/users/:id", require("./user/userProfile"));
+
+
+// ==========================
+// USER PASSWORD RESET
+// ==========================
+// FORGOT PASSWORD - SHOW
+router.get("/forgot", require("./user/forgotPwdShow"));
+
+// FORGOT PASSWORD - POST
+router.post("/forgot", require("./user/forgotPwdPost"));
+
+// RESET PASSWORD - SHOW
+router.get("/reset/:token", require("./user/resetPwdShow"));
+
+// RESET PASSWORD - POST
+router.post("/reset/:token", require("./user/resetPwdPost"));
 
 
 // ==========================

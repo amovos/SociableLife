@@ -2,7 +2,7 @@
 // ACTIVITIES CREATE ROUTE
 // ==========================
 
-var dbErrorResponse = require("../shared/dbErrorResponse"); //require the shared function for a database error
+var genericErrorResponse = require("../shared/genericErrorResponse");
 var Activity = require("../../models/activity"); //require the activity database model
 var geocoder = require("../shared/geocoder");
 
@@ -34,7 +34,7 @@ var createRoute = function(req, res){ //REST convention to use the same route na
         //This would also mean you could do some form validation and save most of the data, but then wait to see if the geocoding works
         Activity.create(req.body.newActivity, function(err, newlyCreated){
             if(err){
-                dbErrorResponse(req, res, err);
+                genericErrorResponse(req, res, err);
             } else {
                 //redirect back to activities page
                 req.flash("successMessage", "Successfully added activity");

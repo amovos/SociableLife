@@ -9,34 +9,28 @@ var middleware = require("../middleware"); //don't need to specify index.js, it'
 // ==========================
 // RESTFUL ROUTES
 // ==========================
+// From app.js: app.use("/activities", activityRoutes);
 
 // INDEX ACTIVITY ROUTE - Display info on ALL activities
-var indexRoute = require("./activities/index");
-router.get('/', indexRoute);
+router.get('/', require("./activities/index"));
 
 // NEW ACTIVITY ROUTE - Page to add new activity
-var newRoute = require("./activities/new");
-router.get("/new", middleware.isLoggedIn, newRoute);
+router.get("/new", middleware.isLoggedIn, require("./activities/new"));
 
 // CREATE ACTIVITY ROUTE - Route to add submitted activity to DB
-var createRoute = require("./activities/create");
-router.post("/", middleware.isLoggedIn, createRoute);
+router.post("/", middleware.isLoggedIn, require("./activities/create"));
 
 // SHOW ACTIVITY ROUTE - shows more info about one activity
-var showRoute = require("./activities/show");
-router.get("/:id", showRoute);
+router.get("/:id", require("./activities/show"));
 
 // EDIT ACTIVITY ROUTE
-var editRoute = require("./activities/edit");
-router.get("/:id/edit", middleware.checkActivityOwnership, editRoute);
+router.get("/:id/edit", middleware.checkActivityOwnership, require("./activities/edit"));
 
 // UPDATE ACTIVITY ROUTE
-var updateRoute = require("./activities/update");
-router.put("/:id", middleware.checkActivityOwnership, updateRoute);
+router.put("/:id", middleware.checkActivityOwnership, require("./activities/update"));
 
 // DESTROY ACTIVITY ROUTE
-var destroyRoute = require("./activities/destroy");
-router.delete("/:id", middleware.checkActivityOwnership, destroyRoute);
+router.delete("/:id", middleware.checkActivityOwnership, require("./activities/destroy"));
 
 
 // ==========================

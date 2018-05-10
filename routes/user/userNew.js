@@ -3,7 +3,7 @@
 // ==========================
 
 var newRoute =  function(req, res){
-    res.render("register", {page: 'register'});
+    res.render("users/register", {page: 'register'});
 };
 
 // ==========================

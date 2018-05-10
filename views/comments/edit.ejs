@@ -7,7 +7,7 @@
         </header>
         
         <div style="width:30%; margin: 0 auto;">
-            <form action="/activities/<%= activity._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+            <form action="/activities/<%= activity.id %>/comments/<%= comment.id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">
                 </div>

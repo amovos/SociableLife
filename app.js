@@ -2,7 +2,7 @@
 // REQUIRE NPM PACKAGES
 // ==========================
 var flash           = require("connect-flash"),
-    crypto          = require("crypto"),
+    crypto          = require("crypto"), //comes with node so doesn't need to be installed
     express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
@@ -82,14 +82,14 @@ app.use(function(req, res, next){
 // ROUTES
 // ==========================
 var indexRoutes         = require("./routes/index"),
-    authRoutes          = require("./routes/user"),
+    userRoutes          = require("./routes/user"),
     commentRoutes       = require("./routes/comments"),
     activityRoutes    = require("./routes/activities");
 
 //once the route files have been required they need to actually be used in the app, using the Express Router
 //the URLs can be shortened here by adding the first common part here e.g. /activities.
 app.use("/", indexRoutes);
-app.use("/", authRoutes);
+app.use("/", userRoutes);
 app.use("/activities", activityRoutes);
 app.use("/activities/:id/comments", commentRoutes);
 

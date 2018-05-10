@@ -17,7 +17,7 @@ var userProfileRoute =  function(req, res){
                 req.flash("errorMessage", "Error connecting to database, please try again.");
                 return res.redirect('/activities');
             } else {
-                res.render("users/show", {user: foundUser, activities: activities}); //pass in the local variable of foundUser
+                res.render("users/profileShow", {user: foundUser, activities: activities}); //pass in the local variable of foundUser
             }
         });
     });
