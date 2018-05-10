@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "engines": {
-    "node": "6.14.1",
-    "npm": "6.0.0"
+    "node": "9.11.1",
+    "npm": "6.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,7 +22,7 @@
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
     "moment": "^2.22.1",
-    "mongoose": "^5.0.16",
+    "mongoose": "^5.1.0",
     "node-geocoder": "^3.22.0",
     "nodemailer": "^4.6.4",
     "passport": "^0.4.0",
