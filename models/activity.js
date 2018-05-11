@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var activitySchema = new mongoose.Schema({
     name: String,
-    image: String,
+    image: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png" },
     imageId: String,
     description: String,
     price: String,
@@ -10,6 +10,7 @@ var activitySchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     createdAt: { type: Date, default: Date.now },
+    updatedAt: Date,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

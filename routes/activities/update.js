@@ -22,12 +22,16 @@ var updateRoute = function(req, res){
                 try {
                     // set cloudinary config from shared file
                     cloudinary.config(cloudinaryConf);
-                    
+
                     // delete previous image (if one existed) then upload the new one
                     if(activity.imageId){
                         await cloudinary.v2.uploader.destroy(activity.imageId);
                     }
-                    var result = await cloudinary.v2.uploader.upload(req.file.path);
+                    // set image location to correct folder on Cloudinary
+                    var public_id = "sl-" + process.env.ENV_ID + "/activities/" + req.file.filename;
+                    
+                    // upload image
+                    var result = await cloudinary.v2.uploader.upload(req.file.path, {public_id: public_id});
                     
                     // store the URL of the new image in the req.body.activity to be saved at the end of this route
                     activity.image = result.secure_url;

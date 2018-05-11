@@ -4,6 +4,7 @@
 
 var express = require("express");
 var router = express.Router();
+var upload = require("../middleware/multer");
 
 // ==========================
 // ROUTES
@@ -18,7 +19,7 @@ var router = express.Router();
 router.get("/register", require("./user/userNew"));
 
 // USER CREATE
-router.post("/register", require("./user/userCreate"));
+router.post("/register", upload.single('image'), require("./user/userCreate"));
 
 // LOGIN NEW
 router.get("/login", require("./user/loginNew"));

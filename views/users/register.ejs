@@ -4,26 +4,37 @@
     <div class="row">
         <h1 style="text-align: center">Sign Up</h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/register" method="post">
+            <form action="/register" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="Username">
+                    <label for="username">User Name *</label>
+                    <input class="form-control" type="text" name="username" placeholder="(what other people will see)" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <label for="password">Password *</label>
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="firstName" placeholder="First Name">
+                    <label for="firstName">First Name *</label>
+                    <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="lastName" placeholder="Last Name">
+                    <label for="lastName">Last Name *</label>
+                    <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Email">
+                    <label for="email">Email Address *</label>
+                    <input class="form-control" type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="avatar" placeholder="Avatar URL">
+                    <label for="image">Avatar (your profile picture)</label>
+                    <input type="file" id="image" name="image" accept="image/*">
                 </div>
                 <div class="form-group">
+                    <label for="inviteCode">Invite Code *</label>
+                    <input class="form-control" type="text" name="inviteCode" placeholder="Invite Code" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminCode">Admin Code</label>
                     <input class="form-control" type="password" name="adminCode" placeholder="Admin Code">
                 </div>
                 <div class="form-group">
