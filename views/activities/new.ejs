@@ -7,25 +7,27 @@
         </header>
         
         <div style="width:30%; margin: 0 auto;">
-            <form action="/activities" method="POST">
+            <form action="/activities" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Activity Name</label>
                     <input class="form-control" type="text" name="newActivity[name]" id="name" placeholder="e.g. Woodlarks Campsite">
                 </div>
+                <!-- Check out bootstrap 4 input styling for putting the £ at the start of the box (Input Group)-->
                 <div class="form-group">
                     <label for="price">Price per Night (£)</label>
                     <input class="form-control" type="number" name="newActivity[price]" id="price" placeholder="e.g. 15" min="1" step="1">
                 </div>
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <input class="form-control" type="text" name="newActivity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey">
+                    <input class="form-control" type="text" name="newActivity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" required>
+                </div>
+                <!-- Check out bootstrap 4 input styling -->
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image URL</label>
-                    <input class="form-control" type="text" name="newActivity[image]" id="image" placeholder="e.g. https://images.unsplash.com/...">
-                </div>
-                <div class="form-group">
-                    <label for="image">Description</label>
+                    <label for="description">Description</label>
                     <input class="form-control" type="text" name="newActivity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!">
                 </div>   
                 <div class="form-group">

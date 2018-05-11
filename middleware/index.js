@@ -14,7 +14,6 @@ middlewareObj.checkActivityOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         Activity.findById(req.params.id, function(err, foundActivity){ //foundActivity.author.id isn't a string (even though it may look like it when printed out) it's infact a mongoose object
             if(err || !foundActivity){ //handles the error of a valid ID being sent to the database and it returning null (stops the app crashing)
-                console.log(err);
                 req.flash("errorMessage", "Activity not found");
                 res.redirect("/activities");
             } else {
@@ -38,7 +37,6 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, foundComment){ //foundActivity.author.id isn't a string (even though it may look like it when printed out) it's infact a mongoose object
             if(err || !foundComment){
-                console.log(err);
                 req.flash("errorMessage", "Comment not found");
                 res.redirect("/activities");
             } else {
@@ -65,6 +63,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
     req.flash("errorMessage", "You need to be logged in to do that");
     res.redirect("/login");
 };
+
 
 // ==========================
 // MODULE.EXPORTS

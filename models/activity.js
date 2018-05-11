@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var activitySchema = new mongoose.Schema({
     name: String,
     image: String,
+    imageId: String,
     description: String,
     price: String,
     location: String,
