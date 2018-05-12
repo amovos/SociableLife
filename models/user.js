@@ -13,7 +13,9 @@ var UserSchema = new mongoose.Schema({
     updatedAt: Date,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
-    isAdmin: { type: Boolean, default: false }
+    isAdmin: { type: Boolean, default: false },
+    salt: String,
+    hash: String
 });
 
 UserSchema.plugin(passportLocalMongoose); //adds a bunch of methods to the UserSchema

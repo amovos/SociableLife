@@ -69,8 +69,11 @@ passport.deserializeUser(User.deserializeUser());
 // ==========================
 // SEED DATABASE
 // ==========================
-//var seedDB = require("./seeds");
-//seedDB(); //Run the seedDB file - Removed for now
+// ONLY IN DEV ENVIRONMENT
+if (process.env.ENV_ID === "dev"){
+    // var seedDB = require("./seeds");
+    // seedDB(); //Run the seedDB file
+}
 
 
 // ==========================
