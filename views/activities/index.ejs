@@ -16,17 +16,16 @@
         </div>
     </header>
     
-    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+    <div class="row text-center" id="activity-grid">
         <% activities.forEach(function(activity){ %>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="<%= activity.image %>">
-                    <div class="caption">
-                        <h4><%= activity.name %></h4>
-                    </div>
-                    <p>
-                        <a href="/activities/<%= activity._id %>" class="btn btn-primary">More Info</a>
-                    </p>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= activity.name %></h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="/activities/<%= activity._id %>" class="btn btn-primary" class="btn btn-primary">More Info</a>
+                  </div>
                 </div>
             </div>
         <% }); %>

@@ -16,10 +16,11 @@ var createRoute = async function(req, res){
         // need to do it this long hand way so that the password isn't stored in the database
         var newUser = new User(
             {
-                username: req.body.username,
+                username: req.body.email,
+                email: req.body.email,
+                displayName: req.body.displayName,
                 firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email
+                lastName: req.body.lastName
             }
         );
         

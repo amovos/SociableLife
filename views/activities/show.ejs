@@ -2,26 +2,22 @@
 
 <div class="container">
     <div class="row">
+        
         <div class="col-md-3">
-            <p class="lead">Sociable Life</p>
-            <div class="list-group">
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
-            </div>
             <div id="map"></div>
         </div>
         
         <div class="col-md-9">
-            <div class="thumbnail">
-                <img class="img-responsive" src="<%= activity.image %>">
-                <div class="caption">
-                    <h4 class="pull-right">£<%= activity.price %>/night</h4>
-                    <h4><a><%= activity.name %></a></h4>
-                    <p><%= activity.description %></p>
+            <div class="card mb-3">
+                <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
+                <div class="card-body">
+                    <p class="float-right">£<%= activity.price %>/night</p>
+                    <h3 class="card-title"><%= activity.name %></h3>
                     <p>
                         <em>Submitted by: <a href="/users/<%= activity.author.id %>"><%= activity.author.username %></a>, <%= moment(activity.createdAt).fromNow() %></em>
                     </p>
+                    <hr>
+                    <p class="card-text"><%= activity.description %></p>
                     <% if(currentUser && activity.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                         <a class="btn btn-sm btn-warning" href="/activities/<%= activity._id %>/edit">Edit</a>
                         <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
@@ -30,34 +26,46 @@
                     <% } %>
                 </div>
             </div>
-            <div class="well">
-                <div class="text-right">
-                    <a class="btn btn-success" href="/activities/<%= activity._id %>/comments/new">Add New Comment</a>
-                </div>
-                <hr>
-                <% activity.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong><a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a></strong>
-                            <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
-                            <p>
-                                <%= comment.text %>
-                            </p>
-                            <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-                                <div class="pull-right">
-                                    <a class="btn btn-xs btn-warning" 
-                                        href="/activities/<%= activity._id %>/comments/<%= comment._id %>/edit">
-                                        Edit
-                                    </a>
-                                    <form class="inline-form" action="/activities/<%= activity._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-xs btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            <% } %>
-                        </div>
+        
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-left">
+                        <h3>Comments</h3>
                     </div>
-                <% }); %>
+                    
+                    <div class="text-right">
+                        <a class="btn btn-success" href="/activities/<%= activity._id %>/comments/new">Add New Comment</a>
+                    </div>
+                    <hr>
+                    
+                    <div class="row">
+                        <% activity.comments.forEach(function(comment){ %>
+                            <div class="col-md-12 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="float-right"><%= moment(comment.createdAt).fromNow() %></p>
+                                        <p class="card-title"><strong><a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a></strong></p>
+                                        <p class="card-text"><%= comment.text %></p>
+                                        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                            <div class="float-right mt-2">
+                                                <a class="btn btn-sm btn-warning" 
+                                                    href="/activities/<%= activity._id %>/comments/<%= comment._id %>/edit">
+                                                    Edit
+                                                </a>
+                                                <form class="inline-form" action="/activities/<%= activity._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                            <hr>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </div>
 </div>

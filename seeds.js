@@ -14,7 +14,8 @@ var User        = require("./models/user");
 var userData = [
     {
         isAdmin: true,
-        username: "admin",
+        username: "admin@example.com",
+        displayName: "admin",
         avatar: "https://res.cloudinary.com/amovos/image/upload/v1526124111/sl-dev/avatars/ghost.png",
         firstName: "admin",
         lastName: "admin",
@@ -25,7 +26,8 @@ var userData = [
     },
     {
         isAdmin: false,
-        username: "tharris",
+        username: "tharris@amovos.com",
+        displayName: "tharris",
         avatar: "https://res.cloudinary.com/amovos/image/upload/v1526056591/sl-dev/avatars/1526056588276Headshot.png.png",
         firstName: "Tom",
         lastName: "Harris",
@@ -52,12 +54,12 @@ var activityData = [
         name: "Mordor",
         price: "26",
         location: "Iceland",
-        image: "https://res.cloudinary.com/amovos/image/upload/v1526122172/sl-dev/activities/1526122172064volcano.jpeg.jpg",
+        image: "https://res.cloudinary.com/amovos/image/upload/v1526225042/sl-dev/activities/1526225040191volcano.jpeg.jpg",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
         lat: 64.963051,
         lng: -19.020835,
         createdAt: "2018-05-10T10:44:26.159Z",
-        imageId: "sl-dev/activities/1526122172064volcano.jpeg",
+        imageId: "sl-dev/activities/1526225040191volcano.jpeg.jpg",
     }
 ];
 

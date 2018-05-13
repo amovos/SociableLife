@@ -1,12 +1,14 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <header class="jumbotron">
-           <h1 style="text-align: center;">Create a New Activity</h1> 
-        </header>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Create a New Activity</h1> 
+            </header>
+        </div>
         
-        <div style="width:30%; margin: 0 auto;">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
             <form action="/activities" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Activity Name</label>
@@ -21,20 +23,28 @@
                     <label for="location">Location</label>
                     <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" required>
                 </div>
-                <!-- Check out bootstrap 4 input styling -->
                 <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <label for="imageUpload">Image</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
+                        <label class="custom-file-label" for="imageUpload">Choose file</label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input class="form-control" type="text" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!">
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!"></textarea>
                 </div>   
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button class="col-sm-6 btn btn-lg btn-primary btn-block">Submit!</button>
+                        </div>
+                    </div> 
                 </div>
+                
             </form>
-            <a href="/activities">Go Back</a>
+            <a href="javascript:history.back()">Go Back</a>
         </div>
     </div>
 </div>

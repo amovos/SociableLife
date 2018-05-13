@@ -1,17 +1,75 @@
-.thumbnail img {
-    width: 100%;
-}
 
-.thumbnail {
-    padding: 0;
-}
+/* General Styles
+-------------------------------------------------- */
 
 .inline-form {
     display: inline;
 }
 
-/* Google Maps */
+
+/* Google Maps Styles
+-------------------------------------------------- */
 #map {
     height: 400px;
     width: 100%;
+}
+
+
+
+/* Signin Form
+-------------------------------------------------- */
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus { /* Which ever input is in focus will be on top, so the highlight border works correctly */
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
 }

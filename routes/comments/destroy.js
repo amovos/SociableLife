@@ -10,8 +10,8 @@ var destroyRoute = function(req, res){
         if(err){
             genericErrorResponse(req, res, err);
         } else {
-            res.redirect("/activities/" + req.params.id);
             req.flash("successMessage", "Successfully deleted comment");
+            res.redirect("/activities/" + req.params.id);
         }
     });
 };
