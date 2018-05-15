@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h1><%= user.firstName + " " + user.lastName %></h1>
+            <h1><%= user.displayName + "'s Profile"%></h1>
             
             <div class="card">
                 <img class="card-img-top" src="<%= user.avatar %>" alt="user profile image">
@@ -14,7 +14,7 @@
             Bacon ipsum dolor amet pork chop andouille pancetta tenderloin. Alcatra chuck venison, meatloaf rump prosciutto pig drumstick brisket filet mignon short loin shoulder landjaeger kevin. Drumstick shankle burgdoggen chicken chuck meatball sirloin capicola fatback cupim pastrami kielbasa ground round. Shank capicola short ribs rump shoulder hamburger. Venison kielbasa pancetta jowl, prosciutto tail rump short ribs ground round swine cow turducken doner short loin pork chop.
         </div>
         <div class="col-md-8">
-            <h3><%= user.username %>'s activities</h3>
+            <h3><%= user.displayName %>'s activities</h3>
             <ul>
                 <% activities.forEach(function(activity){ %>
                     <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>

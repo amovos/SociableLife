@@ -18,7 +18,7 @@ var createRoute = function(req, res) {
                     req.flash("errorMessage", err.message);
                     return res.redirect("/login");
                 } else {
-                    req.flash("successMessage", "Welcome to Sociable Life " + user.username);
+                    req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
                     res.redirect("/activities");
                 }
             });

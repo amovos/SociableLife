@@ -11,7 +11,7 @@
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
             <form action="/activities/<%= activity.id %>/comments/<%= comment.id %>?_method=PUT" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">
+                    <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." rows="5" cols="70" required><%= comment.text %></textarea>
                 </div>
                 
                 <div class="container">

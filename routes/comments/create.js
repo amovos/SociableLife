@@ -19,7 +19,7 @@ var createRoute = function(req, res){
                 } else {
                     // add username and id to comment
                     comment.author.id = req.user._id;
-                    comment.author.username = req.user.username;
+                    comment.author.displayName = req.user.displayName;
                     // save comment
                     comment.save();
                     

@@ -71,9 +71,9 @@ passport.deserializeUser(User.deserializeUser());
 // ==========================
 // ONLY IN DEV ENVIRONMENT
 if (process.env.ENV_ID === "dev"){
-    app.get('/seed', function(req,res){
+    app.get('/seed/:num', function(req, res){
         var seedDB = require("./seeds");
-        seedDB(); //Run the seedDB file
+        seedDB(req); //Run the seedDB file
         res.redirect("/activities");
     });
 }

@@ -12,7 +12,7 @@
             <form action="/activities/<%= activity._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Activity Name</label>
-                    <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activity.name %>">
+                    <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activity.name %>" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Price per Night (£)</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activity.location %>">
+                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activity.location %>" required>
                 </div>
                 <div class="form-group">
                     <label for="imageUpload">Image</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">Description</label>
-                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!"><%= activity.description %></textarea>
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activity.description %></textarea>
                 </div>  
                 
                 <div class="container">

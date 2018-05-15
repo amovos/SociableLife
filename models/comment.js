@@ -8,7 +8,7 @@ var commentSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        username: String //as the main piece of info that's regularly used is the username it's better to store it in the comment then have to look it up each time using the ID
+        displayName: String //as the main piece of info that's regularly used is the displayName it's better to store it in the comment then have to look it up each time using the ID
     }
 });
 

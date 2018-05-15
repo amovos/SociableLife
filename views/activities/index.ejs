@@ -37,6 +37,54 @@
             </div>
         </div>
     <% } else { %>
+        <div class="row justify-content-center" id="paginationDiv">
+            <% if (pages && pages > 0) { %>
+            <ul class="pagination">
+                <% if (current == 1) { %>
+                    <li class="page-item disabled"><a class="page-link">First</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+                <% } %>
+         
+                <% if (current == 1) { %>
+                    <li class="page-item disabled"><a class="page-link">«</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+                <% } %>
+         
+                <% var i = (Number(current) > 3 ? Number(current) - 1 : 1) %>
+                
+                <% if (i !== 1) { %>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
+                <% } %>
+                
+                <% for (; i <= (Number(current) + 1) && i <= pages; i++) { %>
+                    <% if (i == current) { %>
+                        <li class="page-item active"><a class="page-link"><%= i %></a></li>
+                    <% } else { %>
+                        <li class="page-item"><a class="page-link" href="/activities?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
+                    <% } %>
+                
+                    <% if (i == Number(current) + 1 && i < pages) { %>
+                        <li class="page-item disabled"><a class="page-link">...</a></li>
+                    <% } %>
+                <% } %>
+         
+                <% if (current == pages) { %>
+                    <li class="page-item disabled"><a class="page-link">»</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+                <% } %>
+         
+                <% if (current == pages) { %>
+                    <li class="page-item disabled"><a class="page-link">Last</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    
         <div class="row text-center" id="activity-grid">
             <% activities.forEach(function(activity){ %>
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -51,8 +99,56 @@
                 </div>
             <% }); %>
         </div>
+        
+        <div class="row justify-content-center" id="paginationDiv">
+            <% if (pages && pages > 0) { %>
+            <ul class="pagination">
+                <% if (current == 1) { %>
+                    <li class="page-item disabled"><a class="page-link">First</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+                <% } %>
+         
+                <% if (current == 1) { %>
+                    <li class="page-item disabled"><a class="page-link">«</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+                <% } %>
+         
+                <% var i = (Number(current) > 3 ? Number(current) - 1 : 1) %>
+                
+                <% if (i !== 1) { %>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
+                <% } %>
+                
+                <% for (; i <= (Number(current) + 1) && i <= pages; i++) { %>
+                    <% if (i == current) { %>
+                        <li class="page-item active"><a class="page-link"><%= i %></a></li>
+                    <% } else { %>
+                        <li class="page-item"><a class="page-link" href="/activities?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
+                    <% } %>
+                
+                    <% if (i == Number(current) + 1 && i < pages) { %>
+                        <li class="page-item disabled"><a class="page-link">...</a></li>
+                    <% } %>
+                <% } %>
+         
+                <% if (current == pages) { %>
+                    <li class="page-item disabled"><a class="page-link">»</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+                <% } %>
+         
+                <% if (current == pages) { %>
+                    <li class="page-item disabled"><a class="page-link">Last</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/activities?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+        
     <% } %>
 </div>
-
 
 <% include ../partials/footer %>
