@@ -13,23 +13,46 @@
             <p>
                 <a class="btn btn-primary btn-lg" href="/activities/new">Add new activity</a>
             </p>
+            <form class="form-inline" action"/activities" method="GET">
+                <div class="form-group">
+                    <input class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
+                    <button class="btn btn-secondary">Search</button>
+                </div>
+            </form>
         </div>
     </header>
     
-    <div class="row text-center" id="activity-grid">
-        <% activities.forEach(function(activity){ %>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                  <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= activity.name %></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/activities/<%= activity._id %>" class="btn btn-primary" class="btn btn-primary">More Info</a>
-                  </div>
-                </div>
+    <% if (noMatch === true) { %>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3>Sorry, we couldn't find any activities that match that search, please try something else :)</h3>
+                <p>
+                    <form class="form-inline justify-content-center" action"/activities" method="GET">
+                        <div class="form-group">
+                            <input class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
+                            <button class="btn btn-secondary">Search</button>
+                        </div>
+                    </form>
+                </p>
             </div>
-        <% }); %>
-    </div>
+        </div>
+    <% } else { %>
+        <div class="row text-center" id="activity-grid">
+            <% activities.forEach(function(activity){ %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                      <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= activity.name %></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="/activities/<%= activity._id %>" class="btn btn-primary" class="btn btn-primary">More Info</a>
+                      </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
 </div>
+
 
 <% include ../partials/footer %>
