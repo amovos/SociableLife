@@ -13,7 +13,7 @@
             <p>
                 <a class="btn btn-primary btn-lg" href="/activities/new">Add new activity</a>
             </p>
-            <form class="form-inline" action"/activities" method="GET">
+            <form class="form-inline" action="/activities" method="GET">
                 <div class="form-group">
                     <input class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
                     <button class="btn btn-secondary">Search</button>
@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <h3>Sorry, we couldn't find any activities that match that search, please try something else :)</h3>
                 <p>
-                    <form class="form-inline justify-content-center" action"/activities" method="GET">
+                    <form class="form-inline justify-content-center" action="/activities" method="GET">
                         <div class="form-group">
                             <input class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
                             <button class="btn btn-secondary">Search</button>
@@ -37,58 +37,13 @@
             </div>
         </div>
     <% } else { %>
-        <div class="row justify-content-center" id="paginationDiv">
-            <% if (pages && pages > 0) { %>
-            <ul class="pagination">
-                <% if (current == 1) { %>
-                    <li class="page-item disabled"><a class="page-link">First</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities<%if(search){%>?search=<%=search%><%}%>">First</a></li>
-                <% } %>
-         
-                <% if (current == 1) { %>
-                    <li class="page-item disabled"><a class="page-link">«</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
-                <% } %>
-         
-                <% var i = (Number(current) > 3 ? Number(current) - 1 : 1) %>
-                
-                <% if (i !== 1) { %>
-                    <li class="page-item disabled"><a class="page-link">...</a></li>
-                <% } %>
-                
-                <% for (; i <= (Number(current) + 1) && i <= pages; i++) { %>
-                    <% if (i == current) { %>
-                        <li class="page-item active"><a class="page-link"><%= i %></a></li>
-                    <% } else { %>
-                        <li class="page-item"><a class="page-link" href="/activities?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
-                    <% } %>
-                
-                    <% if (i == Number(current) + 1 && i < pages) { %>
-                        <li class="page-item disabled"><a class="page-link">...</a></li>
-                    <% } %>
-                <% } %>
-         
-                <% if (current == pages) { %>
-                    <li class="page-item disabled"><a class="page-link">»</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
-                <% } %>
-         
-                <% if (current == pages) { %>
-                    <li class="page-item disabled"><a class="page-link">Last</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
-                <% } %>
-            </ul>
-            <% } %>
-        </div>
-    
+        <!-- GENERATE ACTIVITY GRID -->
         <div class="row text-center" id="activity-grid">
-            <% activities.forEach(function(activity){ %>
+            <% var activityCounter = 0%>
+            <% activities.forEach(function(activity, i){ %>
+                <% activityCounter += 1%>
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="card">
+                    <div class="card" id="activity<%= i %>">
                       <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
                       <div class="card-body">
                         <h5 class="card-title"><%= activity.name %></h5>
@@ -100,53 +55,14 @@
             <% }); %>
         </div>
         
-        <div class="row justify-content-center" id="paginationDiv">
-            <% if (pages && pages > 0) { %>
-            <ul class="pagination">
-                <% if (current == 1) { %>
-                    <li class="page-item disabled"><a class="page-link">First</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities<%if(search){%>?search=<%=search%><%}%>">First</a></li>
-                <% } %>
-         
-                <% if (current == 1) { %>
-                    <li class="page-item disabled"><a class="page-link">«</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
-                <% } %>
-         
-                <% var i = (Number(current) > 3 ? Number(current) - 1 : 1) %>
-                
-                <% if (i !== 1) { %>
-                    <li class="page-item disabled"><a class="page-link">...</a></li>
-                <% } %>
-                
-                <% for (; i <= (Number(current) + 1) && i <= pages; i++) { %>
-                    <% if (i == current) { %>
-                        <li class="page-item active"><a class="page-link"><%= i %></a></li>
-                    <% } else { %>
-                        <li class="page-item"><a class="page-link" href="/activities?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
-                    <% } %>
-                
-                    <% if (i == Number(current) + 1 && i < pages) { %>
-                        <li class="page-item disabled"><a class="page-link">...</a></li>
-                    <% } %>
-                <% } %>
-         
-                <% if (current == pages) { %>
-                    <li class="page-item disabled"><a class="page-link">»</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
-                <% } %>
-         
-                <% if (current == pages) { %>
-                    <li class="page-item disabled"><a class="page-link">Last</a></li>
-                <% } else { %>
-                    <li class="page-item"><a class="page-link" href="/activities?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
-                <% } %>
-            </ul>
-            <% } %>
-        </div>
+        <!-- LOAD MORE ACTIVITIES -->
+        <% if (current < pages) { %>
+            <div class="row text-center">
+                <div class="col-md-12 mb-4">
+                    <a class="btn btn-success" href="/activities?page=<%= Number(current) + 1 %><%if(search){%>?search=<%=search%><%}%>#activity<%= activityCounter %>">Load More...</a>
+                </div>
+            </div>
+        <% } %>
         
     <% } %>
 </div>

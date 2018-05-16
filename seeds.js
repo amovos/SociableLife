@@ -169,7 +169,8 @@ async function seedDB(req){
         
         // create multiple generic activities
         for(var i=0; i<req.params.num; i++){
-            Activity.create(activityData[2]); //don't need to use await as nothing else in the rest of the code is using the data created
+            activityData[2].name = "Generic Activity " + i;
+            await Activity.create(activityData[2]); // need the await to make sure they're created in order
         }
     } catch(err) {
         console.log(err);

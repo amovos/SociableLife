@@ -15,7 +15,7 @@ var indexRoute = function(req, res){ //This still goes to /activities but that i
     if(req.query.search) {
         const regex = new RegExp(searchRegex(req.query.search), 'gi'); // g: global, i: ignore case?
         
-        Activity.find({name: regex}).sort({createdAt: -1}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allActivities) { // search on multiple fields - https://stackoverflow.com/questions/11725708/node-js-and-mongoose-regex-query-on-multiple-fields
+        Activity.find({name: regex}).sort({createdAt: -1}).limit(perPage * pageNumber).exec(function (err, allActivities) { // search on multiple fields - https://stackoverflow.com/questions/11725708/node-js-and-mongoose-regex-query-on-multiple-fields
             if(err){ //could turn this into async await try/catch to remove the error callbacks
                 genericErrorResponse(req, res, err);
             } else {
@@ -28,6 +28,7 @@ var indexRoute = function(req, res){ //This still goes to /activities but that i
                         }
                         res.render("activities/index", { 
                             activities: allActivities,
+                            perPage: perPage,
                             current: pageNumber,
                             pages: Math.ceil(count / perPage),
                             noMatch: noMatch,
@@ -41,7 +42,7 @@ var indexRoute = function(req, res){ //This still goes to /activities but that i
             
     } else {
         // Else, if no search term in present then find all activities from DB
-        Activity.find({}).sort({createdAt: -1}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allActivities) {
+        Activity.find({}).sort({createdAt: -1}).limit(perPage * pageNumber).exec(function (err, allActivities) {
             if(err){ //could turn this into async await try/catch to remove the error callbacks
                 genericErrorResponse(req, res, err);
             } else {
@@ -51,6 +52,7 @@ var indexRoute = function(req, res){ //This still goes to /activities but that i
                     } else {
                         res.render("activities/index", {
                             activities: allActivities,
+                            perPage: perPage,
                             current: pageNumber,
                             pages: Math.ceil(count / perPage),
                             noMatch: noMatch, 
