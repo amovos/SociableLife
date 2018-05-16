@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Send us a message</h1> 
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
+            <form action="/contact" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="e.g. Jon Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" placeholder="Enter Message Here" rows="4" required></textarea>
+                </div>
+                
+                <!-- reCaptcha check box -->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-start">
+                            <div class="g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button class="col-sm-6 btn btn-lg btn-primary btn-block">Submit!</button>
+                        </div>
+                    </div> 
+                </div>
+            </form>
+            <a href="/activities">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

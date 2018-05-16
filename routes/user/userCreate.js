@@ -2,17 +2,39 @@
 // USER CREATE ROUTE
 // ==========================
 
-var passport = require("passport");
 var User = require("../../models/user");
 var genericErrorResponse = require("../shared/genericErrorResponse");
-var cloudinary = require('cloudinary');
-var cloudinaryConf = require("../shared/cloudinary");
+//var cloudinary = require('cloudinary');
+//var cloudinaryConf = require("../shared/cloudinary");
+var request = require("request");
 
 var createRoute = async function(req, res){
     
     // Check if invite code is correct
     if(req.body.inviteCode === process.env.INVITE_CODE){
     
+        const captcha = req.body["g-recaptcha-response"];
+        if (!captcha) {
+            req.flash("errorMessage", "Please select captcha");
+            return res.redirect("back");
+        }
+        // secret key
+        var secretKey = process.env.CAPTCHA_SECRET;
+        // Verify URL
+        var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
+        // Make request to Verify URL
+        await request.get(verifyURL, (err, response, body) => {
+            if(err){
+                genericErrorResponse(req, res, err);
+            }
+            // if not successful
+            if (body.success !== undefined && !body.success) {
+                req.flash("errorMessage", "Captcha Failed");
+                return res.redirect("/contact");
+            }
+        });
+        
+        
         // need to do it this long hand way so that the password isn't stored in the database
         var newUser = new User(
             {
@@ -24,26 +46,28 @@ var createRoute = async function(req, res){
             }
         );
         
+        // REMOVED FOR NOW TO AVOID CLASH WITH RECAPTCHA
+        // ADD PROFILE PICTURE AFTER ON THE EDIT PROFILE SCREEN (AND USE THIS CODE)
         //if an image has been added on create then upload it to Cloudinary
-        if(req.file){
-            // CLOUDINARY
-            cloudinary.config(cloudinaryConf);
+        // if(req.file){
+        //     // CLOUDINARY
+        //     cloudinary.config(cloudinaryConf);
         
-            // set image location to correct folder on Cloudinary
-            var public_id = "sl-" + process.env.ENV_ID + "/avatars/" + req.file.filename; //could change to a random string
+        //     // set image location to correct folder on Cloudinary
+        //     var public_id = "sl-" + process.env.ENV_ID + "/avatars/" + req.file.filename; //could change to a random string
             
-            // Upload the image to Cloudinary and wait for a response
-            await cloudinary.v2.uploader.upload(req.file.path, {public_id: public_id}, function(err, result) {
-                if(err) {
-                    req.flash('errorMessage', err.message);
-                    return res.redirect('back');
-                }
-                // add cloudinary url for the image to the newUser
-                newUser.avatar = result.secure_url;
-                // add image's public_id to newUser object
-                newUser.avatarId = result.public_id;
-            });
-        }
+        //     // Upload the image to Cloudinary and wait for a response
+        //     await cloudinary.v2.uploader.upload(req.file.path, {public_id: public_id}, function(err, result) {
+        //         if(err) {
+        //             req.flash('errorMessage', err.message);
+        //             return res.redirect('back');
+        //         }
+        //         // add cloudinary url for the image to the newUser
+        //         newUser.avatar = result.secure_url;
+        //         // add image's public_id to newUser object
+        //         newUser.avatarId = result.public_id;
+        //     });
+        // }
         
         //if admin code is correct make the new user an admin
         if(req.body.adminCode === process.env.ADMIN_CODE){

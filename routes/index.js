@@ -13,6 +13,18 @@ router.get("/", function(req, res){
 });
 
 // ==========================
+// CONTACT PAGE ROUTES
+// ==========================
+
+// NEW CONTACT ROUTE - Display info on ALL activities
+router.get('/contact', require("./contact/new"));
+
+// CREATE COMMENT ROUTE
+router.post("/contact", require("./contact/create"));
+
+
+
+// ==========================
 // MODULE.EXPORTS
 // ==========================
 module.exports = router;

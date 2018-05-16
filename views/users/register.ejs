@@ -65,23 +65,33 @@
                     </div>
                 </div>
                 
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <label class="col-md-4 col-sm-5" for="imageUpload"><span class="align-text-top">Profile Picture</span></label>
-                            <div class="custom-file col-md-8 col-sm-7">
-                                <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
-                                <label class="custom-file-label" for="imageUpload">Choose file</label>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
+                <!-- Profile Picture on Signup removed to avoid clash with RECAPTCHA -->
+                <!--<div class="container">-->
+                <!--    <div class="form-group">-->
+                <!--        <div class="row justify-content-center">-->
+                <!--            <label class="col-md-4 col-sm-5" for="imageUpload"><span class="align-text-top">Profile Picture</span></label>-->
+                <!--            <div class="custom-file col-md-8 col-sm-7">-->
+                <!--                <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">-->
+                <!--                <label class="custom-file-label" for="imageUpload">Choose file</label>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div> -->
                 
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="adminCode"><span class="align-text-top">Admin Code</span></label>
                             <input class="col-md-8 col-sm-7 form-control" type="text" name="adminCode" placeholder="Admin Code">
+                        </div>
+                    </div>
+                </div> 
+                
+                <!-- reCaptcha check box -->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <div class="col-md-8.5 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
                         </div>
                     </div>
                 </div> 
