@@ -4,7 +4,7 @@
 var genericErrorResponse = require("../shared/genericErrorResponse"); //require the shared function for a database error
 var Activity = require("../../models/activity"); //require the activity database model
 
-var indexRoute = function(req, res){ //This still goes to /activities but that is specified in app.js when it is used: app.use("/activities", activityRoutes);
+var indexRoute = async function(req, res){ //This still goes to /activities but that is specified in app.js when it is used: app.use("/activities", activityRoutes);
     
     var noMatch = false;
     var perPage = 8;
