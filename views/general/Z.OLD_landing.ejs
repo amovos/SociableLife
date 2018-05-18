@@ -1,0 +1,111 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Please register</h1> 
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <form action="/register" method="POST" enctype="multipart/form-data">
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="email"><span class="align-text-top">Email Address *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="email" name="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="password"><span class="align-text-top">Password *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="password" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="firstName"><span class="align-text-top">First Name *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="text" name="firstName" placeholder="First Name" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="lastName"><span class="align-text-top">Last Name *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="text" name="lastName" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Display Name *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="text" name="displayName" placeholder="What other people will see" required>
+                        </div>
+                    </div>
+                </div>                
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="inviteCode"><span class="align-text-top">Invite Code *</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="text" name="inviteCode" placeholder="Invite Code" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture on Signup removed to avoid clash with RECAPTCHA -->
+                <!--<div class="container">-->
+                <!--    <div class="form-group">-->
+                <!--        <div class="row justify-content-center">-->
+                <!--            <label class="col-md-4 col-sm-5" for="imageUpload"><span class="align-text-top">Profile Picture</span></label>-->
+                <!--            <div class="custom-file col-md-8 col-sm-7">-->
+                <!--                <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">-->
+                <!--                <label class="custom-file-label" for="imageUpload">Choose file</label>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div> -->
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <label class="col-md-4 col-sm-5" for="adminCode"><span class="align-text-top">Admin Code</span></label>
+                            <input class="col-md-8 col-sm-7 form-control" type="text" name="adminCode" placeholder="Admin Code">
+                        </div>
+                    </div>
+                </div> 
+                
+                <!-- reCaptcha check box -->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <div class="col-md-8.5 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button class="col-md-8 btn btn-lg btn-primary btn-block">Create your free account!</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

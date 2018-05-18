@@ -9,7 +9,14 @@ var router = express.Router();
 // ROOT ROUTE
 // ==========================
 router.get("/", function(req, res){
-    res.render("landing");
+    res.render("general/home", {page: 'home'});
+});
+
+// ==========================
+// ABOUT US ROUTE
+// ==========================
+router.get("/aboutus", function(req, res){
+    res.render("general/aboutUs", {page: 'aboutUs'});
 });
 
 // ==========================

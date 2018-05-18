@@ -111,6 +111,7 @@ app.use("/activities/:id/comments", commentRoutes);
 
 //CatchAll Route
 app.get('/*', function(req,res){
+    req.flash("errorMessage", "Sorry, we couldn't find the page you were looking for");
     res.redirect("/activities");
 });
 

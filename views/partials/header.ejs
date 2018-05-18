@@ -13,19 +13,25 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+	<nav class="navbar fixed-top navbar-expand-md navbar-dark mb-4" id="navbar-background-color">
 		<div class="container">
 		<a class="navbar-brand" href="/"><%= process.env.ENV_NAME %></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="collapse navbar-collapse text-center" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item <%= typeof page !== 'undefined' && page === 'activities' ? 'active' : '' %>">
-						<a href="/activities" class="nav-link">Home</a>
+					<li class="nav-item <%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>">
+						<a href="/" class="nav-link">Home</a>
 					</li>
-					<li class="nav-item <%= typeof page !== 'undefined' && page === 'addActivity' ? 'active' : '' %>">
-						<a href="/activities/new" class="nav-link">Add Activity</a>
+					<li class="nav-item <%= typeof page !== 'undefined' && page === 'activities' ? 'active' : '' %>">
+						<a href="/activities" class="nav-link">Activity Map</a>
+					</li>
+					<!--<li class="nav-item <%= typeof page !== 'undefined' && page === 'addActivity' ? 'active' : '' %>">-->
+					<!--	<a href="/activities/new" class="nav-link">Add Activity</a>-->
+					<!--</li>-->
+					<li class="nav-item <%= typeof page !== 'undefined' && page === 'aboutUs' ? 'active' : '' %>">
+						<a href="/aboutUs" class="nav-link">Our Story</a>
 					</li>
 					<li class="nav-item <%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>">
 						<a href="/contact" class="nav-link">Contact</a>
@@ -37,7 +43,7 @@
 							<a href="/login" class="nav-link">Login</a>
 						</li>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-							<a href="/register" class="nav-link">Sign Up</a>
+							<a href="/inviteCode" class="nav-link">Sign Up</a>
 						</li>
 					<% } else { %>
 						<li class="nav-item">

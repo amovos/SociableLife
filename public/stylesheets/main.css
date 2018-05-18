@@ -1,7 +1,5 @@
-
 /* General Styles
 -------------------------------------------------- */
-
 .inline-form {
     display: inline;
 }
@@ -9,11 +7,15 @@
 
 /* Google Maps Styles
 -------------------------------------------------- */
-#map {
+#activity-show-map {
     height: 400px;
     width: 100%;
 }
 
+#activity-index-map {
+    height: 400px;
+    width: 100%;
+}
 
 
 /* Signin Form
@@ -47,6 +49,16 @@
 }
 
 
+/* Floating Header Styles
+-------------------------------------------------- */
+body {
+  /* padding-top for floating navbar */
+  padding-top: 80px;
+}
+
+#navbar-background-color {
+  background-color: #1166c6;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

@@ -22,6 +22,12 @@
         </div>
     </header>
     
+    <!-- MAP SECTION START -->
+    <div class="col-md-3">
+        <div id="activity-index-map"></div>
+    </div>
+    <!-- MAP SECTION END -->
+    
     <% if (noMatch === true) { %>
         <div class="row text-center">
             <div class="col-md-12">
@@ -66,5 +72,20 @@
         
     <% } %>
 </div>
+
+
+
+<!-- Move this script to it's own JS file in /public/ -->
+<script>
+  function initActivityIndexMap() {
+    var map = new google.maps.Map(document.getElementById('activity-index-map'), {
+        zoom: 8,
+        center: {lat: 64.963051, lng: -19.020835 },
+        scrollwheel: false
+    });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityIndexMap"></script>
+
 
 <% include ../partials/footer %>

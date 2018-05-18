@@ -3,18 +3,21 @@
 <div class="container">
     <div class="row">
         
+        <!-- MAP SECTION START -->
         <div class="col-md-3">
-            <div id="map"></div>
+            <div id="activity-show-map"></div>
         </div>
+        <!-- MAP SECTION END -->
         
         <div class="col-md-9">
+            <!-- INFO SECTION START -->
             <div class="card mb-3">
                 <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
                 <div class="card-body">
-                    <p class="float-right">£<%= activity.price %>/night</p>
+                    <p class="float-right">Up to date info: <i class="fa fa-check"></i></p>
                     <h3 class="card-title"><%= activity.name %></h3>
                     <p>
-                        <em>Submitted by: <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                        <em>Added by: <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
                     </p>
                     <hr>
                     <p class="card-text"><%= activity.description %></p>
@@ -26,8 +29,8 @@
                     <% } %>
                 </div>
             </div>
-        
-        
+            <!-- INFO SECTION END -->
+
             <!-- COMMENT SECTION START -->
             <div class="card mb-5">
                 <div class="card-body">
@@ -98,6 +101,7 @@
                     </div>
                 </div>
             </div>
+            <!-- COMMENT SECTION END -->
             
         </div>
     </div>
@@ -105,11 +109,11 @@
 
 <!-- Move this script to it's own JS file in /public/ -->
 <script>
-  function initMap() {
+  function initActivityShowMap() {
     var lat = <%= activity.lat %>;
     var lng = <%= activity.lng %>;
     var center = {lat: lat, lng: lng };
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('activity-show-map'), {
         zoom: 8,
         center: center,
         scrollwheel: false
@@ -131,6 +135,6 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityShowMap"></script>
 
 <% include ../partials/footer %>

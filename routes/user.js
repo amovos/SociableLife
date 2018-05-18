@@ -4,6 +4,7 @@
 
 var express = require("express");
 var router = express.Router();
+var middleware = require("../middleware"); //don't need to specify index.js, it's a special name when you require a directory
 var upload = require("../middleware/multer");
 
 // ==========================
@@ -13,8 +14,11 @@ var upload = require("../middleware/multer");
 
 
 // ==========================
-// USER CREATION & LOGIN/OUT
+// USER INVITE, CREATION & LOGIN/OUT
 // ==========================
+// INVITE CODE NEW
+router.get("/invitecode", require("./user/inviteCode"));
+
 // USER NEW
 router.get("/register", require("./user/userNew"));
 
@@ -35,7 +39,7 @@ router.get("/logout", require("./user/logout"));
 // USER PROFILE
 // ==========================
 // USER PROFILE
-router.get("/users/:id", require("./user/userProfile"));
+router.get("/users/:id", middleware.isLoggedIn, require("./user/userProfile"));
 
 
 // ==========================
