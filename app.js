@@ -100,7 +100,8 @@ app.use(function(req, res, next){
 var indexRoutes     = require("./routes/index"),
     userRoutes      = require("./routes/user"),
     commentRoutes   = require("./routes/comments"),
-    activityRoutes  = require("./routes/activities");
+    activityRoutes  = require("./routes/activities"),
+    apiRoutes  = require("./routes/apis");
 
 //once the route files have been required they need to actually be used in the app, using the Express Router
 //the URLs can be shortened here by adding the first common part here e.g. /activities.
@@ -108,6 +109,7 @@ app.use("/", indexRoutes);
 app.use("/", userRoutes);
 app.use("/activities", activityRoutes);
 app.use("/activities/:id/comments", commentRoutes);
+app.use("/api", apiRoutes);
 
 //CatchAll Route
 app.get('/*', function(req,res){

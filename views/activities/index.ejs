@@ -74,46 +74,7 @@
     <% } %>
 </div>
 
-<!-- Move this script to it's own JS file in /public/ -->
-<script>
-    var map
-    function initActivityIndexMap() {
-        map = new google.maps.Map(document.getElementById('activity-index-map'), {
-            zoom: 3,
-            center: {lat: 51.5074, lng: 0.1278 },
-            scrollwheel: false,
-            streetViewControl: false,
-            scaleControl: false,
-            fullscreenControl: false
-        });
-        
-        // Create a <script> tag and set the mapData.js as the source.
-        var script = document.createElement('script');
-        script.src = '/js/mapData.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-      }
-      
-      //TO DO
-      // Need to populate the mapData.js with the returned results from the database
-      // to look like this data scructure:
-      // https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js
-      
-        // Loop through the results array and place a marker for each
-        // set of coordinates.
-        //     window.eqfeed_callback = function(results) {
-        //     for (var i = 0; i < results.features.length; i++) {
-        //       var coords = results.features[i].geometry.coordinates;
-        //       var latLng = new google.maps.LatLng(coords[1],coords[0]);
-        //       var marker = new google.maps.Marker({
-        //         position: latLng,
-        //         map: map
-        //       });
-        //     }
-        // }
-      
-      
-</script>
+<script async src="/js/mapIndex.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityIndexMap"></script>
-
 
 <% include ../partials/footer %>
