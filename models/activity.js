@@ -6,6 +6,7 @@ var activitySchema = new mongoose.Schema({
     imageId: String,
     description: String,
     price: String,
+    age: { type: String, default: 'All Ages' },
     location: String,
     lat: Number,
     lng: Number,

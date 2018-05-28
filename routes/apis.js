@@ -6,9 +6,15 @@ var express = require("express");
 var router = express.Router();
 
 // ==========================
-// MAP INDEX API ROUTE
+// ALL ACTIVITIES API ROUTE
 // ==========================
-router.get("/map", require("./api/activities"));
+router.get("/activities", require("./api/activities"));
+
+// ==========================
+// ACTIVITY SEARCH API ROUTE
+// ==========================
+router.get("/activities/:searchQuery", require("./api/activitiesSearch"));
+
 
 // ==========================
 // MODULE.EXPORTS

@@ -28,17 +28,23 @@ app.use((req, res, next) => {
 app.use(flash());
 app.set("view engine", "ejs"); // don't need to add .ejs to the end of all those files when routing
 app.use(methodOverride("_method")); // method override needed for HTML forms that can't do PUT so have to be POST, then overrided to PUT once submitted with this override added to the URL
-app.use(express.static(__dirname + "/public")); //Configure Public Directory
+app.use(express.static(__dirname + "/public")); //Configure Public Directory - use __dirname to be as explicit as possible
+
+// Configure bodyParser
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.locals.moment = require('moment'); //used for time tracking
-
 
 // ==========================
 // DB CONFIG
 // ==========================
 var url = process.env.DATABASEURL || "mongodb://localhost/sl_db"; //creates a backup so that if the environment variable isn't set up it has a backup
 mongoose.connect(url);
+mongoose.Promise = Promise;
+if (process.env.ENV_ID === "dev"){
+    mongoose.set('debug', true);
+}
 
 
 // ==========================

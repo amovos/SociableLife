@@ -60,8 +60,8 @@ var activityData = [
         location: "Iceland",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526129491/sl-dev/activities/ParityVisit.jpg",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 64.963051,
-        lng: -19.020835,
+        lat: 51.5074,
+        lng: 0.1278,
         createdAt: "2018-05-10T10:44:26.159Z",
         imageId: "sl-dev/activities/ParityVisit.jpg",
     },
@@ -71,8 +71,8 @@ var activityData = [
         location: "Iceland",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526225042/sl-dev/activities/1526225040191volcano.jpeg.jpg",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 64.963051,
-        lng: -19.020835,
+        lat: 53.2419,
+        lng: -2.3674,
         createdAt: "2018-05-10T10:44:26.159Z",
         imageId: "sl-dev/activities/1526225040191volcano.jpeg.jpg",
     },
@@ -82,8 +82,8 @@ var activityData = [
         location: "Iceland",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 64.963051,
-        lng: -19.020835,
+        lat: 55.2475,
+        lng: -3.9055,
         createdAt: "2018-05-10T10:44:26.159Z",
         imageId: "activityPlaceHolder.png",
     }
@@ -170,7 +170,9 @@ async function seedDB(req){
         // create multiple generic activities
         for(var i=0; i<req.params.num; i++){
             activityData[2].name = "Generic Activity " + i;
-            await Activity.create(activityData[2]); // need the await to make sure they're created in order
+            var activityDataMapOffset = activityData[2];
+            activityDataMapOffset.lng += 1;
+            await Activity.create(activityDataMapOffset); // need the await to make sure they're created in order
         }
     } catch(err) {
         console.log(err);
