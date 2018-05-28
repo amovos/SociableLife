@@ -1,30 +1,50 @@
 <% include ../partials/header %>
 
-<div class="container">
+<!--Include a style to remove the body padding needed for the nav bar, so the map is flush with the top of the page-->
+<style>
+    body {
+        padding-top: 56px;
+    }
+</style>
 
+<div class="container">
     <% if(currentUser && currentUser.isAdmin){ %>
         <h1>You're an admin!</h1>
     <% } %>
-
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to Sociable Life</h1>
-            <p>View our hand-picked activities from all over the UK!</p>
-            <p><a class="btn btn-primary btn-lg" href="/activities/new">Add new activity</a></p>
-        </div>
-    </header>
 </div>
     
 <!-- MAP SECTION START -->
 <div class="mb-4" id="activity-index-map"></div>
 <!-- MAP SECTION END -->
 
-<div class="container mb-3">
-    <div class="col-md-3 float-left">
+
+<!-- MAP SEARCH START -->
+<div class="container mb-6">
+    <div class="input-group">
+        <label for="search">Search Activities</label>
         <input id='searchQueryInput' class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
     </div>
-    <button id='searchQueryBtn' class="btn btn-secondary">Search</button>
+    <div class="input-group">
+        <label for="location">Your Location</label>
+        <input id='setLocationInput' class="form-control mr-1" type="text" name="location" placeholder="Where are you?">
+        <div class="input-group-append">
+            <button id='findNearMeBtn' class="btn btn-success" type="button" onclick="">Find Near Me</button>
+        </div>
+    </div>
+    
+    <div class="input-group">
+      <label for="distance">Distance</label>
+      <input id='setDistanceInput' type="number" name="distance" class="form-control" placeholder="E.g. 20" min="1" max="50">
+      <div class="input-group-append">
+        <button id='setDistancePlusBtn' class="btn btn-outline-success" type="button" onclick="increaseSearchDistance()"><i class="fa fa-plus"></i></button>
+        <button id='setDistanceMinusBtn' class="btn btn-outline-primary" type="button" onclick="decreaseSearchDistance()"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    
+    <button id='searchQueryBtn' class="btn btn-success">Search</button>
+    <button id='clearAllBtn' class="btn btn-secondary" onclick="clearAll()">Clear All</button>
 </div>
+<!-- MAP SEARCH END -->
 
 <div class="container">
     <!-- GENERATE ACTIVITY GRID WITH AJAX-->
@@ -33,10 +53,17 @@
     </div>
 </div>
 
+<div class="row text-center">
+    <div class="col-md-12 mb-4">
+        <button id="loadMoreButton" type="button" class="btn btn-success" onclick="addMoreActivities()">Load More...</button>
+    </div>
+</div>
+
+
 <!-- Need to fix this async defer to make sure the loading is in the correct order -->
-<script src="/js/activityIndex.js"></script>
-<script src="/js/mapIndex.js"></script>
-<script defer src="/js/searchIndex.js"></script>
+<script src="/js/activityIndex/activityIndex.js"></script>
+<script src="/js/activityIndex/mapIndex.js"></script>
+<script defer src="/js/activityIndex/searchIndex.js"></script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.32&key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityIndexMap"></script>
 

@@ -1,13 +1,47 @@
 /* global $ */ //this is how to get rid of the warning because $ isn't defined in this file
 
+//on page load, page number starts at 1
+var pageNumber = 1;
+var perPage = 8
+var activityCounter = 0;
+
 //******************
 // FUNCTIONS
 //******************
 function addActivities(activities) { //function used to add activities on page load
     removeAllActivities(); //remove all activities before trying to add new ones
-    
-    activities.forEach(function(activity){
-        addActivity(activity);
+    activities.forEach(function(activity, index){
+        if(index <= pageNumber * perPage - 1){
+            addActivity(activity);
+            activityCounter++;
+        }
+    });
+    if(activities.length <= perPage){
+        $('#loadMoreButton').hide();
+    } else {
+        $('#loadMoreButton').show();
+    }
+}
+
+function addMoreActivities(){ //repeating code but it's a quick fix
+    pageNumber++;
+    var searchQuery = $('#searchQueryInput').val();
+    $.getJSON("/api/activities/" + searchQuery)
+    .then(function(activities){
+        activities.forEach(function(activity, index){
+            if(activityCounter <= index){
+                if(index <= pageNumber * perPage - 1){
+                    addActivity(activity);
+                    activityCounter++;
+                }
+            }
+        });
+        console.log("activityCounter: " + activityCounter);
+        return activities;
+    }).then(function(activities){
+        if(activityCounter >= activities.length - 1){
+            $('#loadMoreButton').hide();
+        }
     });
 }
 

@@ -128,7 +128,8 @@ function addMarkers(activities){
                   $(this).css({opacity: '1'});
                 });
             });
-        }, index*50); //set delay time for drop animation
+            
+        }, index*(1000/activities.length)); //set delay time for drop animation
     });
     return activities; //need to return the activities so it can be passed through to the activityIndex functions
 }
