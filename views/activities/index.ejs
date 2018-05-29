@@ -20,23 +20,26 @@
 
 <!-- MAP SEARCH START -->
 <div class="container mb-3 col-md-6">
-    <div class="input-group">
+    <div class="input-group mb-1 col-md-8">
         <label for="search">Search Activities</label>
-        <input id='searchQueryInput' class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
+        <input id='searchQueryInput' class="form-control" type="text" name="search" placeholder="Activity search...">
         <div class="input-group-append">
+            <button id='searchQueryClearBtn' class="btn btn-outline-danger" type="button" style="display: none;"><i class="fa fa-times"></i></button>
             <button id='searchQueryBtn' class="btn btn-success">Search</button>
         </div>
     </div>
-    <div class="input-group">
+    
+    <div class="input-group mb-1 col-md-8">
         <label for="location">Your Location</label>
-        <input id='setLocationInput' class="form-control mr-1" type="text" name="location" placeholder="Where are you?">
+        <input id='setLocationInput' class="form-control" type="text" name="location" placeholder="Where are you?">
         <div class="input-group-append">
-            <button id='findNearMeBtn' class="btn btn-success" type="button" onclick="activitySearch()">Find Near Me</button>
+            <button id='findNearMeClearBtn' class="btn btn-outline-danger" type="button" style="display: none;"><i class="fa fa-times"></i></button>
+            <button id='findNearMeBtn' class="btn btn-success" type="button">Find Near Me</button>
         </div>
     </div>
     
-    <div class="collapse" id="collapseDistanceSearch">
-        <div class="input-group">
+    <div class="collapse col-md-8" id="collapseDistanceSearch">
+        <div class="input-group mb-1 ">
           <label for="distance">Distance</label>
           <input id='setDistanceInput' type="number" name="distance" class="form-control" placeholder="E.g. 20" min="1" max="50">
           <div class="input-group-append">

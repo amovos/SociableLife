@@ -16,17 +16,32 @@ $(document).ready(function(){ //waits until the DOM has loaded
     });
 
     //when typing in text search input or location search input, if enter is pressed run the search
-    $('#searchQueryInput,#setLocationInput').keypress(function(e){
+    $('#searchQueryInput,#setLocationInput').keyup(function(e){
         if(e.keyCode==13){ //remove this if statement to get constant search (but this doesn't work well with the marker drop animation)
             activitySearch()
             .then(activityFilter)
             .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
             .then(addActivities);
+        } else {
+            //code to show and hide the clear input box buttons
+            if($(this).val()){
+                if(this.id === 'searchQueryInput'){
+                    $('#searchQueryClearBtn').show();
+                } else if(this.id == 'setLocationInput'){
+                    $('#findNearMeClearBtn').show();
+                }
+            } else {
+                if(this.id === 'searchQueryInput'){
+                    $('#searchQueryClearBtn').hide();
+                } else if(this.id == 'setLocationInput'){
+                    $('#findNearMeClearBtn').hide();
+                }
+            }
         }
     });
     
     //if pressing enter when on distance input
-    $('#setDistanceInput').keypress(function(e){
+    $('#setDistanceInput').keyup(function(e){
         if(e.keyCode==13){
             searchCircle($('#setDistanceInput').val());
             activityFilter(returnedActivities)
@@ -49,6 +64,26 @@ $(document).ready(function(){ //waits until the DOM has loaded
         .then(addMarkers)
         .then(addActivities)
         .then(decreaseSearchDistance);
+    });
+    
+    //if the cross button is clicked on the activity search box, clear the input and run the search again
+    $('#searchQueryClearBtn').on('click', function(){
+        $('#searchQueryClearBtn').hide();
+        $('#searchQueryInput').val('');
+        activitySearch()
+        .then(activityFilter)
+        .then(addMarkers)
+        .then(addActivities);
+    });
+    
+    //if the cross button is clicked on the activity search box, clear the input and run the search again
+    $('#findNearMeClearBtn').on('click', function(){
+        $('#findNearMeClearBtn').hide();
+        $('#setLocationInput').val('');
+        activitySearch()
+        .then(activityFilter)
+        .then(addMarkers)
+        .then(addActivities);
     });
     
     //load more activities from the filtered list
