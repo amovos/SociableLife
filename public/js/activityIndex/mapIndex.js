@@ -9,8 +9,8 @@ function initActivityIndexMap() {
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
         zoom: 6,
         center: {lat: 54.4857, lng: -5.4326 },
-        //scrollwheel: true,
-        gestureHandling: 'cooperative',
+        scrollwheel: false,
+        //gestureHandling: 'cooperative',
         mapTypeControl: false,
         streetViewControl: false,
         scaleControl: false,
@@ -44,7 +44,7 @@ function addMarkers(activities){
                 position: latLng,
                 map: map,
                 icon: image,
-                animation: google.maps.Animation.DROP,
+                //animation: google.maps.Animation.DROP,
                 title: currentActivity.name
             });
             
@@ -129,7 +129,7 @@ function addMarkers(activities){
                 });
             });
             
-        }, index*(1000/activities.length)); //set delay time for drop animation
+        }, index*0); //(1000/activities.length)); //set delay time for drop animation
     });
     return activities; //need to return the activities so it can be passed through to the activityIndex functions
 }

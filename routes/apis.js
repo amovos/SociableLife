@@ -15,6 +15,10 @@ router.get("/activities", require("./api/activities"));
 // ==========================
 router.get("/activities/:searchQuery", require("./api/activitiesSearch"));
 
+// ==========================
+// ACTIVITY LOCATION SEARCH API ROUTE
+// ==========================
+router.get("/activities/locationSearch/:location", require("./api/geocodeLocation"));
 
 // ==========================
 // MODULE.EXPORTS

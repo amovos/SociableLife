@@ -19,30 +19,35 @@
 
 
 <!-- MAP SEARCH START -->
-<div class="container mb-6">
+<div class="container mb-3 col-md-6">
     <div class="input-group">
         <label for="search">Search Activities</label>
         <input id='searchQueryInput' class="form-control mr-1" type="text" name="search" placeholder="Activity search...">
+        <div class="input-group-append">
+            <button id='searchQueryBtn' class="btn btn-success">Search</button>
+        </div>
     </div>
     <div class="input-group">
         <label for="location">Your Location</label>
         <input id='setLocationInput' class="form-control mr-1" type="text" name="location" placeholder="Where are you?">
         <div class="input-group-append">
-            <button id='findNearMeBtn' class="btn btn-success" type="button" onclick="">Find Near Me</button>
+            <button id='findNearMeBtn' class="btn btn-success" type="button" onclick="activitySearch()">Find Near Me</button>
         </div>
     </div>
     
-    <div class="input-group">
-      <label for="distance">Distance</label>
-      <input id='setDistanceInput' type="number" name="distance" class="form-control" placeholder="E.g. 20" min="1" max="50">
-      <div class="input-group-append">
-        <button id='setDistancePlusBtn' class="btn btn-outline-success" type="button" onclick="increaseSearchDistance()"><i class="fa fa-plus"></i></button>
-        <button id='setDistanceMinusBtn' class="btn btn-outline-primary" type="button" onclick="decreaseSearchDistance()"><i class="fa fa-minus"></i></button>
-      </div>
+    <div class="collapse" id="collapseDistanceSearch">
+        <div class="input-group">
+          <label for="distance">Distance</label>
+          <input id='setDistanceInput' type="number" name="distance" class="form-control" placeholder="E.g. 20" min="1" max="50">
+          <div class="input-group-append">
+            <button id='setDistancePlusBtn' class="btn btn-outline-success" type="button"><i class="fa fa-plus"></i></button>
+            <button id='setDistanceMinusBtn' class="btn btn-outline-primary" type="button"><i class="fa fa-minus"></i></button>
+          </div>
+        </div>
     </div>
     
-    <button id='searchQueryBtn' class="btn btn-success">Search</button>
-    <button id='clearAllBtn' class="btn btn-secondary" onclick="clearAll()">Clear All</button>
+    <button id='resetSearchBtn' class="btn btn-primary" onclick="resetSearch()">Reset Search</button>
+    <button id='clearAllBtn' class="btn btn-secondary" onclick="clearAll()">Hide All</button>
 </div>
 <!-- MAP SEARCH END -->
 
@@ -51,11 +56,11 @@
     <div class="row text-center" id="activity-grid">
         
     </div>
-</div>
 
-<div class="row text-center">
-    <div class="col-md-12 mb-4">
-        <button id="loadMoreButton" type="button" class="btn btn-success" onclick="addMoreActivities()">Load More...</button>
+    <div class="row text-center">
+        <div class="col-md-12 mb-4">
+            <button id="loadMoreBtn" type="button" class="btn btn-success">Load More...</button>
+        </div>
     </div>
 </div>
 

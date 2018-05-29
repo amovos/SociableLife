@@ -8,6 +8,19 @@
 	min-height: 500px;
 }
 
+.activity {
+	animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
 /* Remove the up and down arrows used to step number inputs, I'll make my own from buttons */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {
@@ -23,7 +36,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #activity-index-map {
-    height: 80vh;
+    height: 70vh;
     width: 100%;
     margin: 0;
     padding: 0;

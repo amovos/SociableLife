@@ -9,6 +9,10 @@ var activityCounter = 0;
 // FUNCTIONS
 //******************
 function addActivities(activities) { //function used to add activities on page load
+    //reset counters before adding new activities
+    pageNumber = 1;
+    activityCounter = 0;
+    
     removeAllActivities(); //remove all activities before trying to add new ones
     activities.forEach(function(activity, index){
         if(index <= pageNumber * perPage - 1){
@@ -17,38 +21,31 @@ function addActivities(activities) { //function used to add activities on page l
         }
     });
     if(activities.length <= perPage){
-        $('#loadMoreButton').hide();
+        $('#loadMoreBtn').hide();
     } else {
-        $('#loadMoreButton').show();
+        $('#loadMoreBtn').show();
     }
 }
 
-function addMoreActivities(){ //repeating code but it's a quick fix
+function addMoreActivities(activities){
     pageNumber++;
-    var searchQuery = $('#searchQueryInput').val();
-    $.getJSON("/api/activities/" + searchQuery)
-    .then(function(activities){
-        activities.forEach(function(activity, index){
-            if(activityCounter <= index){
-                if(index <= pageNumber * perPage - 1){
-                    addActivity(activity);
-                    activityCounter++;
-                }
+    activities.forEach(function(activity, index){
+        if(activityCounter <= index){
+            if(index <= pageNumber * perPage - 1){
+                addActivity(activity);
+                activityCounter++;
             }
-        });
-        console.log("activityCounter: " + activityCounter);
-        return activities;
-    }).then(function(activities){
-        if(activityCounter >= activities.length - 1){
-            $('#loadMoreButton').hide();
         }
     });
+    if(activityCounter >= (activities.length - 1)){
+        $('#loadMoreBtn').hide();
+    }
 }
 
 function addActivity(activity){ //function used whenever we want to add an item to the DOM (e.g. on page load or when an item is created)
     var newActivity = $(
         '<div class="col-lg-3 col-md-4 col-sm-6 mb-4">' +
-            '<div class="card activity">' +
+            '<div class="card activity">' + //fade in animation added on the class .activity
               '<img class="card-img-top" src="' + activity.image + '" alt="<%= activity.name %>">' +
               '<div class="card-body">' +
                 '<h5 class="card-title">' + activity.name + '</h5>' +
