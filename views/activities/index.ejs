@@ -14,43 +14,66 @@
 </div>
     
 <!-- MAP SECTION START -->
-<div class="mb-4" id="activity-index-map"></div>
+<div class="mb-3" id="activity-index-map"></div>
 <!-- MAP SECTION END -->
 
 
 <!-- MAP SEARCH START -->
-<div class="container mb-3 col-md-6">
-    <div class="input-group mb-1 col-md-8">
+<div class="container d-flex flex-wrap align-items-start mb-3 justify-content-between">
+    
+    <div class="input-group align-items-baseline mb-2 col-lg-6 nopadding"> <!-- Use 6 for search and 5 for the loaction box, then use justify-content-between to create a gap on large screens-->
         <label for="search">Search Activities</label>
-        <input id='searchQueryInput' class="form-control" type="text" name="search" placeholder="Activity search...">
+        <input id='searchQueryInput' class="form-control ml-2" type="text" name="search" placeholder="Activity search...">
         <div class="input-group-append">
             <button id='searchQueryClearBtn' class="btn btn-outline-danger" type="button" style="display: none;"><i class="fa fa-times"></i></button>
-            <button id='searchQueryBtn' class="btn btn-success">Search</button>
+            <button id='searchQueryBtn' class="btn btn-success" type="button">Search</button>
         </div>
     </div>
     
-    <div class="input-group mb-1 col-md-8">
-        <label for="location">Your Location</label>
-        <input id='setLocationInput' class="form-control" type="text" name="location" placeholder="Where are you?">
-        <div class="input-group-append">
-            <button id='findNearMeClearBtn' class="btn btn-outline-danger" type="button" style="display: none;"><i class="fa fa-times"></i></button>
-            <button id='findNearMeBtn' class="btn btn-success" type="button">Find Near Me</button>
+    <div class='col-lg-5 mb-1 nopadding'>
+        <div class="input-group align-items-baseline mb-1">
+            <label for="location">Your Location</label>
+            <input id='setLocationInput' class="form-control ml-2" type="text" name="location" placeholder="Where are you?">
+            <div class="input-group-append">
+                <button id='findNearMeClearBtn' class="btn btn-outline-danger" type="button" style="display: none;"><i class="fa fa-times"></i></button>
+                <button id='findNearMeBtn' class="btn btn-success" type="button">Find</button>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseDistanceSearch">
+            <div class="nopadding input-group align-items-baseline mb-2 col-lg-8 col-md-8 col-sm-10">
+              <label for="distance">Distance (Miles)</label>
+              <input id='setDistanceInput' type="number" name="distance" class="form-control ml-1" placeholder="E.g. 20" min="1" max="50">
+              <div class="input-group-append">
+                <button id='setDistancePlusBtn' class="btn btn-outline-success" type="button"><i class="fa fa-plus"></i></button>
+                <button id='setDistanceMinusBtn' class="btn btn-outline-primary" type="button"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
         </div>
     </div>
     
-    <div class="collapse col-md-8" id="collapseDistanceSearch">
-        <div class="input-group mb-1 ">
-          <label for="distance">Distance</label>
-          <input id='setDistanceInput' type="number" name="distance" class="form-control" placeholder="E.g. 20" min="1" max="50">
-          <div class="input-group-append">
-            <button id='setDistancePlusBtn' class="btn btn-outline-success" type="button"><i class="fa fa-plus"></i></button>
-            <button id='setDistanceMinusBtn' class="btn btn-outline-primary" type="button"><i class="fa fa-minus"></i></button>
-          </div>
+    <!-- Reset search and more filters buttons div -->
+    <div class="d-flex flex-wrap align-items-start col-12 nopadding">
+        <div class="col nopadding col-md-3 col-5 d-flex align-items-start">
+            <button id='resetSearchBtn' class="btn btn-outline-primary btn-block mr-3 mb-2" onclick="resetSearch()">Reset Search</button>
         </div>
+        <div class="col nopadding col-md-9 col-7 mb-2">
+            <button id='moreFiltersBtn' class="btn btn-outline-info btn-block">More Filters <i class="fa fa-arrow-down"></i></button>
+        </div>
+
     </div>
     
-    <button id='resetSearchBtn' class="btn btn-primary" onclick="resetSearch()">Reset Search</button>
-    <button id='clearAllBtn' class="btn btn-secondary" onclick="clearAll()">Hide All</button>
+    <!-- More filters collapsible div-->
+    <div class="collapse col-12 nopadding" id="collapseMoreFilters">
+        <div class="nopadding">
+            <div class="alert alert-primary mt-2" role="alert">
+                We're still building this feature 🛠 we'll have it ready as soon as we can!
+            </div>
+        </div>
+    </div>
+
+    
+    
 </div>
 <!-- MAP SEARCH END -->
 

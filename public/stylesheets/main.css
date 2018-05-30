@@ -21,6 +21,11 @@
     }
 }
 
+.nopadding {
+   padding: 0 !important;
+   /*margin: 0 !important;*/
+}
+
 /* Remove the up and down arrows used to step number inputs, I'll make my own from buttons */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {

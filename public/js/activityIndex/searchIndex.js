@@ -86,6 +86,11 @@ $(document).ready(function(){ //waits until the DOM has loaded
         .then(addActivities);
     });
     
+    $('#moreFiltersBtn').on('click', function(){
+        $('#collapseMoreFilters').collapse("toggle");
+        $('#moreFiltersBtn').toggleClass('active');
+    });
+    
     //load more activities from the filtered list
     $('#loadMoreBtn').on('click', function(){
         addMoreActivities(filteredActivities);
@@ -279,14 +284,6 @@ function geocodeLocation(location){
     return $.getJSON("/api/activities/locationSearch/" + location);
 }
 
-function resetSearch(){
-    $('#searchQueryInput').val('');
-    $('#setLocationInput').val('');
-    $('#setDistanceInput').val('');
-    clearCircleAndSearchMarker();
-    allActivitiesSearch();
-}
-
 function clearCircleAndSearchMarker(){
     if(circle){
         circle.setMap(null);
@@ -297,13 +294,25 @@ function clearCircleAndSearchMarker(){
     $('#collapseDistanceSearch').collapse('hide');
 }
 
-function clearAll(){
-    //runs when the "Hide All" button is clicked
-    removeAllActivities();
-    clearMarkers();
-    clearCircleAndSearchMarker();
+function resetSearch(){
     $('#searchQueryInput').val('');
     $('#setLocationInput').val('');
     $('#setDistanceInput').val('');
-    $('#loadMoreButton').hide();
+    $('#findNearMeClearBtn').hide();
+    $('#searchQueryClearBtn').hide();
+    clearCircleAndSearchMarker();
+    allActivitiesSearch();
 }
+
+
+
+// function clearAll(){ //removed as I couldn't see a reason for this functionality
+//     //runs when the "Hide All" button is clicked
+//     removeAllActivities();
+//     clearMarkers();
+//     clearCircleAndSearchMarker();
+//     $('#searchQueryInput').val('');
+//     $('#setLocationInput').val('');
+//     $('#setDistanceInput').val('');
+//     $('#loadMoreButton').hide();
+// }
