@@ -57,7 +57,7 @@ var activityData = [
     {
         name: "Parity",
         price: "26",
-        location: "Iceland",
+        location: "London",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526129491/sl-dev/activities/ParityVisit.jpg",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
         lat: 51.5074,
@@ -68,7 +68,7 @@ var activityData = [
     {
         name: "Mordor",
         price: "26",
-        location: "Iceland",
+        location: "Northwhich",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526225042/sl-dev/activities/1526225040191volcano.jpeg.jpg",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
         lat: 53.2419,
@@ -79,11 +79,11 @@ var activityData = [
     {
         name: "Generic Activity",
         price: "1",
-        location: "Iceland",
+        location: "UK",
         image: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png",
         description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 55.2475,
-        lng: -3.9055,
+        lat: 50.3754,
+        lng: -4.1426,
         createdAt: "2018-05-10T10:44:26.159Z",
         imageId: "activityPlaceHolder.png",
     }
@@ -171,7 +171,8 @@ async function seedDB(req){
         for(var i=0; i<req.params.num; i++){
             activityData[2].name = "Generic Activity " + i;
             var activityDataMapOffset = activityData[2];
-            activityDataMapOffset.lng += 1;
+            activityDataMapOffset.lng += 0.3;
+            activityDataMapOffset.lat += 0.3;
             await Activity.create(activityDataMapOffset); // need the await to make sure they're created in order
         }
     } catch(err) {

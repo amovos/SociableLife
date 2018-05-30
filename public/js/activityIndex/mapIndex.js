@@ -8,7 +8,7 @@ var lastOpenedInfoWindow;
 function initActivityIndexMap() {
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
         zoom: 6,
-        center: {lat: 54.4857, lng: -5.4326 },
+        center: {lat: 54.4800, lng: -4.1000 },
         scrollwheel: false,
         //gestureHandling: 'cooperative',
         mapTypeControl: false,

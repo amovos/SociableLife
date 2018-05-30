@@ -8,19 +8,6 @@
 	min-height: 500px;
 }
 
-.activity {
-	animation: fadein 0.5s;
-}
-
-@keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-
 .nopadding {
    padding: 0 !important;
    /*margin: 0 !important;*/

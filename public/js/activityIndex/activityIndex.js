@@ -45,7 +45,7 @@ function addMoreActivities(activities){
 function addActivity(activity){ //function used whenever we want to add an item to the DOM (e.g. on page load or when an item is created)
     var newActivity = $(
         '<div class="col-lg-3 col-md-4 col-sm-6 mb-4">' +
-            '<div class="card activity">' + //fade in animation added on the class .activity
+            '<div class="card activity">' +
               '<img class="card-img-top" src="' + activity.image + '" alt="<%= activity.name %>">' +
               '<div class="card-body">' +
                 '<h5 class="card-title">' + activity.name + '</h5>' +

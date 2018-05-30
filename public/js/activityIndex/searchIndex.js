@@ -4,8 +4,22 @@
 
 // on page load, load all markers and activities and setup listeners
 $(document).ready(function(){ //waits until the DOM has loaded
-    //on load search and populate all activities
-    allActivitiesSearch();
+    //on load search for activities
+    //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience
+    activitySearch()
+    .then(activityFilter)
+    .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
+    .then(addActivities);
+
+    //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
+    if($('#searchQueryInput').val()){
+        $('#searchQueryClearBtn').show();
+    }
+    if($('#setLocationInput').val()){
+        $('#findNearMeClearBtn').show();
+    }
+
+
 
     //when search button is clicked, filter results
     $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load
@@ -40,7 +54,28 @@ $(document).ready(function(){ //waits until the DOM has loaded
         }
     });
     
-    //if pressing enter when on distance input
+    
+    //*******************
+    //TESTING SEARCH ON EVERY KEY PRESS IN SEARCH FIELD
+    //CAN KEEP THE ABOVE CODE AS THAT WILL STILL CHECK IF ENTER IS PRESSES
+    //THIS MIGHT HAMMER THE DATABASE, BUT I CAN MONITOR THIS.
+    //when typing in text search input run the search on every keypress
+    $('#searchQueryInput').keyup(function(e){
+        activitySearch()
+        .then(activityFilter)
+        .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
+        .then(addActivities);
+        //code to show and hide the clear input box button
+        if($(this).val()){
+            $('#searchQueryClearBtn').show();
+        } else {
+            $('#searchQueryClearBtn').hide();
+        }
+    });
+    //*******************
+    
+    
+    //on enter keypress in the distance input, run a filter
     $('#setDistanceInput').keyup(function(e){
         if(e.keyCode==13){
             searchCircle($('#setDistanceInput').val());
@@ -52,18 +87,18 @@ $(document).ready(function(){ //waits until the DOM has loaded
     
     //if #setDistancePlusBtn is pressed, redraw markers but don't search the database again
     $('#setDistancePlusBtn').on('click', function(){
+        increaseSearchDistance();
         activityFilter(returnedActivities)
         .then(addMarkers)
-        .then(addActivities)
-        .then(increaseSearchDistance);
+        .then(addActivities);
     });
     
     //if #setDistanceMinusBtn is pressed, redraw markers but don't search the database again
     $('#setDistanceMinusBtn').on('click', function(){
+        decreaseSearchDistance();
         activityFilter(returnedActivities)
         .then(addMarkers)
-        .then(addActivities)
-        .then(decreaseSearchDistance);
+        .then(addActivities);
     });
     
     //if the cross button is clicked on the activity search box, clear the input and run the search again
@@ -85,6 +120,9 @@ $(document).ready(function(){ //waits until the DOM has loaded
         .then(addMarkers)
         .then(addActivities);
     });
+    
+    
+    
     
     $('#moreFiltersBtn').on('click', function(){
         $('#collapseMoreFilters').collapse("toggle");
@@ -216,6 +254,7 @@ function searchCircle(radius){
     if(circle){ //if a circle already exists, delete the old one before making a new one
         circle.setMap(null);
     }
+    console.log("Radius: " + radius);
     circle = new google.maps.Circle({
         map: map,
         radius: 1609 * radius,    // 10 miles in metres
@@ -226,6 +265,7 @@ function searchCircle(radius){
         fillOpacity: 0.2,
     });
     circle.bindTo('center', searchMarker, 'position');
+    map.fitBounds(circle.getBounds());
 }
 
 function isInsideCircle(activity){
@@ -254,7 +294,7 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-function increaseSearchDistance(){
+function increaseSearchDistance(activities){
     if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 20
         $('#setDistanceInput').val("15");
     }
@@ -262,10 +302,10 @@ function increaseSearchDistance(){
     $('#setDistanceInput').val(function(i, oldval) {
         return parseInt(oldval, 10) + 5;
     });
-    searchCircle($('#setDistanceInput').val());
+    
 }
 
-function decreaseSearchDistance(){
+function decreaseSearchDistance(activities){
     if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 20
         $('#setDistanceInput').val("25");
     }
@@ -274,10 +314,10 @@ function decreaseSearchDistance(){
         if(parseInt(oldval, 10) <= 5){ //can't be below 5
             return 5;
         } else {
-        searchCircle($('#setDistanceInput').val());
-        return parseInt(oldval, 10) - 5; //turn the string oldval into an int
+            return parseInt(oldval, 10) - 5; //turn the string oldval into an int
         }
     });
+    
 }
 
 function geocodeLocation(location){
