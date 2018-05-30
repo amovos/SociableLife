@@ -20,6 +20,20 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* Style for Sociable Loves*/
+.heart-offset { 
+	margin-top: 0.05em; 
+}
+
+.sociable-love {
+	color: red;
+}
+
+.sociable-love:hover {
+	color: #C62638;
+	cursor: pointer;
+}
+
 /* Google Maps Styles
 -------------------------------------------------- */
 #activity-show-map {

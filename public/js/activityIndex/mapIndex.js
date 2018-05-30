@@ -2,12 +2,23 @@
 /* global $ */
 
 var map;
+var zoom;
 var markers = [];
 var lastOpenedInfoWindow;
 
+
+
 function initActivityIndexMap() {
+    
+    //set correct map zoom based on screen width
+    if($(window).width() > 500){
+        zoom = 6;
+    } else {
+        zoom = 5;
+    }
+    
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
-        zoom: 6,
+        zoom: zoom,
         center: {lat: 54.4800, lng: -4.1000 },
         scrollwheel: false,
         //gestureHandling: 'cooperative',

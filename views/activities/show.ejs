@@ -14,19 +14,35 @@
             <div class="card mb-3">
                 <img class="card-img-top" src="<%= activity.image %>" alt="<%= activity.name %>">
                 <div class="card-body">
-                    <p class="float-right">Up to date info: <i class="fa fa-check"></i></p>
-                    <h3 class="card-title"><%= activity.name %></h3>
-                    <p>
-                        <em>Added by: <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
-                    </p>
-                    <hr>
-                    <p class="card-text"><%= activity.description %></p>
-                    <% if(currentUser && activity.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-                        <a class="btn btn-sm btn-warning" href="/activities/<%= activity._id %>/edit">Edit</a>
-                        <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </form>
-                    <% } %>
+                    <div class="d-flex flex-row flex-wrap justify-content-between">
+                        <div class="d-flex flex-column">
+                            <h3 class="card-title"><i class="fa fa-check-circle fa-1x text-success"></i> <i class="fa fa-question-circle fa-1x text-danger"></i> <%= activity.name %></h3>
+                            <span>
+                                <em><strong>Added by:</strong> <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                            </span>
+                            <span class="">
+                                <em><strong>Last checked by:</strong> <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center flex-grow-1 flex-sm-grow-0">
+                            <span class=""><strong>Sociable Love</strong></span>
+                                <span id="sociableLove" class="fa-stack fa-2x sociable-love">
+                                    <i class="fa fa-heart fa-stack-2x heart-offset"></i>
+                                    <span id="sociableLoveNum" class="fa-stack-1x text-white">1</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>  
+                    <div>
+                        <p class="card-text"><%= activity.description %></p>
+                        <% if(currentUser && activity.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                            <a class="btn btn-sm btn-warning" href="/activities/<%= activity._id %>/edit">Edit</a>
+                            <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        <% } %>
+                    </div>
                 </div>
             </div>
             <!-- INFO SECTION END -->
@@ -39,7 +55,7 @@
                     </div>
                     
                     <div class="text-right">
-                        <a class="btn btn-success" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment"><i class="fa fa-plus"></i> Add new comment</a>
+                        <a class="btn btn-success" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment"><i class="fa fa-plus"></i> Add comment</a>
                     </div>
                     <hr>
                     
@@ -136,5 +152,14 @@
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityShowMap"></script>
+
+<!-- Temporary script to increment counter on heart-->
+<script>
+    $('#sociableLove').on('click', function(){
+        console.log();
+        $('#sociableLoveNum').text((parseInt($('#sociableLoveNum').text()) + 1));
+    });
+</script>
+
 
 <% include ../partials/footer %>
