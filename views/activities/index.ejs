@@ -19,7 +19,7 @@
 
 
 <!-- MAP SEARCH START -->
-<div class="container d-flex flex-wrap align-items-start mb-3 justify-content-between">
+<div class="container d-flex flex-wrap align-items-start mb-1 justify-content-between">
     
     <div class="input-group align-items-baseline mb-2 col-lg-6 nopadding"> <!-- Use 6 for search and 5 for the loaction box, then use justify-content-between to create a gap on large screens-->
         <label for="search">Search Activities</label>
@@ -58,7 +58,7 @@
             <button id='resetSearchBtn' class="btn btn-outline-primary btn-block mr-3 mb-2" onclick="resetSearch()">Reset Search</button>
         </div>
         <div class="col nopadding col-md-9 col-7 mb-2">
-            <button id='moreFiltersBtn' class="btn btn-outline-info btn-block">More Filters <i class="fa fa-arrow-down"></i></button>
+            <button id='moreFiltersBtn' class="btn btn-outline-info btn-block">Refine Search <i class="fa fa-arrow-down"></i></button>
         </div>
 
     </div>
@@ -72,6 +72,17 @@
 
 </div>
 <!-- MAP SEARCH END -->
+
+<!--NUMBER OF ACTIVITIES FOUND SHOW MESSAGE HERE-->
+<div class="container nopadding">
+    <div class="d-flex justify-content-center nopadding">
+        <div class="col-lg-4 col-md-5 col-sm-6">
+            <div id="numActivitiesFoundMessage" class="alert alert-success text-center" role="alert" style="display: none;">
+            
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--IF NO ACTIVITIES FOUND SHOW MESSAGE HERE-->
 <div class="container">

@@ -9,6 +9,11 @@ $(document).ready(function(){ //waits until the DOM has loaded
     initMasonry();
     newSearch();
     
+    //TEMPORARY HACK TO FIX THE MASONRY BUG OF OVERLAPPING IMAGES ON PAGE LOAD
+    window.setTimeout(function() {
+        updateMasonryLayout();
+    }, 2000);
+    
     //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
     if($('#searchQueryInput').val()){
         $('#searchQueryClearBtn').show();
@@ -218,8 +223,11 @@ async function activityFilter(activities){
     //haven't made any yet...
     
     
-    //if, after all the filtering, nothing is returned then show a message to the user
+    //after all the filtering, show a message based on the number of actitivites returned
     if(filteredActivities.length === 0){
+        $('#numActivitiesFoundMessage').hide();
+        $('#numActivitiesFoundMessage').text('');
+        
         $('#noActivitiesFoundMessage').show();
         $('#noActivitiesFoundMessage').html(
             "Sorry, we couldn't find any activities that matched your search 😕 <br><br>" +
@@ -229,6 +237,11 @@ async function activityFilter(activities){
     } else {
         $('#noActivitiesFoundMessage').hide();
         $('#noActivitiesFoundMessage').text('');
+        
+        $('#numActivitiesFoundMessage').show();
+        $('#numActivitiesFoundMessage').html(
+            "Found <strong>" + filteredActivities.length + "</strong> activities"
+            );
     }
     
     return filteredActivities;

@@ -42,10 +42,15 @@ input[type=number]::-webkit-outer-spin-button {
 	color: #249D3D;
 }
 
+.activity-show-image {
+	max-height: 70vh;
+}
+
 /* Google Maps Styles
 -------------------------------------------------- */
 #activity-show-map {
-    height: 400px;
+	/*height: 100%;*/
+    min-height: 200px;
     width: 100%;
 }
 
