@@ -43,14 +43,25 @@ function addMoreActivities(activities){
 }
 
 function addActivity(activity){ //function used whenever we want to add an item to the DOM (e.g. on page load or when an item is created)
+    var statusIcon;
+    if(activity.status === "current"){
+        statusIcon = '<i class="fa fa-check-circle fa-1x text-success"></i>';
+    } else {
+        statusIcon= '<i class="fa fa-question-circle fa-1x text-danger"></i>';
+    }
+    
     var newActivity = $(
         '<div class="col-lg-3 col-md-4 col-sm-6 mb-4">' +
             '<div class="card activity">' +
               '<img class="card-img-top" src="' + activity.image + '" alt="<%= activity.name %>">' +
               '<div class="card-body">' +
-                '<h5 class="card-title">' + activity.name + '</h5>' +
-                '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>' +
-                '<a href="/activities/' + activity._id + '" class="btn btn-primary" class="btn btn-primary">More Info</a>' +
+                '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +
+                '<p class="card-text mb-1">' + activity.summary + '</p>' +
+                '<span class="fa-stack fa-1x sociable-love">' +
+                    '<i class="fa fa-heart fa-stack-2x heart-offset"></i>' +
+                    '<span id="sociableLoveNum" class="fa-stack-1x text-white">' + (activity.loves.length+1) + '</span>' +
+                '</span>' +
+                '<p class="mb-0 mt-2"><a href="/activities/' + activity._id + '" class="btn btn-primary" class="btn btn-primary">More Info</a></p>' +
               '</div>' +
             '</div>' +
         '</div>'

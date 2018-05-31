@@ -19,8 +19,6 @@ $(document).ready(function(){ //waits until the DOM has loaded
         $('#findNearMeClearBtn').show();
     }
 
-
-
     //when search button is clicked, filter results
     $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load
         activitySearch()

@@ -6,6 +6,7 @@ var Activity    = require("./models/activity");
 var Comment     = require("./models/comment");
 var User        = require("./models/user");
 
+var geocoder = require("./routes/shared/geocoder");
 
 // ==========================
 // SEED DATA
@@ -53,42 +54,7 @@ var userData = [
     }
 ];
 
-var activityData = [
-    {
-        name: "Parity",
-        price: "26",
-        location: "London",
-        image: "https://res.cloudinary.com/amovos/image/upload/v1526129491/sl-dev/activities/ParityVisit.jpg",
-        description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 51.5074,
-        lng: 0.1278,
-        createdAt: "2018-05-10T10:44:26.159Z",
-        imageId: "sl-dev/activities/ParityVisit.jpg",
-    },
-    {
-        name: "Mordor",
-        price: "26",
-        location: "Northwhich",
-        image: "https://res.cloudinary.com/amovos/image/upload/v1526225042/sl-dev/activities/1526225040191volcano.jpeg.jpg",
-        description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 53.2419,
-        lng: -2.3674,
-        createdAt: "2018-05-10T10:44:26.159Z",
-        imageId: "sl-dev/activities/1526225040191volcano.jpeg.jpg",
-    },
-    {
-        name: "Generic Activity",
-        price: "1",
-        location: "UK",
-        image: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png",
-        description: "Ham buffalo pancetta, andouille strip steak turducken meatball sirloin sausage. Pancetta picanha cupim pork chop rump. Rump boudin tail biltong, salami landjaeger andouille cupim swine pork chop short ribs filet mignon doner brisket. Doner bacon buffalo fatback. Turkey ribeye brisket cow fatback kevin meatloaf ham hock.",
-        lat: 50.3754,
-        lng: -4.1426,
-        createdAt: "2018-05-10T10:44:26.159Z",
-        imageId: "activityPlaceHolder.png",
-    }
-];
-
+var activityData = require("./seedActivityDataFile.js");
 
 // ==========================
 // SEED FUNCTION
@@ -158,61 +124,62 @@ async function seedDB(req){
         id: user1.id,
         displayName: user1.displayName
     };
-    activityData[2].author = authorUser1;
 
     // ==========================
     // CREATE ACTIVITIES
     // ==========================
     try {
-        var activityOne = await Activity.create(activityData[0]);
-        var activityTwo = await Activity.create(activityData[1]);
-        
-        // create multiple generic activities
-        for(var i=0; i<req.params.num; i++){
-            activityData[2].name = "Generic Activity " + i;
-            var activityDataMapOffset = activityData[2];
-            activityDataMapOffset.lng += 0.3;
-            activityDataMapOffset.lat += 0.3;
-            await Activity.create(activityDataMapOffset); // need the await to make sure they're created in order
+        // create all activities
+        for(var i=0; i<activityData.length; i++){
+            activityData[i].author = authorAdmin;
+            
+            //This was only needed the first time the data was imported
+            // // GEOCODE Location
+            // //generate geocode data, use "await" to make sure it completes before creating activity
+            // await geocoder.geocode(activityData[i].location, function (err, data) {
+            //     activityData[i].lat = data[0].latitude;
+            //     activityData[i].lng = data[0].longitude;
+            //     activityData[i].location = data[0].formattedAddress; 
+            // });
+            
+            var newActivity = await Activity.create(activityData[i]);
+
+
+            // ==========================
+            // ADD COMMENTS TO ACTIVITIES
+            // ==========================
+    
+            Comment.create({
+                                text: "This place is great, brilliant facilities",
+                                author: authortharris
+                            }, function(err, comment){
+                                if(err){
+                                    console.log(err);
+                                    return;
+                                } else {
+                                    newActivity.comments.push(comment);
+                                    newActivity.save();
+                                }
+                            });
+            
+            Comment.create({
+                            text: "I love going here and meeting new people :)",
+                            author: authorUser1
+                        }, function(err, comment){
+                            if(err){
+                                console.log(err);
+                                return;
+                            } else {
+                                newActivity.comments.push(comment);
+                                newActivity.save();
+                            }
+                        });
+                
         }
     } catch(err) {
         console.log(err);
         return;
     }
-    
-    console.log("Created Activity " + activityOne.name);
-    console.log("Created Activity " + activityTwo.name);
-    console.log("Created " + req.params.num + " Generic Activities");
-
-    // ==========================
-    // ADD COMMENTS TO ACTIVITIES
-    // ==========================
-    
-    Comment.create({
-                        text: "This place is great, brilliant facilities",
-                        author: authortharris
-                    }, function(err, comment){
-                        if(err){
-                            console.log(err);
-                            return;
-                        } else {
-                            activityOne.comments.push(comment);
-                            activityOne.save();
-                        }
-                    });
-    
-    Comment.create({
-                    text: "This place is great, but I wish there was internet",
-                    author: authorAdmin
-                }, function(err, comment){
-                    if(err){
-                        console.log(err);
-                        return;
-                    } else {
-                        activityTwo.comments.push(comment);
-                        activityTwo.save();
-                    }
-                });
 }
 
 module.exports = seedDB; //sends the function that can then be executed in the app.js file

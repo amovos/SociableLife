@@ -4,9 +4,16 @@ var activitySchema = new mongoose.Schema({
     name: String,
     image: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png" },
     imageId: String,
+    summary: String,
     description: String,
+    suitable: String,
+    when: String,
+    frequency: String,
     price: String,
-    age: { type: String, default: 'All Ages' },
+    website: String,
+    tags: String,
+    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value
+    age: String,
     location: String,
     lat: Number,
     lng: Number,
@@ -24,6 +31,15 @@ var activitySchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }    
+    ],
+    loves: [ //not implemented yet, but this will be the data structure
+        {
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+        },
+            isLove: { type: Boolean, default: false }
+        }
     ]
 });
 

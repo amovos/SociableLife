@@ -11,7 +11,7 @@ var searchLocation = function(req, res) {
           //req.flash('errorMessage', 'Invalid address');
           res.send(err);
         }
-        var location = {}
+        var location = {};
         location.lat = data[0].latitude;
         location.lng = data[0].longitude;
         location.formattedAddress = data[0].formattedAddress;

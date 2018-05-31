@@ -46,7 +46,7 @@ function addMarkers(activities){
             image = {url: '/img/Blue.svg'};
         }
         
-        window.setTimeout(function() { //animation delay function
+        //window.setTimeout(function() { //animation delay function
             //set lat and lng from activity
             var latLng = new google.maps.LatLng(currentActivity.lat, currentActivity.lng);
             
@@ -61,24 +61,61 @@ function addMarkers(activities){
             
             markers.push(marker); //add the newly created marker onto the markers array
             
+            var statusIcon;
+            if(currentActivity.status === "current"){
+                statusIcon = '<i class="fa fa-check-circle fa-1x text-success"></i>';
+            } else {
+                statusIcon= '<i class="fa fa-question-circle fa-1x text-danger"></i>';
+            }
+            
             //create content for infowindow
             var content =  '<div id="iw-container">' +
-                                '<div class="iw-title">' + currentActivity.name + '</div>' +
+                                '<div class="iw-title">' + statusIcon + ' <a class="text-white" href="/activities/' + currentActivity._id + '">' + currentActivity.name + '</a></div>' +
                                 '<div class="iw-content">' +
+                                    
+                                    '<div class="d-flex justify-content-between align-items-start">' +
+                                        '<div>' +
+                                            '<div class="iw-subTitle">Summary</div>' +
+                                            '<p>' + currentActivity.summary + '</p>' +
+                                        '</div>' +
+                                        '<div class="d-flex flex-column align-items-center justify-content-baseline ml-2">' +
+                                            '<div class="iw-subTitle text-center mr-2">Sociable Loves</div>' +
+                                            '<span class="fa-stack fa-2x sociable-love mr-2 mb-2">' +
+                                                '<i class="fa fa-heart fa-stack-2x heart-offset"></i>' +
+                                                '<span id="sociableLoveNum" class="fa-stack-1x text-white">1</span>' +
+                                            '</span>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    
+                                    
                                     '<div>' +
                                         '<img src="' + currentActivity.image + '">' + //need to add thumbnail sizes to this cloudinary image so it doesn't load all the massive images each time
                                     '</div>' +
                                     
-                                    '<div class="iw-subTitle">Summary</div>' +
+                                    '<div class="d-flex align-items-start">' +
+                                        '<div class="mr-5">' +
+                                            '<div class="iw-subTitle">Ages</div>' +
+                                            '<p>' + currentActivity.age + '</p>' +
+                                        '</div>' +
+                                        '<div>' +
+                                            '<div class="iw-subTitle">Suitable for</div>' +
+                                            '<p>' + currentActivity.suitable + '</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    
+                                    '<a class="btn btn-success btn-block" href="/activities/' + currentActivity._id + '">Read/add comments and reviews</a><br>' +
+                                    
+                                    '<div class="iw-subTitle">Cost</div>' +
+                                    '<p>' + currentActivity.price + '</p>' +
+                                    
+                                    '<div class="iw-subTitle">When</div>' +
+                                    '<p>' + currentActivity.when + '</p>' +
+                                    
+                                    '<div class="iw-subTitle">Where</div>' +
+                                    '<p>' + currentActivity.location + '</p>' +
+                                    
+                                    '<div class="iw-subTitle">Description</div>' +
                                     '<p>' + currentActivity.description + '</p>' +
-                                    
-                                    '<p><a class="btn btn-primary" href="https://google.com">Activity Website</a><br>' +
-                                    
-                                    '<div class="iw-subTitle">Ages</div>' +
-                                    '<p>All Ages<p>' +
-                                    
-                                    '<div class="iw-subTitle">Ages</div>' +
-                                    '<p>All Abilities<p>' +
                                     
                                 '</div>' +
                                 '<div class="iw-bottom-gradient"></div>' +
@@ -140,7 +177,7 @@ function addMarkers(activities){
                 });
             });
             
-        }, index*0); //(1000/activities.length)); //set delay time for drop animation
+        //}, index*0); //(1000/activities.length)); //set delay time for drop animation
     });
     return activities; //need to return the activities so it can be passed through to the activityIndex functions
 }
