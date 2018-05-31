@@ -59,13 +59,12 @@ function addActivity(activity){ //function used whenever we want to add an item 
                 '<p class="card-text mb-1">' + activity.summary + '</p>' +
                 '<span class="fa-stack fa-1x sociable-love mr-3">' +
                     '<i class="fa fa-heart fa-stack-2x heart-offset"></i>' +
-                    '<span class="fa-stack-1x text-white">' + (activity.loves.length) + '</span>' +
+                    '<span class="fa-stack-1x text-white">' + (activity.loves.length+1) + '</span>' +
                 '</span>' +
                 '<span class="fa-stack fa-1x sociable-comment">' +
                     '<i class="fa fa-comment fa-stack-2x comment-offset"></i>' +
                     '<span class="fa-stack-1x text-white">' + (activity.comments.length) + '</span>' +
                 '</span>' +
-
                 // '<p class="mb-0 mt-2"><a href="/activities/' + activity._id + '" class="btn btn-primary" class="btn btn-primary">More Info</a></p>' +
               '</div>' +
             '</div>' +
