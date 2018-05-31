@@ -8,6 +8,10 @@
 	min-height: 500px;
 }
 
+.activity-card {
+	background-color: #f9f9f9;
+}
+
 .nopadding {
    padding: 0 !important;
    /*margin: 0 !important;*/
@@ -32,6 +36,10 @@ input[type=number]::-webkit-outer-spin-button {
 #sociableLove:hover {
 	color: #C62638;
 	cursor: pointer;
+}
+
+.sociable-comment {
+	color: #249D3D;
 }
 
 /* Google Maps Styles

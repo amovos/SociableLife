@@ -65,33 +65,43 @@
     
     <!-- More filters collapsible div-->
     <div class="collapse col-12 nopadding" id="collapseMoreFilters">
-        <div class="nopadding">
-            <div class="alert alert-primary mt-2" role="alert">
-                Sorry, we're still building this feature 🛠 we'll have it ready as soon as possible!
-            </div>
+        <div class="alert alert-primary mt-2 text-center" role="alert">
+            Sorry, we're still building this feature 🛠 we'll have it ready as soon as possible!
         </div>
     </div>
 
-    
-    
 </div>
 <!-- MAP SEARCH END -->
 
+<!--IF NO ACTIVITIES FOUND SHOW MESSAGE HERE-->
 <div class="container">
-    <!-- GENERATE ACTIVITY GRID WITH AJAX-->
-    <div class="row text-center" id="activity-grid">
+    <div>
+        <div id="noActivitiesFoundMessage" class="alert alert-info text-center" role="alert" style="display: none;">
+        
+        </div>
+    </div>
+</div>
+
+<!-- GENERATE ACTIVITY GRID WITH AJAX-->
+<div class="container">
+    <div class="row text-center grid" id="activity-grid">
         
     </div>
 
-    <div class="row text-center">
-        <div class="col-md-12 mb-4">
-            <button id="loadMoreBtn" type="button" class="btn btn-success">Load More...</button>
+    <div class="d-flex justify-content-center row text-center">
+        <div class="col-md-6 mb-4">
+            <button id="loadMoreBtn" type="button" class="btn btn-success btn-block">Load more <i class="fa fa-arrow-down"></i></button>
         </div>
     </div>
+    
 </div>
 
 
 <!-- Need to fix this async defer to make sure the loading is in the correct order -->
+
+<!-- Masonry Image Scripts-->
+<script src="/js/lib/masonry.pkgd.min.js"></script>
+
 <script src="/js/activityIndex/activityIndex.js"></script>
 <script src="/js/activityIndex/mapIndex.js"></script>
 <script defer src="/js/activityIndex/searchIndex.js"></script>

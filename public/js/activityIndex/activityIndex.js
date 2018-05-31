@@ -40,6 +40,7 @@ function addMoreActivities(activities){
     if(activityCounter >= (activities.length - 1)){
         $('#loadMoreBtn').hide();
     }
+    //updateMasonryLayout(); //this avoids problems with the elements overlapping the "load more" button -- CAUSED THE PAGE TO JUMP TO THE TOP
 }
 
 function addActivity(activity){ //function used whenever we want to add an item to the DOM (e.g. on page load or when an item is created)
@@ -51,22 +52,42 @@ function addActivity(activity){ //function used whenever we want to add an item 
     }
     
     var newActivity = $(
-        '<div class="col-lg-3 col-md-4 col-sm-6 mb-4">' +
-            '<div class="card activity">' +
-              '<img class="card-img-top" src="' + activity.image + '" alt="<%= activity.name %>">' +
+        '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
+            '<div class="card activity-card">' +
+              '<a href="/activities/' + activity._id + '"><img class="card-img-top" src="' + activity.image + '" alt="<%= activity.name %>"></a>' +
               '<div class="card-body">' +
                 '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +
                 '<p class="card-text mb-1">' + activity.summary + '</p>' +
-                '<span class="fa-stack fa-1x sociable-love">' +
+                '<span class="fa-stack fa-1x sociable-love mr-3">' +
                     '<i class="fa fa-heart fa-stack-2x heart-offset"></i>' +
-                    '<span id="sociableLoveNum" class="fa-stack-1x text-white">' + (activity.loves.length+1) + '</span>' +
+                    '<span class="fa-stack-1x text-white">' + (activity.loves.length+1) + '</span>' +
                 '</span>' +
-                '<p class="mb-0 mt-2"><a href="/activities/' + activity._id + '" class="btn btn-primary" class="btn btn-primary">More Info</a></p>' +
+                '<span class="fa-stack fa-1x sociable-comment">' +
+                    '<i class="fa fa-comment fa-stack-2x comment-offset"></i>' +
+                    '<span class="fa-stack-1x text-white">' + (activity.loves.length+1) + '</span>' +
+                '</span>' +
+
+                // '<p class="mb-0 mt-2"><a href="/activities/' + activity._id + '" class="btn btn-primary" class="btn btn-primary">More Info</a></p>' +
               '</div>' +
             '</div>' +
         '</div>'
         );
-    $('#activity-grid').append(newActivity);
+    
+    //$('#activity-grid').append(newActivity);
+    $masonryContainer.append(newActivity).masonry( 'appended', newActivity );
+}
+
+var $masonryContainer;
+
+function initMasonry(){
+    $masonryContainer = $('.grid').masonry({
+        itemSelector: '.grid-item'
+    });
+}
+
+function updateMasonryLayout(){
+    $masonryContainer.masonry('destroy');
+    initMasonry();
 }
 
 function removeAllActivities() {

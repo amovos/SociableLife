@@ -6,11 +6,9 @@
 $(document).ready(function(){ //waits until the DOM has loaded
     //on load search for activities
     //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience
-    activitySearch()
-    .then(activityFilter)
-    .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
-    .then(addActivities);
-
+    initMasonry();
+    newSearch();
+    
     //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
     if($('#searchQueryInput').val()){
         $('#searchQueryClearBtn').show();
@@ -21,19 +19,13 @@ $(document).ready(function(){ //waits until the DOM has loaded
 
     //when search button is clicked, filter results
     $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load
-        activitySearch()
-        .then(activityFilter)
-        .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
-        .then(addActivities);
+        newSearch();
     });
 
     //when typing in text search input or location search input, if enter is pressed run the search
     $('#searchQueryInput,#setLocationInput').keyup(function(e){
         if(e.keyCode==13){ //remove this if statement to get constant search (but this doesn't work well with the marker drop animation)
-            activitySearch()
-            .then(activityFilter)
-            .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
-            .then(addActivities);
+            newSearch();
         } else {
             //code to show and hide the clear input box buttons
             if($(this).val()){
@@ -59,10 +51,7 @@ $(document).ready(function(){ //waits until the DOM has loaded
     //THIS MIGHT HAMMER THE DATABASE, BUT I CAN MONITOR THIS.
     //when typing in text search input run the search on every keypress
     $('#searchQueryInput').keyup(function(e){
-        activitySearch()
-        .then(activityFilter)
-        .then(addMarkers) //this function returns the activities object that can be used in the next chain of the promise
-        .then(addActivities);
+        newSearch();
         //code to show and hide the clear input box button
         if($(this).val()){
             $('#searchQueryClearBtn').show();
@@ -77,46 +66,34 @@ $(document).ready(function(){ //waits until the DOM has loaded
     $('#setDistanceInput').keyup(function(e){
         if(e.keyCode==13){
             searchCircle($('#setDistanceInput').val());
-            activityFilter(returnedActivities)
-            .then(addMarkers)
-            .then(addActivities);
+            existingDataSearch();
         }
     });
     
     //if #setDistancePlusBtn is pressed, redraw markers but don't search the database again
     $('#setDistancePlusBtn').on('click', function(){
         increaseSearchDistance();
-        activityFilter(returnedActivities)
-        .then(addMarkers)
-        .then(addActivities);
+        existingDataSearch();
     });
     
     //if #setDistanceMinusBtn is pressed, redraw markers but don't search the database again
     $('#setDistanceMinusBtn').on('click', function(){
         decreaseSearchDistance();
-        activityFilter(returnedActivities)
-        .then(addMarkers)
-        .then(addActivities);
+        existingDataSearch();
     });
     
     //if the cross button is clicked on the activity search box, clear the input and run the search again
     $('#searchQueryClearBtn').on('click', function(){
         $('#searchQueryClearBtn').hide();
         $('#searchQueryInput').val('');
-        activitySearch()
-        .then(activityFilter)
-        .then(addMarkers)
-        .then(addActivities);
+        newSearch();
     });
     
     //if the cross button is clicked on the activity search box, clear the input and run the search again
     $('#findNearMeClearBtn').on('click', function(){
         $('#findNearMeClearBtn').hide();
         $('#setLocationInput').val('');
-        activitySearch()
-        .then(activityFilter)
-        .then(addMarkers)
-        .then(addActivities);
+        newSearch();
     });
     
     
@@ -149,15 +126,30 @@ var locationLng;
 var returnedActivities;
 var filteredActivities;
 
-async function allActivitiesSearch(){
-    //search for all activities
-    var result = await $.getJSON("/api/activities/");
-    addMarkers(result);
-    addActivities(result);
-    returnedActivities = result;
-    filteredActivities = result; //so the #LoadMoreBtn works on page load
+// async function allActivitiesSearch(){
+//     //search for all activities
+//     var result = await $.getJSON("/api/activities/");
+//     addMarkers(result);
+//     addActivities(result);
+//     returnedActivities = result;
+//     filteredActivities = result; //so the #LoadMoreBtn works on page load
     
-    return returnedActivities;
+//     return returnedActivities;
+// }
+
+function newSearch(){
+    activitySearch()
+    .then(activityFilter)
+    .then(addMarkers)
+    .then(addActivities)
+    .then(updateMasonryLayout);
+}
+
+function existingDataSearch(){
+    activityFilter(returnedActivities)
+    .then(addMarkers)
+    .then(addActivities)
+    .then(updateMasonryLayout);
 }
 
 async function activitySearch(){
@@ -225,6 +217,20 @@ async function activityFilter(activities){
     //then apply additional filters to activities within this radius
     //haven't made any yet...
     
+    
+    //if, after all the filtering, nothing is returned then show a message to the user
+    if(filteredActivities.length === 0){
+        $('#noActivitiesFoundMessage').show();
+        $('#noActivitiesFoundMessage').html(
+            "Sorry, we couldn't find any activities that matched your search 😕 <br><br>" +
+            "If you'd like to add a new activity that isn't on our map please check back soon as we're adding this feature as fast as we can!<br>" +
+            "If you join our <a href='/MailingList'>mailing list</a> we can let you know when it's ready 📧"
+            );
+    } else {
+        $('#noActivitiesFoundMessage').hide();
+        $('#noActivitiesFoundMessage').text('');
+    }
+    
     return filteredActivities;
 }
 
@@ -252,7 +258,6 @@ function searchCircle(radius){
     if(circle){ //if a circle already exists, delete the old one before making a new one
         circle.setMap(null);
     }
-    console.log("Radius: " + radius);
     circle = new google.maps.Circle({
         map: map,
         radius: 1609 * radius,    // 10 miles in metres
@@ -339,7 +344,11 @@ function resetSearch(){
     $('#findNearMeClearBtn').hide();
     $('#searchQueryClearBtn').hide();
     clearCircleAndSearchMarker();
-    allActivitiesSearch();
+    activitySearch()
+    .then(activityFilter)
+    .then(addMarkers)
+    .then(addActivities)
+    .then(updateMasonryLayout);
 }
 
 
