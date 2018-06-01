@@ -1,4 +1,3 @@
-
 // Change custom-file-input box to show name of uploaded file
 $('.custom-file-input').on('change',function(){
     //get the file name

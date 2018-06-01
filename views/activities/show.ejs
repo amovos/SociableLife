@@ -12,18 +12,18 @@
                         <div class="d-flex flex-column align-items-start">
                             <h3 class="card-title">
                                 <% if(activity.status === "current"){ %>
-                                    <i class="fa fa-check-circle fa-1x text-success"></i>
+                                    <span class="tooltip-status" alt="<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text"><strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months</span></span>
                                 <% } else { %>
-                                    <i class="fa fa-question-circle fa-1x text-danger"></i>
+                                    <span class="tooltip-status" alt="<strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date."><i class="fa fa-question-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.</span></span>
                                 <% } %>
                                 <%= activity.name %></h3>
                             <span>
-                                <em><strong>Added by:</strong> <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                                <em><strong>Added by:</strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
                             </span>
                             <span class="mb-2">
-                                <em><strong>Last checked by:</strong> <a href="/users/<%= activity.author.id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                                <em><strong>Last checked by:</strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
                             </span>
-                            <% if(currentUser && activity.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                            <% if(currentUser && activity.author._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                                 <div class="d-flex flex-row mb-2">
                                     <a class="btn btn-sm btn-warning mr-2" href="/activities/<%= activity._id %>/edit">Edit</a>
                                     <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
@@ -32,18 +32,18 @@
                                 </div>
                             <% } %>
                         </div>
-                        <div class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
+                        <div id="showPageLoveAndComment" class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
                             <div class="d-flex flex-column align-items-center mr-4">
-                                <span><strong>Sociable Love</strong></span>
-                                    <span id="sociableLove" class="fa-stack fa-2x sociable-love">
+                                <span>Sociable Love</span>
+                                    <span id="sociableLove" class="fa-stack fa-1x sociable-love">
                                         <i class="fa fa-heart fa-stack-2x heart-offset"></i>
-                                        <span id="sociableLoveNum" class="fa-stack-1x text-white"><%= (activity.loves.length+1) %></span>
+                                        <span id="sociableLoveNum" class="fa-stack-1x text-white"><%= (activity.loves.length) %></span>
                                     </span>
                                 </span>
                             </div>
                             <div class="d-flex flex-column align-items-center">
-                                <span><strong>Comments</strong></span>
-                                    <span id="sociableComment" class="fa-stack fa-2x sociable-comment">
+                                <span>Comments</span>
+                                    <span id="sociableComment" class="fa-stack fa-1x sociable-comment">
                                         <i class="fa fa-comment fa-stack-2x comment-offset"></i>
                                         <span id="sociableCommentNum" class="fa-stack-1x text-white"><%= (activity.comments.length) %></span>
                                     </span>
@@ -67,8 +67,16 @@
                                     <p class="mr-2"><%= activity.suitable %></p>
                                 </div>
                             </div>
-                            <h4>When</h4>
-                            <p class="mr-2"><%= activity.when %></p>
+                            <div class="d-flex flex-row">
+                                <div class="col-md-6 nopadding">
+                                    <h4>When</h4>
+                                    <p class="mr-2"><%= activity.when %></p>
+                                </div>
+                                <div class="col-md-6 nopadding">
+                                    <h4>Price</h4>
+                                    <p class="mr-2"><%= activity.price %></p>
+                                </div>
+                            </div>
                             <h4>Where</h4>
                             <p class="mr-2"><%= activity.location %></p>
                             <div class="d-flex flex-row">
@@ -133,9 +141,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <p class="float-right"><em><%= moment(comment.createdAt).fromNow() %></em></p>
-                                        <p class="card-title"><strong><a href="/users/<%= comment.author.id %>"><%= comment.author.displayName %></a></strong></p>
+                                        <p class="card-title"><strong><a href="/users/<%= comment.author._id %>"><%= comment.author.displayName %></a></strong></p>
                                         <p class="card-text"><%= comment.text %></p>
-                                        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                        <% if(currentUser && comment.author._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                                             <div class="float-right mt-2">
                                                 <a  class="btn btn-sm btn-warning" 
                                                     href="/activities/<%= activity._id %>/comments/<%= comment._id %>/edit">

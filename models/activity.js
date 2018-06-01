@@ -20,11 +20,8 @@ var activitySchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: Date,
     author: {
-        id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-        },
-        displayName: String //as the main piece of info that's regularly used is the displayName it's better to store it in the comment then have to look it up each time using the ID
     },
     comments: [ //this is an array because it returns an array of multiple comments
         {
@@ -32,14 +29,11 @@ var activitySchema = new mongoose.Schema({
             ref: "Comment"
         }    
     ],
-    loves: [ //not implemented yet, but this will be the data structure
+    loves: [
         {
-            id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
-        },
-            isLove: { type: Boolean, default: false }
-        }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }  
     ]
 });
 

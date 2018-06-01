@@ -47,14 +47,7 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     
     
     // AUTHOR
-    //store the author details from the request in the variable "author"
-    var author = {
-        id: req.user.id,
-        displayName: req.user.displayName
-    };
-    //add the author to the activity object using dot notation
-    req.body.activity.author = author;
-    
+    req.body.activity.author = req.user._id;
     
     // CREATE ACTIVITY
     //Create a new activity and save to database

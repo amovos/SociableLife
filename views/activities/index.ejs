@@ -23,7 +23,7 @@
     
     <div class="input-group align-items-baseline mb-2 col-lg-6 nopadding"> <!-- Use 6 for search and 5 for the loaction box, then use justify-content-between to create a gap on large screens-->
         <label for="search">Search Activities</label>
-        <input id='searchQueryInput' class="form-control ml-2" type="text" name="search" placeholder="Activity search...">
+        <input id='searchQueryInput' class="form-control ml-2" type="text" name="search" placeholder="Activity name search...">
         <div class="input-group-append">
             <button id='searchQueryClearBtn' class="btn btn-outline-secondary" type="button" style="display: none;"><i class="fa fa-times"></i></button>
             <button id='searchQueryBtn' class="btn btn-success" type="button">Search</button>
@@ -54,13 +54,12 @@
     
     <!-- Reset search and more filters buttons div -->
     <div class="d-flex flex-wrap align-items-start col-12 nopadding">
-        <div class="col nopadding col-md-3 col-5 d-flex align-items-start">
-            <button id='resetSearchBtn' class="btn btn-outline-primary btn-block mr-3 mb-2" onclick="resetSearch()">Reset Search</button>
-        </div>
         <div class="col nopadding col-md-9 col-7 mb-2">
             <button id='moreFiltersBtn' class="btn btn-outline-info btn-block">Refine Search <i class="fa fa-arrow-down"></i></button>
         </div>
-
+        <div class="col nopadding col-md-3 col-5 d-flex ">
+            <button id='resetSearchBtn' class="btn btn-outline-primary btn-block ml-3 mb-2" onclick="resetSearch()">Reset Search</button>
+        </div>
     </div>
     
     <!-- More filters collapsible div-->

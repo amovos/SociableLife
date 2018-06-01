@@ -18,8 +18,7 @@ var createRoute = function(req, res){
                     genericErrorResponse(req, res, err);
                 } else {
                     // add username and id to comment
-                    comment.author.id = req.user._id;
-                    comment.author.displayName = req.user.displayName;
+                    comment.author = req.user._id;
                     // save comment
                     comment.save();
                     

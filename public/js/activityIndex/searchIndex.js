@@ -10,9 +10,9 @@ $(document).ready(function(){ //waits until the DOM has loaded
     newSearch();
     
     //TEMPORARY HACK TO FIX THE MASONRY BUG OF OVERLAPPING IMAGES ON PAGE LOAD
-    window.setTimeout(function() {
-        updateMasonryLayout();
-    }, 2000);
+    window.setInterval(function() {
+        reloadMasonryLayout();
+    }, 500);
     
     //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
     if($('#searchQueryInput').val()){

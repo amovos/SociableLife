@@ -1,93 +1,87 @@
 var activityDataFile = [
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb635",
+      "id": "5b0fb78751cdf71139e2a45d",
       "displayName": "admin"
     },
     "image": "https://www.odyssians.com/wp-content/uploads/2016/01/Ods2015-Olly-and-Neil-by-Phoebe.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
-      "5b0f24f19e560517b40cb6c5"
+      "5b0f24f19e560517b40cb6c5",
+      "5b0fb78751cdf71139e2a461",
+      "5b0fb78751cdf71139e2a461",
+      "5b0fb78751cdf71139e2a462"
     ],
     "_id": "5b0f24b09e560517b40cb638",
+    "age": "Adults",
     "name": "Odyssians Camp",
     "frequency": "Annual Activities",
     "summary": "A week long summer activity camp for young adults with disabilities.",
     "suitable": "All abilities",
-    "price": "£120",
+    "price": "£125 for the week (includes accommodation, food and activities)",
     "when": "Annual - August",
-    "location": "Woodlarks Campsite, Farnham, Surrey, GU10 3RN",
+    "location": "Woodlarks Camp Site Trust, Tilford Rd, Farnham GU10 3RN, UK",
     "website": "https://www.odyssians.com",
     "description": "Odyssians is an activity camping holiday for adults who have disabilities and able-bodied people who work together to have an awesome time. We welcome people of all abilities, including severe disabilities, all genders, and people from all backgrounds.",
     "tags": "Charity, Camp, Outdoor, Volunteers",
-    "lat": 51.5074,
-    "lng": 0.1278,
+    "lat": 51.19995,
+    "lng": -0.775721,
     "createdAt": "2018-05-30T22:24:48.496Z",
-    "__v": 1
+    "__v": 3,
+    "loves": [
+      
+    ]
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb636",
-      "displayName": "tharris"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/723969184196112385/TmGvNyst_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
-      "5b0f24f19e560517b40cb6c6"
+      "5b0f24f19e560517b40cb6c6",
+      "5b0fb78751cdf71139e2a464",
+      "5b0fb78751cdf71139e2a464",
+      "5b0fb78751cdf71139e2a465"
     ],
     "_id": "5b0f24b09e560517b40cb639",
+    "age": "Adults",
     "name": "Jay's Disco's",
     "frequency": "Monthly Activities",
     "summary": "Night Club Event for People With Learning Disabilities",
     "suitable": "Learning disabilities",
-    "price": "£3.50",
+    "price": "See website",
     "when": "Monthly",
-    "location": "Religion, Walsall, WS1 1HR",
+    "location": "42-46 Bridge St, Walsall WS1 8HR, UK",
     "website": "https://www.facebook.com/events/1986824328262344/",
     "description": "Midlands BIGGEST Nightclub Event for people with Learning Disabilities Have you ever wanted to visit a nightclub? This is the perfect night to do just that Get your best DANCING SHOES on, come down and socialise and make new friends, in a safe environment.",
     "tags": "Nightclub, Disco",
-    "lat": 53.2419,
-    "lng": -2.3674,
+    "lat": 52.5847272,
+    "lng": -1.9783682,
     "createdAt": "2018-05-30T22:24:48.501Z",
-    "__v": 1
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/1766933178/Slide1_400x400.jpg",
-    "age": "Adults",
-    "comments": [
+    "__v": 3,
+    "loves": [
       
-    ],
-    "_id": "5b0f24b19e560517b40cb63a",
-    "name": "Rhythm of the Night",
-    "frequency": "Monthly Activities",
-    "summary": "Night club for adults with any disability.",
-    "suitable": "All abilities",
-    "price": "£5",
-    "when": "Monthly (see link for exact dates)",
-    "location": "Trinity Community Arts, Trinity Centre, Trinity Rd, Bristol BS2 0NW, UK",
-    "website": "https://www.facebook.com/events/1456439717786557/",
-    "description": "The Misfits would like to invite you to The Rhythm of the Night club. Put on your dancing shoes and come down and join in with the fun. It would be fantastic to see you all there to join in with some dancing, socialising and lots of fun! It's a great way to meet new people and have a chat over a drink or two, along with some great music.",
-    "tags": "Nightclub, Disco",
-    "lat": 51.4580448,
-    "lng": -2.576009,
-    "createdAt": "2018-05-30T22:24:49.025Z",
-    "__v": 0
+    ]
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.trentparkgolf.co.uk/images/club/foto01.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a46c",
+      "5b0fb78751cdf71139e2a46c",
+      "5b0fb78751cdf71139e2a46d"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b19e560517b40cb63b",
+    "age": "Adults",
     "name": "Multiple Abilities Club (MAC)",
     "frequency": "Weekly Activities",
     "summary": "Disco, Bingo, Karaoke, Chip Butty Nights, Live Entertainment.",
@@ -101,19 +95,55 @@ var activityDataFile = [
     "lat": 53.0399397,
     "lng": -2.1470371,
     "createdAt": "2018-05-30T22:24:49.525Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/1766933178/Slide1_400x400.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78751cdf71139e2a467",
+      "5b0fb78751cdf71139e2a467",
+      "5b0fb78751cdf71139e2a468"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24b19e560517b40cb63a",
+    "age": "Adults",
+    "name": "Rhythm of the Night",
+    "frequency": "Monthly Activities",
+    "summary": "Night club for adults with any disability.",
+    "suitable": "All abilities",
+    "price": "£5",
+    "when": "Monthly (see link for exact dates)",
+    "location": "Trinity Community Arts, Trinity Centre, Trinity Rd, Bristol BS2 0NW, UK",
+    "website": "https://www.facebook.com/events/1456439717786557/",
+    "description": "The Misfits would like to invite you to The Rhythm of the Night club. Put on your dancing shoes and come down and join in with the fun. It would be fantastic to see you all there to join in with some dancing, socialising and lots of fun! It's a great way to meet new people and have a chat over a drink or two, along with some great music.",
+    "tags": "Nightclub, Disco",
+    "lat": 51.4580448,
+    "lng": -2.576009,
+    "createdAt": "2018-05-30T22:24:49.025Z",
+    "__v": 2
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/954606521891151873/hXEBLiab_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a471"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b29e560517b40cb63c",
+    "age": "Adults",
     "name": "Pulp Friction CIC",
     "frequency": "Daily Activities",
     "summary": "Smoothie Bar Project providing opportunities for young adults with learning disabilities",
@@ -127,19 +157,28 @@ var activityDataFile = [
     "lat": 52.95079,
     "lng": -1.1442029,
     "createdAt": "2018-05-30T22:24:50.051Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/956469548441628672/Vcf887s4_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a472",
+      "5b0fb78751cdf71139e2a472",
+      "5b0fb78751cdf71139e2a476",
+      "5b0fb78751cdf71139e2a472",
+      "5b0fb78751cdf71139e2a476",
+      "5b0fb78751cdf71139e2a475"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b29e560517b40cb63d",
+    "age": "Adults",
     "name": "Work-Shop CIC",
     "frequency": "Daily Activities",
     "summary": "Work based activities, such as light assembly work, collecting and sorting recyclables.",
@@ -153,19 +192,23 @@ var activityDataFile = [
     "lat": 52.172323,
     "lng": -1.712236,
     "createdAt": "2018-05-30T22:24:50.679Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/525254431873327104/OHXJI4gT_400x400.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a47c"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b39e560517b40cb63e",
+    "age": "Adults",
     "name": "Camtrust - Bike Workshop",
     "frequency": "Daily Activities",
     "summary": "Lively day programmes of activities for adults with disabilities and learning difficulties",
@@ -179,19 +222,23 @@ var activityDataFile = [
     "lat": 52.2388808,
     "lng": 0.1098896,
     "createdAt": "2018-05-30T22:24:51.108Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a47b"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b39e560517b40cb63f",
+    "age": "Children",
     "name": "SEN World of Play Oxford",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -205,19 +252,25 @@ var activityDataFile = [
     "lat": 51.7177264,
     "lng": -1.2116507,
     "createdAt": "2018-05-30T22:24:51.609Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a47f",
+      "5b0fb78751cdf71139e2a47f",
+      "5b0fb78751cdf71139e2a480"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b49e560517b40cb640",
+    "age": "Children",
     "name": "SEN World of Play Lakeside",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -231,45 +284,25 @@ var activityDataFile = [
     "lat": 51.4869581,
     "lng": 0.2815799,
     "createdAt": "2018-05-30T22:24:52.052Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
-      
+      "5b0fb78751cdf71139e2a488",
+      "5b0fb78751cdf71139e2a488",
+      "5b0fb78751cdf71139e2a48f"
     ],
-    "_id": "5b0f24b49e560517b40cb641",
-    "name": "SEN World of Play Braintree",
-    "frequency": "Weekly Activities",
-    "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
-    "price": "£5 (with one free helper/carer)",
-    "when": "Weekly (Wednesdays and Sundays)",
-    "location": "Unit L8 - 12, Century Drive, Off Charter Way,, Braintree, Essex CM77 8YL, United Kingdom",
-    "website": "https://www.partymanworld.co.uk/location/braintree/admissions/sen/",
-    "description": "Partyman World of Play are proud to offer complimentary morning and evening sessions dedicated to children & young adults with special needs where we close the entire venue just for you!",
-    "tags": "Play",
-    "lat": 51.8732143,
-    "lng": 0.5687428999999999,
-    "createdAt": "2018-05-30T22:24:52.536Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
-    "comments": [
+    "loves": [
       
     ],
     "_id": "5b0f24b59e560517b40cb642",
+    "age": "Children",
     "name": "SEN World of Play Basildon",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -283,19 +316,64 @@ var activityDataFile = [
     "lat": 51.585354,
     "lng": 0.500624,
     "createdAt": "2018-05-30T22:24:53.084Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a483",
+      "5b0fb78751cdf71139e2a483",
+      "5b0fb78751cdf71139e2a484",
+      "5b0fb78751cdf71139e2a489",
+      "5b0fb78751cdf71139e2a483",
+      "5b0fb78751cdf71139e2a484",
+      "5b0fb78751cdf71139e2a489"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24b49e560517b40cb641",
+    "age": "Children",
+    "name": "SEN World of Play Braintree",
+    "frequency": "Weekly Activities",
+    "summary": "Play sessions dedicated to children & young adults with special needs",
+    "suitable": "All abilities",
+    "price": "£5 (with one free helper/carer)",
+    "when": "Weekly (Wednesdays and Sundays)",
+    "location": "Unit L8 - 12, Century Drive, Off Charter Way,, Braintree, Essex CM77 8YL, United Kingdom",
+    "website": "https://www.partymanworld.co.uk/location/braintree/admissions/sen/",
+    "description": "Partyman World of Play are proud to offer complimentary morning and evening sessions dedicated to children & young adults with special needs where we close the entire venue just for you!",
+    "tags": "Play",
+    "lat": 51.8732143,
+    "lng": 0.5687428999999999,
+    "createdAt": "2018-05-30T22:24:52.536Z",
+    "__v": 3
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
+    "status": "current",
+    "comments": [
+      "5b0fb78751cdf71139e2a48e",
+      "5b0fb78751cdf71139e2a48e",
+      "5b0fb78751cdf71139e2a494",
+      "5b0fb78751cdf71139e2a48e",
+      "5b0fb78751cdf71139e2a494",
+      "5b0fb78751cdf71139e2a493"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b59e560517b40cb643",
+    "age": "Children",
     "name": "SEN World of Play Eastleigh",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -309,19 +387,25 @@ var activityDataFile = [
     "lat": 50.9669611,
     "lng": -1.3513673,
     "createdAt": "2018-05-30T22:24:53.554Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a499",
+      "5b0fb78751cdf71139e2a499",
+      "5b0fb78751cdf71139e2a49a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b69e560517b40cb644",
+    "age": "Children",
     "name": "SEN World of Play Ipswich",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -335,19 +419,25 @@ var activityDataFile = [
     "lat": 52.0517728,
     "lng": 1.1692557,
     "createdAt": "2018-05-30T22:24:54.074Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a49e",
+      "5b0fb78751cdf71139e2a49e",
+      "5b0fb78751cdf71139e2a49f"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b69e560517b40cb645",
+    "age": "Children",
     "name": "SEN World of Play Stevenage",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -361,19 +451,24 @@ var activityDataFile = [
     "lat": 51.8934248,
     "lng": -0.1991768,
     "createdAt": "2018-05-30T22:24:54.551Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.partymanworld.co.uk/wp-content/uploads/slider3/Partyman-Lakeside15.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4a3",
+      "5b0fb78751cdf71139e2a4a4"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b79e560517b40cb646",
+    "age": "Children",
     "name": "SEN World of Play Wembley",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
@@ -387,19 +482,23 @@ var activityDataFile = [
     "lat": 51.55824029999999,
     "lng": -0.3164098,
     "createdAt": "2018-05-30T22:24:55.132Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://d31fr2pwly4c4s.cloudfront.net/6/7/7/1025236_1_beat-it-night-halifax_1024.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24b79e560517b40cb647",
+    "age": "Adults",
     "name": "Beat It Night Huddersfield",
     "frequency": "Monthly Activities",
     "summary": "A monthly accessible nightclub event for people with learning disabilities, physical disabilities and mental health conditions to get together and just have some fun.",
@@ -417,15 +516,25 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://d31fr2pwly4c4s.cloudfront.net/6/7/7/1025236_1_beat-it-night-halifax_1024.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4a8",
+      "5b0fb78751cdf71139e2a4a8",
+      "5b0fb78751cdf71139e2a4a9",
+      "5b0fb78751cdf71139e2a4a8",
+      "5b0fb78751cdf71139e2a4a9",
+      "5b0fb78751cdf71139e2a4ab",
+      "5b0fb78751cdf71139e2a4ac"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b89e560517b40cb648",
+    "age": "Adults",
     "name": "Beat It Night Halifax",
     "frequency": "Monthly Activities",
     "summary": "A monthly accessible nightclub event for people with learning disabilities, physical disabilities and mental health conditions to get together and just have some fun.",
@@ -439,19 +548,25 @@ var activityDataFile = [
     "lat": 53.7214682,
     "lng": -1.863213,
     "createdAt": "2018-05-30T22:24:56.253Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pathfinderscamp.files.wordpress.com/2016/11/15726517_10154285605692104_2129682487894178567_n.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4b2",
+      "5b0fb78751cdf71139e2a4b2",
+      "5b0fb78751cdf71139e2a4b3"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b89e560517b40cb649",
+    "age": "Adults",
     "name": "Pathfinders Camp",
     "frequency": "Annual Activities",
     "summary": "Camping holiday for disabled adult ladies aged 18+, run by volunteers, aged 17+",
@@ -465,19 +580,24 @@ var activityDataFile = [
     "lat": 51.19995,
     "lng": -0.775721,
     "createdAt": "2018-05-30T22:24:56.668Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://charities.everyclick.com/charity/118404/images/homepage/logo.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4b7",
+      "5b0fb78751cdf71139e2a4b8"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b99e560517b40cb64a",
+    "age": "Children",
     "name": "Active8",
     "frequency": "One-Off Activities",
     "summary": "Active8 is a small Cornish charity which aims to empower and motivate young people with physical disabilities to become autonomous.",
@@ -491,19 +611,25 @@ var activityDataFile = [
     "lat": 50.4182863,
     "lng": -4.8271063,
     "createdAt": "2018-05-30T22:24:57.264Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hants.gov.uk/-/media/hero-images/thingstodo/outdoorcentres/rwe-hero.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4bc",
+      "5b0fb78751cdf71139e2a4bc",
+      "5b0fb78751cdf71139e2a4bd"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24b99e560517b40cb64b",
+    "age": "All Ages",
     "name": "Runways End Outdoor Centre",
     "frequency": "Book Yourself",
     "summary": "Making the impossible possible for young people with disabilities and their siblings",
@@ -517,19 +643,23 @@ var activityDataFile = [
     "lat": 51.2647124,
     "lng": -0.7706048,
     "createdAt": "2018-05-30T22:24:57.760Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.bungaylc.co.uk/images/site_page_images/section_59_54db49b8a113f.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4c2"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ba9e560517b40cb64c",
+    "age": "All Ages",
     "name": "Swimming at Bungay Pool",
     "frequency": "Weekly Activities",
     "summary": "Accessible swimming session for anyone with disabilities",
@@ -543,19 +673,23 @@ var activityDataFile = [
     "lat": 52.445451,
     "lng": 1.449935,
     "createdAt": "2018-05-30T22:24:58.225Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.participaction.com/sites/default/files/styles/full_width/public/images/241000_-_Boccia_equipment_balls_-_3b_-_Sydney_2000_match_photo.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4c1"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ba9e560517b40cb64d",
+    "age": "Adults",
     "name": "Swansea Boccia Club",
     "frequency": "Weekly Activities",
     "summary": "We are an all ability Boccia club.",
@@ -569,19 +703,28 @@ var activityDataFile = [
     "lat": 51.6169061,
     "lng": -3.9406191,
     "createdAt": "2018-05-30T22:24:58.717Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.theo2.co.uk/assets/img/2.0-DoMore_UpatTheO28-Gallery.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4c6",
+      "5b0fb78751cdf71139e2a4c6",
+      "5b0fb78751cdf71139e2a4c5",
+      "5b0fb78751cdf71139e2a4c6",
+      "5b0fb78751cdf71139e2a4c5",
+      "5b0fb78751cdf71139e2a4c9"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bb9e560517b40cb64e",
+    "age": "All Ages",
     "name": "Up at the O2",
     "frequency": "Book Yourself",
     "summary": "Ascend all the way to the top of The O2 via a walkway, suspended 52m above ground level.",
@@ -595,45 +738,23 @@ var activityDataFile = [
     "lat": 51.503038,
     "lng": 0.0031543,
     "createdAt": "2018-05-30T22:24:59.388Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
-    "image": "https://s3-media4.fl.yelpcdn.com/bphoto/zye-MK-pOof0GmdXKflbhw/ls.jpg",
-    "age": "All Ages",
+    "image": "https://www.hants.gov.uk/-/media/Images/thingstodo/outdoorcentres/activities/disabilty-calshot-480-320.jpg",
+    "status": "current",
     "comments": [
       
     ],
-    "_id": "5b0f24bb9e560517b40cb64f",
-    "name": "Disability Sports Forum",
-    "frequency": "Weekly Activities",
-    "summary": "Sporting events, activities and tournaments for disabled people and their families",
-    "suitable": "All abilities",
-    "price": "£2.00 per annum",
-    "when": "Tuesday & Thursday evenings",
-    "location": "140 Ladysmith Rd, Grimsby DN32 9SW, UK",
-    "website": "https://www.services4.me.uk/kb5/nelincs/asch/service.page?id=M3qigKYBZN8",
-    "description": "The Forum offers sporting events, activities and tournaments for disabled people and their families to be involved with. There are specific activity nights and multi activity nights. There is a charge for membership. (£2.00 per annum)  Members will receive regular mail shot with events/activities etc.",
-    "tags": "Sport, Club",
-    "lat": 53.5567407,
-    "lng": -0.0644052,
-    "createdAt": "2018-05-30T22:24:59.823Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://www.hants.gov.uk/-/media/Images/thingstodo/outdoorcentres/activities/disabilty-calshot-480-320.jpg",
-    "age": "All Ages",
-    "comments": [
+    "loves": [
       
     ],
     "_id": "5b0f24bc9e560517b40cb650",
+    "age": "All Ages",
     "name": "Calshot Activities Centre",
     "frequency": "Book Yourself",
     "summary": "No Limits - Making the impossible possible for young people with disabilities and their siblings",
@@ -651,15 +772,60 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://s3-media4.fl.yelpcdn.com/bphoto/zye-MK-pOof0GmdXKflbhw/ls.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78751cdf71139e2a4ca",
+      "5b0fb78751cdf71139e2a4ca",
+      "5b0fb78751cdf71139e2a4d0",
+      "5b0fb78751cdf71139e2a4ca",
+      "5b0fb78751cdf71139e2a4d0",
+      "5b0fb78751cdf71139e2a4cf"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24bb9e560517b40cb64f",
+    "age": "All Ages",
+    "name": "Disability Sports Forum",
+    "frequency": "Weekly Activities",
+    "summary": "Sporting events, activities and tournaments for disabled people and their families",
+    "suitable": "All abilities",
+    "price": "£2.00 per annum",
+    "when": "Tuesday & Thursday evenings",
+    "location": "140 Ladysmith Rd, Grimsby DN32 9SW, UK",
+    "website": "https://www.services4.me.uk/kb5/nelincs/asch/service.page?id=M3qigKYBZN8",
+    "description": "The Forum offers sporting events, activities and tournaments for disabled people and their families to be involved with. There are specific activity nights and multi activity nights. There is a charge for membership. (£2.00 per annum)  Members will receive regular mail shot with events/activities etc.",
+    "tags": "Sport, Club",
+    "lat": 53.5567407,
+    "lng": -0.0644052,
+    "createdAt": "2018-05-30T22:24:59.823Z",
+    "__v": 3
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://photos.smugmug.com/Locationslibrary/The-Eltham-Centre/i-b8jpLKX/0/01aab8b8/S/The%20Eltham%20Centre%20%287%29-S.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4d5",
+      "5b0fb78751cdf71139e2a4d6",
+      "5b0fb78751cdf71139e2a4d5",
+      "5b0fb78751cdf71139e2a4d6",
+      "5b0fb78751cdf71139e2a4d5",
+      "5b0fb78751cdf71139e2a4d6",
+      "5b0fb78751cdf71139e2a4d8"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bc9e560517b40cb651",
+    "age": "All Ages",
     "name": "The Lion Swimming Club",
     "frequency": "Weekly Activities",
     "summary": "The Lion Swimming Club is open to any disabled person of any age with a permanent physical, learning, mental or sensory disability.",
@@ -673,19 +839,29 @@ var activityDataFile = [
     "lat": 51.4515237,
     "lng": 0.05762300000000001,
     "createdAt": "2018-05-30T22:25:00.872Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/CrMB00pXYAEWrKK.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78751cdf71139e2a4d9",
+      "5b0fb78751cdf71139e2a4d9",
+      "5b0fb78751cdf71139e2a4de",
+      "5b0fb78751cdf71139e2a4df",
+      "5b0fb78751cdf71139e2a4d9",
+      "5b0fb78751cdf71139e2a4de",
+      "5b0fb78751cdf71139e2a4df"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bd9e560517b40cb652",
+    "age": "All Ages",
     "name": "Alice Holt Cycling",
     "frequency": "Book Yourself",
     "summary": "Adaptive/Inclusive Cycle Hire",
@@ -699,19 +875,25 @@ var activityDataFile = [
     "lat": 51.16877299999999,
     "lng": -0.8391,
     "createdAt": "2018-05-30T22:25:01.457Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://s3-media4.fl.yelpcdn.com/bphoto/zye-MK-pOof0GmdXKflbhw/ls.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4e4",
+      "5b0fb78851cdf71139e2a4e4",
+      "5b0fb78851cdf71139e2a4e5"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bd9e560517b40cb653",
+    "age": "All Ages",
     "name": "Grimsby Leisure Centre",
     "frequency": "Weekly Activities",
     "summary": "We deliver a number of weekly activities (swimming, basketball, multi-sport) across our centres for people with disabilities.",
@@ -725,19 +907,23 @@ var activityDataFile = [
     "lat": 53.567828,
     "lng": -0.1087884,
     "createdAt": "2018-05-30T22:25:01.933Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/894326498018156545/414FdP8J_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4e9"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24be9e560517b40cb654",
+    "age": "All Ages",
     "name": "Sensory planet",
     "frequency": "Book Yourself",
     "summary": "A unique space where children and adults with Autism and other complex needs, can come and relax in our safe, state of the art, sensory environments.",
@@ -751,19 +937,23 @@ var activityDataFile = [
     "lat": 53.543492,
     "lng": -1.3042147,
     "createdAt": "2018-05-30T22:25:02.475Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/653531972761964544/hyxUoCcg_400x400.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4ea"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24be9e560517b40cb655",
+    "age": "Children",
     "name": "Sandwell Activ8ors",
     "frequency": "Weekly Activities",
     "summary": "We lead adaptive sports sessions to help disabled children enjoy a wealth of activities.",
@@ -777,19 +967,29 @@ var activityDataFile = [
     "lat": 52.5116616,
     "lng": -2.029765,
     "createdAt": "2018-05-30T22:25:02.986Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/831127776065421312/WfdZkv_4_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4ed",
+      "5b0fb78851cdf71139e2a4ed",
+      "5b0fb78851cdf71139e2a4ee",
+      "5b0fb78851cdf71139e2a4ed",
+      "5b0fb78851cdf71139e2a4ee",
+      "5b0fb78851cdf71139e2a4f1",
+      "5b0fb78851cdf71139e2a4f2"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bf9e560517b40cb656",
+    "age": "Children",
     "name": "ZigZag Leeds Autism Support Group",
     "frequency": "Weekly Activities",
     "summary": "Come along for a coffee and a chat and meet other parents within the group :)",
@@ -803,19 +1003,25 @@ var activityDataFile = [
     "lat": 53.8459981,
     "lng": -1.6053318,
     "createdAt": "2018-05-30T22:25:03.552Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.snapsyorkshire.org/wp-content/uploads/2018/03/2018_03_logo.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4f8",
+      "5b0fb78851cdf71139e2a4f8",
+      "5b0fb78851cdf71139e2a4f9"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24bf9e560517b40cb657",
+    "age": "Children",
     "name": "SNAPS Penny Field",
     "frequency": "Monthly Activities",
     "summary": "At SNAPS sessions you can access swim sessions, Hydrotherapy/Physiotherapy pool sessions and rebound sessions.",
@@ -829,19 +1035,25 @@ var activityDataFile = [
     "lat": 53.8401496,
     "lng": -1.5606846,
     "createdAt": "2018-05-30T22:25:03.996Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
-    "image": "https://website-gyb7jkvs4m4z.netdna-ssl.com/image/900x600/assets/listings/346/290/54f43c9f-0d08-4580-a6ae-66f3c0a8641a.jpg",
-    "age": "Children",
+    "image": "",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a4fd",
+      "5b0fb78851cdf71139e2a4fd",
+      "5b0fb78851cdf71139e2a4fe"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c09e560517b40cb658",
+    "age": "Children",
     "name": "Little Hiccups - Stay and Play",
     "frequency": "Weekly Activities",
     "summary": "A support group set up by parents who have children with special needs",
@@ -855,19 +1067,23 @@ var activityDataFile = [
     "lat": 53.79691200000001,
     "lng": -1.511968,
     "createdAt": "2018-05-30T22:25:04.507Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/552451186905722880/aqtP_FUZ_400x400.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24c09e560517b40cb659",
+    "age": "Children",
     "name": "LWCA - Weekenders Club",
     "frequency": "Monthly Activities",
     "summary": "Weekenders Club is a weekend playscheme providing a short break for children and young people with additional needs.",
@@ -885,41 +1101,21 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/831127776065421312/WfdZkv_4_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
-      
+      "5b0fb78851cdf71139e2a50d",
+      "5b0fb78851cdf71139e2a50d",
+      "5b0fb78851cdf71139e2a50c"
     ],
-    "_id": "5b0f24c19e560517b40cb65a",
-    "name": "ZigZag Soft Play Session",
-    "frequency": "Monthly Activities",
-    "summary": "Great fun session for the kids and parents and carers get the chance to meet up with others within the group",
-    "suitable": "Learning disabilities",
-    "price": "£2 per child",
-    "when": "Monthly sessions (check website for details)",
-    "location": "75 New Rd Side, Horsforth, Leeds LS18 4QD, UK",
-    "website": "https://www.facebook.com/pg/zigzag.leeds.autism.support/events/?ref=page_internal",
-    "description": "Great fun session for the kids and parents and carers get the chance to meet up with others within the group. Free juice and biscuits and hot refreshments for parents and carers.",
-    "tags": "CIC, Play, Support",
-    "lat": 53.8318637,
-    "lng": -1.6404921,
-    "createdAt": "2018-05-30T22:25:05.509Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/831127776065421312/WfdZkv_4_400x400.jpg",
-    "age": "Children",
-    "comments": [
+    "loves": [
       
     ],
     "_id": "5b0f24c19e560517b40cb65b",
+    "age": "Children",
     "name": "ZigZag Trampolining",
     "frequency": "Monthly Activities",
     "summary": "Autism friendly trampoline sessions",
@@ -933,19 +1129,62 @@ var activityDataFile = [
     "lat": 53.8046307,
     "lng": -1.5843842,
     "createdAt": "2018-05-30T22:25:05.971Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/831127776065421312/WfdZkv_4_400x400.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a502",
+      "5b0fb78851cdf71139e2a502",
+      "5b0fb78851cdf71139e2a506",
+      "5b0fb78851cdf71139e2a502",
+      "5b0fb78851cdf71139e2a506",
+      "5b0fb78851cdf71139e2a503",
+      "5b0fb78851cdf71139e2a502",
+      "5b0fb78851cdf71139e2a506",
+      "5b0fb78851cdf71139e2a503",
+      "5b0fb78851cdf71139e2a505"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24c19e560517b40cb65a",
+    "age": "Children",
+    "name": "ZigZag Soft Play Session",
+    "frequency": "Monthly Activities",
+    "summary": "Great fun session for the kids and parents and carers get the chance to meet up with others within the group",
+    "suitable": "Learning disabilities",
+    "price": "£2 per child",
+    "when": "Monthly sessions (check website for details)",
+    "location": "75 New Rd Side, Horsforth, Leeds LS18 4QD, UK",
+    "website": "https://www.facebook.com/pg/zigzag.leeds.autism.support/events/?ref=page_internal",
+    "description": "Great fun session for the kids and parents and carers get the chance to meet up with others within the group. Free juice and biscuits and hot refreshments for parents and carers.",
+    "tags": "CIC, Play, Support",
+    "lat": 53.8318637,
+    "lng": -1.6404921,
+    "createdAt": "2018-05-30T22:25:05.509Z",
+    "__v": 4
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/552451186905722880/aqtP_FUZ_400x400.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24c29e560517b40cb65c",
+    "age": "Children",
     "name": "LWCA - Music Mondays Group",
     "frequency": "Weekly Activities",
     "summary": "Music Mondays is a project for teenagers aged 10-18 years with mild to moderate learning disabilities to access music and to help make new friends.",
@@ -963,41 +1202,21 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/651761954554560512/c2Yj470t_400x400.jpg",
-    "age": "All Ages",
-    "comments": [
-      
-    ],
-    "_id": "5b0f24c39e560517b40cb65d",
-    "name": "Flip Out: Brent Cross",
-    "frequency": "Weekly Activities",
-    "summary": "Autism friendly trampoline sessions.",
-    "suitable": "All abilities",
-    "price": "£10 per hour. 1 x carer jumps for FREE, socks are included.",
-    "when": "Tuesdays 4pm - 6pm. Thursdays 10am - 12pm (term time only).",
-    "location": "Geron Way, London NW2 6LW, UK",
-    "website": "https://www.flipout.co.uk/activities/classes/asd-disability-sessions/",
-    "description": "Come along and join our friendly SEN sessions. We'll dim the lights, lower the music so you can jump with confidence and peace of mind, perfect for those with special educational needs or Autism Spectrum Disorders",
-    "tags": "Club, Play, Sport",
-    "lat": 51.5697371,
-    "lng": -0.2288475,
-    "createdAt": "2018-05-30T22:25:07.069Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.varotherham.org.uk/wp-content/uploads/2018/01/LD-and-Autism-Disco-poster.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a51c",
+      "5b0fb78851cdf71139e2a51c",
+      "5b0fb78851cdf71139e2a51b"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c39e560517b40cb65e",
+    "age": "Adults",
     "name": "LD & Autism Disco",
     "frequency": "Weekly Activities",
     "summary": "A weekly disco for adults (16+) with LD & Autism Disco in a safe, fun and interactive environment",
@@ -1011,19 +1230,60 @@ var activityDataFile = [
     "lat": 53.4865528,
     "lng": -1.310183,
     "createdAt": "2018-05-30T22:25:07.455Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/651761954554560512/c2Yj470t_400x400.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a512",
+      "5b0fb78851cdf71139e2a512",
+      "5b0fb78851cdf71139e2a511",
+      "5b0fb78851cdf71139e2a515",
+      "5b0fb78851cdf71139e2a515",
+      "5b0fb78851cdf71139e2a514"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24c39e560517b40cb65d",
+    "age": "All Ages",
+    "name": "Flip Out: Brent Cross",
+    "frequency": "Weekly Activities",
+    "summary": "Autism friendly trampoline sessions.",
+    "suitable": "All abilities",
+    "price": "£10 per hour. 1 x carer jumps for FREE, socks are included.",
+    "when": "Tuesdays 4pm - 6pm. Thursdays 10am - 12pm (term time only).",
+    "location": "Geron Way, London NW2 6LW, UK",
+    "website": "https://www.flipout.co.uk/activities/classes/asd-disability-sessions/",
+    "description": "Come along and join our friendly SEN sessions. We'll dim the lights, lower the music so you can jump with confidence and peace of mind, perfect for those with special educational needs or Autism Spectrum Disorders",
+    "tags": "Club, Play, Sport",
+    "lat": 51.5697371,
+    "lng": -0.2288475,
+    "createdAt": "2018-05-30T22:25:07.069Z",
+    "__v": 4
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/672749317116043264/DzsdMUip_400x400.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a520",
+      "5b0fb78851cdf71139e2a520",
+      "5b0fb78851cdf71139e2a521"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c39e560517b40cb65f",
+    "age": "Adults",
     "name": "Active Fridays",
     "frequency": "Weekly Activities",
     "summary": "Trampolining, swimming, dance, cycling, fitness sessions, golf and much more.",
@@ -1037,19 +1297,25 @@ var activityDataFile = [
     "lat": 52.6940587,
     "lng": -2.0343754,
     "createdAt": "2018-05-30T22:25:07.982Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DZdFGzDVoAUuVOp.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a526",
+      "5b0fb78851cdf71139e2a526",
+      "5b0fb78851cdf71139e2a525"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c49e560517b40cb660",
+    "age": "All Ages",
     "name": "Dolphin Disco",
     "frequency": "Monthly Activities",
     "summary": "Dolphin Disco is a club for anyone with a disability and is held at the Obelisk Rise in Kingsthorpe, Northampton",
@@ -1063,19 +1329,23 @@ var activityDataFile = [
     "lat": 52.27978419999999,
     "lng": -0.9001013,
     "createdAt": "2018-05-30T22:25:08.384Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24c49e560517b40cb661",
+    "age": "Adults",
     "name": "Surrey Supported Learning Camberley",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1093,15 +1363,22 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a52b",
+      "5b0fb78851cdf71139e2a52b",
+      "5b0fb78851cdf71139e2a52a",
+      "5b0fb78851cdf71139e2a52e"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c59e560517b40cb662",
+    "age": "Adults",
     "name": "Surrey Supported Learning Esher",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1115,19 +1392,28 @@ var activityDataFile = [
     "lat": 51.3704646,
     "lng": -0.3657693,
     "createdAt": "2018-05-30T22:25:09.366Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a52d",
+      "5b0fb78851cdf71139e2a52d",
+      "5b0fb78851cdf71139e2a533",
+      "5b0fb78851cdf71139e2a52d",
+      "5b0fb78851cdf71139e2a533",
+      "5b0fb78851cdf71139e2a534"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c59e560517b40cb663",
+    "age": "Adults",
     "name": "Surrey Supported Learning Farnham",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1141,19 +1427,25 @@ var activityDataFile = [
     "lat": 51.21374669999999,
     "lng": -0.8024412,
     "createdAt": "2018-05-30T22:25:09.790Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a53a",
+      "5b0fb78851cdf71139e2a53a",
+      "5b0fb78851cdf71139e2a539"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c69e560517b40cb664",
+    "age": "Adults",
     "name": "Surrey Supported Learning Guildford",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1167,19 +1459,23 @@ var activityDataFile = [
     "lat": 51.236113,
     "lng": -0.567817,
     "createdAt": "2018-05-30T22:25:10.216Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a53e"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c69e560517b40cb665",
+    "age": "Adults",
     "name": "Surrey Supported Learning Molesey",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1193,19 +1489,25 @@ var activityDataFile = [
     "lat": 51.39817799999999,
     "lng": -0.368384,
     "createdAt": "2018-05-30T22:25:10.739Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a53f",
+      "5b0fb78851cdf71139e2a53f",
+      "5b0fb78851cdf71139e2a543"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c79e560517b40cb666",
+    "age": "Adults",
     "name": "Surrey Supported Learning Sunbury",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1219,19 +1521,23 @@ var activityDataFile = [
     "lat": 51.4174054,
     "lng": -0.4110021,
     "createdAt": "2018-05-30T22:25:11.163Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.surreycc.gov.uk/__data/assets/image/0020/130655/LDD-pottery.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a542"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c79e560517b40cb667",
+    "age": "Adults",
     "name": "Surrey Supported Learning Woking",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
@@ -1245,19 +1551,28 @@ var activityDataFile = [
     "lat": 51.300191,
     "lng": -0.5673469999999999,
     "createdAt": "2018-05-30T22:25:11.545Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://static.wixstatic.com/media/1d4807_de671fa28a9946ad94000786586015d6~mv2_d_4288_3216_s_4_2.png/v1/crop/x_0,y_0,w_3945,h_2601/fill/w_764,h_502,al_c,usm_0.66_1.00_0.01/1d4807_de671fa28a9946ad94000786586015d6~mv2_d_4288_3216_s_4_2.png",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a548",
+      "5b0fb78851cdf71139e2a548",
+      "5b0fb78851cdf71139e2a54c",
+      "5b0fb78851cdf71139e2a548",
+      "5b0fb78851cdf71139e2a54c",
+      "5b0fb78851cdf71139e2a547"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c89e560517b40cb668",
+    "age": "All Ages",
     "name": "Soundalight Experiences",
     "frequency": "Book Yourself",
     "summary": "Mobile Soundbeam Sessions",
@@ -1271,19 +1586,23 @@ var activityDataFile = [
     "lat": 51.319941,
     "lng": -0.141267,
     "createdAt": "2018-05-30T22:25:12.040Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/913375815613771777/vbE9-W2z_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a54b"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c89e560517b40cb669",
+    "age": "Children",
     "name": "Special Yoga Workshops",
     "frequency": "Monthly Activities",
     "summary": "Our mission is to inclusively and holistically support children with additional needs through our multi-dimensional Special Yoga and Mindfulness methodology.",
@@ -1297,19 +1616,25 @@ var activityDataFile = [
     "lat": 50.7253352,
     "lng": -1.8292632,
     "createdAt": "2018-05-30T22:25:12.624Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a551",
+      "5b0fb78851cdf71139e2a551",
+      "5b0fb78851cdf71139e2a552"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c99e560517b40cb66a",
+    "age": "All Ages",
     "name": "Community Club Westminster",
     "frequency": "Weekly Activities",
     "summary": "Favourite sports at the club are basketball, tennis and boccia. All ages 11 plus are welcome, including adults!",
@@ -1323,19 +1648,25 @@ var activityDataFile = [
     "lat": 51.5225137,
     "lng": -0.1770841,
     "createdAt": "2018-05-30T22:25:13.179Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a556",
+      "5b0fb78851cdf71139e2a556",
+      "5b0fb78851cdf71139e2a555"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24c99e560517b40cb66b",
+    "age": "All Ages",
     "name": "Community Club Hillingdon",
     "frequency": "Weekly Activities",
     "summary": "Club Hillingdon offers a wide range of sports to suit participants’ individual needs. All ages 11 plus are welcome, including adults!",
@@ -1349,19 +1680,26 @@ var activityDataFile = [
     "lat": 51.5085758,
     "lng": -0.4183582,
     "createdAt": "2018-05-30T22:25:13.815Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a55b",
+      "5b0fb78851cdf71139e2a55b",
+      "5b0fb78851cdf71139e2a55a",
+      "5b0fb78851cdf71139e2a55f"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ca9e560517b40cb66c",
+    "age": "All Ages",
     "name": "Community Club Wandsworth",
     "frequency": "Weekly Activities",
     "summary": "The participants at Club Wandsworth are true sports enthusiasts and a lot of fun is had every session. The energetic volunteers also add to the quality of the session, sports wise and socially.",
@@ -1375,19 +1713,25 @@ var activityDataFile = [
     "lat": 51.470423,
     "lng": -0.175917,
     "createdAt": "2018-05-30T22:25:14.243Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a560",
+      "5b0fb78851cdf71139e2a560",
+      "5b0fb78851cdf71139e2a565"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ca9e560517b40cb66d",
+    "age": "All Ages",
     "name": "Community Club Lambeth",
     "frequency": "Weekly Activities",
     "summary": "Popular sports include basketball, tennis and new age Kurling, but this is just a few sports delivered at the club.",
@@ -1401,19 +1745,23 @@ var activityDataFile = [
     "lat": 51.4634841,
     "lng": -0.1129344,
     "createdAt": "2018-05-30T22:25:14.691Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a566"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cb9e560517b40cb66e",
+    "age": "All Ages",
     "name": "Community Club Southwark",
     "frequency": "Weekly Activities",
     "summary": "Athletics, boccia and volleyball are amongst the popular sports at this club.",
@@ -1427,19 +1775,25 @@ var activityDataFile = [
     "lat": 51.4934252,
     "lng": -0.1024138,
     "createdAt": "2018-05-30T22:25:15.318Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a56b",
+      "5b0fb78851cdf71139e2a56b",
+      "5b0fb78851cdf71139e2a56a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cb9e560517b40cb66f",
+    "age": "All Ages",
     "name": "Community Club Hackney",
     "frequency": "Weekly Activities",
     "summary": "Club Hackney are particular fans of basketball and boccia and always attend our club sports days and Festivals in force.",
@@ -1453,19 +1807,28 @@ var activityDataFile = [
     "lat": 51.54213499999999,
     "lng": -0.071475,
     "createdAt": "2018-05-30T22:25:15.851Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a56f",
+      "5b0fb78851cdf71139e2a56f",
+      "5b0fb78851cdf71139e2a574",
+      "5b0fb78851cdf71139e2a56f",
+      "5b0fb78851cdf71139e2a574",
+      "5b0fb78851cdf71139e2a575"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cc9e560517b40cb670",
+    "age": "All Ages",
     "name": "Community Club Islington",
     "frequency": "Weekly Activities",
     "summary": "The club also has regular specialist dance, badminton and golf visits, including the occasional visit from Arsenal in the Community.",
@@ -1479,19 +1842,23 @@ var activityDataFile = [
     "lat": 51.5590045,
     "lng": -0.1123255,
     "createdAt": "2018-05-30T22:25:16.335Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.hillingdon.gov.uk/media/30365/Disability-Community-Sports-Club-Logo/image/72-182438-dsc-comm-clubs-logo-sml-rgb-pos.gif",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a57a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cc9e560517b40cb671",
+    "age": "All Ages",
     "name": "Community Club Kensington & Chelsea",
     "frequency": "Weekly Activities",
     "summary": "The club takes place on Saturday mornings with football, boccia, basketball and cricket the most popular sports!",
@@ -1505,19 +1872,28 @@ var activityDataFile = [
     "lat": 51.5138889,
     "lng": -0.2145673,
     "createdAt": "2018-05-30T22:25:16.874Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/344513261576640001/c22e1d565c3878b7a3f7e290dff74e48_400x400.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a57b",
+      "5b0fb78851cdf71139e2a57b",
+      "5b0fb78851cdf71139e2a57f",
+      "5b0fb78851cdf71139e2a57b",
+      "5b0fb78851cdf71139e2a57f",
+      "5b0fb78851cdf71139e2a57e"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cd9e560517b40cb672",
+    "age": "Adults",
     "name": "Dramatize Dance Workshops",
     "frequency": "Weekly Activities",
     "summary": "Dance and Theatre Workshops",
@@ -1531,19 +1907,25 @@ var activityDataFile = [
     "lat": 51.43467829999999,
     "lng": -0.4531682,
     "createdAt": "2018-05-30T22:25:17.325Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/1420175170/FF_logotype_186andblack_400x400.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a585",
+      "5b0fb78851cdf71139e2a585",
+      "5b0fb78851cdf71139e2a584"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cd9e560517b40cb673",
+    "age": "Children",
     "name": "Act the Part: Xplosion DDM",
     "frequency": "Weekly Activities",
     "summary": "A performing arts group for young people to begin to experience Drama, Dance and Music.",
@@ -1557,19 +1939,23 @@ var activityDataFile = [
     "lat": 51.6242489,
     "lng": -0.0581652,
     "createdAt": "2018-05-30T22:25:17.839Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/1420175170/FF_logotype_186andblack_400x400.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24ce9e560517b40cb674",
+    "age": "Adults",
     "name": "Act the Part: Broken Silence",
     "frequency": "Weekly Activities",
     "summary": "‘Broken Silence’ is an adult drama group of approximately 20 disabled participants with sensory and mobility impairments, mental health issues and learning difficulties.",
@@ -1587,15 +1973,28 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/1420175170/FF_logotype_186andblack_400x400.png",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a589",
+      "5b0fb78851cdf71139e2a589",
+      "5b0fb78851cdf71139e2a58a",
+      "5b0fb78851cdf71139e2a589",
+      "5b0fb78851cdf71139e2a58a",
+      "5b0fb78851cdf71139e2a58c",
+      "5b0fb78851cdf71139e2a589",
+      "5b0fb78851cdf71139e2a58a",
+      "5b0fb78851cdf71139e2a58c",
+      "5b0fb78851cdf71139e2a58d"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ce9e560517b40cb675",
+    "age": "All Ages",
     "name": "Act the Part: InterACTion",
     "frequency": "Weekly Activities",
     "summary": "The group learns music and theatre skills, write and perform their own shows, led by experienced professional artist/facilitators.",
@@ -1609,19 +2008,25 @@ var activityDataFile = [
     "lat": 51.6447703,
     "lng": -0.0475767,
     "createdAt": "2018-05-30T22:25:18.922Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/786879226796449792/gfMKsvWj_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a593",
+      "5b0fb78851cdf71139e2a593",
+      "5b0fb78851cdf71139e2a594"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24cf9e560517b40cb676",
+    "age": "Adults",
     "name": "Act the Part: Blue Sky Actors",
     "frequency": "Weekly Activities",
     "summary": "The Blue Sky Actors is an inclusive ensemble of adult disabled and non-disabled actors.",
@@ -1635,19 +2040,25 @@ var activityDataFile = [
     "lat": 51.5428287,
     "lng": 0.0019768,
     "createdAt": "2018-05-30T22:25:19.482Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://wychwoodfestival.com/resources/image/large/Wychwood-Festival-main-stage-2016.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a599",
+      "5b0fb78851cdf71139e2a599",
+      "5b0fb78851cdf71139e2a598"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d09e560517b40cb677",
+    "age": "Adults",
     "name": "Festival Spirit: Wychwood Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
@@ -1661,19 +2072,23 @@ var activityDataFile = [
     "lat": 51.9192,
     "lng": -2.068767,
     "createdAt": "2018-05-30T22:25:20.020Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DWY-GS3XkAAvqXa.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a59d"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d09e560517b40cb678",
+    "age": "Adults",
     "name": "Festival Spirit: WOMAD Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
@@ -1687,19 +2102,28 @@ var activityDataFile = [
     "lat": 51.60157659999999,
     "lng": -2.0700606,
     "createdAt": "2018-05-30T22:25:20.406Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://ccf7a042c1827a4111f0-24301ca8418e3004aff4c56bc91810c0.ssl.cf3.rackcdn.com/wp-content/uploads/2017/08/4-Wilderness-2017-JustineTrickett-Fanatic-4870-Web.jpeg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a59e",
+      "5b0fb78851cdf71139e2a59e",
+      "5b0fb78851cdf71139e2a5a2",
+      "5b0fb78851cdf71139e2a59e",
+      "5b0fb78851cdf71139e2a5a2",
+      "5b0fb78851cdf71139e2a5a1"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d09e560517b40cb679",
+    "age": "Adults",
     "name": "Festival Spirit: Wilderness Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
@@ -1713,19 +2137,25 @@ var activityDataFile = [
     "lat": 51.8628227,
     "lng": -1.49239,
     "createdAt": "2018-05-30T22:25:20.876Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/935158461201035264/bo59KSFv_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5a7",
+      "5b0fb78851cdf71139e2a5a7",
+      "5b0fb78851cdf71139e2a5a8"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d19e560517b40cb67a",
+    "age": "All Ages",
     "name": "Twisting Ducks: Band/Performing Arts/DJ Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Work with professional musicians to develop your music skills, to write your own songs, and to perform live at gig nights and events.",
@@ -1739,19 +2169,25 @@ var activityDataFile = [
     "lat": 54.9875081,
     "lng": -1.5722672,
     "createdAt": "2018-05-30T22:25:21.452Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/935158461201035264/bo59KSFv_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5ac",
+      "5b0fb78851cdf71139e2a5ac",
+      "5b0fb78851cdf71139e2a5ad"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d19e560517b40cb67b",
+    "age": "All Ages",
     "name": "Twisting Ducks: Performing Arts Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Develop your skills in writing, acting, physical theatre and directing. Make you own drama and film and perform live at theatre nights",
@@ -1765,19 +2201,23 @@ var activityDataFile = [
     "lat": 55.1703629,
     "lng": -1.689562,
     "createdAt": "2018-05-30T22:25:21.942Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/935158461201035264/bo59KSFv_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24d29e560517b40cb67c",
+    "age": "All Ages",
     "name": "Twisting Ducks: Dance Academy Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Learn musical dance routines and different dance styles. Create your own dance numbers for music videos and live performances.",
@@ -1795,15 +2235,22 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/935158461201035264/bo59KSFv_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5b1",
+      "5b0fb78851cdf71139e2a5b1",
+      "5b0fb78851cdf71139e2a5b2",
+      "5b0fb78851cdf71139e2a5b4"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d29e560517b40cb67d",
+    "age": "Children",
     "name": "Twisting Ducks: Youth Theatre Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Develop your skills in writing, acting and directing. Make you own drama and film and perform live at theatre nights",
@@ -1817,19 +2264,25 @@ var activityDataFile = [
     "lat": 54.9733659,
     "lng": -1.610376,
     "createdAt": "2018-05-30T22:25:22.729Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/935158461201035264/bo59KSFv_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5b5",
+      "5b0fb78851cdf71139e2a5b5",
+      "5b0fb78851cdf71139e2a5bb"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d39e560517b40cb67e",
+    "age": "Children",
     "name": "Twisting Ducks: Teenage Kicks Youth Band",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Work with professional musicians to develop your music and performance skills, to write and record your own songs, and to perform live at gigs and events.",
@@ -1843,19 +2296,29 @@ var activityDataFile = [
     "lat": 54.97359729999999,
     "lng": -1.6086795,
     "createdAt": "2018-05-30T22:25:23.199Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.cvsce.org.uk/sites/cvsce.org.uk/files/Cheshire%20c%20for%20independant%20living%20pic.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5ba",
+      "5b0fb78851cdf71139e2a5ba",
+      "5b0fb78851cdf71139e2a5bf",
+      "5b0fb78851cdf71139e2a5c0",
+      "5b0fb78851cdf71139e2a5ba",
+      "5b0fb78851cdf71139e2a5bf",
+      "5b0fb78851cdf71139e2a5c0"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d39e560517b40cb67f",
+    "age": "Children",
     "name": "Buzz: Youth Activity Group Chester",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
@@ -1869,19 +2332,25 @@ var activityDataFile = [
     "lat": 53.193392,
     "lng": -2.893075,
     "createdAt": "2018-05-30T22:25:23.527Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.cvsce.org.uk/sites/cvsce.org.uk/files/Cheshire%20c%20for%20independant%20living%20pic.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5c5",
+      "5b0fb78851cdf71139e2a5c5",
+      "5b0fb78851cdf71139e2a5c6"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d39e560517b40cb680",
+    "age": "Children",
     "name": "Buzz: Youth Activity Group Northwich",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
@@ -1895,19 +2364,25 @@ var activityDataFile = [
     "lat": 53.25868029999999,
     "lng": -2.5181321,
     "createdAt": "2018-05-30T22:25:23.878Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.cvsce.org.uk/sites/cvsce.org.uk/files/Cheshire%20c%20for%20independant%20living%20pic.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5ca",
+      "5b0fb78851cdf71139e2a5ca",
+      "5b0fb78851cdf71139e2a5cb"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d49e560517b40cb681",
+    "age": "Children",
     "name": "Buzz: Youth Activity Group Crewe",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
@@ -1921,19 +2396,23 @@ var activityDataFile = [
     "lat": 53.10040499999999,
     "lng": -2.4438209,
     "createdAt": "2018-05-30T22:25:24.258Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.cvsce.org.uk/sites/cvsce.org.uk/files/Cheshire%20c%20for%20independant%20living%20pic.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5d0"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d49e560517b40cb682",
+    "age": "Children",
     "name": "Buzz: Youth Activity Group Macclesfield",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
@@ -1947,19 +2426,23 @@ var activityDataFile = [
     "lat": 53.258663,
     "lng": -2.119287,
     "createdAt": "2018-05-30T22:25:24.552Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/928762981877415938/Jco4MxUj_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5cf"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d59e560517b40cb683",
+    "age": "Adults",
     "name": "Para Dance UK Swansea",
     "frequency": "Weekly Activities",
     "summary": "Inclusive Dance Classes",
@@ -1973,19 +2456,33 @@ var activityDataFile = [
     "lat": 51.6169061,
     "lng": -3.9406191,
     "createdAt": "2018-05-30T22:25:25.159Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/928762981877415938/Jco4MxUj_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5d3",
+      "5b0fb78851cdf71139e2a5d3",
+      "5b0fb78851cdf71139e2a5d4",
+      "5b0fb78851cdf71139e2a5d8",
+      "5b0fb78851cdf71139e2a5d3",
+      "5b0fb78851cdf71139e2a5d4",
+      "5b0fb78851cdf71139e2a5d8",
+      "5b0fb78851cdf71139e2a5d3",
+      "5b0fb78851cdf71139e2a5d4",
+      "5b0fb78851cdf71139e2a5d8",
+      "5b0fb78851cdf71139e2a5d7"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d59e560517b40cb684",
+    "age": "Adults",
     "name": "Para Dance UK Llantrisant",
     "frequency": "Weekly Activities",
     "summary": "Inclusive Dance Classes",
@@ -1999,19 +2496,23 @@ var activityDataFile = [
     "lat": 51.5392959,
     "lng": -3.3740939,
     "createdAt": "2018-05-30T22:25:25.622Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/848907660330237952/hVYPjPkY_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5de"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d69e560517b40cb685",
+    "age": "All Ages",
     "name": "Para-cycling Session",
     "frequency": "Monthly Activities",
     "summary": "Para-cycling sessions are dedicated coaching sessions for disabled riders who want to keep fit, have fun and improve performance with the help of the coaching sessions.",
@@ -2025,19 +2526,28 @@ var activityDataFile = [
     "lat": 52.91268059999999,
     "lng": -1.4463865,
     "createdAt": "2018-05-30T22:25:26.094Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://c.yell.com/t_bigRect@2x,f_auto/663ac6bc-46e9-4832-903f-e21fae68992f_image_jpeg.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5df",
+      "5b0fb78851cdf71139e2a5df",
+      "5b0fb78851cdf71139e2a5e3",
+      "5b0fb78851cdf71139e2a5df",
+      "5b0fb78851cdf71139e2a5e3",
+      "5b0fb78851cdf71139e2a5e2"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d69e560517b40cb686",
+    "age": "Children",
     "name": "Fun-abili8y Clubs",
     "frequency": "Weekly Activities",
     "summary": "A range of weekly activities including crafts and play sessions",
@@ -2051,45 +2561,25 @@ var activityDataFile = [
     "lat": 52.908476,
     "lng": -1.469814,
     "createdAt": "2018-05-30T22:25:26.519Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/2644623999/5ba3cf1e6885404bcaca324a29756ede_400x400.png",
-    "age": "All Ages",
-    "comments": [
-      
-    ],
-    "_id": "5b0f24d69e560517b40cb687",
-    "name": "Derby Wheel Blazers",
-    "frequency": "Weekly Activities",
-    "summary": "Derbys Wheelchair Basketball Club. Open to anyone that fancys giving the sport a try but always on the lookout for future superstars!",
-    "suitable": "Physical disabilities",
-    "price": "See website",
-    "when": "Weekly training sessions. See website for more details",
-    "location": "Richmond Park Road, Mackworth, Derby DE22 4FB, United Kingdom",
-    "website": "https://www.facebook.com/Derby.Wheelblazers/",
-    "description": "Derbys Wheelchair Basketball Club. Open to anyone that fancys giving the sport a try but always on the lookout for future superstars! We also play competitively in the national league and love to get a home crowd down to our matches.",
-    "tags": "Sport, Club",
-    "lat": 52.92366,
-    "lng": -1.530083,
-    "createdAt": "2018-05-30T22:25:26.994Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.quest88.com/media/catalog/product/cache/1/image/670x/602f0fa2c1f0d1ba5e241f914e856ff9/d/r/draisin_master.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5ed",
+      "5b0fb78851cdf71139e2a5ed",
+      "5b0fb78851cdf71139e2a5ee"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d79e560517b40cb688",
+    "age": "All Ages",
     "name": "Brake Thru Cycling Club",
     "frequency": "Daily Activities",
     "summary": "You can ride a bike! We have lots of different bikes for you to try. Even if you cannot ride a bike someone can help you.",
@@ -2103,19 +2593,55 @@ var activityDataFile = [
     "lat": 51.5945204,
     "lng": -0.0872242,
     "createdAt": "2018-05-30T22:25:27.560Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/2644623999/5ba3cf1e6885404bcaca324a29756ede_400x400.png",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a5e8",
+      "5b0fb78851cdf71139e2a5e8",
+      "5b0fb78851cdf71139e2a5e9"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24d69e560517b40cb687",
+    "age": "All Ages",
+    "name": "Derby Wheel Blazers",
+    "frequency": "Weekly Activities",
+    "summary": "Derbys Wheelchair Basketball Club. Open to anyone that fancys giving the sport a try but always on the lookout for future superstars!",
+    "suitable": "Physical disabilities",
+    "price": "See website",
+    "when": "Weekly training sessions. See website for more details",
+    "location": "Richmond Park Road, Mackworth, Derby DE22 4FB, United Kingdom",
+    "website": "https://www.facebook.com/Derby.Wheelblazers/",
+    "description": "Derbys Wheelchair Basketball Club. Open to anyone that fancys giving the sport a try but always on the lookout for future superstars! We also play competitively in the national league and love to get a home crowd down to our matches.",
+    "tags": "Sport, Club",
+    "lat": 52.92366,
+    "lng": -1.530083,
+    "createdAt": "2018-05-30T22:25:26.994Z",
+    "__v": 2
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5f2"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb689",
+    "age": "Adults",
     "name": "Kith and Kids: Healthy Living Activities",
     "frequency": "Weekly Activities",
     "summary": "Join us for a range of inclusive healthy activities and sports.",
@@ -2129,19 +2655,28 @@ var activityDataFile = [
     "lat": 51.6060726,
     "lng": -0.0716495,
     "createdAt": "2018-05-30T22:25:28.079Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5f3",
+      "5b0fb78851cdf71139e2a5f3",
+      "5b0fb78851cdf71139e2a5f7",
+      "5b0fb78851cdf71139e2a5f3",
+      "5b0fb78851cdf71139e2a5f7",
+      "5b0fb78851cdf71139e2a5f6"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb68a",
+    "age": "Adults",
     "name": "Kith and Kids: Weekend Clubs",
     "frequency": "Weekly Activities",
     "summary": "Activities for people with learning disabilities or autism and volunteers.",
@@ -2155,19 +2690,23 @@ var activityDataFile = [
     "lat": 51.6060726,
     "lng": -0.0716495,
     "createdAt": "2018-05-30T22:25:28.123Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5fc"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb68b",
+    "age": "All Ages",
     "name": "Kith and Kids: Social Development Projects",
     "frequency": "Annual Activities",
     "summary": "Our unique 2:1 Social Development Projects link children and adults with learning disabilities or autism with two trained volunteers.",
@@ -2181,19 +2720,28 @@ var activityDataFile = [
     "lat": 51.6060726,
     "lng": -0.0716495,
     "createdAt": "2018-05-30T22:25:28.157Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a5fd",
+      "5b0fb78851cdf71139e2a5fd",
+      "5b0fb78851cdf71139e2a600",
+      "5b0fb78851cdf71139e2a5fd",
+      "5b0fb78851cdf71139e2a600",
+      "5b0fb78851cdf71139e2a601"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb68c",
+    "age": "Adults",
     "name": "Kith and Kids: Employment & Life Skills Project",
     "frequency": "Weekly Activities",
     "summary": "The Employment & Life Skills Project provides an autism specific term-time service for young adults (18+) at the higher functioning end of the autistic spectrum.",
@@ -2207,19 +2755,25 @@ var activityDataFile = [
     "lat": 51.6060726,
     "lng": -0.0716495,
     "createdAt": "2018-05-30T22:25:28.192Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a606",
+      "5b0fb78851cdf71139e2a606",
+      "5b0fb78851cdf71139e2a607"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb68d",
+    "age": "Adults",
     "name": "Kith and Kids: Summer Camp",
     "frequency": "Annual Activities",
     "summary": "Each year at the end of the summer holiday we run a one-week residential camp.",
@@ -2233,19 +2787,25 @@ var activityDataFile = [
     "lat": 51.6060726,
     "lng": -0.0716495,
     "createdAt": "2018-05-30T22:25:28.233Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/730410269973872644/N9Kzo6_8_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a60b",
+      "5b0fb78851cdf71139e2a60b",
+      "5b0fb78851cdf71139e2a60c"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d89e560517b40cb68e",
+    "age": "Children",
     "name": "Kith and Kids: D's Day",
     "frequency": "Annual Activities",
     "summary": "D's Day is an annual event held in celebration of the life of Doreen Collins – artist/sculptor and co-founder of Kith & Kids.",
@@ -2259,19 +2819,25 @@ var activityDataFile = [
     "lat": 51.5242833,
     "lng": -0.120206,
     "createdAt": "2018-05-30T22:25:28.839Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DXNYfSuXcAAak7T.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a610",
+      "5b0fb78851cdf71139e2a610",
+      "5b0fb78851cdf71139e2a611"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d99e560517b40cb68f",
+    "age": "Adults",
     "name": "Parity: Day Services Cove",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
@@ -2285,19 +2851,25 @@ var activityDataFile = [
     "lat": 51.2964679,
     "lng": -0.7908411999999999,
     "createdAt": "2018-05-30T22:25:29.263Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DXNYfSuXcAAak7T.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a615",
+      "5b0fb78851cdf71139e2a615",
+      "5b0fb78851cdf71139e2a616"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24d99e560517b40cb690",
+    "age": "Adults",
     "name": "Parity: Day Services Camberley",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
@@ -2311,19 +2883,23 @@ var activityDataFile = [
     "lat": 51.3486075,
     "lng": -0.7239909,
     "createdAt": "2018-05-30T22:25:29.768Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DXNYfSuXcAAak7T.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a61a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24da9e560517b40cb691",
+    "age": "Adults",
     "name": "Parity: Day Services Mytchett",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
@@ -2337,19 +2913,28 @@ var activityDataFile = [
     "lat": 51.2909863,
     "lng": -0.7245712,
     "createdAt": "2018-05-30T22:25:30.167Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://cdnassets.hw.net/dims4/GG/c1f21a6/2147483647/thumbnail/876x580%3E/quality/90/?url=https%3A%2F%2Fcdnassets.hw.net%2F05%2F44%2Ff38e918e4925a56016f1dd566eb8%2F2c2a3b007d5743a98ccd00ecf7c08533.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a61b",
+      "5b0fb78851cdf71139e2a61b",
+      "5b0fb78851cdf71139e2a61e",
+      "5b0fb78851cdf71139e2a61b",
+      "5b0fb78851cdf71139e2a61e",
+      "5b0fb78851cdf71139e2a61f"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24da9e560517b40cb692",
+    "age": "Adults",
     "name": "Rowan Art Centre",
     "frequency": "Weekly Activities",
     "summary": "Art centre and charity for people with learning disabilities",
@@ -2363,19 +2948,25 @@ var activityDataFile = [
     "lat": 52.2133083,
     "lng": 0.1342663,
     "createdAt": "2018-05-30T22:25:30.561Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DMVk_KrW0AAvzng.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a624",
+      "5b0fb78851cdf71139e2a624",
+      "5b0fb78851cdf71139e2a625"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24da9e560517b40cb693",
+    "age": "All Ages",
     "name": "Lowlands Farm RDA",
     "frequency": "Daily Activities",
     "summary": "Our horses and ponies provide therapy with amazing physical and psychological  benefits. Even more importantly it's great fun!",
@@ -2389,19 +2980,23 @@ var activityDataFile = [
     "lat": 52.307344,
     "lng": -1.684133,
     "createdAt": "2018-05-30T22:25:30.948Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.snapsyorkshire.org/wp-content/uploads/2018/03/2018_03_logo.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a629"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24db9e560517b40cb694",
+    "age": "Children",
     "name": "SNAPS Broomfield",
     "frequency": "Monthly Activities",
     "summary": "At SNAPS sessions you can access swim sessions, Hydrotherapy/Physiotherapy pool sessions and rebound sessions.",
@@ -2415,19 +3010,23 @@ var activityDataFile = [
     "lat": 53.7567773,
     "lng": -1.5233039,
     "createdAt": "2018-05-30T22:25:31.314Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/651761954554560512/c2Yj470t_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a62a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24db9e560517b40cb695",
+    "age": "All Ages",
     "name": "Flip Out: Chatham",
     "frequency": "Weekly Activities",
     "summary": "Autism friendly trampoline sessions.",
@@ -2441,19 +3040,25 @@ var activityDataFile = [
     "lat": 51.40263119999999,
     "lng": 0.5340756,
     "createdAt": "2018-05-30T22:25:31.836Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://cdn.thebiggive.org.uk/files/charitylogos/original/45ukf748nz012ky.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a62e",
+      "5b0fb78851cdf71139e2a62e",
+      "5b0fb78851cdf71139e2a62d"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24dc9e560517b40cb696",
+    "age": "All Ages",
     "name": "Bendrigg Trust",
     "frequency": "Book Yourself",
     "summary": "Residential and day activity courses for disabled and disadvantaged people",
@@ -2467,19 +3072,28 @@ var activityDataFile = [
     "lat": 54.2974592,
     "lng": -2.6436684,
     "createdAt": "2018-05-30T22:25:32.340Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://images.justgiving.com/image/cf634865-c879-46e5-b58d-abba2109d257.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a632",
+      "5b0fb78851cdf71139e2a632",
+      "5b0fb78851cdf71139e2a637",
+      "5b0fb78851cdf71139e2a632",
+      "5b0fb78851cdf71139e2a637",
+      "5b0fb78851cdf71139e2a638"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24dc9e560517b40cb697",
+    "age": "All Ages",
     "name": "Seagull Trust Cruises: Falkirk",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
@@ -2493,19 +3107,23 @@ var activityDataFile = [
     "lat": 55.990744,
     "lng": -3.8111491,
     "createdAt": "2018-05-30T22:25:32.814Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://images.justgiving.com/image/cf634865-c879-46e5-b58d-abba2109d257.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a63d"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24dd9e560517b40cb698",
+    "age": "All Ages",
     "name": "Seagull Trust Cruises: Highland",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
@@ -2519,19 +3137,28 @@ var activityDataFile = [
     "lat": 57.46482580000001,
     "lng": -4.2452246,
     "createdAt": "2018-05-30T22:25:33.269Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://images.justgiving.com/image/cf634865-c879-46e5-b58d-abba2109d257.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a63e",
+      "5b0fb78851cdf71139e2a63e",
+      "5b0fb78851cdf71139e2a642",
+      "5b0fb78851cdf71139e2a63e",
+      "5b0fb78851cdf71139e2a642",
+      "5b0fb78851cdf71139e2a641"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24dd9e560517b40cb699",
+    "age": "All Ages",
     "name": "Seagull Trust Cruises: Kirkintilloch",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
@@ -2545,19 +3172,23 @@ var activityDataFile = [
     "lat": 55.93539320000001,
     "lng": -4.1603791,
     "createdAt": "2018-05-30T22:25:33.789Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://images.justgiving.com/image/cf634865-c879-46e5-b58d-abba2109d257.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a647"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24de9e560517b40cb69a",
+    "age": "All Ages",
     "name": "Seagull Trust Cruises: Ratho",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
@@ -2571,19 +3202,28 @@ var activityDataFile = [
     "lat": 55.9232168,
     "lng": -3.3789491,
     "createdAt": "2018-05-30T22:25:34.345Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://search3.openobjects.com/mediamanager/redbridge/fsd/images/elhap_logo.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a648",
+      "5b0fb78851cdf71139e2a648",
+      "5b0fb78851cdf71139e2a64c",
+      "5b0fb78851cdf71139e2a648",
+      "5b0fb78851cdf71139e2a64c",
+      "5b0fb78851cdf71139e2a64b"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24de9e560517b40cb69b",
+    "age": "Children",
     "name": "Elhap Adventure Playground",
     "frequency": "Weekly Activities",
     "summary": "A Special Needs Adventure Playground",
@@ -2597,19 +3237,25 @@ var activityDataFile = [
     "lat": 51.599613,
     "lng": 0.055114,
     "createdAt": "2018-05-30T22:25:34.850Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.pinpoint-cambs.org.uk/wp-content/uploads/2017/07/Eddies-logo.png",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a652",
+      "5b0fb78851cdf71139e2a652",
+      "5b0fb78851cdf71139e2a651"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24df9e560517b40cb69c",
+    "age": "All Ages",
     "name": "Eddie's Cambridge",
     "frequency": "Daily Activities",
     "summary": "A range of services for children, young people and adults with learning disabilities.",
@@ -2623,45 +3269,23 @@ var activityDataFile = [
     "lat": 52.27386389999999,
     "lng": 0.1994451,
     "createdAt": "2018-05-30T22:25:35.349Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://www.kepplewray.org.uk/media/rokgallery/9/916cf3d5-7444-4382-ba28-0815c94794f7/d219f89b-b8cc-4058-a5d3-ea62e10ddaee.jpg",
-    "age": "All Ages",
-    "comments": [
-      
-    ],
-    "_id": "5b0f24df9e560517b40cb69d",
-    "name": "Kepplewray Center",
-    "frequency": "Book Yourself",
-    "summary": "Accessible Outdoor Activity Centre",
-    "suitable": "All abilities",
-    "price": "See website for details.",
-    "when": "See website for details.",
-    "location": "The Kepplewray Centre, Broughton-in-Furness LA20 6HE, United Kingdom",
-    "website": "https://www.kepplewray.org.uk/",
-    "description": "All activities are delivered with people and their varying level of ability in mind. We focus on what the individual can do and try to enable them to push that bit further by working with them and our adaptive equipment. We are all individuals and it is very rare when one solution fits all – so the individual is important.",
-    "tags": "Charity, Outdoor",
-    "lat": 54.276163,
-    "lng": -3.207644,
-    "createdAt": "2018-05-30T22:25:35.714Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.lrsport.org/images/files/44213/medium.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a657"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e09e560517b40cb69e",
+    "age": "Children",
     "name": "Aiming High Trampolining Sessions",
     "frequency": "Weekly Activities",
     "summary": "Specialist trampolining sessions",
@@ -2675,19 +3299,63 @@ var activityDataFile = [
     "lat": 52.691324,
     "lng": -0.716889,
     "createdAt": "2018-05-30T22:25:36.207Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://www.kepplewray.org.uk/media/rokgallery/9/916cf3d5-7444-4382-ba28-0815c94794f7/d219f89b-b8cc-4058-a5d3-ea62e10ddaee.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a656"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24df9e560517b40cb69d",
+    "age": "All Ages",
+    "name": "Kepplewray Center",
+    "frequency": "Book Yourself",
+    "summary": "Accessible Outdoor Activity Centre",
+    "suitable": "All abilities",
+    "price": "See website for details.",
+    "when": "See website for details.",
+    "location": "The Kepplewray Centre, Broughton-in-Furness LA20 6HE, United Kingdom",
+    "website": "https://www.kepplewray.org.uk/",
+    "description": "All activities are delivered with people and their varying level of ability in mind. We focus on what the individual can do and try to enable them to push that bit further by working with them and our adaptive equipment. We are all individuals and it is very rare when one solution fits all – so the individual is important.",
+    "tags": "Charity, Outdoor",
+    "lat": 54.276163,
+    "lng": -3.207644,
+    "createdAt": "2018-05-30T22:25:35.714Z",
+    "__v": 1
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/512988703841452032/6-oRWm8f_400x400.png",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a65a",
+      "5b0fb78851cdf71139e2a65a",
+      "5b0fb78851cdf71139e2a65b",
+      "5b0fb78851cdf71139e2a65f",
+      "5b0fb78851cdf71139e2a65a",
+      "5b0fb78851cdf71139e2a65b",
+      "5b0fb78851cdf71139e2a65f",
+      "5b0fb78851cdf71139e2a65a",
+      "5b0fb78851cdf71139e2a65b",
+      "5b0fb78851cdf71139e2a65f",
+      "5b0fb78851cdf71139e2a65e"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e09e560517b40cb69f",
+    "age": "All Ages",
     "name": "Greenbank Sports Academy",
     "frequency": "Weekly Activities",
     "summary": "Greenbank Sports Academy offers a disabled people the opportunity to try a range of sports, at low cost.",
@@ -2701,19 +3369,23 @@ var activityDataFile = [
     "lat": 53.384716,
     "lng": -2.931246,
     "createdAt": "2018-05-30T22:25:36.726Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/815649820446781441/neDCSui6_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a665"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e19e560517b40cb6a0",
+    "age": "All Ages",
     "name": "Exim Dance: Adapt",
     "frequency": "Weekly Activities",
     "summary": "A dance company for young people age 12-25 with and without disabilities.",
@@ -2727,19 +3399,25 @@ var activityDataFile = [
     "lat": 50.3686514,
     "lng": -4.1532624,
     "createdAt": "2018-05-30T22:25:37.383Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/DVTlykGXcAA2uBu.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a666",
+      "5b0fb78851cdf71139e2a666",
+      "5b0fb78851cdf71139e2a669"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e19e560517b40cb6a1",
+    "age": "Children",
     "name": "Routeways Project: Rooted Club",
     "frequency": "Weekly Activities",
     "summary": "Gardening, Craft & Cooking Activities for disabled kids & kids with additional needs.",
@@ -2753,19 +3431,28 @@ var activityDataFile = [
     "lat": 50.3743361,
     "lng": -4.1708645,
     "createdAt": "2018-05-30T22:25:37.783Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://aspirestudentliving.co.uk/wp-content/uploads/2016/12/plymouth-life-centre-500x500.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a66a",
+      "5b0fb78851cdf71139e2a66a",
+      "5b0fb78851cdf71139e2a66f",
+      "5b0fb78851cdf71139e2a66a",
+      "5b0fb78851cdf71139e2a66f",
+      "5b0fb78851cdf71139e2a66e"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e29e560517b40cb6a2",
+    "age": "All Ages",
     "name": "Plymouth Life Centre",
     "frequency": "Daily Activities",
     "summary": "A range of accessible activities at the Life Centre in Plymouth",
@@ -2779,19 +3466,23 @@ var activityDataFile = [
     "lat": 50.3867258,
     "lng": -4.152921200000001,
     "createdAt": "2018-05-30T22:25:38.192Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/767393449075179520/6yoLNcDW_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24e29e560517b40cb6a3",
+    "age": "All Ages",
     "name": "Adaptive Martial Arts: Bath",
     "frequency": "Weekly Activities",
     "summary": "Martial Art and exercise sessions",
@@ -2809,15 +3500,22 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://static.wixstatic.com/media/46bf45_a586b76c9c20479ca7840c5ffe3c762f.png/v1/crop/x_0,y_0,w_1756,h_1266/fill/w_510,h_370,al_c,usm_0.66_1.00_0.01/46bf45_a586b76c9c20479ca7840c5ffe3c762f.png",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a674",
+      "5b0fb78851cdf71139e2a674",
+      "5b0fb78851cdf71139e2a675",
+      "5b0fb78851cdf71139e2a677"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e39e560517b40cb6a4",
+    "age": "All Ages",
     "name": "Pedal Power: Cardiff",
     "frequency": "Book Yourself",
     "summary": "Accessible cycle hire",
@@ -2831,19 +3529,23 @@ var activityDataFile = [
     "lat": 51.4892029,
     "lng": -3.197501,
     "createdAt": "2018-05-30T22:25:39.287Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/859414251873730560/zwoMPJaB_400x400.jpg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a678"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e39e560517b40cb6a5",
+    "age": "All Ages",
     "name": "Chester Terrapins",
     "frequency": "Weekly Activities",
     "summary": "Specialist swimming club for people with disabilities",
@@ -2857,19 +3559,28 @@ var activityDataFile = [
     "lat": 53.19591699999999,
     "lng": -2.891244,
     "createdAt": "2018-05-30T22:25:39.758Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://search3.openobjects.com/mediamanager/cheshirewestandchester/directory/images/logo_1_elly_jpg/logo_1_elly_display.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a67d",
+      "5b0fb78851cdf71139e2a67d",
+      "5b0fb78851cdf71139e2a67e",
+      "5b0fb78851cdf71139e2a67d",
+      "5b0fb78851cdf71139e2a67e",
+      "5b0fb78851cdf71139e2a682"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e49e560517b40cb6a6",
+    "age": "Adults",
     "name": "Adult Phab Club Chester Monthly Social",
     "frequency": "Monthly Activities",
     "summary": "A social club for people with and without disabilities",
@@ -2883,19 +3594,25 @@ var activityDataFile = [
     "lat": 53.2051867,
     "lng": -2.9008221,
     "createdAt": "2018-05-30T22:25:40.547Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://eeipnorthblog.files.wordpress.com/2014/10/img_20141016_192141.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a688",
+      "5b0fb78851cdf71139e2a688",
+      "5b0fb78851cdf71139e2a689"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e59e560517b40cb6a7",
+    "age": "Adults",
     "name": "Walton Lea: Walled Garden",
     "frequency": "Daily Activities",
     "summary": "Providing work experience and learning for people with learning difficulties",
@@ -2909,45 +3626,23 @@ var activityDataFile = [
     "lat": 53.36577459999999,
     "lng": -2.5997929,
     "createdAt": "2018-05-30T22:25:41.034Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/767393449075179520/6yoLNcDW_400x400.jpg",
-    "age": "All Ages",
-    "comments": [
-      
-    ],
-    "_id": "5b0f24e59e560517b40cb6a8",
-    "name": "Adaptive Martial Arts: Bristol",
-    "frequency": "Weekly Activities",
-    "summary": "Martial Art and exercise sessions",
-    "suitable": "All abilities",
-    "price": "First session is free. £7.50 for one or £10 for two people, we also offer 121's @ £36",
-    "when": "Saturday ​4pm - 5pm",
-    "location": "Shine Community Sport Hall,, Brecon Rd, Bristol BS9 4DT, United Kingdom",
-    "website": "https://www.adaptivema.co.uk/",
-    "description": "Martial Art and exercise sessions deigned for those with disabilities, permanent injuries or in ill health. We encourage friends and family to join in. Our sessions are generally designed around Brazilian Jiu Jitsu because it is predominately ground based (on mats) which makes it very accessible.",
-    "tags": "CIC",
-    "lat": 51.4865141,
-    "lng": -2.6133503,
-    "createdAt": "2018-05-30T22:25:41.505Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://eeipnorthblog.files.wordpress.com/2014/10/img_20141016_192141.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a692"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e69e560517b40cb6a9",
+    "age": "Adults",
     "name": "Walton Lea: Long Lane",
     "frequency": "Daily Activities",
     "summary": "Providing work experience and learning for people with learning difficulties",
@@ -2961,19 +3656,57 @@ var activityDataFile = [
     "lat": 53.4063429,
     "lng": -2.5850216,
     "createdAt": "2018-05-30T22:25:42.058Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/767393449075179520/6yoLNcDW_400x400.jpg",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a68e",
+      "5b0fb78851cdf71139e2a68e",
+      "5b0fb78851cdf71139e2a68d"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24e59e560517b40cb6a8",
+    "age": "All Ages",
+    "name": "Adaptive Martial Arts: Bristol",
+    "frequency": "Weekly Activities",
+    "summary": "Martial Art and exercise sessions",
+    "suitable": "All abilities",
+    "price": "First session is free. £7.50 for one or £10 for two people, we also offer 121's @ £36",
+    "when": "Saturday ​4pm - 5pm",
+    "location": "Shine Community Sport Hall,, Brecon Rd, Bristol BS9 4DT, United Kingdom",
+    "website": "https://www.adaptivema.co.uk/",
+    "description": "Martial Art and exercise sessions deigned for those with disabilities, permanent injuries or in ill health. We encourage friends and family to join in. Our sessions are generally designed around Brazilian Jiu Jitsu because it is predominately ground based (on mats) which makes it very accessible.",
+    "tags": "CIC",
+    "lat": 51.4865141,
+    "lng": -2.6133503,
+    "createdAt": "2018-05-30T22:25:41.505Z",
+    "__v": 2
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://ukplaygrounds.co.uk/rehd/cms/assets/images/hylands-park-Hylands-Park-1.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a693",
+      "5b0fb78851cdf71139e2a693",
+      "5b0fb78851cdf71139e2a696"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e69e560517b40cb6aa",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Hylands Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -2987,19 +3720,23 @@ var activityDataFile = [
     "lat": 51.7111721,
     "lng": 0.4372136,
     "createdAt": "2018-05-30T22:25:42.578Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/578973225218101248/VWhQMLRG_400x400.jpeg",
-    "age": "All Ages",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a697"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e69e560517b40cb6ab",
+    "age": "All Ages",
     "name": "Rebounders Cardiff",
     "frequency": "Weekly Activities",
     "summary": "Trampoline club which specialises in working with children and adults with disabilities",
@@ -3013,19 +3750,25 @@ var activityDataFile = [
     "lat": 51.47463949999999,
     "lng": -3.1571591,
     "createdAt": "2018-05-30T22:25:42.926Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/3244007646/2070cec1516e6c44297394c45eb6b5db_400x400.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a69b",
+      "5b0fb78851cdf71139e2a69b",
+      "5b0fb78851cdf71139e2a69c"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e79e560517b40cb6ac",
+    "age": "Children",
     "name": "Cardiff Whales Swimming Club",
     "frequency": "Weekly Activities",
     "summary": "Fun Swimming Club for children and young people with additional needs and their families.",
@@ -3039,45 +3782,23 @@ var activityDataFile = [
     "lat": 51.47561169999999,
     "lng": -3.2460861,
     "createdAt": "2018-05-30T22:25:43.469Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/459273052375625728/juEjPryd_400x400.jpeg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
-      
+      "5b0fb78851cdf71139e2a6a4"
     ],
-    "_id": "5b0f24e79e560517b40cb6ad",
-    "name": "Wyldwoods: Arts cafe",
-    "frequency": "One-Off Activities",
-    "summary": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities.",
-    "suitable": "All abilities",
-    "price": "FREE (donations always welcome)",
-    "when": "Tuesday 29th May 5:30pm - 7:30pm",
-    "location": "Dean Corner Farmhouse, Broseley TF12 5JH, United Kingdom",
-    "website": "http://wyldwoods.co.uk/",
-    "description": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities. One will be mono printing from nature and the other will be cooking bread sticks on an open camp fire. Taking place on Tuesday 29th May from 5.30pm-7.30pm",
-    "tags": "CIC, Learning, Outdoor, Play, Support, Volunteers",
-    "lat": 52.597953,
-    "lng": -2.490553,
-    "createdAt": "2018-05-30T22:25:43.927Z",
-    "__v": 0
-  },
-  {
-    "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
-    },
-    "image": "https://pbs.twimg.com/profile_images/459273052375625728/juEjPryd_400x400.jpeg",
-    "age": "Adults",
-    "comments": [
+    "loves": [
       
     ],
     "_id": "5b0f24e79e560517b40cb6ae",
+    "age": "Adults",
     "name": "Wyldwoods: Creative arts and crafts sessions",
     "frequency": "Weekly Activities",
     "summary": "Workshops available to adults with additional needs.",
@@ -3091,19 +3812,69 @@ var activityDataFile = [
     "lat": 52.597953,
     "lng": -2.490553,
     "createdAt": "2018-05-30T22:25:43.962Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/459273052375625728/juEjPryd_400x400.jpeg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a69f",
+      "5b0fb78851cdf71139e2a69f",
+      "5b0fb78851cdf71139e2a6a0",
+      "5b0fb78851cdf71139e2a6a5",
+      "5b0fb78851cdf71139e2a69f",
+      "5b0fb78851cdf71139e2a6a0",
+      "5b0fb78851cdf71139e2a6a5"
+    ],
+    "loves": [
+      
+    ],
+    "_id": "5b0f24e79e560517b40cb6ad",
+    "age": "Adults",
+    "name": "Wyldwoods: Arts cafe",
+    "frequency": "One-Off Activities",
+    "summary": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities.",
+    "suitable": "All abilities",
+    "price": "FREE (donations always welcome)",
+    "when": "Tuesday 29th May 5:30pm - 7:30pm",
+    "location": "Dean Corner Farmhouse, Broseley TF12 5JH, United Kingdom",
+    "website": "http://wyldwoods.co.uk/",
+    "description": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities. One will be mono printing from nature and the other will be cooking bread sticks on an open camp fire. Taking place on Tuesday 29th May from 5.30pm-7.30pm",
+    "tags": "CIC, Learning, Outdoor, Play, Support, Volunteers",
+    "lat": 52.597953,
+    "lng": -2.490553,
+    "createdAt": "2018-05-30T22:25:43.927Z",
+    "__v": 3
+  },
+  {
+    "author": {
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
+    },
+    "image": "https://pbs.twimg.com/profile_images/459273052375625728/juEjPryd_400x400.jpeg",
+    "status": "current",
+    "comments": [
+      "5b0fb78851cdf71139e2a6aa",
+      "5b0fb78851cdf71139e2a6ab",
+      "5b0fb78851cdf71139e2a6aa",
+      "5b0fb78851cdf71139e2a6ab",
+      "5b0fb78851cdf71139e2a6aa",
+      "5b0fb78851cdf71139e2a6ab",
+      "5b0fb78851cdf71139e2a6ae",
+      "5b0fb78851cdf71139e2a6aa",
+      "5b0fb78851cdf71139e2a6ab",
+      "5b0fb78851cdf71139e2a6ae",
+      "5b0fb78851cdf71139e2a6af"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e89e560517b40cb6af",
+    "age": "Adults",
     "name": "Wyldwoods: Respite and short breaks",
     "frequency": "Book Yourself",
     "summary": "Three wonderful venues for anyone in need of some respite.",
@@ -3117,19 +3888,23 @@ var activityDataFile = [
     "lat": 52.597953,
     "lng": -2.490553,
     "createdAt": "2018-05-30T22:25:44.007Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/563340599483330561/lJ_9qiiO_400x400.png",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6b5"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e89e560517b40cb6b0",
+    "age": "Children",
     "name": "Hijinx Theatre: Odyssey",
     "frequency": "Weekly Activities",
     "summary": "Odyssey is an inclusive community group for adults with and without learning disabilities who share a passion for performance.",
@@ -3143,19 +3918,23 @@ var activityDataFile = [
     "lat": 51.4648421,
     "lng": -3.163183,
     "createdAt": "2018-05-30T22:25:44.889Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/563340599483330561/lJ_9qiiO_400x400.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6b6"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e89e560517b40cb6b1",
+    "age": "Adults",
     "name": "Hijinx Theatre: Telemachus",
     "frequency": "Weekly Activities",
     "summary": "Telemachus is an inclusive group for young people with and without learning disabilities who are adventurous, and love to create and perform.",
@@ -3169,19 +3948,33 @@ var activityDataFile = [
     "lat": 51.4648421,
     "lng": -3.163183,
     "createdAt": "2018-05-30T22:25:44.924Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.openplay.co.uk/uploads/1422_53b5389008524-500x_.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6ba",
+      "5b0fb78851cdf71139e2a6ba",
+      "5b0fb78851cdf71139e2a6b9",
+      "5b0fb78851cdf71139e2a6be",
+      "5b0fb78851cdf71139e2a6ba",
+      "5b0fb78851cdf71139e2a6b9",
+      "5b0fb78851cdf71139e2a6be",
+      "5b0fb78851cdf71139e2a6bd",
+      "5b0fb78851cdf71139e2a6ba",
+      "5b0fb78851cdf71139e2a6b9",
+      "5b0fb78851cdf71139e2a6be"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e99e560517b40cb6b2",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Meriden Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3195,19 +3988,25 @@ var activityDataFile = [
     "lat": 51.6781604,
     "lng": -0.3798134,
     "createdAt": "2018-05-30T22:25:45.482Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://c1.staticflickr.com/6/5105/14111056651_8ebdb205ef_b.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6c4",
+      "5b0fb78851cdf71139e2a6c4",
+      "5b0fb78851cdf71139e2a6c5"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24e99e560517b40cb6b3",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Waterwise",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3221,19 +4020,23 @@ var activityDataFile = [
     "lat": 50.80633779999999,
     "lng": -0.4002468,
     "createdAt": "2018-05-30T22:25:45.901Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://search3.openobjects.com/mediamanager/wokingham/info/images/dinton_pastures_play_area_05.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6c9"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ea9e560517b40cb6b4",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Dinton Pastures",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3247,19 +4050,25 @@ var activityDataFile = [
     "lat": 51.439938,
     "lng": -0.872574,
     "createdAt": "2018-05-30T22:25:46.382Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://igx.4sqi.net/img/general/600x600/77906072_VmlV7F_XoA92u_jfcN9oBd0toSDbg7sGMnhOKZVVz6c.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6cd",
+      "5b0fb78851cdf71139e2a6ca",
+      "5b0fb78851cdf71139e2a6cd"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ea9e560517b40cb6b5",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Oakfield Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3273,19 +4082,29 @@ var activityDataFile = [
     "lat": 52.5673176,
     "lng": -1.1545604,
     "createdAt": "2018-05-30T22:25:46.833Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://i0.wp.com/www.fromyorkshire2u.com/wp-content/uploads/2017/03/img_8625.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78851cdf71139e2a6ce",
+      "5b0fb78851cdf71139e2a6ce",
+      "5b0fb78851cdf71139e2a6d2",
+      "5b0fb78851cdf71139e2a6d3",
+      "5b0fb78851cdf71139e2a6ce",
+      "5b0fb78851cdf71139e2a6d2",
+      "5b0fb78851cdf71139e2a6d3"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24eb9e560517b40cb6b6",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Manor Heath Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3299,19 +4118,23 @@ var activityDataFile = [
     "lat": 53.709258,
     "lng": -1.866163,
     "createdAt": "2018-05-30T22:25:47.352Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.calderdale.gov.uk/v2/sites/default/files/cv-playarea_1.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6d8"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24eb9e560517b40cb6b7",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Centre Vale Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3325,19 +4148,23 @@ var activityDataFile = [
     "lat": 53.7191167,
     "lng": -2.106649,
     "createdAt": "2018-05-30T22:25:47.756Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://s3.amazonaws.com/gs-waymarking-images/9b90ae0b-bb4e-479c-b317-46395afaa42e_l.JPG",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6d9"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ec9e560517b40cb6b8",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Marine Hall Gardens",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3351,19 +4178,32 @@ var activityDataFile = [
     "lat": 53.9269769,
     "lng": -3.0165782,
     "createdAt": "2018-05-30T22:25:48.140Z",
-    "__v": 0
+    "__v": 1
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.wokinghampaper.com/wp-content/uploads/2015/07/Sol-Joel-Park-artists-impression.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6dc",
+      "5b0fb78951cdf71139e2a6dc",
+      "5b0fb78951cdf71139e2a6dd",
+      "5b0fb78951cdf71139e2a6dc",
+      "5b0fb78951cdf71139e2a6dd",
+      "5b0fb78951cdf71139e2a6e1",
+      "5b0fb78951cdf71139e2a6dc",
+      "5b0fb78951cdf71139e2a6dd",
+      "5b0fb78951cdf71139e2a6e1",
+      "5b0fb78951cdf71139e2a6e0"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ec9e560517b40cb6b9",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Sol Joel",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3377,19 +4217,23 @@ var activityDataFile = [
     "lat": 51.4424015,
     "lng": -0.9265129999999999,
     "createdAt": "2018-05-30T22:25:48.556Z",
-    "__v": 0
+    "__v": 4
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/media/C-RABvrXgAAioZo.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
       
     ],
+    "loves": [
+      
+    ],
     "_id": "5b0f24ed9e560517b40cb6ba",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: King George Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3407,15 +4251,22 @@ var activityDataFile = [
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/378800000081369191/42b4ab4e73c5b0807c8d76d0bcc6f2b1_400x400.jpeg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6e7",
+      "5b0fb78951cdf71139e2a6e7",
+      "5b0fb78951cdf71139e2a6e8",
+      "5b0fb78951cdf71139e2a6ea"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ed9e560517b40cb6bb",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Winton Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3429,19 +4280,28 @@ var activityDataFile = [
     "lat": 50.7387885,
     "lng": -1.8674645,
     "createdAt": "2018-05-30T22:25:49.508Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/1566714551/FOHP_Logo_400x400.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6eb",
+      "5b0fb78951cdf71139e2a6eb",
+      "5b0fb78951cdf71139e2a6f1",
+      "5b0fb78951cdf71139e2a6eb",
+      "5b0fb78951cdf71139e2a6f1",
+      "5b0fb78951cdf71139e2a6f0"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ed9e560517b40cb6bc",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Hednesford Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3455,19 +4315,25 @@ var activityDataFile = [
     "lat": 52.7117982,
     "lng": -1.9923029,
     "createdAt": "2018-05-30T22:25:49.922Z",
-    "__v": 0
+    "__v": 3
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://i.ytimg.com/vi/Q4ZGcPRjess/maxresdefault.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6f6",
+      "5b0fb78951cdf71139e2a6f6",
+      "5b0fb78951cdf71139e2a6f7"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ee9e560517b40cb6bd",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Meadowbank Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3481,19 +4347,25 @@ var activityDataFile = [
     "lat": 51.236209,
     "lng": -0.3317751,
     "createdAt": "2018-05-30T22:25:50.357Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.freeparks.co.uk/wp-content/uploads/2015/08/f_playground__scheme-lightbox_800_531_80.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a6fb",
+      "5b0fb78951cdf71139e2a6fb",
+      "5b0fb78951cdf71139e2a6fc"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ee9e560517b40cb6be",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: The Level",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3507,19 +4379,25 @@ var activityDataFile = [
     "lat": 50.8310776,
     "lng": -0.1332521,
     "createdAt": "2018-05-30T22:25:50.842Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://static1.squarespace.com/static/53bc5ceae4b034f4c114566c/t/57c04a9e893fc07d49fe9eee/1472219811939/Playground+Picture.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a700",
+      "5b0fb78951cdf71139e2a700",
+      "5b0fb78951cdf71139e2a701"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ef9e560517b40cb6bf",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Grange Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3533,19 +4411,25 @@ var activityDataFile = [
     "lat": 51.3082985,
     "lng": -0.1202255,
     "createdAt": "2018-05-30T22:25:51.293Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://c1.staticflickr.com/5/4282/34671725473_137d7f9792_b.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a705",
+      "5b0fb78951cdf71139e2a705",
+      "5b0fb78951cdf71139e2a706"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24ef9e560517b40cb6c0",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Anderson Crescent",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3559,19 +4443,25 @@ var activityDataFile = [
     "lat": 55.97344409999999,
     "lng": -4.0942262,
     "createdAt": "2018-05-30T22:25:51.797Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.northlanarkshire.gov.uk/media/image/7/p/Jupiter-Play-FHS-Crannog-Design-Promo2-small.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a70a",
+      "5b0fb78951cdf71139e2a70a",
+      "5b0fb78951cdf71139e2a70b"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24f09e560517b40cb6c1",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Drumpellier Country Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3585,19 +4475,25 @@ var activityDataFile = [
     "lat": 55.8736257,
     "lng": -4.0728496,
     "createdAt": "2018-05-30T22:25:52.205Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.watford.gov.uk/images/Harwoods_4597_yes.jpg",
-    "age": "Children",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a710",
+      "5b0fb78951cdf71139e2a710",
+      "5b0fb78951cdf71139e2a70f"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24f09e560517b40cb6c2",
+    "age": "Children",
     "name": "Pipa Inclusive Play Area: Harwoods",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
@@ -3611,19 +4507,25 @@ var activityDataFile = [
     "lat": 51.648138,
     "lng": -0.407325,
     "createdAt": "2018-05-30T22:25:52.640Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.outward.org.uk/uploads/sidepics/NE_Activity_Breaks_logo.jpg",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a714",
+      "5b0fb78951cdf71139e2a714",
+      "5b0fb78951cdf71139e2a715"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24f19e560517b40cb6c3",
+    "age": "Adults",
     "name": "Nutley Edge Activity Breaks",
     "frequency": "Monthly Activities",
     "summary": "At Nutley Edge, we run holidays for people with learning disabilities or Autism Spectrum Conditions (ASC). These are our specialist Activity Breaks and are run by Outward, a London-based charity that has been successfully supporting people with learning disabilities and ASC for over forty years.",
@@ -3637,19 +4539,24 @@ var activityDataFile = [
     "lat": 51.013595,
     "lng": 0.072793,
     "createdAt": "2018-05-30T22:25:53.340Z",
-    "__v": 0
+    "__v": 2
   },
   {
     "author": {
-      "id": "5b0f24b09e560517b40cb637",
-      "displayName": "user1"
+      "id": "5b0fb78751cdf71139e2a45d",
+      "displayName": "admin"
     },
     "image": "https://www.grangecentre.org.uk//clients/thegrangecentreforpeoplewithdisabilities/assets/logo.png",
-    "age": "Adults",
+    "status": "current",
     "comments": [
+      "5b0fb78951cdf71139e2a719",
+      "5b0fb78951cdf71139e2a71a"
+    ],
+    "loves": [
       
     ],
     "_id": "5b0f24f19e560517b40cb6c4",
+    "age": "Adults",
     "name": "Summer Fun",
     "frequency": "Annual Activities",
     "summary": "A range of activities in a rural setting",
@@ -3663,7 +4570,7 @@ var activityDataFile = [
     "lat": 51.27506169999999,
     "lng": -0.3864286,
     "createdAt": "2018-05-30T22:25:53.781Z",
-    "__v": 0
+    "__v": 2
   }
 ];
 
