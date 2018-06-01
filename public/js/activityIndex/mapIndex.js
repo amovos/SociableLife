@@ -50,7 +50,7 @@ function initActivityIndexMap() {
     // Set CSS for the control border.
     var controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#fff';
-    controlUI.style.borderRadius = '5px';
+    controlUI.style.borderRadius = '30px 30px 0px 0px';
     controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Activity Map Key';
@@ -68,7 +68,7 @@ function initActivityIndexMap() {
     controlUI.appendChild(controlText);
     
     mapKeyDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(mapKeyDiv);
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(mapKeyDiv);
     
 }
 
@@ -202,39 +202,31 @@ function addMarkers(activities){
             var iwBackground = iwOuter.prev();
         
             // Removes background shadow DIV
-            iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            iwBackground.children(':nth-child(2)').css({'opacity' : '0'});
         
             // Removes white background DIV
-            iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+            iwBackground.children(':nth-child(4)').css({'opacity' : '0'});
             
             // Changes the desired tail shadow color.
             iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
         
+            //hack to get around the fact that the divs (2 and 4 above) don't disappear so you can't click through to the map
+            //so instead when you click it, the infowindow closes
+            iwBackground.click(function(){
+                closeLastOpenedInfoWindow();
+            });
+        
             // Reference to the div that groups the close button elements.
             var iwCloseBtn = iwOuter.next();
-        
-            // Apply the desired effect to the close button
-            iwCloseBtn.css({
-                opacity: '1', 
-                right: '42px', 
-                top: '3px', 
-                width: '25px', 
-                height: '25px', 
-                border: '6px solid #1166c6', 
-                'border-radius': '12px', 
-                'box-shadow': '0 0 5px #3990B9'}
-            );
             
+            // Apply the desired effect to the close button
+            iwCloseBtn.css({opacity: '0'});
             
             // If the content of infowindow not exceed the set maximum height, then the gradient is removed.
             if($('.iw-content').height() < 250){
                 $('.iw-bottom-gradient').css({display: 'none'});
             }
         
-            // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
-            iwCloseBtn.mouseout(function(){
-              $(this).css({opacity: '1'});
-            });
         });
             
     });
