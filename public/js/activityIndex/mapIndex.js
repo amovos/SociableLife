@@ -226,6 +226,14 @@ function addMarkers(activities){
             if($('.iw-content').height() < 250){
                 $('.iw-bottom-gradient').css({display: 'none'});
             }
+            
+            //stop the old close button from appearing when you mouse over it
+            iwCloseBtn.mouseover(function(){
+                $(this).css({opacity: '0'});
+            });
+            iwCloseBtn.mouseout(function(){
+                $(this).css({opacity: '0'});
+            });
         
         });
             

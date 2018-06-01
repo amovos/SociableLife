@@ -12,7 +12,7 @@ var userProfileRoute =  function(req, res){
             return res.redirect('/activities');
         }
         // Search DB for all activities submitted by the current user
-        Activity.find().where("author.id").equals(foundUser.id).exec(function(err, activities){
+        Activity.find().where('author').equals(foundUser._id).exec(function(err, activities){
             if(err){
                 req.flash("errorMessage", "Error connecting to database, please try again.");
                 return res.redirect('/activities');
