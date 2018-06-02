@@ -2,24 +2,23 @@
 /* global $ */
 
 var map;
-var zoom;
+var mapInitZoom;
+var mapInitCenter = {lat: 54.4800, lng: -4.1000 }; 
 var markers = [];
 var lastOpenedInfoWindow;
-
-
 
 function initActivityIndexMap() {
     
     //set correct map zoom based on screen width
     if($(window).width() > 500){
-        zoom = 6;
+        mapInitZoom = 6;
     } else {
-        zoom = 5;
+        mapInitZoom = 5;
     }
     
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
-        zoom: zoom,
-        center: {lat: 54.4800, lng: -4.1000 },
+        zoom: mapInitZoom,
+        center: mapInitCenter,
         scrollwheel: false,
         //gestureHandling: 'cooperative',
         mapTypeControl: false,
@@ -31,18 +30,33 @@ function initActivityIndexMap() {
     
     var mapKeyDiv = document.createElement('div');
     
+    var allAgesKeyDivOpacity = '';
+    var adultsKeyDivOpacity = '';
+    var childrenKeyDivOpacity = '';
+    
+    //check the value of the input boxes so the markers have the correct opacity when created
+    if(!($('#allAgesCheck').prop('checked'))) {
+        allAgesKeyDivOpacity = 'style="opacity: 0.2;" ';
+    }
+    if(!($('#adultsCheck').prop('checked'))) {
+        adultsKeyDivOpacity = 'style="opacity: 0.2;" ';
+    }
+    if(!($('#childrenCheck').prop('checked'))) {
+        childrenKeyDivOpacity = 'style="opacity: 0.2;" ';
+    }
+    
     var mapKeyHtml = '<div class="d-flex flex-row">' +
-                        '<div class="d-flex flex-column align-items-center mr-2">' +
+                        '<div id="allAgesKeyDiv" ' + allAgesKeyDivOpacity + 'class="d-flex flex-column align-items-center mr-2 mapKeyDiv">' +
                             '<img src="/img/Brown.svg"</img>' +
-                            'All Ages' +
+                            '<span>All Ages<span>' +
                         '</div>' +
-                        '<div class="d-flex flex-column align-items-center mr-2">' +
+                        '<div id="adultsKeyDiv" ' + adultsKeyDivOpacity + 'class="d-flex flex-column align-items-center mr-2 mapKeyDiv">' +
                             '<img src="/img/Blue.svg"</img>' +
-                            'Adults' +
+                            '<span>Adults</span>' +
                         '</div>' +
-                        '<div class="d-flex flex-column align-items-center">' +
+                        '<div id="childrenKeyDiv" ' + childrenKeyDivOpacity + 'class="d-flex flex-column align-items-center mapKeyDiv">' +
                             '<img src="/img/Aqua.svg"</img>' +
-                            'Children' +
+                            '<span>Children</span>' +
                         '</div>' +
                     '</div>';
                         

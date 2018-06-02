@@ -43,7 +43,7 @@
                             </div>
                             <div class="d-flex flex-column align-items-center">
                                 <span>Comments</span>
-                                    <span id="sociableComment" class="fa-stack fa-1x sociable-comment">
+                                    <span id="sociableComment" class="fa-stack fa-1x sociable-comment" onclick="scrollToComments()">
                                         <i class="fa fa-comment fa-stack-2x comment-offset"></i>
                                         <span id="sociableCommentNum" class="fa-stack-1x text-white"><%= (activity.comments.length) %></span>
                                     </span>
@@ -54,13 +54,13 @@
                     <hr>
                     <!--START OF ACTIVITY INFO CONTENT-->
                     <div class="d-flex flex-row flex-wrap">
-                        <div class="d-flex flex-column col-md-8 mb-2 nopadding">
+                        <div class="d-flex flex-column col-md-8 nopadding">
                             <h4>Description</h4>
                             <p class="mr-2"><%= activity.description %></p>
                             <div class="d-flex flex-row">
                                 <div class="col-md-6 nopadding">
                                     <h4>Ages</h4>
-                                    <p class="mr-2"><%= activity.age %></p>
+                                    <p class="mr-3"><%= activity.age %></p>
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4>Suitable for</h4>
@@ -70,18 +70,33 @@
                             <div class="d-flex flex-row">
                                 <div class="col-md-6 nopadding">
                                     <h4>When</h4>
-                                    <p class="mr-2"><%= activity.when %></p>
+                                    <p class="mr-3"><%= activity.when %></p>
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4>Cost</h4>
                                     <p class="mr-2"><%= activity.price %></p>
                                 </div>
                             </div>
-                            <h4>Where</h4>
-                            <p class="mr-2"><%= activity.location %></p>
                             <div class="d-flex flex-row">
                                 <div class="col-md-6 nopadding">
-                                    <a class="btn btn-primary btn-block" href="<%= activity.website %>">Activity Website</a>
+                                    <h4>Type</h4>
+                                    <p class="mr-3"><%= activity.frequency %></p>
+                                </div>
+                                <div class="col-md-6 nopadding">
+                                    <h4>Where</h4>
+                                    <p class="mr-2"><%= activity.location %></p>
+                                </div>
+                            </div>
+                            <h4>Tags</h4>
+                            <p class="mr-2"><%= activity.tags %></p>
+                            <div class="d-flex flex-row flex-wrap">
+                                <div class="col-md-5 nopadding">
+                                    <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Activity website</a>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5 nopadding">
+                                    <a class="btn btn-warning btn-block mb-2" href="/contact">Something not right?</a>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +108,7 @@
             <!-- INFO SECTION END -->
 
             <!-- COMMENT SECTION START -->
-            <div class="card mb-5">
+            <div id="commentSection" class="card mb-5">
                 <div class="card-body">
                     <div class="float-left">
                         <h3>Comments</h3>
@@ -200,5 +215,22 @@
     });
 </script>
 
+<!-- Temporary script to scroll to comments section when comment bubble is clicked -->
+<script>
+function scrollToComments() {
+    console.log("CLICKED");
+    
+    event.preventDefault(); //Prevent default anchor click behavior
+
+    var hash = "#commentSection";
+    
+    $('html, body').animate({
+        scrollTop: $(hash).offset().top
+    }, 800, function(){
+        window.location.hash = hash;
+    });
+    
+}
+</script>
 
 <% include ../partials/footer %>

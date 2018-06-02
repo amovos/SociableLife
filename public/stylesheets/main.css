@@ -11,6 +11,7 @@
 
 .activity-card {
 	background-color: #f9f9f9;
+	cursor: pointer;
 }
 
 /* Used to remove borders on activty show and index pages */
@@ -41,6 +42,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sociable-comment {
 	color: #249D3D;
+	cursor: pointer;
 }
 
 .activity-show-image {
@@ -92,6 +94,11 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+.mapKeyDiv {
+  cursor: pointer;
+  transition: all .2s ease;
 }
 
 /*INFOWINDOW STYLES*/
