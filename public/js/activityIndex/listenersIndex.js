@@ -153,6 +153,7 @@ $('#searchQueryInput').keyup(function(e){
 //on enter keypress in the distance input, run a filter
 $('#setDistanceInput').keyup(function(e){
     if(e.keyCode==13){
+        $(this).blur(); //should minimise the keyboard on mobile
         searchCircle($('#setDistanceInput').val());
         existingDataSearch();
     }
@@ -237,6 +238,8 @@ $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckb
         checkBoxes = '#currentStatusCheck,#reviewStatusCheck,#removedStatusCheck';
     } else if(this.id === "agesCheckboxToggle"){
         checkBoxes = '#allAgesCheck,#adultsCheck,#childrenCheck';
+        
+        
     } else if(this.id === "suitableCheckboxToggle"){
         checkBoxes = '#allAbilitiesCheck,#learningDisabilitiesCheck,#physicalDisabilitiesCheck';
     } else {
@@ -251,6 +254,12 @@ $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckb
         $(checkBoxes).prop('checked', true);
         $(this).html('Clear All');
         existingDataSearch();
+    }
+    
+    //need to reset the mapkey icons if that was the clear/select all button that was pressed
+    //simplest way to do that is re-initialise the map, which is a lot of overhead but it shouldn't be clicked that often
+    if(this.id === "agesCheckboxToggle"){
+        initActivityIndexMap();
     }
 });
 

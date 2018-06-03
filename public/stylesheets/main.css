@@ -63,6 +63,7 @@ input[type=number]::-webkit-outer-spin-button {
 .tooltip-status-text {
     visibility: hidden;
     width: 200px;
+    max-width: 35vw;
     background-color: #4c4c4c;
     color: #fff;
     text-align: center;
@@ -70,8 +71,6 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 5px;
     position: absolute;
     z-index: 1;
-    /*bottom: 140px;*/
-    /*right: 100px;*/
     margin-left: 5px;
     font-weight: 200;
     font-size: 20px;
