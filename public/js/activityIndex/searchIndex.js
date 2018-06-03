@@ -171,23 +171,19 @@ function clearCircleAndSearchMarker(){
     $('#collapseDistanceSearch').collapse('hide');
 }
 
-function mapKeyClickFunction(passedThis){
+function mapKeyUpdateFunction(passedThis){
 
     var selectedCheck;
-    var selectedIcon;
     var selectIconDiv;
     
-    if(passedThis.id === "allAgesKeyDiv" || passedThis.id === "allAgesCheck"){
+    if(passedThis.id === "allAgesCheck"){
         selectedCheck = $("#allAgesCheck");
-        selectedIcon = "/img/Brown.svg";
         selectIconDiv = $("#allAgesKeyDiv");
-    } else if(passedThis.id === "adultsKeyDiv" || passedThis.id === "adultsCheck"){
+    } else if(passedThis.id === "adultsCheck"){
         selectedCheck = $("#adultsCheck");
-        selectedIcon = "/img/Blue.svg";
         selectIconDiv = $("#adultsKeyDiv");
     } else {
         selectedCheck = $("#childrenCheck");
-        selectedIcon = "/img/Aqua.svg";
         selectIconDiv = $("#childrenKeyDiv");
     }
 
@@ -199,6 +195,37 @@ function mapKeyClickFunction(passedThis){
         selectedCheck.prop('checked', true);
         selectIconDiv.css('opacity', '1');
         mapKeyOpacityVar = '1'; //sets the global variable mapKeyOpacityVar to be the new value after click, so the hover effect works as expected
+    }
+}
+
+function mapKeyClickFunction(passedThis){
+    mapKeyOpacityVar = '1';
+    
+    //if one is clicked, uncheck the other two and check this one
+    if(passedThis.id === "allAgesKeyDiv"){
+        $("#allAgesKeyDiv").css('opacity', '1');
+        $("#adultsKeyDiv").css('opacity', '0.2');
+        $("#childrenKeyDiv").css('opacity', '0.2');
+        
+        $("#allAgesCheck").prop('checked', true);
+        $("#adultsCheck").prop('checked', false);
+        $("#childrenCheck").prop('checked', false);
+    } else if(passedThis.id === "adultsKeyDiv"){
+        $("#adultsKeyDiv").css('opacity', '1');
+        $("#childrenKeyDiv").css('opacity', '0.2');
+        $("#allAgesKeyDiv").css('opacity', '0.2');
+        
+        $("#adultsCheck").prop('checked', true);
+        $("#childrenCheck").prop('checked', false);
+        $("#allAgesCheck").prop('checked', false);
+    } else {
+        $("#childrenKeyDiv").css('opacity', '1');
+        $("#allAgesKeyDiv").css('opacity', '0.2');
+        $("#adultsKeyDiv").css('opacity', '0.2');
+        
+        $("#childrenCheck").prop('checked', true);
+        $("#allAgesCheck").prop('checked', false);
+        $("#adultsCheck").prop('checked', false);
     }
 }
 

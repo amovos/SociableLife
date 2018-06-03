@@ -178,10 +178,13 @@ $('#searchQueryClearBtn').on('click', function(){
     newSearch();
 });
 
-//if the cross button is clicked on the activity search box, clear the input and run the search again
+//if the cross button is clicked on the location search box, clear the input and run the search again
 $('#findNearMeClearBtn').on('click', function(){
     $('#findNearMeClearBtn').hide();
     $('#setLocationInput').val('');
+    //reset map zoom to whole map
+    map.setCenter(mapInitCenter);
+    map.setZoom(mapInitZoom);
     newSearch();
 });
 
@@ -199,7 +202,7 @@ $('#activity-index-map').on('click', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyD
 //the global variable mapKeyOpacityVar is set on click of the markers to the new opacity after click
 $('#activity-index-map').on('mouseenter', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv', function( event ) {
     mapKeyOpacityVar = $(this).css('opacity');
-    $(this).css('opacity', '0.5');
+    $(this).css('opacity', '0.6');
 }).on('mouseleave', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv', function( event ) {
     $(this).css('opacity', mapKeyOpacityVar);
 });
@@ -221,7 +224,7 @@ $('#allAgesCheck,#adultsCheck,#childrenCheck').on('click', async function(){
         $(this).prop('checked', true);
     }
     
-    await mapKeyClickFunction(this);
+    await mapKeyUpdateFunction(this);
     existingDataSearch();
 });
 
