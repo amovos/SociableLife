@@ -13,8 +13,10 @@
                             <h3 class="card-title">
                                 <% if(activity.status === "current"){ %>
                                     <span class="tooltip-status" alt="<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text"><strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months</span></span>
+                                <% } else if(activity.status === "review"){ %>
+                                    <span class="tooltip-status" alt="<strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date."><i class="fa fa-question-circle fa-1x text-warning"></i><span class="tooltip-status-text"><strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.</span></span>
                                 <% } else { %>
-                                    <span class="tooltip-status" alt="<strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date."><i class="fa fa-question-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.</span></span>
+                                    <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
                                 <% } %>
                                 <%= activity.name %></h3>
                             <span>

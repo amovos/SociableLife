@@ -65,13 +65,109 @@
     
     <!-- More filters collapsible div-->
     <div class="collapse col-12 nopadding" id="collapseMoreFilters">
-        <div class="alert alert-primary mt-2 text-center" role="alert">
-            Sorry, we're still building this feature 🛠 we'll have it ready as soon as possible!
+        <!--<div class="alert alert-primary mt-2 text-center" role="alert">-->
+        <!--    Sorry, we're still building this feature 🛠 we'll have it ready as soon as possible!-->
+        <!--</div>-->
+        
+        <div class="d-flex flex-row flex-wrap alert alert-primary mt-2" role="alert">
             
-            <input id="allAgesCheck" type="checkbox" name="allAgesCheck" checked/>
-            <input id="adultsCheck" type="checkbox" name="adultsCheck" checked/>
-            <input id="childrenCheck" type="checkbox" name="childrenCheck" checked/>
+            <div class="flex-grow-1 mr-4 mb-3">
+                <label class="mb-0 mr-2"><h5>Status</h5></label>
+                <button id="statusCheckboxToggle" type="button" class="btn btn-light btn-sm clear-filter-btn mb-1">Clear All</button>
+                <div class="d-flex flex-column align-items-start">
+                    <label class="checkbox-container" for="currentStatusCheck">Current <span class="tooltip-status" alt="<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text"><strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months</span></span>
+                        <input class="checkbox-input" id="currentStatusCheck" type="checkbox" name="currentStatusCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="reviewStatusCheck">Under Review <span class="tooltip-status" alt="<strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date."><i class="fa fa-question-circle fa-1x text-warning"></i><span class="tooltip-status-text"><strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.</span></span>
+                        <input class="checkbox-input" id="reviewStatusCheck" type="checkbox" name="reviewStatusCheck"/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="removedStatusCheck">Out of date <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
+                        <input class="checkbox-input" id="removedStatusCheck" type="checkbox" name="removedStatusCheck"/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="flex-grow-1 mr-4 mb-3">
+                <label class="mb-0 mr-2"><h5>Ages</h5></label>
+                <button id="agesCheckboxToggle" type="button" class="btn btn-light btn-sm clear-filter-btn mb-1">Clear All</button>
+                <div class="d-flex flex-column align-items-start">
+                    <label class="checkbox-container" for="allAgesCheck">All Ages
+                        <input id="allAgesCheck" type="checkbox" name="allAgesCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="adultsCheck">Adults
+                        <input id="adultsCheck" type="checkbox" name="adultsCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="childrenCheck">Children
+                        <input id="childrenCheck" type="checkbox" name="childrenCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="flex-grow-1 mr-4 mb-3">
+                <label class="mb-0 mr-2"><h5>Suitable for</h5></label>
+                <button id="suitableCheckboxToggle" type="button" class="btn btn-light btn-sm clear-filter-btn mb-1">Clear All</button>
+                <div class="d-flex flex-column align-items-start">
+                    <label class="checkbox-container" for="allAbilitiesCheck">All Abilities
+                        <input class="checkbox-input" id="allAbilitiesCheck" type="checkbox" name="allAbilitiesCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="learningDisabilitiesCheck">Learning Disabilities
+                        <input class="checkbox-input" id="learningDisabilitiesCheck" type="checkbox" name="learningDisabilitiesCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="physicalDisabilitiesCheck">Physical Disabilities
+                        <input class="checkbox-input" id="physicalDisabilitiesCheck" type="checkbox" name="physicalDisabilitiesCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="flex-grow-1 mr-4">
+                <label class="mb-0 mr-2"><h5>Type</h5></label>
+                <button id="typeCheckboxToggle" type="button" class="btn btn-light btn-sm clear-filter-btn mb-1">Clear All</button>
+                <div class="d-flex flex-row flex-wrap">
+                    
+                    <div class="d-flex flex-column align-items-start mr-3">
+                        <label class="checkbox-container" for="dailyActivitiesCheck">Daily Activities
+                            <input class="checkbox-input" id="dailyActivitiesCheck" type="checkbox" name="dailyActivitiesCheck" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container" for="weeklyActivitiesCheck">Weekly Activities
+                            <input class="checkbox-input" id="weeklyActivitiesCheck" type="checkbox" name="weeklyActivitiesCheck" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container" for="monthlyActivitiesCheck">Monthly Activities
+                            <input class="checkbox-input" id="monthlyActivitiesCheck" type="checkbox" name="monthlyActivitiesCheck" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="d-flex flex-column align-items-start mr-3">
+                    <label class="checkbox-container" for="annualActivitiesCheck">Annual Activities
+                        <input class="checkbox-input" id="annualActivitiesCheck" type="checkbox" name="annualActivitiesCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="oneOffEventsCheck">One-Off Events
+                        <input class="checkbox-input" id="oneOffEventsCheck" type="checkbox" name="oneOffEventsCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container" for="bookYourselfCheck">Book Yourself
+                        <input class="checkbox-input" id="bookYourselfCheck" type="checkbox" name="bookYourselfCheck" checked/>
+                        <span class="checkmark"></span>
+                    </label>
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
+        
     </div>
 
 </div>
@@ -117,9 +213,11 @@
 <!-- Masonry Image Scripts-->
 <script src="/js/lib/masonry.pkgd.min.js"></script>
 
+<script src="/js/activityIndex/listenersIndex.js"></script>
 <script src="/js/activityIndex/activityIndex.js"></script>
 <script src="/js/activityIndex/mapIndex.js"></script>
-<script defer src="/js/activityIndex/searchIndex.js"></script>
+<script src="/js/activityIndex/filtersIndex.js"></script>
+<script src="/js/activityIndex/searchIndex.js"></script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.32&key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityIndexMap"></script>
 

@@ -1,9 +1,4 @@
-/* global $ */ //this is how to get rid of the warning because $ isn't defined in this file
-
-//on page load, page number starts at 1
-var pageNumber = 1;
-var perPage = 8
-var activityCounter = 0;
+/* global $ */
 
 //******************
 // FUNCTIONS
@@ -45,17 +40,22 @@ function addMoreActivities(activities){
 }
 
 function addActivity(activity){ //function used whenever we want to add an item to the DOM (e.g. on page load or when an item is created)
+    
+    //set the tooltip content for the status icons
     var statusIcon;
     var statusText;
-    //adding alt text to the span surrounding the icon makes it accessible to screen readers
     if(activity.status === "current"){
-        statusText = '<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months';
-        statusIcon = '<span class="tooltip-status" alt="' + statusText + '"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text">' + statusText + '</span></span>';
-       
+        statusText = statusTextCurrent;
+        statusIcon = statusIconCurrent;
+    } else if(activity.status === "review"){
+        statusText = statusTextReview;
+        statusIcon = statusIconReview;
     } else {
-        statusText = '<strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.';
-        statusIcon = '<span class="tooltip-status" alt="' + statusText + '"><i class="fa fa-question-circle fa-1x text-danger"></i><span class="tooltip-status-text">' + statusText + '</span></span>';
+        statusText = statusTextRemoved;
+        statusIcon = statusIconRemoved;
     }
+    
+    
     
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
@@ -105,11 +105,8 @@ function addActivity(activity){ //function used whenever we want to add an item 
         '</div>'
         );
     
-    //$('#activity-grid').append(newActivity);
     $masonryContainer.append(newActivity).masonry( 'appended', newActivity );
 }
-
-var $masonryContainer;
 
 function initMasonry(){
     $masonryContainer = $('.grid').masonry({
@@ -126,7 +123,6 @@ async function reloadMasonryLayout(){
     await $masonryContainer.masonry('reloadItems');
     initMasonry();
 }
-
 
 function removeAllActivities() {
     $('#activity-grid').empty();

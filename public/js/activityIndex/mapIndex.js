@@ -1,11 +1,5 @@
-/* global google */
 /* global $ */
-
-var map;
-var mapInitZoom;
-var mapInitCenter = {lat: 54.4800, lng: -4.1000 }; 
-var markers = [];
-var lastOpenedInfoWindow;
+/* global google */
 
 function initActivityIndexMap() {
     
@@ -117,24 +111,20 @@ function addMarkers(activities){
         
         markers.push(marker); //add the newly created marker onto the markers array
         
-        
-        
-        //DUPLICATE CODE FROM ACTIVITYINDEX.JS
+        //set the tooltip content for the status icons
         var statusIcon;
         var statusText;
-        //adding alt text to the span surrounding the icon makes it accessible to screen readers
         if(currentActivity.status === "current"){
-            statusText = '<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months';
-            statusIcon = '<span class="tooltip-status" alt="' + statusText + '"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text">' + statusText + '</span></span>';
-           
+            statusText = statusTextCurrent;
+            statusIcon = statusIconCurrent;
+        } else if(currentActivity.status === "review"){
+            statusText = statusTextReview;
+            statusIcon = statusIconReview;
         } else {
-            statusText = '<strong>Out of date</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.';
-            statusIcon = '<span class="tooltip-status" alt="' + statusText + '"><i class="fa fa-question-circle fa-1x text-danger"></i><span class="tooltip-status-text">' + statusText + '</span></span>';
+            statusText = statusTextRemoved;
+            statusIcon = statusIconRemoved;
         }
-        
-        
-        
-        
+
         //create content for infowindow
         var content =  '<div id="iw-container">' +
                             

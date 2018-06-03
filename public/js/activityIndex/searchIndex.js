@@ -1,192 +1,8 @@
 /* global $ */
-/* global addMarkers */
-/* global addActivities */
-
-var mapKeyOpacityVar;
-
-// on page load, load all markers and activities and setup listeners
-$(document).ready(function(){ //waits until the DOM has loaded
-    //on load search for activities
-    //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience
-    initMasonry();
-    newSearch();
-    
-    //TEMPORARY HACK TO FIX THE MASONRY BUG OF OVERLAPPING IMAGES ON PAGE LOAD
-    window.setInterval(function() {
-        reloadMasonryLayout();
-    }, 500);
-    
-    
-    
-    //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
-    if($('#searchQueryInput').val()){
-        $('#searchQueryClearBtn').show();
-    }
-    if($('#setLocationInput').val()){
-        $('#findNearMeClearBtn').show();
-    }
-    
-
-//*************
-//LISTENERS
-//*************
-
-    //when search button is clicked, filter results
-    $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load
-        newSearch();
-    });
-
-    //when typing in text search input or location search input, if enter is pressed run the search
-    $('#searchQueryInput,#setLocationInput').keyup(function(e){
-        if(e.keyCode==13){ //remove this if statement to get constant search (but this doesn't work well with the marker drop animation)
-            newSearch();
-        } else {
-            //code to show and hide the clear input box buttons
-            if($(this).val()){
-                if(this.id === 'searchQueryInput'){
-                    $('#searchQueryClearBtn').show();
-                } else if(this.id == 'setLocationInput'){
-                    $('#findNearMeClearBtn').show();
-                }
-            } else {
-                if(this.id === 'searchQueryInput'){
-                    $('#searchQueryClearBtn').hide();
-                } else if(this.id == 'setLocationInput'){
-                    $('#findNearMeClearBtn').hide();
-                }
-            }
-        }
-    });
-    
-    
-    //*******************
-    //TESTING SEARCH ON EVERY KEY PRESS IN SEARCH FIELD
-    //CAN KEEP THE ABOVE CODE AS THAT WILL STILL CHECK IF ENTER IS PRESSES
-    //THIS MIGHT HAMMER THE DATABASE, BUT I CAN MONITOR THIS.
-    //when typing in text search input run the search on every keypress
-    $('#searchQueryInput').keyup(function(e){
-        newSearch();
-        //code to show and hide the clear input box button
-        if($(this).val()){
-            $('#searchQueryClearBtn').show();
-        } else {
-            $('#searchQueryClearBtn').hide();
-        }
-    });
-    //*******************
-    
-    
-    //on enter keypress in the distance input, run a filter
-    $('#setDistanceInput').keyup(function(e){
-        if(e.keyCode==13){
-            searchCircle($('#setDistanceInput').val());
-            existingDataSearch();
-        }
-    });
-    
-    //if #setDistancePlusBtn is pressed, redraw markers but don't search the database again
-    $('#setDistancePlusBtn').on('click', function(){
-        increaseSearchDistance();
-        existingDataSearch();
-    });
-    
-    //if #setDistanceMinusBtn is pressed, redraw markers but don't search the database again
-    $('#setDistanceMinusBtn').on('click', function(){
-        decreaseSearchDistance();
-        existingDataSearch();
-    });
-    
-    //if the cross button is clicked on the activity search box, clear the input and run the search again
-    $('#searchQueryClearBtn').on('click', function(){
-        $('#searchQueryClearBtn').hide();
-        $('#searchQueryInput').val('');
-        newSearch();
-    });
-    
-    //if the cross button is clicked on the activity search box, clear the input and run the search again
-    $('#findNearMeClearBtn').on('click', function(){
-        $('#findNearMeClearBtn').hide();
-        $('#setLocationInput').val('');
-        newSearch();
-    });
-    
-    
-    
-    
-    $('#moreFiltersBtn').on('click', function(){
-        $('#collapseMoreFilters').collapse("toggle");
-        $('#moreFiltersBtn').toggleClass('active');
-    });
-    
-    //load more activities from the filtered list
-    $('#loadMoreBtn').on('click', function(){
-        addMoreActivities(filteredActivities);
-    });
-    
-    
-    
-    
-    
-    //MAP KEY FILTERS LISTENERS
-    $('#activity-index-map').on('click', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv', async function(){
-    //put the actual check boxes in the "Refine Search" section, as that will be part of the DOM on page load, and will filter correctly
-    //these icons will just toggle them
-        await mapKeyClickFunction(this);
-        existingDataSearch();
-    
-    });
-    $('#allAgesCheck,#adultsCheck,#childrenCheck').on('click', async function(){
-        //this if statement is a hack to get around the check boxes double flipping when it's clicked and then evaluated mapKeyFilter() function
-        if($(this).prop('checked')) {
-            $(this).prop('checked', false);
-        } else {
-            $(this).prop('checked', true);
-        }
-        
-        await mapKeyClickFunction(this);
-        existingDataSearch();
-    });
-    //hover effect
-    //the global variable mapKeyOpacityVar is set on click of the markers to the new opacity after click
-    $('#activity-index-map').on('mouseenter', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv', function( event ) {
-        mapKeyOpacityVar = $(this).css('opacity');
-        $(this).css('opacity', '0.5');
-        console.log("Opacity: " + mapKeyOpacityVar);
-    }).on('mouseleave', '#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv', function( event ) {
-        $(this).css('opacity', mapKeyOpacityVar);
-        console.log("Opacity: " + mapKeyOpacityVar);
-    });
-    
-    
-    
-    
-});
 
 //******************
 // SEARCH FUNCTIONS
 //******************
-
-var searchInputs;
-var searchMarker;
-var searchMarkerLat;
-var searchMarkerLng;
-var circle;
-var locationLat;
-var locationLng;
-
-var returnedActivities;
-var filteredActivities; //this global variable is used for the "Load More" button
-
-// async function allActivitiesSearch(){
-//     //search for all activities
-//     var result = await $.getJSON("/api/activities/");
-//     addMarkers(result);
-//     addActivities(result);
-//     returnedActivities = result;
-//     filteredActivities = result; //so the #LoadMoreBtn works on page load
-    
-//     return returnedActivities;
-// }
 
 function newSearch(){
     activitySearch()
@@ -216,42 +32,41 @@ async function activityFilter(activities){
     //this should make it faster for the user
     var filteredActivitiesLocal;
     
+    //SEARCH QUERY FILTER
+    //The search query filiter is applied on the databse search, so isn't performed again here
     
-    // APPLY MAP KEY FILTERING OPTIONS
+    // APPLY MAP KEY / AGES FILTERING OPTIONS
     filteredActivitiesLocal = await mapKeyFilter(activities);
 
+    // APPLY LOCATION FILTERING
     //if a location has been set, find activities within the search radius
     if(searchInputs.location){
         filteredActivitiesLocal = await locationFilter(filteredActivitiesLocal);
     } else {
+        //else, if no location has been set then clear circler and search marker
         clearCircleAndSearchMarker();
     }
     
+    // APPLY STATUS FILTERING OPTIONS
+    filteredActivitiesLocal = await statusFilter(filteredActivitiesLocal);
+    
+    // APPLY SUITABLE FOR FILTERING OPTIONS
+    filteredActivitiesLocal = await suitableFilter(filteredActivitiesLocal);
+    
+    // APPLY TYPE FILTERING OPTIONS
+    filteredActivitiesLocal = await typeFilter(filteredActivitiesLocal);
+    
+    // APPLY ORDERING OPTIONS
+    //This might be a standalon function on the activityIndex.js file as it can happen at any time, even without filtering, but needs to be applied here as well
     
     
-    //after all the filtering, show a message based on the number of actitivites returned
-    if(filteredActivitiesLocal.length === 0){
-        $('#numActivitiesFoundMessage').hide();
-        $('#numActivitiesFoundMessage').text('');
-        
-        $('#noActivitiesFoundMessage').show();
-        $('#noActivitiesFoundMessage').html(
-            "Sorry, we couldn't find any activities that matched your search 😕 <br><br>" +
-            "If you'd like to add a new activity that isn't on our map please check back soon as we're adding this feature as fast as we can!<br>" +
-            "If you join our <a href='/MailingList'>mailing list</a> we can let you know when it's ready 📧"
-            );
-    } else {
-        $('#noActivitiesFoundMessage').hide();
-        $('#noActivitiesFoundMessage').text('');
-        
-        $('#numActivitiesFoundMessage').show();
-        $('#numActivitiesFoundMessage').html(
-            "Found <strong>" + filteredActivitiesLocal.length + "</strong> activities"
-        );
-    }
+    //set the filter message based on the number of returned activities
+    activityFilterMessage(filteredActivitiesLocal);
     
+    //set the returned list of filtered activities to the global variable filteredActivities so it can be used later by other functions without filtering again
     filteredActivities = filteredActivitiesLocal;
     
+    //return the list of filtered activities to be used by the next function in the promise chain
     return filteredActivitiesLocal;
 }
 
@@ -326,7 +141,6 @@ function increaseSearchDistance(activities){
     $('#setDistanceInput').val(function(i, oldval) {
         return parseInt(oldval, 10) + 5;
     });
-    
 }
 
 function decreaseSearchDistance(activities){
@@ -341,7 +155,6 @@ function decreaseSearchDistance(activities){
             return parseInt(oldval, 10) - 5; //turn the string oldval into an int
         }
     });
-    
 }
 
 function geocodeLocation(location){
@@ -389,76 +202,6 @@ function mapKeyClickFunction(passedThis){
     }
 }
 
-function mapKeyFilter(activities){
-    var filteredActivitiesLocal = [];
-    
-    if($('#allAgesCheck').prop('checked')){
-        activities.forEach(function(activity, index){
-            if(activity.age === "All Ages"){
-                filteredActivitiesLocal.push(activity);
-            }
-        });
-    }
-    if($('#adultsCheck').prop('checked')){
-        activities.forEach(function(activity, index){
-            if(activity.age === "Adults"){
-                filteredActivitiesLocal.push(activity);
-            }
-        });
-    }
-    if($('#childrenCheck').prop('checked')){
-        activities.forEach(function(activity, index){
-            if(activity.age === "Children"){
-                filteredActivitiesLocal.push(activity);
-            }
-        });
-    }
-    return filteredActivitiesLocal;
-}
-
-async function locationFilter(activities){
-    var filteredActivitiesLocal = [];
-    
-    //clear old marker if it exists
-    if(searchMarker){
-        searchMarker.setMap(null);
-    }
-    
-    searchMarkerLat = searchInputs.location[0].latitude;
-    searchMarkerLng = searchInputs.location[0].longitude;
-    
-    //create new marker for center of radius
-    //**refactor this so it doesn't use the API each time unless the location has actually changed
-    var latLng = await new google.maps.LatLng(searchMarkerLat, searchMarkerLng);
-    searchMarker = await new google.maps.Marker({
-        position: latLng,
-        map: map
-    });
-    
-    //expand 'distanceInputDiv' to show input options
-    $('#collapseDistanceSearch').collapse('show');
-    
-    //set the 'distanceInput' to be a default of 20 and add searchCircle()
-    if($('#setDistanceInput').val()){
-        searchCircle($('#setDistanceInput').val());
-    } else {
-        $('#setDistanceInput').val('20');
-        searchCircle(20);
-    }
-    
-    //update "setLocationInput" with newly formatted address
-    $('#setLocationInput').val(searchInputs.location[0].formattedAddress);
-    
-    //write trig function to filter only activities inside the circle
-    activities.forEach(function(activity){
-        if(isInsideCircle(activity)){
-            filteredActivitiesLocal.push(activity);
-        }
-    });
-    
-    return filteredActivitiesLocal;
-}
-
 function resetSearch(){
     //clear all input fields
     $('#searchQueryInput').val('');
@@ -470,6 +213,13 @@ function resetSearch(){
     //reset filters
     $('#allAgesCheck,#adultsCheck,#childrenCheck').prop('checked', true);
     $('#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv').css('opacity', '1');
+    
+    //check all boxes
+    $('.checkbox-input').prop('checked', true);
+    //then uncheck review and removed
+    $('#reviewStatusCheck,#removedStatusCheck').prop('checked', false);
+    //then reset all the button text
+    $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckboxToggle').html('Clear All');
     
     //re-center map
     map.setCenter(mapInitCenter);

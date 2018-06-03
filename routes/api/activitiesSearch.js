@@ -12,7 +12,8 @@ var filteredActivities = function(req, res) {
     if(searchQuery) {
         const regex = new RegExp(searchRegex(searchQuery), 'gi'); // g: global, i: ignore case?
         
-        Activity.find({name: regex}).sort({createdAt: -1})
+        //Activity.find({name: regex}).sort({createdAt: -1})
+        Activity.find().or([{ 'name': { $regex: regex }}, { 'summary': { $regex: regex }}, { 'description': { $regex: regex }}, { 'tags': { $regex: regex }}]).sort({createdAt: -1})
         .then(function(foundActivities){
             res.json(foundActivities);
         })

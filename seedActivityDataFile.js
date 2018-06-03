@@ -38,7 +38,7 @@ var activityDataFile = [
       "displayName": "admin"
     },
     "image": "https://pbs.twimg.com/profile_images/723969184196112385/TmGvNyst_400x400.jpg",
-    "status": "current",
+    "status": "review",
     "comments": [
       "5b0f24f19e560517b40cb6c6",
       "5b0fb78751cdf71139e2a464",
@@ -599,7 +599,7 @@ var activityDataFile = [
     "_id": "5b0f24b99e560517b40cb64a",
     "age": "Children",
     "name": "Active8",
-    "frequency": "One-Off Activities",
+    "frequency": "One-Off Events",
     "summary": "Active8 is a small Cornish charity which aims to empower and motivate young people with physical disabilities to become autonomous.",
     "suitable": "Physical disabilities",
     "price": "Depends on each activity",
@@ -3836,7 +3836,7 @@ var activityDataFile = [
     "_id": "5b0f24e79e560517b40cb6ad",
     "age": "Adults",
     "name": "Wyldwoods: Arts cafe",
-    "frequency": "One-Off Activities",
+    "frequency": "One-Off Events",
     "summary": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities.",
     "suitable": "All abilities",
     "price": "FREE (donations always welcome)",
