@@ -71,7 +71,7 @@ var activityDataFile = [
       "displayName": "admin"
     },
     "image": "https://www.trentparkgolf.co.uk/images/club/foto01.jpg",
-    "status": "current",
+    "status": "removed",
     "comments": [
       "5b0fb78751cdf71139e2a46c",
       "5b0fb78751cdf71139e2a46c",
