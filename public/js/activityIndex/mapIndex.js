@@ -144,19 +144,33 @@ function addMarkers(activities){
                                 '<div class="d-flex justify-content-between align-items-start">' +
                                     '<div>' +
                                         '<div class="iw-subTitle">Summary</div>' +
-                                        '<p>' + currentActivity.summary + '</p>' +
+                                        '<p class="mb-1">' + currentActivity.summary + '</p>' +
                                     '</div>' +
                                 '</div>' +
 
+                                '<hr class="mb-1 mt-0">' +
                                 
                                 '<div class="d-flex align-items-start">' +
                                     '<div class="mr-5">' +
                                         '<div class="iw-subTitle">Ages</div>' +
-                                        '<p>' + currentActivity.age + '</p>' +
+                                        '<p class="mb-1">' + currentActivity.age + '</p>' +
                                     '</div>' +
                                     '<div>' +
                                         '<div class="iw-subTitle">Suitable for</div>' +
-                                        '<p>' + currentActivity.suitable + '</p>' +
+                                        '<p class="mb-1">' + currentActivity.suitable + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                
+                                '<hr class="mb-1 mt-0">' +
+                                
+                                '<div class="d-flex align-items-start">' +
+                                    '<div class="mr-3">' +
+                                        '<div class="iw-subTitle">Type</div>' +
+                                        '<p class="mb-1">' + currentActivity.frequency + '</p>' +
+                                    '</div>' +
+                                    '<div>' +
+                                        '<div class="iw-subTitle">When</div>' +
+                                        '<p class="mb-1">' + currentActivity.when + '</p>' +
                                     '</div>' +
                                 '</div>' +
                                 

@@ -123,7 +123,7 @@ input[type=number]::-webkit-outer-spin-button {
 	font-size: 18px;
 	font-weight: 200;
 	padding: 10px;
-	background-color: #1166c6;
+	background-color: #157EFB; /* Title background color */
 	color: white;
 	margin: 0;
 	border-radius: 2px 2px 0 0;
@@ -282,7 +282,7 @@ body {
   padding-top: 80px;
 }
 
-#navbar-background-color {
+.navbar-background-color {
   background-color: #1166c6;
 }
 

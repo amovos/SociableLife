@@ -112,6 +112,7 @@ $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there 
 //when typing in text search input or location search input, if enter is pressed run the search
 $('#searchQueryInput,#setLocationInput').keyup(function(e){
     if(e.keyCode==13){ //remove this if statement to get constant search (but this doesn't work well with the marker drop animation)
+        $(this).blur(); //should minimise the keyboard on mobile
         newSearch();
     } else {
         //code to show and hide the clear input box buttons
