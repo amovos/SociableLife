@@ -196,7 +196,7 @@ function activityFilterMessage(activities){
         
         $('#numActivitiesFoundMessage').show();
         $('#numActivitiesFoundMessage').html(
-            "Found <strong>" + activities.length + "</strong> activities"
+            "<strong>" + activities.length + "</strong> activities found<br>You can view them on the map <i class='fa fa-map-marker'></i> and in the list below <i class='fa fa-th'></i>"
         );
     } 
 }

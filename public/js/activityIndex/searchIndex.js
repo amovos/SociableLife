@@ -176,6 +176,9 @@ function mapKeyUpdateFunction(passedThis){
     var selectedCheck;
     var selectIconDiv;
     
+    //reset this global selector variable so the mapKeyClickFunction() works as expected
+    mapKeySelectedVar = "";
+    
     if(passedThis.id === "allAgesCheck"){
         selectedCheck = $("#allAgesCheck");
         selectIconDiv = $("#allAgesKeyDiv");
@@ -202,31 +205,76 @@ function mapKeyClickFunction(passedThis){
     mapKeyOpacityVar = '1';
     
     //if one is clicked, uncheck the other two and check this one
+    //and set the global variable mapKeySelectedVar to be the clicked id
+    //so that if the same one is clicked again, then it will show all
     if(passedThis.id === "allAgesKeyDiv"){
-        $("#allAgesKeyDiv").css('opacity', '1');
-        $("#adultsKeyDiv").css('opacity', '0.2');
-        $("#childrenKeyDiv").css('opacity', '0.2');
-        
-        $("#allAgesCheck").prop('checked', true);
-        $("#adultsCheck").prop('checked', false);
-        $("#childrenCheck").prop('checked', false);
+        if(mapKeySelectedVar === "allAgesKeyDiv"){
+            //select all
+            mapKeyAllCheckedAndTrue();
+            
+            //clear global variable selector
+            mapKeySelectedVar = "";
+            
+        } else {
+            mapKeySelectedVar = "allAgesKeyDiv";
+            
+            $("#allAgesKeyDiv").css('opacity', '1');
+            $("#adultsKeyDiv").css('opacity', '0.2');
+            $("#childrenKeyDiv").css('opacity', '0.2');
+            
+            $("#allAgesCheck").prop('checked', true);
+            $("#adultsCheck").prop('checked', false);
+            $("#childrenCheck").prop('checked', false);
+        }
     } else if(passedThis.id === "adultsKeyDiv"){
-        $("#adultsKeyDiv").css('opacity', '1');
-        $("#childrenKeyDiv").css('opacity', '0.2');
-        $("#allAgesKeyDiv").css('opacity', '0.2');
-        
-        $("#adultsCheck").prop('checked', true);
-        $("#childrenCheck").prop('checked', false);
-        $("#allAgesCheck").prop('checked', false);
+        if(mapKeySelectedVar === "adultsKeyDiv"){
+            //select all
+            mapKeyAllCheckedAndTrue();
+            
+            //clear global variable selector
+            mapKeySelectedVar = "";
+            
+        } else {
+            mapKeySelectedVar = "adultsKeyDiv";
+            
+            $("#adultsKeyDiv").css('opacity', '1');
+            $("#childrenKeyDiv").css('opacity', '0.2');
+            $("#allAgesKeyDiv").css('opacity', '0.2');
+            
+            $("#adultsCheck").prop('checked', true);
+            $("#childrenCheck").prop('checked', false);
+            $("#allAgesCheck").prop('checked', false);
+        }
     } else {
-        $("#childrenKeyDiv").css('opacity', '1');
-        $("#allAgesKeyDiv").css('opacity', '0.2');
-        $("#adultsKeyDiv").css('opacity', '0.2');
-        
-        $("#childrenCheck").prop('checked', true);
-        $("#allAgesCheck").prop('checked', false);
-        $("#adultsCheck").prop('checked', false);
+        if(mapKeySelectedVar === "childrenKeyDiv"){
+            //select all
+            mapKeyAllCheckedAndTrue();
+            
+            //clear global variable selector
+            mapKeySelectedVar = "";
+            
+        } else {
+            mapKeySelectedVar = "childrenKeyDiv";
+            
+            $("#childrenKeyDiv").css('opacity', '1');
+            $("#allAgesKeyDiv").css('opacity', '0.2');
+            $("#adultsKeyDiv").css('opacity', '0.2');
+            
+            $("#childrenCheck").prop('checked', true);
+            $("#allAgesCheck").prop('checked', false);
+            $("#adultsCheck").prop('checked', false);
+        }
     }
+}
+
+function mapKeyAllCheckedAndTrue(){
+    $("#allAgesKeyDiv").css('opacity', '1');
+    $("#adultsKeyDiv").css('opacity', '1');
+    $("#childrenKeyDiv").css('opacity', '1');
+    
+    $("#allAgesCheck").prop('checked', true);
+    $("#adultsCheck").prop('checked', true);
+    $("#childrenCheck").prop('checked', true);
 }
 
 function resetSearch(){

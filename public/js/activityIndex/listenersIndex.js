@@ -9,6 +9,7 @@ var mapInitCenter = {lat: 54.4800, lng: -4.1000 };
 var markers = [];
 var lastOpenedInfoWindow;
 var mapKeyOpacityVar;
+var mapKeySelectedVar;
 
 //SEARCH FUNCTION GLOBAL VARIABLES 
 var searchInputs;
@@ -31,7 +32,7 @@ var $masonryContainer;
 //TOOLTIP GLOBAL VARIABLES
 var statusTextCurrent = '<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months';
 var statusTextReview = '<strong>Under Review</strong><br>This activity has not been checked yet or has not been updated in the last 6 months. The information might be out of date.';
-var statusTextRemoved = '<strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.';
+var statusTextRemoved = '<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year.';
 //adding alt text to the span surrounding the icon makes it accessible to screen readers
 var statusIconCurrent = '<span class="tooltip-status" alt="' + statusTextCurrent + '"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text">' + statusTextCurrent + '</span></span>';
 var statusIconReview = '<span class="tooltip-status" alt="' + statusTextReview + '"><i class="fa fa-question-circle fa-1x text-warning"></i><span class="tooltip-status-text">' + statusTextReview + '</span></span>';
@@ -132,6 +133,34 @@ $('#searchQueryInput,#setLocationInput').keyup(function(e){
     }
 });
 
+//***************************************
+//AUTO OPEN AND CLOSE OF MORE FILTERS DIV
+//open filters box when focus is on either query input box
+$('#searchQueryInput,#setLocationInput').focus(function(e){
+    $('#collapseMoreFilters').collapse("show");
+    $('#moreFiltersBtn').addClass("active");
+    $('#moreFiltersBtn').html('<i class="fa fa-arrow-up"></i> Refine Search <i class="fa fa-arrow-up"></i>');
+    event.stopPropagation();
+});
+
+//stop box from closing when you clicking on the filters div
+$('#collapseMoreFilters,#').on('click', function(){
+    event.stopPropagation();
+});
+
+//if the user clicks anywhere else (except those outlined above) close the filters div
+$('html').click(function() {
+    //if focus is not on the input boxes
+    if(!($('#searchQueryInput,#setLocationInput').is(":focus"))){
+        console.log("CLOSE");
+        $('#collapseMoreFilters').collapse("hide");
+        $('#moreFiltersBtn').removeClass("active");
+        $('#moreFiltersBtn').html('<i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i>');
+    }
+});
+//***************************************
+
+
 
 //*******************
 //TESTING SEARCH ON EVERY KEY PRESS IN SEARCH FIELD
@@ -211,11 +240,21 @@ $('#activity-index-map').on('mouseenter', '#allAgesKeyDiv,#adultsKeyDiv,#childre
 });
 
 
+
 //FILTER BOX LISTENERS
-//collapse filter box toggle listener
 $('#moreFiltersBtn').on('click', function(){
-    $('#collapseMoreFilters').collapse("toggle");
-    $('#moreFiltersBtn').toggleClass('active');
+    if($(this).hasClass('active')){
+        console.log("1");
+        $('#collapseMoreFilters').collapse("hide");
+        $(this).removeClass('active');
+        $(this).html('<i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i>');
+    } else {
+        console.log("2");
+        $('#collapseMoreFilters').collapse("show");
+        $(this).addClass('active');
+        $(this).html('<i class="fa fa-arrow-up"></i> Refine Search <i class="fa fa-arrow-up"></i>');
+    }
+    event.stopPropagation(); //stops box from closing when the button is clicked due to the listener on the html element
 });
 
 //Ages checkboxes

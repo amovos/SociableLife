@@ -88,26 +88,26 @@ function addActivity(activity){ //function used whenever we want to add an item 
                 
                 '<hr class="mb-2 mt-2">' +
                 
-                '<div class="d-flex flex-row justify-content-between">' +
-                    '<div class="d-flex flex-column col-5 nopadding text-left">' +
-                        '<div>' +
-                            '<strong>Type</strong>' +
-                        '</div>' +
-                        '<div>' +
-                            activity.frequency +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="d-flex flex-column col-7 nopadding text-left">' +
-                        '<div>' +
-                            '<strong>When</strong>' +
-                        '</div>' +
-                        '<div>' +
-                            activity.when +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
+                // '<div class="d-flex flex-row justify-content-between">' +
+                //     '<div class="d-flex flex-column col-5 nopadding text-left">' +
+                //         '<div>' +
+                //             '<strong>Type</strong>' +
+                //         '</div>' +
+                //         '<div>' +
+                //             activity.frequency +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="d-flex flex-column col-7 nopadding text-left">' +
+                //         '<div>' +
+                //             '<strong>When</strong>' +
+                //         '</div>' +
+                //         '<div>' +
+                //             activity.when +
+                //         '</div>' +
+                //     '</div>' +
+                // '</div>' +
                 
-                '<hr class="mb-2 mt-2">' +
+                // '<hr class="mb-2 mt-2">' +
                     
                 '<div class="d-flex flex-row justify-content-around">' +
                     '<span class="fa-stack fa-1x sociable-love mr-3">' +

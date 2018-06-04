@@ -80,6 +80,10 @@ input[type=number]::-webkit-outer-spin-button {
     visibility: visible;
 }
 
+.tooltip-status-div:hover .tooltip-status-text {
+    visibility: visible;
+}
+
 /* Google Maps Styles
 -------------------------------------------------- */
 #activity-show-map {

@@ -22,14 +22,26 @@ router.get("/aboutus", function(req, res){
 // ==========================
 // CONTACT PAGE ROUTES
 // ==========================
-
 // NEW CONTACT ROUTE - Display info on ALL activities
 router.get('/contact', require("./contact/new"));
-
-// CREATE COMMENT ROUTE
+// CREATE CONTACT ROUTE
 router.post("/contact", require("./contact/create"));
 
 
+
+// ==========================
+// PRIVACY POLICY ROUTE
+// ==========================
+router.get("/privacy", function(req, res){
+    res.render("general/privacy", {page: 'privacy'});
+});
+
+// ==========================
+// TERMS AND CONDITIONS ROUTE
+// ==========================
+router.get("/terms", function(req, res){
+    res.render("general/terms", {page: 'terms'});
+});
 
 // ==========================
 // MODULE.EXPORTS
