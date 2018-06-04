@@ -144,7 +144,7 @@ $('#searchQueryInput,#setLocationInput').focus(function(e){
 });
 
 //stop box from closing when you clicking on the filters div
-$('#collapseMoreFilters,#').on('click', function(){
+$('#collapseMoreFilters').on('click', function(){
     event.stopPropagation();
 });
 
