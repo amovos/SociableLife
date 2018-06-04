@@ -60,7 +60,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
             '<div class="card activity-card" onclick="location.href=\'/activities/' + activity._id + '\'">' +
-              '<a href="/activities/' + activity._id + '"><img class="card-img-top activity-index-image" src="' + activity.image + '" alt="<%= activity.name %>"></a>' +
+              '<a href="/activities/' + activity._id + '"><img class="card-img-top activity-index-image" src="' + activity.image + '" alt="' + activity.name + '"></a>' +
               '<div class="card-body pb-2">' +
                 '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +
                 '<p class="card-text text-left mb-1">' + activity.summary + '</p>' +

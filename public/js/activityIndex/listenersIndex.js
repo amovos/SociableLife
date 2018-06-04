@@ -149,7 +149,7 @@ $('#collapseMoreFilters').on('click', function(){
 });
 
 //if the user clicks anywhere else (except those outlined above) close the filters div
-$('html').click(function() {
+$(window).click(function() {
     //if focus is not on the input boxes
     if(!($('#searchQueryInput,#setLocationInput').is(":focus"))){
         console.log("CLOSE");
