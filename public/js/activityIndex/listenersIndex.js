@@ -10,6 +10,7 @@ var markers = [];
 var lastOpenedInfoWindow;
 var mapKeyOpacityVar;
 var mapKeySelectedVar;
+var markerCluster;
 
 //SEARCH FUNCTION GLOBAL VARIABLES 
 var searchInputs;
@@ -104,6 +105,14 @@ $(document).ready(function(){ //waits until the DOM has loaded
 //*************
 //LISTENERS
 //*************
+
+//TESTING
+// $(window).keyup(function(e){
+//     if(e.keyCode==13){
+//         //Map Clustering
+//         var markerCluster = new MarkerClusterer(map, markers, {imagePath: '/js/lib/GoogleMapsClustering/m'});
+//     }
+// });
 
 //when search button is clicked, filter results
 $('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load

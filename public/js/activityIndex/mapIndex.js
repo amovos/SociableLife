@@ -85,6 +85,9 @@ function initActivityIndexMap() {
 
 async function addMarkers(activities){
     clearMarkers(); //clear existing markers before adding new ones
+    if(markerCluster){
+        markerCluster.clearMarkers();
+    }
     
     //you already have the list of activities
     //so split this into two lists, one with duplicates and one without
@@ -95,21 +98,21 @@ async function addMarkers(activities){
     var clusterMarkerLocations = await filterClusterMarkerActivities(activities);
     
     // Loop through the results array and place a marker for each set of coordinates
-    $.each(singleMarkerActivities, async function(index) {
+    await $.each(singleMarkerActivities, async function(index) {
         var marker = await standardMarkerCreate(this); //create new standard marker
         standardMarkerInfoWindow(this, marker); //create standard marker info window
         markers.push(marker); //add the newly created standard marker onto the markers array
     });
     
-    $.each(clusterMarkerLocations, async function(index) {
+    await $.each(clusterMarkerLocations, async function(index) {
         var clusterMarker = await clusterMarkerCreate(this); //create new cluster marker using just the location
         clusterMarkerInfoWindow(this, clusterMarker, activities); //create cluster marker info window, and find all activities with that location
         markers.push(clusterMarker); //add the newly created clustered marker onto the markers array
     });
     
-    console.log("singleMarkerActivities.length: " + singleMarkerActivities.length);
-    console.log("clusterMarkerLocations.length: " + clusterMarkerLocations.length);
-    console.log("markers.length: " + markers.length);
+    
+    //Map Clustering
+    markerCluster = new MarkerClusterer(map, markers, {imagePath: '/js/lib/GoogleMapsClustering/m'});
     
     return activities; //need to return the activities so it can be passed through to the activityIndex functions
 }
@@ -329,8 +332,6 @@ function clusterMarkerInfoWindow(locationObj, clusterMarker, activities){
     
     var stringTest = '';
     
-
-
     //create content for infowindow
     var contentStart =  '<div id="iw-container">' +
                         
@@ -396,9 +397,9 @@ function clearMarkers() {
       markers[i].setMap(null);
     }
     markers = [];
+    
+    
 }
-
-
 
 
 
