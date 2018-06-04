@@ -152,7 +152,6 @@ $('#collapseMoreFilters').on('click', function(){
 $(window).click(function() {
     //if focus is not on the input boxes
     if(!($('#searchQueryInput,#setLocationInput').is(":focus"))){
-        console.log("CLOSE");
         $('#collapseMoreFilters').collapse("hide");
         $('#moreFiltersBtn').removeClass("active");
         $('#moreFiltersBtn').html('<i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i>');
