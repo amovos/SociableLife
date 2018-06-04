@@ -138,15 +138,18 @@ $('#searchQueryInput,#setLocationInput').keyup(function(e){
 //CAN KEEP THE ABOVE CODE AS THAT WILL STILL CHECK IF ENTER IS PRESSES
 //THIS MIGHT HAMMER THE DATABASE, BUT I CAN MONITOR THIS.
 //when typing in text search input run the search on every keypress
-$('#searchQueryInput').keyup(function(e){
-    newSearch();
-    //code to show and hide the clear input box button
-    if($(this).val()){
-        $('#searchQueryClearBtn').show();
-    } else {
-        $('#searchQueryClearBtn').hide();
-    }
-});
+
+//Removed as it was sometimes returning wrong results if there was a network latency
+
+// $('#searchQueryInput').keyup(function(e){
+//     newSearch();
+//     //code to show and hide the clear input box button
+//     if($(this).val()){
+//         $('#searchQueryClearBtn').show();
+//     } else {
+//         $('#searchQueryClearBtn').hide();
+//     }
+// });
 //*******************
 
 
