@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+
+<% if (process.env.ENV_ID === "prod"){ %>
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109743254-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-109743254-2');
+</script>
+<% } %>
+
+<!-- Make site responsive on mobile/tablet -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title><%= process.env.ENV_NAME %></title>
+
+<meta itemprop="name" content="Sociable Life" >
+<meta itemprop="description" content="Accessible activities, for everybody.&#x000A;Find and share accessible activities for anyone with a disability, anywhere in the UK.&#x000A;We're creating an interactive map of accessible, safe and inclusive activities and we need your help to find them!">
+<meta itemprop="image" content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png">
+
+<meta property="og:title" content="Sociable Life" >
+<meta property="og:url" content="https://www.sociablelife.uk/">
+<meta property="og:image" content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png">
+<meta property="og:site_name" content="Sociable Life" >
+<meta property="og:description" content="Accessible activities, for everybody.&#x000A;Find and share accessible activities for anyone with a disability, anywhere in the UK.&#x000A;We're creating an interactive map of accessible, safe and inclusive activities and we need your help to find them!">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sociable Life" >
+<meta name="twitter:description" content="Accessible activities, for everybody.&#x000A;Find and share accessible activities for anyone with a disability, anywhere in the UK.&#x000A;We're creating an interactive map of accessible, safe and inclusive activities and we need your help to find them!">
+<meta name="twitter:image" content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png">
+
+<meta name="description" content="Accessible activities, for everybody.&#x000A;Find and share accessible activities for anyone with a disability, anywhere in the UK.&#x000A;We're creating an interactive map of accessible, safe and inclusive activities and we need your help to find them!">
+
+<link rel="canonical" href="https://sociablelife.uk/">
+
+<!-- Favicon -->
+<link href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_64,w_64,q_auto/v1/1256356/dk9obwiipyagcl34uepp.png" rel="shortcut icon" type="image/x-icon">
+
+<link href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_60,w_60,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png" rel="apple-touch-icon" sizes="60x60">
+<link href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_76,w_76,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_120,w_120,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_152,w_152,f_auto,q_auto/v1/1256356/Map100Image_zghk5l.png" rel="apple-touch-icon" sizes="152x152">
