@@ -1,9 +1,27 @@
+	
+    <!-- COOKIES -->
+    <div class="container">
+        <div class="alert alert-dark alert-dismissible text-center cookiealert" role="alert">
+        <!--<div class="alert alert-danger alert-dismissible fade show" role="alert">-->
+            <div class="cookiealert-container">
+                <b>Do you like cookies?</b> &#x1F36A; We use cookies to ensure you get the best experience on our website. Is that ok? <a href="/privacy">Learn more</a>
+        
+                <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">Yes, that's ok</button>
+            </div>
+        </div>
+    </div>
+    <!-- /COOKIES -->
+	
 	<footer class="footer">
         <div class="container">
           <span class="text-muted">
           	&copy; Sociable Life <%= (new Date()).getFullYear() %> 
-          | <a href="/activities">Home</a> 
-          | <a href="/activities/new">New Activity</a>
+          | <a href="/">Home</a> 
+          | <a href="/activities">Activity Map</a>
+          | <a href="/aboutUs">Our Story</a>
+          | <a href="/contact">Contact</a>
+          | <a href="/terms">Terms & Conditions</a>
+          | <a href="/privacy">Privacy Policy</a>
           </span>
     	</div>
      </footer>
@@ -14,6 +32,7 @@
 	
 	<!-- Custom JS-->
 	<script src="/js/main.js"></script>
+	<script src="/js/cookieAlert.js"></script>
 	
 </body>
 </html>
