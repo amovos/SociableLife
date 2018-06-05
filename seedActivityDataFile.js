@@ -26,7 +26,7 @@ var activityDataFile = [
     "tags": "Charity, Camp, Outdoor, Volunteers",
     "lat": 51.19995,
     "lng": -0.775721,
-    "createdAt": "2018-05-30T22:24:48.496Z",
+    "createdAt": "2018-06-05T11:24:48.496Z",
     "__v": 3,
     "loves": [
       
@@ -1585,7 +1585,7 @@ var activityDataFile = [
     "tags": "Music",
     "lat": 51.319941,
     "lng": -0.141267,
-    "createdAt": "2018-05-30T22:25:12.040Z",
+    "createdAt": "2018-06-01T22:25:12.040Z",
     "__v": 3
   },
   {
@@ -2979,7 +2979,7 @@ var activityDataFile = [
     "tags": "Charity, Outdoor, Support, Volunteers",
     "lat": 52.307344,
     "lng": -1.684133,
-    "createdAt": "2018-05-30T22:25:30.948Z",
+    "createdAt": "2018-06-04T20:25:30.948Z",
     "__v": 2
   },
   {
@@ -3398,7 +3398,7 @@ var activityDataFile = [
     "tags": "Dance",
     "lat": 50.3686514,
     "lng": -4.1532624,
-    "createdAt": "2018-05-30T22:25:37.383Z",
+    "createdAt": "2018-06-05T10:25:37.383Z",
     "__v": 1
   },
   {
@@ -3593,7 +3593,7 @@ var activityDataFile = [
     "tags": "Club",
     "lat": 53.2051867,
     "lng": -2.9008221,
-    "createdAt": "2018-05-30T22:25:40.547Z",
+    "createdAt": "2018-06-03T22:25:40.547Z",
     "__v": 3
   },
   {
@@ -3625,7 +3625,7 @@ var activityDataFile = [
     "tags": "Outdoor, Support, Volunteers",
     "lat": 53.36577459999999,
     "lng": -2.5997929,
-    "createdAt": "2018-05-30T22:25:41.034Z",
+    "createdAt": "2018-06-04T22:25:41.034Z",
     "__v": 2
   },
   {
@@ -3680,14 +3680,14 @@ var activityDataFile = [
     "summary": "Martial Art and exercise sessions",
     "suitable": "All abilities",
     "price": "First session is free. £7.50 for one or £10 for two people, we also offer 121's @ £36",
-    "when": "Saturday ​4pm - 5pm",
+    "when": "Saturday 4pm - 5pm",
     "location": "Shine Community Sport Hall,, Brecon Rd, Bristol BS9 4DT, United Kingdom",
     "website": "https://www.adaptivema.co.uk/",
     "description": "Martial Art and exercise sessions deigned for those with disabilities, permanent injuries or in ill health. We encourage friends and family to join in. Our sessions are generally designed around Brazilian Jiu Jitsu because it is predominately ground based (on mats) which makes it very accessible.",
     "tags": "CIC",
     "lat": 51.4865141,
     "lng": -2.6133503,
-    "createdAt": "2018-05-30T22:25:41.505Z",
+    "createdAt": "2018-06-03T22:25:41.505Z",
     "__v": 2
   },
   {
@@ -4474,7 +4474,7 @@ var activityDataFile = [
     "tags": "Outdoor, Play",
     "lat": 55.8736257,
     "lng": -4.0728496,
-    "createdAt": "2018-05-30T22:25:52.205Z",
+    "createdAt": "2018-06-02T22:25:52.205Z",
     "__v": 2
   },
   {

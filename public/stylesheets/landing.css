@@ -1,83 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 body {
-  background-color: #000;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#landing-header {
-  z-index: 1; /* Puts item infront of other things on the page (with a lower z index), like a layer */
-  position: relative; /* The default is static, but if it's static it ignores the z index value */
-  text-align: center; /* Center text */
-  padding-top: 40vh; /* 50 would push it too far down as it would start at the middle, so this make it look centered */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
 
-#landing-header h1 {
-  color: #fff;
+#mainTitle {
+    font-size: 6em;
 }
 
-.slideshow { 
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  list-style: none; /* Removes bullet points */
-  margin: 0;
-  padding: 0;
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
 }
 
-.slideshow li { 
-  width: 100%;
-  height: 100%;
+header.masthead .overlay {
   position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
-  background-size: cover; /* makes the image cover the page */
-  background-position: 50% 50%; /* centers the image */
-  background-repeat: no-repeat; /* stops the images repeating vertically or horizontally */
-  opacity: 0; /* Images started faded out, then the animation fades them in */
-  z-index: 0;
-  animation: imageAnimation 50s linear infinite; 
+  opacity: 0.3;
 }
 
-.slideshow li:nth-child(1) { 
-  background-image: url(https://i.imgur.com/K3mPv14.jpg) 
-}
-.slideshow li:nth-child(2) { 
-  background-image: url(https://i.imgur.com/SBEmFpv.jpg);
-  animation-delay: 10s; 
-}
-.slideshow li:nth-child(3) { 
-  background-image: url(https://i.imgur.com/emvhOnb.jpg);
-  animation-delay: 20s; 
-}
-.slideshow li:nth-child(4) { 
-  background-image: url(https://i.imgur.com/2LSMCmJ.jpg);
-  animation-delay: 30s; 
-}
-.slideshow li:nth-child(5) { 
-  background-image: url(https://i.imgur.com/TVGe0Ef.jpg);
-  animation-delay: 40s; 
+header.masthead h1 {
+  font-size: 2rem;
 }
 
-@keyframes imageAnimation { 
-  0% { 
-    opacity: 0; 
-    animation-timing-function: ease-in;
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
   }
-  10% {
-    opacity: 1;
-    animation-timing-function: ease-out;
-  }
-  20% {
-    opacity: 1
-  }
-  30% {
-    opacity: 0
+  header.masthead h1 {
+    font-size: 3rem;
   }
 }
 
+.showcase .showcase-text {
+  padding: 3rem;
+}
 
-/* Older browser support - .no-cssanimations class added by modernizr */
-.no-cssanimations .slideshow li {
-	opacity: 1;
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 25rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+/*.features-icons .features-icons-item:hover .features-icons-icon i {*/
+/*  font-size: 5rem;*/
+/*}*/
+
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+  max-width: 12rem;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.call-to-action {
+  width: 100%;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }

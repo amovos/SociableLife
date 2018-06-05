@@ -20,7 +20,6 @@ function existingDataSearch(){
 }
 
 async function activitySearch(){
-    //get search inputs
     searchInputs = await getSearchInputs();
     returnedActivities = await $.getJSON("/api/activities/" + searchInputs.searchQuery);
     return returnedActivities;
@@ -295,6 +294,9 @@ function resetSearch(){
     $('#reviewStatusCheck,#removedStatusCheck').prop('checked', false);
     //then reset all the button text
     $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckboxToggle').html('Clear All');
+    
+    //hide "Back to Top" button
+    $('#backToTopBtn').hide();
     
     //re-center map
     map.setCenter(mapInitCenter);

@@ -6,7 +6,7 @@ var genericErrorResponse = require("../shared/genericErrorResponse"); //require 
 var Activity = require("../../models/activity"); //require the activity database model
 
 var allActivities = function(req, res) {
-    Activity.find()
+    Activity.find().sort({createdAt: -1})
     .then(function(foundActivities){
         res.json(foundActivities);
     })

@@ -3,12 +3,16 @@
 //******************
 // FUNCTIONS
 //******************
-function addActivities(activities) { //function used to add activities on page load
+async function addActivities(activities) { //function used to add activities on page load
     //reset counters before adding new activities
     pageNumber = 1;
     activityCounter = 0;
     
     removeAllActivities(); //remove all activities before trying to add new ones
+    
+    //order array here (currently just by date created)
+    activities = await orderActivities(activities);
+    
     activities.forEach(function(activity, index){
         if(index <= pageNumber * perPage - 1){
             addActivity(activity);

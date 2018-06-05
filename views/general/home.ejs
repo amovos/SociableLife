@@ -1,21 +1,196 @@
 <% include ../partials/header %>
 
-<div class="container">
+<link rel="stylesheet" href="/stylesheets/landing.css">
 
-    <% if(currentUser && currentUser.isAdmin){ %>
-        <h1>You're an admin!</h1>
-    <% } %>
+<div class="container d-flex flex-column align-items-center pb-5">
 
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to Sociable Life</h1>
-            <p>Find and share accessible activities for anyone with a disability, anywhere in the UK</p>
-            <p>
-                <a class="btn btn-primary btn-lg" href="/activities">View Activities</a>
-            </p>
+<!-- Header -->
+  <header class="text-center">
+    <!--<div class="overlay"></div>-->
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 mx-auto">
+          <h1 id="mainTitle" class="mb-3 text-primary">Sociable Life</h1>
+          <h4 class="lead mb-5">Find and share accessible activities for anyone with a disability, anywhere in the UK</h4>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
+
+  <div>
+    <img width="100%" src="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/v1/1256356/Compilation3_uenbik.png"></img>
+  </div>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center d-flex flex-column align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fa fa-map-marker m-auto text-primary"></i>
+              </div>
+              <h3>Interactive Map</h3>
+              <p class="lead mb-0">
+                We've created an interactive map full of carefully selected accessible and inclusive activities, and we need your help to find more!
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fa fa-users m-auto text-primary"></i>
+              </div>
+              <h3>FREE for Everyone</h3>
+              <p class="lead mb-0">
+                You've already done all the hard work by finding or organising events, so we're committed to keeping adding activities free.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fa fa-heartbeat m-auto text-primary"></i>
+              </div>
+              <h3>Living Resource</h3>
+              <p class="lead mb-0">
+                 Activities are updated by our community of supporters. Old events are removed automatically, so you know if it's on the map it's up to date!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-5">
+        <a class="btn btn-success btn-lg btn-block" href="/activities">View our Activity Map</a>
+      </div>
+    </section>
+
+     <!--Image Showcases -->
+    <section class="showcase">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/SearchTheMap.png');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Search the map</h2>
+            <p class="lead mb-0">
+              Find activites near you and look for other exciting events all over the UK! You can click on markers on the map to find more information about each one.
+            </p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img border" style="background-image: url('img/FilterActivities.png');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>Filter activities</h2>
+            <p class="lead mb-0">
+              Refine your serach to look for activities that suit you. Search by ability, age and more to discover the amazing events being run right now. 
+              <br>If you're looking for something that's already happened or you want to help update any old listings you can search "Out of date" and help the community keep the activities alive!
+            </p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img border" style="background-image: url('img/CommentLoveShare.png');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Comment, love and add your own!</h2>
+            <p class="lead mb-0">
+              Find out more information about each activity. Add comments and loves to share your experiences with everyone! And if you don't find what you're looking for, or know something that isn't
+              on our map yet, you can add it yourself! (coming soon)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <!--<section class="testimonials text-center bg-light">-->
+    <!--  <div class="container">-->
+    <!--    <h2 class="mb-5">What people are saying...</h2>-->
+    <!--    <div class="row">-->
+    <!--      <div class="col-lg-4">-->
+    <!--        <div class="testimonial-item mx-auto mb-5 mb-lg-0">-->
+    <!--          <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">-->
+    <!--          <h5>Margaret E.</h5>-->
+    <!--          <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-lg-4">-->
+    <!--        <div class="testimonial-item mx-auto mb-5 mb-lg-0">-->
+    <!--          <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">-->
+    <!--          <h5>Fred S.</h5>-->
+    <!--          <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-lg-4">-->
+    <!--        <div class="testimonial-item mx-auto mb-5 mb-lg-0">-->
+    <!--          <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">-->
+    <!--          <h5>Sarah	W.</h5>-->
+    <!--          <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</section>-->
+
+    <!-- Call to Action -->
+    <!--<section class="call-to-action text-white text-center">-->
+    <section class="call-to-action bg-light text-center d-flex flex-column align-items-center">
+      <!--<div class="overlay"></div>-->
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12 mx-auto">
+            <h2 class="mb-4">Join our Mailing List</h2>
+            <h5>We'll send you updates about new features and activites</h5>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-6 mx-auto">
+
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup" class="container">
+              <form action="https://sociablelife.us17.list-manage.com/subscribe/post?u=d950cb216db3aa4855ba004ce&amp;id=4860c0bd93" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                <div id="mc_embed_signup_scroll">
+                  <div class="form-group">
+                  	<label for="mce-FNAME">First Name  <span class="asterisk">*</span></label>
+                  	<input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME" required>
+                  </div>
+                  <div class="form-group">
+                  	<label for="mce-LNAME">Last Name  <span class="asterisk">*</span></label>
+                  	<input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME" required>
+                  </div>
+                  <div class="form-group">
+                  	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span></label>
+                  	<input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                  </div>
+                  <div id="mce-responses" class="clear">
+                  	<div class="response" id="mce-error-response" style="display:none"></div>
+                  	<div class="response" id="mce-success-response" style="display:none"></div>
+                  </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d950cb216db3aa4855ba004ce_4860c0bd93" tabindex="-1" value=""></div>
+                  
+                  <div class="clear">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-lg btn-primary">
+                  </div>
+                </div>
+  
+              </form>
+            </div>
+            
+            <!-- MailChimp Scripts -->
+            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+            <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+            <!--End mc_embed_signup-->
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  <div>
+    <img width="100%" height="10%" src="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/v1/1256356/42beb19a-b3af-4ffb-be2b-60270b346870_sz4xbs.png"></img>
+  </div>
+    
 
 </div>
+
 
 <% include ../partials/footer %>

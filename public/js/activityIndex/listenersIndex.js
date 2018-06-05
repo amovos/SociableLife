@@ -244,12 +244,10 @@ $('#activity-index-map').on('mouseenter', '#allAgesKeyDiv,#adultsKeyDiv,#childre
 //FILTER BOX LISTENERS
 $('#moreFiltersBtn').on('click', function(){
     if($(this).hasClass('active')){
-        console.log("1");
         $('#collapseMoreFilters').collapse("hide");
         $(this).removeClass('active');
         $(this).html('<i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i>');
     } else {
-        console.log("2");
         $('#collapseMoreFilters').collapse("show");
         $(this).addClass('active');
         $(this).html('<i class="fa fa-arrow-up"></i> Refine Search <i class="fa fa-arrow-up"></i>');

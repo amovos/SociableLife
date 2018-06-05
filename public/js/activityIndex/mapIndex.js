@@ -200,15 +200,11 @@ function standardMarkerCreate(currentActivity){
 function standardMarkerInfoWindow(currentActivity, marker){
     //set the tooltip content for the status icons
     var statusIcon;
-    var statusText;
     if(currentActivity.status === "current"){
-        statusText = statusTextCurrent;
         statusIcon = statusIconCurrent;
     } else if(currentActivity.status === "review"){
-        statusText = statusTextReview;
         statusIcon = statusIconReview;
     } else {
-        statusText = statusTextRemoved;
         statusIcon = statusIconRemoved;
     }
 
@@ -336,7 +332,7 @@ function clusterMarkerInfoWindow(locationObj, clusterMarker, activities){
                         '<div class="iw-title">' + 
                             '<div class="d-flex flex-row">' +
                                 '<div>' +
-                                    '<a class="text-white">Activities at: ' + locationObj.location + '</a>' +
+                                    '<a class="text-white"><strong>Multiple Activities at:</strong> ' + locationObj.location + '</a>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
@@ -355,8 +351,18 @@ function clusterMarkerInfoWindow(locationObj, clusterMarker, activities){
                     
     
     $.each(activitiesInCluster, function(i){
+        //set the tooltip content for the status icons for each activity in the cluster
+        var statusIcon;
+        if(this.status === "current"){
+            statusIcon = statusIconCurrent;
+        } else if(this.status === "review"){
+            statusIcon = statusIconReview;
+        } else {
+            statusIcon = statusIconRemoved;
+        }
+        
         contentMiddle +=    '<div>' +
-                                '<div class="iw-subTitle"><a href="/activities/' + this._id + '">' + this.name + '</a></div>' +
+                                '<div class="iw-subTitle"><a href="/activities/' + this._id + '">' + statusIcon + ' ' + this.name + '</a></div>' +
                                 '<p class="mb-1">' + this.summary + '</p>' +
                             '</div>';
     });     

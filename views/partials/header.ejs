@@ -16,7 +16,7 @@
 
 <body>
 
-	<nav class="navbar fixed-top navbar-expand-md navbar-dark navbar-background-color mb-4" id="">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-background-color mb-4">
 		<div class="container">
 		<a class="navbar-brand" href="/"><%= process.env.ENV_NAME %></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,23 +40,31 @@
 						<a href="/contact" class="nav-link">Contact</a>
 					</li>
 				</ul>
-				<ul class="navbar-nav">
-					<% if(!currentUser){ %>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-							<a href="/login" class="nav-link">Login</a>
-						</li>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-							<a href="/inviteCode" class="nav-link">Sign Up</a>
-						</li>
-					<% } else { %>
-						<li class="nav-item">
-							<a href="/users/<%= currentUser.id %>" class="nav-link">Signed In As <%= currentUser.displayName %></a>
-						</li>
-                    	<li class="nav-item">
-                    		<a href="/logout" class="nav-link">Logout</a>
-                    	</li>
-					<% } %>
+				<ul class="navbar-nav"> <!-- <ul class="navbar-nav mr-auto"> When unhide the login/register icons-->
+					<li class="nav-item">
+						<a href="https://twitter.com/SociableLife" class="nav-link"><i class="fa fa-twitter fa-lg"></i></a>
+					</li>					
+					<li class="nav-item">
+						<a href="https://www.facebook.com/SociableLife/" class="nav-link"><i class="fa fa-facebook-square fa-lg"></i></a>
+					</li>
 				</ul>
+				<!--<ul class="navbar-nav">-->
+				<!--	<% if(!currentUser){ %>-->
+				<!--		<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">-->
+				<!--			<a href="/login" class="nav-link">Login</a>-->
+				<!--		</li>-->
+				<!--		<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">-->
+				<!--			<a href="/inviteCode" class="nav-link">Sign Up</a>-->
+				<!--		</li>-->
+				<!--	<% } else { %>-->
+				<!--		<li class="nav-item">-->
+				<!--			<a href="/users/<%= currentUser.id %>" class="nav-link">Signed In As <%= currentUser.displayName %></a>-->
+				<!--		</li>-->
+    <!--                	<li class="nav-item">-->
+    <!--                		<a href="/logout" class="nav-link">Logout</a>-->
+    <!--                	</li>-->
+				<!--	<% } %>-->
+				<!--</ul>-->
 			</div>
 		</div>
 	</nav>
@@ -80,3 +88,6 @@
             </div>
         <% } %>
     </div>
+    
+<!--Use a wrapper div to always push the footer to the bottom of the page by putting the body in a flex-column and then make the wrapper grow-->
+<div id="wrapper" class="flex-grow-1">
