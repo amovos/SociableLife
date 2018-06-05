@@ -42,6 +42,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sociable-comment {
 	color: #249D3D;
+}
+
+#sociableComment:hover {
+	color: #216d27;
 	cursor: pointer;
 }
 
@@ -55,6 +59,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 #showPageLoveAndComment {
   font-size: 1.2em; /* 20px; */
+}
+
+.filterboxDiv {
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 
 /* Activity Status ToolTip

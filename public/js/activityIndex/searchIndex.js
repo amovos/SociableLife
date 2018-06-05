@@ -101,7 +101,7 @@ function searchCircle(radius){
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#115BBF',
-        fillOpacity: 0.2,
+        fillOpacity: 0.1,
     });
     circle.bindTo('center', searchMarker, 'position');
     map.fitBounds(circle.getBounds());

@@ -17,6 +17,7 @@ function addActivities(activities) { //function used to add activities on page l
     });
     if(activities.length <= perPage){
         $('#loadMoreBtn').hide();
+        $('#backToTopBtn').hide();
     } else {
         $('#loadMoreBtn').show();
     }
@@ -34,6 +35,7 @@ function addMoreActivities(activities){
     });
     if(activityCounter >= (activities.length - 1)){
         $('#loadMoreBtn').hide();
+        $('#backToTopBtn').show();
     }
     //updateMasonryLayout(); causes the page to jump
     reloadMasonryLayout();
@@ -147,4 +149,18 @@ async function reloadMasonryLayout(){
 
 function removeAllActivities() {
     $('#activity-grid').empty();
+}
+
+function scrollToActivityIndexMap() {
+    
+    event.preventDefault(); //Prevent default anchor click behavior
+
+    var hash = "#activity-index-map";
+    
+    $('html, body').animate({
+        scrollTop: $(hash).offset().top
+    }, 800, function(){
+        window.location.hash = hash;
+    });
+    
 }
