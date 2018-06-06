@@ -15,16 +15,13 @@ h6 {
 }
 
 #mainTitle {
-    font-size: 6em;
+    font-size: 5em;
 }
 
 header.masthead {
   position: relative;
   background-color: #343a40;
   background: url("../img/bg-masthead.jpg") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -60,7 +57,20 @@ header.masthead h1 {
 
 .showcase .showcase-img {
   min-height: 30rem;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 576px) {
+  .showcase .showcase-img {
+    background-size: contain;
+    background-size: 100%;
+    width: 100vw;
+    height: 57vh;
+    min-height: 200px;
+    border: 0px solid #dee2e6 !important;
+  }
 }
 
 @media (min-width: 768px) {
@@ -86,10 +96,6 @@ header.masthead h1 {
   font-size: 4.5rem;
 }
 
-/*.features-icons .features-icons-item:hover .features-icons-icon i {*/
-/*  font-size: 5rem;*/
-/*}*/
-
 .testimonials {
   padding-top: 7rem;
   padding-bottom: 7rem;
@@ -101,7 +107,8 @@ header.masthead h1 {
 
 .testimonials .testimonial-item img {
   max-width: 12rem;
-  box-shadow: 0px 5px 5px 0px #adb5bd;
+  -webkit-box-shadow: 0px 5px 5px 0px #adb5bd;
+          box-shadow: 0px 5px 5px 0px #adb5bd;
 }
 
 .call-to-action {

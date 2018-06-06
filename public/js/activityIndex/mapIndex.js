@@ -12,8 +12,8 @@ function initActivityIndexMap() {
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
         zoom: mapInitZoom,
         center: mapInitCenter,
-        scrollwheel: false,
-        //gestureHandling: 'cooperative',
+        // scrollwheel: false,
+        gestureHandling: 'cooperative',
         mapTypeControl: false,
         streetViewControl: false,
         scaleControl: false,
