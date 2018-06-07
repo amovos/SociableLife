@@ -13,6 +13,14 @@ router.get("/", function(req, res){
 });
 
 // ==========================
+// ADD ACTIVITY INFO ROUTE
+// ==========================
+router.get("/addActivity", function(req, res){
+    res.render("general/addActivity", {page: 'addActivity'});
+});
+
+
+// ==========================
 // ABOUT US ROUTE
 // ==========================
 router.get("/aboutus", function(req, res){
