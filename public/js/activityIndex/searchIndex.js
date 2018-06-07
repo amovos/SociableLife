@@ -55,10 +55,6 @@ async function activityFilter(activities){
     // APPLY TYPE FILTERING OPTIONS
     filteredActivitiesLocal = await typeFilter(filteredActivitiesLocal);
     
-    // APPLY ORDERING OPTIONS
-    //This might be a standalon function on the activityIndex.js file as it can happen at any time, even without filtering, but needs to be applied here as well
-    
-    
     //set the filter message based on the number of returned activities
     activityFilterMessage(filteredActivitiesLocal);
     
@@ -107,7 +103,9 @@ function searchCircle(radius){
     
     //close the last opened info window when the circle is clicked
     google.maps.event.addListener(circle, "click", function(event) {
-        lastOpenedInfoWindow.close();
+        if(lastOpenedInfoWindow){
+            lastOpenedInfoWindow.close();
+        }
     });
 }
 
@@ -173,6 +171,7 @@ function clearCircleAndSearchMarker(){
         searchMarker.setMap(null);
     }
     $('#collapseDistanceSearch').collapse('hide');
+    
 }
 
 function mapKeyUpdateFunction(passedThis){

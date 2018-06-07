@@ -112,6 +112,10 @@ async function addMarkers(activities){
     // Initialise map clustering
     markerCluster = new MarkerClusterer(map, markers, {imagePath: '/js/lib/GoogleMapsClustering/m'});
     
+    //Hack to stop the map zooming in when you drag on a cluster
+    google.maps.event.addListener(map,'dragstart',function(){ markerCluster.zoomOnClick_=false;}); 
+    google.maps.event.addListener(map,'mouseup',function(){setTimeout(function(){ markerCluster.zoomOnClick_=true;},50);});
+    
     return activities; //need to return the activities so it can be passed through to the activityIndex functions
 }
 

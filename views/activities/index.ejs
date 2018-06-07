@@ -54,21 +54,38 @@
     
     
     <!-- "Reset Search" and "Refine Search" buttons div -->
-    <div class="d-flex align-items-start col-12 nopadding">
-        <div class="col nopadding col-md-9 col-7 mb-2">
-            <button id='moreFiltersBtn' class="btn btn-info btn-block"><i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i></button>
+    <div class="d-flex align-items-start flex-wrap col-12 nopadding">
+        <div class="d-flex flex-row col-md-4 col-12 mb-2 nopadding">
+            <label>Order By</label>
+            <div class="d-flex flex-row flex-grow-1 justify-content-around align-items-start ml-2 mr-2">
+                <label class="radio-container nopadding mb-0">
+                  <input id="orderDistanceCheck" class="radio-checkmark-input" type="radio" name="radio" disabled>
+                  <span id="orderRadioDistance" class="radio-span mr-2 ml-2" title="You need to set a location to order by location"><i class="fa fa-map-marker"></i></span>
+                </label>
+                <label class="radio-container nopadding mb-0">
+                  <input id="orderDateUpdatedCheck" class="radio-checkmark-input" type="radio" checked="checked" name="radio">
+                  <span id="orderRadioDateUpdated" class="radio-span mr-2 ml-2" title="Order by Updated Date"><i class="fa fa-calendar"></i></span>
+                </label>
+                <label class="radio-container nopadding mb-0">
+                  <input id="orderLovesCheck" class="radio-checkmark-input" type="radio" name="radio">
+                  <span id="orderRadioLove" class="radio-span mr-2 ml-2" title="Order by Loves"><i class="fa fa-heart"></i></span>
+                </label>
+            </div>
         </div>
-        <div class="col nopadding col-md-3 col-5 d-flex ">
-            <button id='resetSearchBtn' class="btn btn-primary btn-block ml-3 mb-2" onclick="resetSearch()">Reset Search</button>
+        <div class="d-flex flex-row flex-grow-1 justify-content-end mb-2">
+            <div class="col nopadding col-sm-7">
+                <button id='moreFiltersBtn' class="btn btn-info btn-block"><i class="fa fa-arrow-down"></i> Refine Search <i class="fa fa-arrow-down"></i></button>
+            </div>
+            <div class="d-flex col nopadding col-sm-5">
+                <button id='resetSearchBtn' class="btn btn-primary btn-block ml-sm-3" onclick="resetSearch()">Reset Search</button>
+            </div>
         </div>
     </div>
     
+    
+    
     <!-- More filters collapsible div-->
     <div class="collapse col-12 nopadding" id="collapseMoreFilters">
-        <!--<div class="alert alert-primary mt-2 text-center" role="alert">-->
-        <!--    Sorry, we're still building this feature 🛠 we'll have it ready as soon as possible!-->
-        <!--</div>-->
-        
         <div class="d-flex flex-row flex-wrap alert alert-primary mt-2" role="alert">
             
             <div class="flex-grow-1 mr-4 mb-3 filterboxDiv">
@@ -189,7 +206,6 @@
             </div>
             
         </div>
-        
     </div>
 
 </div>

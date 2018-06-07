@@ -1,0 +1,41 @@
+.radio-container {
+    cursor: pointer;
+    font-size: 2.3rem;
+    line-height: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*Hide the browser's default radio button */
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-checkmark-input ~ .radio-span {
+    color: #1373FA;
+    opacity: 0.3;
+}
+
+.radio-checkmark-input:hover ~ .radio-span {
+    color: #1373FA;
+    opacity: 0.7;
+}
+
+.radio-checkmark-input:checked ~ .radio-span {
+    color: #1373FA;
+    opacity: 1;
+}
+
+.radio-checkmark-input[disabled] ~ .radio-span {
+    color: grey;
+    opacity: 0.5;
+}
+
+.radio-checkmark-input[disabled]:hover ~ .radio-span {
+    color: grey;
+    opacity: 0.8;
+}

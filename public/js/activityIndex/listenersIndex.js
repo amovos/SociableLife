@@ -58,13 +58,17 @@ $(document).ready(function(){ //waits until the DOM has loaded
     }, 500);
     
     
-    
     //ON PAGE LOAD IF CONTENT EXISTS (e.g. when the user presses back on the browser)
     if($('#searchQueryInput').val()){
         $('#searchQueryClearBtn').show();
     }
     if($('#setLocationInput').val()){
         $('#findNearMeClearBtn').show();
+    }
+    
+    //disabled distance order on load if no location value is present
+    if($('#orderDistanceCheck').prop('checked')){
+        $('#orderDistanceCheck').attr("disabled", false);
     }
     
     //ON PAGE LOAD, set the values of the filter clearAll/showAll buttons
@@ -107,13 +111,27 @@ $(document).ready(function(){ //waits until the DOM has loaded
 //*************
 
 //when search button is clicked, filter results
-$('#searchQueryBtn,#findNearMeBtn').on('click', function(){ //the list is there on page load, but the li isn't so attach the listener to the list, then specify li inside which can be created after page load
+$('#findNearMeBtn').on('click', function(){
+    //as a search by distance is being run, set the ordering distance if something is entered
+    if($("#setLocationInput").val()){
+        $('#orderDistanceCheck').attr("disabled", false);
+        $('#orderDistanceCheck').prop('checked', true);
+    }
+    newSearch();
+});
+
+$('#searchQueryBtn').on('click', function(){
     newSearch();
 });
 
 //when typing in text search input or location search input, if enter is pressed run the search
 $('#searchQueryInput,#setLocationInput').keyup(function(e){
     if(e.keyCode==13){ //remove this if statement to get constant search (but this doesn't work well with the marker drop animation)
+        //if the input was the "setLocationInput" then change the order to distance
+        if(this.id === "setLocationInput" && $(this).val()){
+            $('#orderDistanceCheck').attr("disabled", false);
+            $('#orderDistanceCheck').prop('checked', true);
+        }
         $(this).blur(); //should minimise the keyboard on mobile
         newSearch();
     } else {
@@ -133,6 +151,12 @@ $('#searchQueryInput,#setLocationInput').keyup(function(e){
         }
     }
 });
+
+//on clicking on any of the order buttons run a filter again with existing data
+$('.radio-checkmark-input').on('change', function(){
+    existingDataSearch();
+});
+
 
 //***************************************
 //AUTO OPEN AND CLOSE OF MORE FILTERS DIV
@@ -214,6 +238,7 @@ $('#searchQueryClearBtn').on('click', function(){
 $('#findNearMeClearBtn').on('click', function(){
     $('#findNearMeClearBtn').hide();
     $('#setLocationInput').val('');
+    
     //reset map zoom to whole map
     map.setCenter(mapInitCenter);
     map.setZoom(mapInitZoom);

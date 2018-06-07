@@ -69,7 +69,7 @@ async function locationFilter(activities){
             filteredActivitiesLocal.push(activity);
         }
     });
-    
+
     return filteredActivitiesLocal;
 }
 
