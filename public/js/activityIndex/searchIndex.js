@@ -104,6 +104,11 @@ function searchCircle(radius){
     });
     circle.bindTo('center', searchMarker, 'position');
     map.fitBounds(circle.getBounds());
+    
+    //close the last opened info window when the circle is clicked
+    google.maps.event.addListener(circle, "click", function(event) {
+        lastOpenedInfoWindow.close();
+    });
 }
 
 function isInsideCircle(activity){

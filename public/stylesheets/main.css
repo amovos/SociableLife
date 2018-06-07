@@ -51,6 +51,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .activity-show-image {
 	max-height: 70vh;
+	-o-object-fit: contain;
+	   object-fit: contain;
 }
 
 .activity-index-image {
@@ -58,7 +60,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #showPageLoveAndComment {
-  font-size: 1.2em; /* 20px; */
+  font-size: 1.2em;
 }
 
 .filterboxDiv {
