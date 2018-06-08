@@ -117,6 +117,7 @@ var indexRoutes     = require("./routes/index"),
     userRoutes      = require("./routes/user"),
     commentRoutes   = require("./routes/comments"),
     activityRoutes  = require("./routes/activities"),
+    adminRoutes  = require("./routes/admin"),
     apiRoutes  = require("./routes/apis");
 
 //once the route files have been required they need to actually be used in the app, using the Express Router
@@ -125,6 +126,7 @@ app.use("/", indexRoutes);
 app.use("/", userRoutes);
 app.use("/activities", activityRoutes);
 app.use("/activities/:id/comments", commentRoutes);
+app.use("/admin", adminRoutes);
 app.use("/api", apiRoutes);
 
 //CatchAll Route

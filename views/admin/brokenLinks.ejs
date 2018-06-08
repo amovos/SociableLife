@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<div class="container col-md-6 pb-5">
+    <h1>Broken Links List</h1>
+    
+    <% activities.forEach(function(activity){ %>
+        <p>Activity Name: <%= activity.name %></p>
+    <% }) %>
+
+</div>
+
+<% include ../partials/footer %>
