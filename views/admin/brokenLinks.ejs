@@ -1,10 +1,37 @@
 <% include ../partials/header %>
 
 <div class="container col-md-6 pb-5">
-    <h1>Broken Links List</h1>
+    <h1>Broken Links Error List: (<%= activitiesError.length %>)</h1>
     
-    <% activities.forEach(function(activity){ %>
-        <p>Activity Name: <%= activity.name %></p>
+    <% activitiesError.forEach(function(activity){ %>
+        <p>
+            <%= activity.name %>
+            <br>
+            <a href="<%= activity.website %>"><%= activity.website %></a>
+        </p>
+        
+    <% }) %>
+    
+    <h1>Broken Links 404 List: (<%= activities404.length %>)</h1>
+    
+    <% activities404.forEach(function(activity){ %>
+        <p>
+            <%= activity.name %>
+            <br>
+            <a href="<%= activity.website %>"><%= activity.website %></a>
+        </p>
+        
+    <% }) %>
+    
+    <h1>Broken Links Other List: (<%= activitiesOther.length %>)</h1>
+    
+    <% activitiesOther.forEach(function(activity){ %>
+        <p>
+            <%= activity.name %>
+            <br>
+            <a href="<%= activity.website %>"><%= activity.website %></a>
+        </p>
+        
     <% }) %>
 
 </div>
