@@ -90,13 +90,14 @@ passport.deserializeUser(User.deserializeUser());
 // SEED DATABASE
 // ==========================
 // ONLY IN DEV ENVIRONMENT
-if (process.env.ENV_ID === "dev"){
-    app.get('/seed', function(req, res){
+var middleware = require("./middleware");
+// if (process.env.ENV_ID === "dev"){
+    app.get('/seed', middleware.isAdmin, function(req, res){
         var seedDB = require("./seeds");
         seedDB(req); //Run the seedDB file
         res.redirect("/activities");
     });
-}
+// }
 
 
 // ==========================
