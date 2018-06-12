@@ -235,7 +235,9 @@ function standardMarkerInfoWindow(currentActivity, marker){
                                 '</div>' +
                             '</div>' +
 
-                            '<hr class="mb-1 mt-0">' +
+                            '<a class="btn btn-primary btn-block mt-1" href="/activities/' + currentActivity._id + '">View Activity Page</a><br>' +
+                            '<p class="text-center mb-3">(scroll down this box for more details)</p>' +
+                            //'<hr class="mb-1 mt-0">' +
                             
                             '<div class="d-flex align-items-start">' +
                                 '<div class="mr-5">' +
@@ -273,8 +275,6 @@ function standardMarkerInfoWindow(currentActivity, marker){
                                     '<span class="fa-stack-1x text-white">' + (currentActivity.comments.length) + '</span>' +
                                 '</span>' +
                             '</div>' +
-                            
-                            '<a class="btn btn-primary btn-block " href="/activities/' + currentActivity._id + '">More Info</a><br>' +
                             
                         '</div>' +
                         '<div class="iw-bottom-gradient"></div>' +
