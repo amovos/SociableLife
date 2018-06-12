@@ -8,6 +8,11 @@ function scheduledFunctions(){
         var isodate = new Date().toISOString();
         checkAllBrokenLinks(isodate);
     });
+    
+    //put activities into review that haven't been updated in 6 months
+    
+    //"remove" activities that haven't been updated in 12 months
+    
 }
 
 module.exports = scheduledFunctions;
