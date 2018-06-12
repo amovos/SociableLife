@@ -41,7 +41,12 @@
 					</li>
 					<li class="nav-item <%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>">
 						<a href="/contact" class="nav-link">Contact</a>
-					</li>
+					</li>					
+					<% if(currentUser && currentUser.isAdmin){ %>
+						<li class="nav-item <%= typeof page !== 'undefined' && page === 'admin' ? 'active' : '' %>">
+							<a href="/admin" class="nav-link text-success"><i class="fa fa-lg fa-cogs"></i></a>
+						</li>
+					<% } %>
 				</ul>
 				<ul class="navbar-nav"> <!-- <ul class="navbar-nav mr-auto"> When unhide the login/register icons-->
 					<li class="nav-item">
