@@ -31,8 +31,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.0",
-    "request": "^2.86.0",
-    "request-promise": "^4.2.2"
+    "request": "^2.86.0"
   },
   "devDependencies": {
     "locus": "^2.0.1"
