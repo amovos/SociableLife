@@ -31,6 +31,7 @@ var brokenLinks = async function(req, res) {
                     brokenLinkArray404.push(activity);
                 } else {
                     brokenLinkArrayOther.push(activity);
+                    console.log("response.statusCode: " + response.statusCode);
                 }
                 
                 returnedLinkArray.push(activity);
@@ -48,7 +49,7 @@ var brokenLinks = async function(req, res) {
                 }
             } else {
                 returnedLinkArray.push(activity);
-                console.log("Returned " + returnedLinkArray.length + "/" + foundActivities.length);
+                //console.log("Returned " + returnedLinkArray.length + "/" + foundActivities.length);
 
                 if(returnedLinkArray.length === foundActivities.length){
                     console.log("Rendering Page Now from OK");
