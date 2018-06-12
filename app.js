@@ -46,6 +46,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.locals.moment = require('moment'); //used for time tracking
 
+//run scheduled scripts
+var scheduledFunctions = require("./scheduledFunctions");
+scheduledFunctions();
+
 // ==========================
 // DB CONFIG
 // ==========================

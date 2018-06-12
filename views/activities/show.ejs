@@ -91,6 +91,23 @@
                             </div>
                             <h4>Tags</h4>
                             <p class="mr-2"><%= activity.tags %></p>
+                            
+                            <% if(activity.linkStatus.isLinkBroken && activity.linkStatus.errorMessage === "404") { %>
+                                <div class="alert alert-warning mr-3" role="alert">
+                                    <i class="fa fa-exclamation-circle"></i> Oops! It looks like the website for this activity has moved...
+                                    <br><br>
+                                    The activity might still be running, they could have just moved the page. 
+                                    <br><br>
+                                    If you have a second could you check for us and let us know if they have a new page for this activity or if we should remove it?
+                                </div>
+                            <% } else if(activity.linkStatus.isLinkBroken) { %>
+                                <div class="alert alert-warning mr-3" role="alert">
+                                    <i class="fa fa-exclamation-circle"></i> We've just checked the website for this activity and it might not be working right now.
+                                    <br><br>
+                                    This could be a temporary problem, but if it doesn't get fixed soon we'll automatically remove this activity. (Status Code: <%= activity.linkStatus.errorMessage %>)
+                                </div>
+                            <% } %>
+                            
                             <div class="d-flex flex-row flex-wrap">
                                 <div class="col-md-5 nopadding">
                                     <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Activity website</a>

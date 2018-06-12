@@ -11,6 +11,12 @@ var activitySchema = new mongoose.Schema({
     frequency: String,
     price: String,
     website: String,
+    linkStatus: {
+        isLinkBroken: { type: Boolean, default: false },
+        errorMessage: String,
+        dateFirstBroken: Date,
+        dateLastChecked: Date
+    },
     tags: String,
     status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value
     age: String,

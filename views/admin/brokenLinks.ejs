@@ -1,39 +1,114 @@
 <% include ../partials/header %>
 
 <div class="container col-md-6 pb-5">
-    <h1>Broken Links Error List: (<%= activitiesError.length %>)</h1>
+    <h1>Broken Links List:</h1>
     
-    <% activitiesError.forEach(function(activity){ %>
-        <p>
-            <%= activity.name %>
-            <br>
-            <a href="<%= activity.website %>"><%= activity.website %></a>
-        </p>
+    <h2 id="checkedCounter">Checked: Not yet run</h2>
+    
+    <button id="currentListBtn">Current Links</button>
+    <button id="checkLinkBtn">Manually Check Links</button>
+    <button id="refreshListBtn">Manually Refresh List during manual check</button>
+    
+    <div id="brokenLinkList">
         
-    <% }) %>
-    
-    <h1>Broken Links 404 List: (<%= activities404.length %>)</h1>
-    
-    <% activities404.forEach(function(activity){ %>
-        <p>
-            <%= activity.name %>
-            <br>
-            <a href="<%= activity.website %>"><%= activity.website %></a>
-        </p>
-        
-    <% }) %>
-    
-    <h1>Broken Links Other List: (<%= activitiesOther.length %>)</h1>
-    
-    <% activitiesOther.forEach(function(activity){ %>
-        <p>
-            <%= activity.name %>
-            <br>
-            <a href="<%= activity.website %>"><%= activity.website %></a>
-        </p>
-        
-    <% }) %>
+    </div>
 
 </div>
+
+<script>
+
+    var isodate;
+        
+    $("#checkLinkBtn").on('click', function(){ //check that the input isn't empty
+        isodate = new Date().toISOString()
+        
+        $.post('/admin/brokenLinks/checkAll', {timeStamp: isodate})
+        
+        // .then(function(newTodo){
+        //   $('#todoInput').val(''); //if the promise returns then clear the input field (as that is the expected user experience)
+        //   addTodo(newTodo);
+        // })
+        
+        // .catch(function(err){
+        //   console.log(err);
+        // });
+
+        refreshList();
+    
+    }) 
+    
+    $("#refreshListBtn").on('click', async function(){
+        //on click, get the value of "isodate" and search the all activity api for those values
+        refreshList();
+
+    });
+    
+    $("#currentListBtn").on('click', async function(){
+        currentList();
+    });
+    
+    async function refreshList(){
+        $("#brokenLinkList").empty();
+        
+        var counter = 0;
+        var counterBroken = 0;
+        var returnedActivities = await $.getJSON("/api/activities/");
+        
+        //for each item in returnedActivities, count if it's been checked
+        returnedActivities.forEach(function(activity){
+            if(activity.linkStatus.dateLastChecked === isodate) {
+                counter++;
+                if(activity.linkStatus.isLinkBroken) {
+                    counterBroken++
+
+                    $("#brokenLinkList").append(
+                        '<strong>' + counterBroken + '. <a href="/activities/' + activity._id + '">' + activity.name + '</a></strong>' +
+                        '<br>' +
+                        '<a href="' + activity.website + '">' + activity.website + '</a>' +
+                        '<br>' +
+                        'dateFirstBroken: ' + activity.linkStatus.dateFirstBroken +
+                        '<br>' +
+                        'dateLastChecked: ' + activity.linkStatus.dateLastChecked +
+                        '<br>' +
+                        'ErrorMessage: ' + activity.linkStatus.errorMessage +
+                        '<br><br>'
+                    );
+                }
+            }
+        })
+        
+        $("#checkedCounter").text("Checked: " + counter + "/" + returnedActivities.length + " (Found " + counterBroken + " errors)");
+    }
+    
+    async function currentList(){
+        $("#brokenLinkList").empty();
+        
+        var counterBroken = 0;
+        var returnedActivities = await $.getJSON("/api/activities/");
+        
+        //for each item in returnedActivities, count if it's been checked
+        returnedActivities.forEach(function(activity){
+            if(activity.linkStatus.isLinkBroken) {
+                counterBroken++
+                $("#brokenLinkList").append(
+                    '<strong>' + counterBroken + '. <a href="/activities/' + activity._id + '">' + activity.name + '</a></strong>' +
+                    '<br>' +
+                    '<a href="' + activity.website + '">' + activity.website + '</a>' +
+                    '<br>' +
+                    'dateFirstBroken: ' + activity.linkStatus.dateFirstBroken +
+                    '<br>' +
+                    'dateLastChecked: ' + activity.linkStatus.dateLastChecked +
+                    '<br>' +
+                    'ErrorMessage: ' + activity.linkStatus.errorMessage +
+                    '<br><br>'
+                );
+            }
+            
+        })
+        
+        $("#checkedCounter").text("Current database contains " + counterBroken + " link errors");
+    }
+    
+</script>
 
 <% include ../partials/footer %>

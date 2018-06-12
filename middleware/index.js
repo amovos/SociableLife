@@ -64,6 +64,15 @@ middlewareObj.isLoggedIn = function(req, res, next){
     res.redirect("/login");
 };
 
+// CHECK ISADMIN
+middlewareObj.isAdmin = function(req, res, next){
+    if(req.user && req.user.isAdmin){
+        return next();
+    }
+    req.flash("errorMessage", "You need to be an admin to do that");
+    res.redirect("/");
+};
+
 
 // ==========================
 // MODULE.EXPORTS
