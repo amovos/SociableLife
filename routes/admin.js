@@ -21,6 +21,17 @@ router.get("/brokenLinks", middleware.isAdmin, require("./admin/brokenLinksShow"
 // ============================
 router.post("/brokenLinks/checkAll", middleware.isAdmin, require("./admin/brokenLinksCheckAll"));
 
+// ============================
+// USER PERMISSION SHOW ROUTE
+// ============================
+router.get("/userPermissions", middleware.isAdmin, require("./admin/userPermissionsShow"));
+
+// ============================
+// USER PERMISSION UPDATE ROUTE
+// ============================
+//router.post("/userPermissions", middleware.isAdmin, require("./admin/userPermissionsShow"));
+
+
 // ==========================
 // MODULE.EXPORTS
 // ==========================

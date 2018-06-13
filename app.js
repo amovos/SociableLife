@@ -8,6 +8,8 @@ var flash           = require("connect-flash"),
     passport        = require("passport"),
     bodyParser      = require("body-parser"),
     LocalStrategy   = require("passport-local"),
+    session         = require("express-session"),
+    MongoStore      = require('connect-mongo')(session),
     methodOverride  = require("method-override");
 
 
@@ -44,11 +46,13 @@ app.use(express.static(__dirname + "/public")); //Configure Public Directory - u
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.locals.moment = require('moment'); //used for time tracking
+// Configure time tracking
+app.locals.moment = require('moment'); 
 
-//run scheduled scripts
+// Run scheduled scripts
 var scheduledFunctions = require("./scheduledFunctions");
 scheduledFunctions();
+
 
 // ==========================
 // DB CONFIG
@@ -65,26 +69,24 @@ if (process.env.ENV_ID === "dev"){
 // REQUIRE DB MODELS
 // ==========================
 var User = require("./models/user");
-    
+
     
 // ==========================
 // PASSPORT CONFIG
 // ==========================
-var pwdSalt = crypto.randomBytes(256).toString('base64');
-app.use(require("express-session")({
-    secret: pwdSalt,
-    resave: false,
-    saveUninitialized: false
+app.use(session({   secret: process.env.COOKIE_SECRET,
+                    resave: true,
+                    saveUninitialized: true,
+                    store: new MongoStore({ mongooseConnection: mongoose.connection }) //stores cookie in database so sessions are persistent between server restarts
 }));
 
-app.use(passport.initialize());
+app.use(passport.initialize()); 
 app.use(passport.session());
 
 //These methods that we're passing in come from passport-local-mongoose in the users.js file
 passport.use(new LocalStrategy(User.authenticate())); 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 
 // ==========================
 // SEED DATABASE
