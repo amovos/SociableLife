@@ -2,7 +2,9 @@
 
 <div class="container col-md-6 pb-5">
     <h1>User Permissions</h1>
-    
+    <% users.forEach(function(user){ %>
+        <p><%= user.displayName %></p>
+    <% }) %>
 </div>
 
 <% include ../partials/footer %>

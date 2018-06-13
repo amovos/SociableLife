@@ -34,7 +34,7 @@ var activityData = require("./seedActivityDataFile.js");
 // SEED FUNCTION
 // ==========================
 
-async function seedDB(req){
+async function seedDB(){
    
 // ==========================
 // DELETE ALL DATA

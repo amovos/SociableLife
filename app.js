@@ -12,31 +12,16 @@ var flash           = require("connect-flash"),
     MongoStore      = require('connect-mongo')(session),
     methodOverride  = require("method-override");
 
-
 // ==========================
 //GENERIC APP CONFIG
 // ==========================
 var app = express();
 
-//URL redirect to custom domain
-app.use((req, res, next) => {
-    if(req.protocol + '://' + req.hostname !== process.env.APP_DOMAIN){
-        res.set('location', process.env.APP_DOMAIN + req.path);
-        res.status(301).send();
-    } else {
-        next();
-    }
-});
+// Run URL redirect function
+var urlRedirects = require("./app_config/url_redirect");
+urlRedirects(app);
 
-// Force https redirect
-app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https') {
-        res.redirect('https://' + req.hostname + req.url);
-    } else {
-        next();
-    }
-});
-
+// Configure app settings
 app.use(flash());
 app.set("view engine", "ejs"); // don't need to add .ejs to the end of all those files when routing
 app.use(methodOverride("_method")); // method override needed for HTML forms that can't do PUT so have to be POST, then overrided to PUT once submitted with this override added to the URL
@@ -68,7 +53,7 @@ if (process.env.ENV_ID === "dev"){
 // ==========================
 // REQUIRE DB MODELS
 // ==========================
-var User = require("./models/user");
+var User = require("./models/user"); //only used for passport to serialize the users
 
     
 // ==========================
@@ -87,19 +72,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate())); 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-// ==========================
-// SEED DATABASE
-// ==========================
-// ONLY IN DEV ENVIRONMENT
-var middleware = require("./middleware");
-// if (process.env.ENV_ID === "dev"){
-    app.get('/seed', middleware.isAdmin, function(req, res){
-        var seedDB = require("./seeds");
-        seedDB(req); //Run the seedDB file
-        res.redirect("/activities");
-    });
-// }
 
 
 // ==========================
@@ -141,6 +113,22 @@ app.get('/*', function(req,res){
     //req.flash("errorMessage", "Sorry, we couldn't find the page you were looking for");
     res.redirect("/activities");
 });
+
+
+
+// ==========================
+// SEED DATABASE
+// ==========================
+// ONLY IN DEV ENVIRONMENT
+var middleware = require("./middleware");
+// if (process.env.ENV_ID === "dev"){
+    app.get('/seed', middleware.isAdmin, function(req, res){
+        var seedDB = require("./seeds");
+        seedDB(); //Run the seedDB file
+        res.redirect("/activities");
+    });
+// }
+
 
 
 // ==========================

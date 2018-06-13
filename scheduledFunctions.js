@@ -1,6 +1,6 @@
 var schedule = require('node-schedule');
 
-var checkAllBrokenLinks = require("./serverScripts/brokenLinksCheckAll.js");
+var checkAllBrokenLinks = require("./server_scripts/brokenLinksCheckAll.js");
 
 function scheduledFunctions(){
     //check links every 24 hours
