@@ -29,7 +29,7 @@ router.get("/userPermissions", middleware.isAdmin, require("./admin/userPermissi
 // ============================
 // USER PERMISSION UPDATE ROUTE
 // ============================
-//router.post("/userPermissions", middleware.isAdmin, require("./admin/userPermissionsShow"));
+router.put("/userPermissions", middleware.isAdmin, require("./admin/userPermissionsUpdate"));
 
 
 // ==========================

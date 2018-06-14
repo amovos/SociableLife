@@ -9,13 +9,13 @@
         </div>
         
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-            <form action="/register" method="POST" enctype="multipart/form-data">
+            <form id="registerForm" action="/register" method="POST" enctype="multipart/form-data">
                 
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="email"><span class="align-text-top">Email Address *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="email" name="email" placeholder="Email" required>
+                            <input id="email" class="col-md-8 col-sm-7 form-control" type="email" name="email" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="password"><span class="align-text-top">Password *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="password" name="password" placeholder="Password" required>
+                            <input id="password" class="col-md-8 col-sm-7 form-control" type="password" name="password" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="firstName"><span class="align-text-top">First Name *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="text" name="firstName" placeholder="First Name" required>
+                            <input id="firstName" class="col-md-8 col-sm-7 form-control" type="text" name="firstName" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="lastName"><span class="align-text-top">Last Name *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="text" name="lastName" placeholder="Last Name" required>
+                            <input id="lastName" class="col-md-8 col-sm-7 form-control" type="text" name="lastName" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -51,19 +51,10 @@
                     <div class="form-group">
                         <div class="row justify-content-center">
                             <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Display Name *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="text" name="displayName" placeholder="What other people will see" required>
+                            <input id="displayName" class="col-md-8 col-sm-7 form-control" type="text" name="displayName" placeholder="What other people will see" required>
                         </div>
                     </div>
                 </div>                
-                
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <label class="col-md-4 col-sm-5" for="inviteCode"><span class="align-text-top">Invite Code *</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="text" name="inviteCode" placeholder="Invite Code" required>
-                        </div>
-                    </div>
-                </div>
                 
                 <!-- Profile Picture on Signup removed to avoid clash with RECAPTCHA -->
                 <!--<div class="container">-->
@@ -78,24 +69,24 @@
                 <!--    </div>-->
                 <!--</div> -->
                 
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <label class="col-md-4 col-sm-5" for="adminCode"><span class="align-text-top">Admin Code</span></label>
-                            <input class="col-md-8 col-sm-7 form-control" type="text" name="adminCode" placeholder="Admin Code">
-                        </div>
-                    </div>
-                </div> 
-                
                 <!-- reCaptcha check box -->
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">
-                            <div class="col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                            <div class="row justify-content-end col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
                         </div>
                     </div>
                 </div> 
                 
+                <!-- Error message box -->
+                <div id="errorMessageContainer" class="container" style="display: none;">
+                    <div class="row justify-content-end">
+                            <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit form button-->
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">
@@ -108,4 +99,40 @@
         </div>
     </div>
 </div>
+
+<script type='text/javascript'>
+    $("#registerForm").submit(function(event) {
+        console.log("click");
+        
+        /* stop form from submitting normally */
+        event.preventDefault();
+        
+        /* get the action attribute from the <form action=""> element */
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        
+        /* Send the data using post*/
+        var posting = $.post( url, {    email: $('#email').val(), 
+                                        password: $('#password').val(), 
+                                        firstName: $('#firstName').val(), 
+                                        lastName: $('#lastName').val(),
+                                        displayName: $('#displayName').val(),
+                                        captcha: grecaptcha.getResponse()
+                                    } 
+                            );
+                            
+        /* Process returned result */
+        posting.done(function( data ) {
+            if(data.type === "error") {
+                //show error message box with error message
+                $('#errorMessageContainer').show();
+                $('#errorMessageDiv').html(data.message);
+            } else if (data.type === "success") {
+                //Redirect user to activity map page for now, but ideally back to the page they started on
+                window.location.href = "/activities"
+            }
+        });
+    });
+</script>
+
 <% include ../partials/footer %>

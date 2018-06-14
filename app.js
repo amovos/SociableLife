@@ -75,6 +75,20 @@ passport.deserializeUser(User.deserializeUser());
 
 
 // ==========================
+// SEED DATABASE
+// ==========================
+// ONLY IN DEV ENVIRONMENT
+var middleware = require("./middleware");
+// if (process.env.ENV_ID === "dev"){
+    app.get('/seed', middleware.isAdmin, function(req, res){
+        var seedDB = require("./seeds");
+        seedDB(); //Run the seedDB file
+        res.redirect("/activities");
+    });
+// }
+
+
+// ==========================
 // CUSTOM MIDDLEWARE
 // ==========================
 //This will run every time any route is accessed and will pass the user to it, making it available in the ejs templates
@@ -114,8 +128,6 @@ app.get('/*', function(req,res){
     res.redirect("/activities");
 });
 
-
-
 // ==========================
 // SEED DATABASE
 // ==========================
@@ -128,7 +140,6 @@ var middleware = require("./middleware");
         res.redirect("/activities");
     });
 // }
-
 
 
 // ==========================

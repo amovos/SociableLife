@@ -2,9 +2,41 @@
 
 <div class="container col-md-6 pb-5">
     <h1>User Permissions</h1>
-    <% users.forEach(function(user){ %>
-        <p><%= user.displayName %></p>
-    <% }) %>
+    
+    <table class="border p-3">
+        <tr>
+            <th class="border p-3">Username</th>
+            <th class="border p-3">Display Name</th>
+            <th class="border p-3">isAdmin</th>
+            <th class="border p-3">isMod</th>
+            <th class="border p-3">isInactive</th>
+        </tr>
+        <% users.forEach(function(user){ %>
+            <tr>
+                <form action="/admin/userPermissions?_method=PUT" method="POST">
+                    <input type="hidden" name="id" value="<%= user._id %>">
+                    <td class="border p-3"><a href='/users/<%= user._id %>'><%= user.username %></a></td>
+                    <td class="border p-3"><%= user.displayName %></td>
+                    <td class="border p-3 text-center">
+                        <% if(user.isAdmin) { %>
+                            <input id="isAdmin" type="checkbox" name="isAdmin" checked <% if(user.username === process.env.ADMIN_USERNAME) { %> disabled <% } %>>
+                        <% } else { %>
+                            <input id="isAdmin" type="checkbox" name="isAdmin">
+                        <% } %>
+                    </td>
+                    <td class="border p-3 text-center">
+                        <% if(user.isMod) { %>
+                            <input id="isMod" type="checkbox" name="isMod" checked <% if(user.username === process.env.ADMIN_USERNAME) { %> disabled <% } %>>
+                        <% } else { %>
+                            <input id="isMod" type="checkbox" name="isMod">
+                        <% } %>
+                    </td>
+                    <td class="border p-3 text-center"><%=  %></td>
+                    <td class="border p-1"><button class="btn btn-sm btn-primary" <% if(user.username === process.env.ADMIN_USERNAME) { %> disabled <% } %>>Update</button></td>
+                </form>
+            </tr>
+        <% }) %>
+    </table>
 </div>
 
 <% include ../partials/footer %>
