@@ -5,6 +5,7 @@
 // Require models for the data structures to perform the database searches
 var Activity = require("../models/activity");
 var Comment = require("../models/comment");
+var User = require("../models/user");
 
 // Define empty object, fill with functions, then export
 var middlewareObj = {};
@@ -28,14 +29,15 @@ middlewareObj.checkActivityOwnership = function(req, res, next) {
         });
     } else {
         req.flash("errorMessage", "You need to be logged in to edit an activity");
-        res.redirect("/login"); //takes the user back to where they came from
+        res.redirect("/login");
     }
 };
+
 
 // CHECK COMMENT OWNERSHIP
 middlewareObj.checkCommentOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
-        Comment.findById(req.params.comment_id, function(err, foundComment){ //foundActivity.author.id isn't a string (even though it may look like it when printed out) it's infact a mongoose object
+        Comment.findById(req.params.comment_id, function(err, foundComment){ //foundActivity.author.id isn't a string (even though it may look like it when printed out) it's actually a mongoose object
             if(err || !foundComment){
                 req.flash("errorMessage", "Comment not found");
                 res.redirect("/activities");
@@ -51,9 +53,33 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
         });
     } else {
         req.flash("errorMessage", "You need to be logged in to do that");
-        res.redirect("/login"); //takes the user back to where they came from
+        res.redirect("/login");
     }
 };
+
+
+// CHECK USER PROFILE OWNERSHIP
+middlewareObj.userProfileOwnership = function(req, res, next) {
+    if(req.isAuthenticated()){
+        User.findById(req.params.id, function(err, foundUser){
+            if(err || !foundUser){
+                req.flash("errorMessage", "User not found");
+                res.redirect("/activities");
+            } else {
+                if(foundUser._id.equals(req.user._id) || req.user && req.user.isAdmin){
+                    next();
+                } else {
+                    req.flash("errorMessage", "You don't have permission to edit that user");
+                    res.redirect("/activities");
+                }
+            }
+        });
+    } else {
+        req.flash("errorMessage", "You need to be logged in to do that");
+        res.redirect("/login");
+    }
+};
+
 
 // CHECK ISLOGGEDIN
 middlewareObj.isLoggedIn = function(req, res, next){

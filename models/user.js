@@ -10,6 +10,12 @@ var UserSchema = new mongoose.Schema({
     avatarId: String,
     firstName: String,
     lastName: String,
+    bio: String,
+    contactInfo: {
+        contactEmail: String,
+        contactNumber: String,
+        contactWebsite: String
+    },
     createdAt: { type: Date, default: Date.now },
     updatedAt: Date,
     resetPasswordToken: String,

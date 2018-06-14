@@ -1,0 +1,150 @@
+<% include ../partials/header %>
+
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Edit User: <%= user.displayName %></h1> 
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <form id="updateForm" action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-md-4 col-sm-5" for="email"><span class="align-text-top">Email Address</span></label>
+                            <input id="email" class="col-md-8 col-sm-7 form-control" type="email" name="email" value="<%= user.email %>" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-md-4 col-sm-5" for="firstName"><span class="align-text-top">First Name</span></label>
+                            <input id="firstName" class="col-md-8 col-sm-7 form-control" type="text" name="firstName" value="<%= user.firstName %>" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-md-4 col-sm-5" for="lastName"><span class="align-text-top">Last Name</span></label>
+                            <input id="lastName" class="col-md-8 col-sm-7 form-control" type="text" name="lastName" value="<%= user.lastName %>" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Display Name</span></label>
+                            <input id="displayName" class="col-md-8 col-sm-7 form-control" type="text" name="displayName" value="<%= user.displayName %>" required>
+                        </div>
+                    </div>
+                </div>                
+                
+                <hr>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Contact Email</span></label>
+                            <input id="contactEmail" class="col-md-8 col-sm-7 form-control" type="email" name="contactEmail" value="<%= user.contactInfo.contactEmail %>">
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-sm-5" for="displayName"><span class="align-text-top">Contact Number</span></label>
+                            <input id="contactNumber" class="col-sm-7 form-control" type="text" name="contactNumber" value="<%= user.contactInfo.contactNumber %>">
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <label class="col-sm-5" for="displayName"><span class="align-text-top">Contact Website</span></label>
+                            <input id="contactWebsite" class="col-sm-7 form-control" type="text" name="contactWebsite" value="<%= user.contactInfo.contactWebsite %>">
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-start align-items-center">
+                            <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Your Bio</span></label>
+                            <textarea id="userBio" class="form-control" name="userBio" placeholder="Write your bio..." rows="4"><%= user.bio %></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Error message box -->
+                <div id="errorMessageContainer" class="container" style="display: none;">
+                    <div class="row justify-content-end">
+                            <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit form button-->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button class="col-md-8 btn btn-lg btn-primary btn-block">Update User</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript'>
+    $("#updateForm").submit(function(event) {
+        console.log("click");
+        
+        /* stop form from submitting normally */
+        event.preventDefault();
+        
+        /* get the action attribute from the <form action=""> element */
+        var $form = $( this ),
+            url = $form.attr( 'action' );
+        
+        /* Send the data using post*/
+        var posting = $.post( url, {    email: $('#email').val(), 
+                                        firstName: $('#firstName').val(), 
+                                        lastName: $('#lastName').val(),
+                                        displayName: $('#displayName').val(),
+                                        file: $('#imageUpload').val(),
+                                        contactEmail: $('#contactEmail').val(),
+                                        contactNumber: $('#contactNumber').val(),
+                                        contactWebsite: $('#contactWebsite').val(),
+                                        userBio: $('#userBio').val()
+                                    } 
+                            );
+                            
+        /* Process returned result */
+        posting.done(function( data ) {
+            if(data.type === "error") {
+                //show error message box with error message
+                $('#errorMessageContainer').show();
+                $('#errorMessageDiv').html(data.message);
+            } else if (data.type === "success") {
+                //Redirect user to activity map page for now, but ideally back to the page they started on
+                window.location.href = "/users/<%= user._id %>"
+            }
+        });
+    });
+</script>
+
+<% include ../partials/footer %>

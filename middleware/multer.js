@@ -15,9 +15,9 @@ var storage = multer.diskStorage({
 var imageFilter = function (req, file, callback) {
     // accept image files only
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/i)) {
-        return callback(new Error('Only image files (.jpg .jpeg .png) are allowed'), false);
+        req.fileValidationError = 'Only image files (.jpg .jpeg .png) are allowed';
+        return callback(null, false);
     }
-    //console.log("file.size: " + file.size); // returned undefined, need to investigate
     callback(null, true);
 };
 

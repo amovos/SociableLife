@@ -8,19 +8,13 @@ var Comment = require("../../models/comment");
 
 var editRoute = function(req, res){
     
-    console.log("MADE IT HERE");
-    
     Activity.findById(req.params.id, function(err, foundActivity){
         if(err || !foundActivity){ //need to check if the activity is valid before editing the comment. As they might own the comment, but if the activity doesn't exist it will crash the server
             req.flash("errorMessage", "Activity not found");
             res.redirect("/activities");
         } else {
             
-            console.log("foundActivity: " + foundActivity);
-            
             Comment.findById(req.params.comment_id, function(err, foundComment) {
-                
-                console.log("foundComment: " + foundComment);
                 
                 if(err){
                     genericErrorResponse(req, res, err);

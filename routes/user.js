@@ -36,11 +36,22 @@ router.get("/logout", require("./user/logout"));
 
 
 // ==========================
-// USER PROFILE
+// USER PROFILE, EDIT AND UPDATE
 // ==========================
 // USER PROFILE
 router.get("/users/:id", middleware.isLoggedIn, require("./user/userProfile"));
 
+// EDIT PROFILE
+router.get("/users/:id/edit", middleware.userProfileOwnership, require("./user/userEdit"));
+
+// UPDATE PROFILE
+router.put("/users/:id", middleware.userProfileOwnership, require("./user/userUpdate"));
+
+// EDIT AVATAR
+router.get("/users/:id/avatar", middleware.userProfileOwnership, require("./user/userAvatarEdit"));
+
+// UPDATE AVATAR
+router.put("/users/:id/avatar", middleware.userProfileOwnership, upload.single('image'), require("./user/userAvatarUpdate"));
 
 // ==========================
 // USER PASSWORD RESET

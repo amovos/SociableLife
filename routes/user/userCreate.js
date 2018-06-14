@@ -9,24 +9,32 @@ var request = require("request");
 //var cloudinaryConf = require("../shared/cloudinary");
 
 var createRoute = async function(req, res){
+    
+    // CHECK USER INPUTS FOR INVALID CHARACTERS
+    if(checkUserInput(res, req.body.firstName, "First Name")) {return}
+    if(checkUserInput(res, req.body.lastName, "Last Name")) {return}
+    if(checkUserInput(res, req.body.displayName, "Display Name")) {return}
+    
+    // CHECK FOR LENGTH OF INPUTS (MAX 20 CHARACTERS)
+    if(req.body.firstName.length    > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> First Name is too long (30 characters max)"})}
+    if(req.body.lastName.length     > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Last Name is too long (30 characters max)"})}
+    if(req.body.displayName.length  > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Display Name is too long (30 characters max)"})}
 
     // CHECK CAPTCHA
-    const captcha = req.body.captcha;
-    
-    if (!captcha) {
+    if (!req.body.captcha) {
         return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Please select reCAPTCHA"});
     } else {
         // secret key
         var secretKey = process.env.CAPTCHA_SECRET;
         // Verify URL
-        var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
+        var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
         // Make request to Verify URL
         await request.get(verifyURL, (err, response, body) => {
             if(err){
-                genericErrorResponse(req, res, err);
+                return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Captcha failed, please try again"});
             }
             // if not successful
-            if (body.success !== undefined && !body.success) { //should this be && or ||?
+            if (body.success !== undefined && !body.success) {
                 return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Captcha failed, please try again"});
             }
         });
@@ -44,29 +52,6 @@ var createRoute = async function(req, res){
         }
     );
     
-    // REMOVED FOR NOW TO AVOID CLASH WITH RECAPTCHA
-    // ADD PROFILE PICTURE AFTER ON THE EDIT PROFILE SCREEN (AND USE THIS CODE)
-    //if an image has been added on create then upload it to Cloudinary
-    // if(req.file){
-    //     // CLOUDINARY
-    //     cloudinary.config(cloudinaryConf);
-    
-    //     // set image location to correct folder on Cloudinary
-    //     var public_id = "sl-" + process.env.ENV_ID + "/avatars/" + req.file.filename; //could change to a random string
-        
-    //     // Upload the image to Cloudinary and wait for a response
-    //     await cloudinary.v2.uploader.upload(req.file.path, {public_id: public_id}, function(err, result) {
-    //         if(err) {
-    //             req.flash('errorMessage', err.message);
-    //             return res.redirect('back');
-    //         }
-    //         // add cloudinary url for the image to the newUser
-    //         newUser.avatar = result.secure_url;
-    //         // add image's public_id to newUser object
-    //         newUser.avatarId = result.public_id;
-    //     });
-    // }
-    
     User.register(newUser, req.body.password, function(err, registeredUser){ //pass the password to the passport-local-mongoose method. This means you don't store the password in plain text, only the hash.
         if(err){
             return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> A user with the given email is already registered, please <a href='/login'>login</a> or <a href='/forgot'>reset your password</a>"});
@@ -74,11 +59,20 @@ var createRoute = async function(req, res){
             if (err) {
                 return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Error logging in, please try again"});
             } else {
-                return res.send({type: "success", message: registeredUser._id});
+                return res.send({type: "success", message: registeredUser._id}); //not currently doing anything with the id on the client side
             }
         });
     }); 
 };
+
+function checkUserInput(res, input, Str){
+    if(!input.match(/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/)){ //Special characters (_, , -) have to be followed by an alphanumeric character. The first and last characters must be alphanumeric characters.
+        res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> " + Str + " isn't valid (it can only contain letters, numbers, -, _ , or spaces"});
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // ==========================
 // MODULE.EXPORTS

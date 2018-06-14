@@ -1,26 +1,87 @@
 <% include ../partials/header %>
 
 <div class="container pb-5">
+    <h1><%= user.displayName %></h1>
     <div class="row">
-        <div class="col-md-4">
-            <h1><%= user.displayName + "'s Profile"%></h1>
+        <div class="d-flex flex-column col-lg-4">
             
-            <div class="card">
+            <div class="card mb-3">
                 <img class="card-img-top" src="<%= user.avatar %>" alt="user profile image">
                 <div class="card-body">
-                    <p class="card-text">Date Joined: <%= user.createdAt %></p>
+
                 </div>
             </div>
-            Bacon ipsum dolor amet pork chop andouille pancetta tenderloin. Alcatra chuck venison, meatloaf rump prosciutto pig drumstick brisket filet mignon short loin shoulder landjaeger kevin. Drumstick shankle burgdoggen chicken chuck meatball sirloin capicola fatback cupim pastrami kielbasa ground round. Shank capicola short ribs rump shoulder hamburger. Venison kielbasa pancetta jowl, prosciutto tail rump short ribs ground round swine cow turducken doner short loin pork chop.
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>
+                            Member Since: 
+                            <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
+                            <%= monthNames[user.createdAt.getMonth()] %> 
+                            <%= user.createdAt.getFullYear() %>
+                        </strong>
+                    </p>
+                    <a  class="btn btn-success" 
+                        href="/users/<%= user._id %>/edit">
+                        Add/Edit Public Contact Info
+                    </a>
+                    <br><br>
+                    <p class="card-text">
+                        <% if(user.bio) { %>
+                            <%= user.bio %>
+                        <% } else if(currentUser._id.equals(user._id)) { %>
+                            <%= user.firstName %>, why don't you add a short bio about yourself that other people can read?
+                            <br>
+                            <a  class="btn btn-success mt-2" 
+                                href="/users/<%= user._id %>/edit">
+                                Add/Edit Bio
+                            </a>
+                        <% } %>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-            <h3><%= user.displayName %>'s activities</h3>
-            <ul>
-                <% activities.forEach(function(activity){ %>
-                    <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>
-                <% }); %>
-            </ul>
+        
+        <div class="d-flex flex-column col-lg-8">
+
+            <% if(currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+                <div class="d-flex flex-column align-items-start card mb-3">
+                    <div class="card-body">
+                        <h3 class="card-title">Personal User Data</h3>
+                        <div class="alert alert-info" role="alert">
+                          <i class="fas fa-lock"></i> <%= user.firstName %>, only you can see and edit this information 
+                        </div>
+                        <p><strong>Display Name:</strong> <%= user.displayName %></p>
+                        <p><strong>First Name:</strong> <%= user.firstName %></p>
+                        <p><strong>Last Name:</strong> <%= user.lastName %></p>
+                        <p><strong>Email Address:</strong> <%= user.email %></p>
+                        <a class="btn btn-primary" href="/forgot">Change Password</a>
+                        <a  class="btn btn-primary" 
+                            href="/users/<%= user._id %>/avatar">
+                            Change Profile Picture
+                        </a>
+                        <a  class="btn btn-success" 
+                            href="/users/<%= user._id %>/edit">
+                            Edit Info
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"><%= user.displayName %>'s activities</h3>
+                    <ul>
+                        <% activities.forEach(function(activity){ %>
+                            <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+            
         </div>
+        
+        
     </div>
 </div>
 
