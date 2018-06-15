@@ -102,7 +102,6 @@ app.use(function(req, res, next){
     next();
 });
 
-
 // ==========================
 // ROUTES
 // ==========================
@@ -128,18 +127,17 @@ app.get('/*', function(req,res){
     res.redirect("/activities");
 });
 
+
 // ==========================
-// SEED DATABASE
+// ERROR HANDLING
 // ==========================
-// ONLY IN DEV ENVIRONMENT
-var middleware = require("./middleware");
-// if (process.env.ENV_ID === "dev"){
-    app.get('/seed', middleware.isAdmin, function(req, res){
-        var seedDB = require("./seeds");
-        seedDB(); //Run the seedDB file
-        res.redirect("/activities");
-    });
-// }
+app.use(function (err, req, res, next) {
+    // Error code from multer caused by exceeding file size limit
+    if (err.code === 'LIMIT_FILE_SIZE') {
+        req.flash("errorMessage", "Sorry, that file is too big (5MB limit)");
+        return res.redirect("back");
+    }
+});
 
 
 // ==========================

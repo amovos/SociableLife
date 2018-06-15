@@ -32,7 +32,8 @@ var userProfileRoute = async function(req, res){
                                                                 activities: foundActivities, 
                                                                 comments: foundComments.length, 
                                                                 loves: loves, 
-                                                                points: points
+                                                                points: points,
+                                                                page: 'profile'
                                                             }
                             );
                         }

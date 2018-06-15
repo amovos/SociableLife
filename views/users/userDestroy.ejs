@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+<div class="container pb-5">
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Delete User: <%= user.username %></h1>
+            <p>
+                This action cannot be undone. All of your comment, likes and points will be deleted.
+            </p>
+                
+            <p>
+                Any activities you have added won't be deleted and will be transferred to the "Sociable Life Community" user. If you would like to delete an activity please request that on the individual activities.
+            </p>
+                
+            <p>
+                Have a text input where they have to type "DELETE"
+            </p>
+            
+            <p>
+                Are you sure you want to delete your profile?
+            </p>
+            
+            <a  class="btn btn-danger mb-2" 
+                href="#">
+                Yes, delete my profile
+            </a>
+            
+        </div>
+    </header>
+
+</div>
+
+<% include ../partials/footer %>

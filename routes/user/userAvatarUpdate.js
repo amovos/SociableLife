@@ -52,7 +52,7 @@ var updateAvatarRoute = async function(req, res){
             });
         } else {
             //if no error or file then nothing was selected or uploaded
-            req.flash("errorMessage", "No image selected, please choose a file");
+            req.flash("errorMessage", "Please choose a file, no image was selected");
             return res.redirect("/users/" + foundUser._id + "/avatar");
         }
     });

@@ -5,7 +5,18 @@
         <div class="col-lg-4">
             
             <div class="card card-body d-flex flex-row flex-wrap align-items-start justify-content-around mb-3 ">
-                <img class="col-5 col-md-3 col-lg-6 pl-2 pr-2" src="https://res.cloudinary.com/amovos/image/upload/fl_lossy,h_200,w_200,f_auto,q_auto,r_max<%= user.avatar.slice(46) %>" alt="user profile image">
+                
+                <!-- User or admin can click on profile picture to update -->
+                <img    
+                <% if(currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+                    id="profileAvatar"
+                    style="cursor: pointer;"
+                <% } %>
+                    class="col-5 col-md-3 col-lg-6 pl-2 pr-2" 
+                    src="https://res.cloudinary.com/amovos/image/upload/c_fill,h_400,w_400,f_auto,q_auto,r_max<%= user.avatar.slice(46) %>" 
+                    alt="user profile image"
+                >
+                
                 <div class="d-flex flex-column flex-wrap">
                     <h1 class="text-center"><%= user.displayName %></h1>
                     <div>
@@ -50,7 +61,7 @@
                         <% } %>
                     <% } else if(currentUser._id.equals(user._id)) { %>
                         <h3>Contact Information</h3>
-                        <p><%= user.firstName %>, here you can add contact information that will be visible to the public.</p>
+                        <p><span class="text-capitalize"><%= user.firstName %></span>, here you can add your contact information that will be visible to everyone.</p>
                     <% } %>
                     
                     <% if(currentUser._id.equals(user._id)) { %>
@@ -60,20 +71,30 @@
                         </a>
                     <% } %>
                     
+                    <h3>User Bio</h3>
                     <% if(user.bio) { %>
-                        <h3>User Bio</h3>
                         <p><%= user.bio %></p>
-                    <% } %> 
+                    <% } %>
+                    
                     <% if(currentUser._id.equals(user._id)) { %>
                         <% if(!user.bio) { %>
-                        <h3>User Bio</h3>
-                        <p><%= user.firstName %>, here you can add a short bio about yourself that other people can read.</p>
+                            <p><span class="text-capitalize"><%= user.firstName %></span>, here you can add a short bio about yourself that other people can read.</p>
                         <% } %>
                         <a  class="btn btn-success" 
                             href="/users/<%= user._id %>/edit">
                             Add/Edit Bio
                         </a>
                     <% } %>
+                    
+                    <% if(!currentUser._id.equals(user._id) && !user.bio) { %>
+                        <p>
+                            <span class="text-capitalize"><%= user.displayName %></span> 
+                            joined Sociable Life in 
+                            <%= monthNames[user.createdAt.getMonth()] %> 
+                            <%= user.createdAt.getFullYear() %>.
+                        </p>
+                    <% } %>
+                    
                 </div>
             </div>
         </div>
@@ -85,7 +106,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Personal User Data</h3>
                         <div class="alert alert-info" role="alert">
-                          <i class="fas fa-lock"></i> <%= user.firstName %>, only you can see and edit this information 
+                          <i class="fas fa-lock"></i> <span class="text-capitalize"><%= user.firstName %></span>, only you can see and edit this information 
                         </div>
                         <p><strong>Display Name:</strong> <%= user.displayName %></p>
                         <p><strong>First Name:</strong> <%= user.firstName %></p>
@@ -99,6 +120,10 @@
                         <a  class="btn btn-success mb-2" 
                             href="/users/<%= user._id %>/edit">
                             Edit Info
+                        </a>
+                        <a  class="btn btn-danger mb-2" 
+                            href="/users/<%= user._id %>/delete">
+                            Delete Profile
                         </a>
                     </div>
                 </div>
@@ -129,7 +154,7 @@
             
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title"><%= user.displayName %>'s Activities</h3>
+                    <h3 class="card-title"><span class="text-capitalize"><%= user.displayName %></span>'s Activities</h3>
                     <ul>
                         <% activities.forEach(function(activity){ %>
                             <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>
@@ -150,5 +175,12 @@
         
     </div>
 </div>
+
+<script>
+    //listener for click on profile avatar if current users profile or current user is admin
+    $("#profileAvatar").on("click", function(){
+        window.location.href = "/users/<%= user._id %>/avatar";
+    })
+</script>
 
 <% include ../partials/footer %>

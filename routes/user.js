@@ -35,9 +35,9 @@ router.post("/login", require("./user/loginCreate"));
 router.get("/logout", require("./user/logout"));
 
 
-// ==========================
+// ==============================
 // USER PROFILE, EDIT AND UPDATE
-// ==========================
+// ==============================
 // USER PROFILE
 router.get("/users/:id", middleware.isLoggedIn, require("./user/userProfile"));
 
@@ -52,6 +52,14 @@ router.get("/users/:id/avatar", middleware.userProfileOwnership, require("./user
 
 // UPDATE AVATAR
 router.put("/users/:id/avatar", middleware.userProfileOwnership, upload.single('image'), require("./user/userAvatarUpdate"));
+
+
+// =============
+// USER DESTROY
+// =============
+// DESTROY USER SHOW
+router.get("/users/:id/delete", middleware.userProfileOwnership, require("./user/userDestroyShow"));
+
 
 // ==========================
 // USER PASSWORD RESET

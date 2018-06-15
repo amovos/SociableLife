@@ -21,19 +21,10 @@ var imageFilter = function (req, file, callback) {
     callback(null, true);
 };
 
-// // Limit file size
-// var imageMaxSize = function (req, file, cb) {
-//     // accept image smaller than 5MB only
-//     if (file.size > 5242880) {
-//         return cb(new Error('Image is too large (Max size 5MB)'), false);
-//     }
-//     cb(null, true);
-// };
-
 var upload = multer({
-    storage: storage, 
-    fileFilter: imageFilter,
-    //limits: { fileSize: imageMaxSize } //5.24MB
+    storage: storage,
+    limits: { fileSize: 5242880 }, //5MB (error handled in app.js)
+    fileFilter: imageFilter
 });
 
 // ==========================
