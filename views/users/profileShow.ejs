@@ -1,51 +1,87 @@
 <% include ../partials/header %>
 
 <div class="container pb-5">
-    <h1><%= user.displayName %></h1>
     <div class="row">
-        <div class="d-flex flex-column col-lg-4">
+        <div class="col-lg-4">
             
-            <div class="card mb-3">
-                <img class="card-img-top" src="<%= user.avatar %>" alt="user profile image">
-                <div class="card-body">
-
+            <div class="card card-body d-flex flex-row flex-wrap align-items-start justify-content-around mb-3 ">
+                <img class="col-5 col-md-3 col-lg-6 pl-2 pr-2" src="https://res.cloudinary.com/amovos/image/upload/fl_lossy,h_200,w_200,f_auto,q_auto,r_max<%= user.avatar.slice(46) %>" alt="user profile image">
+                <div class="d-flex flex-column flex-wrap">
+                    <h1 class="text-center"><%= user.displayName %></h1>
+                    <div>
+                        <p class="card-text text-center">
+                            <strong>
+                                Joined 
+                                <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
+                                <%= monthNames[user.createdAt.getMonth()] %> 
+                                <%= user.createdAt.getFullYear() %>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-around mt-2">
+                        <% if(user.isAdmin) { %>
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fas fa-key fa-2x text-info"></i>
+                                <div>Admin</div>
+                            </div>
+                        <% } %>
+                        <% if(user.isMod) { %>
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fas fa-crown fa-2x text-warning"></i>
+                                <div>Moderator</div>
+                            </div>
+                        <% } %>
+                    </div>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
-                    <p class="card-text">
-                        <strong>
-                            Member Since: 
-                            <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
-                            <%= monthNames[user.createdAt.getMonth()] %> 
-                            <%= user.createdAt.getFullYear() %>
-                        </strong>
-                    </p>
-                    <a  class="btn btn-success" 
-                        href="/users/<%= user._id %>/edit">
-                        Add/Edit Public Contact Info
-                    </a>
-                    <br><br>
-                    <p class="card-text">
-                        <% if(user.bio) { %>
-                            <%= user.bio %>
-                        <% } else if(currentUser._id.equals(user._id)) { %>
-                            <%= user.firstName %>, why don't you add a short bio about yourself that other people can read?
-                            <br>
-                            <a  class="btn btn-success mt-2" 
-                                href="/users/<%= user._id %>/edit">
-                                Add/Edit Bio
-                            </a>
+                    
+                    <% if(user.contactInfo.contactEmail || user.contactInfo.contactNumber || user.contactInfo.contactWebsite) { %>
+                        <h3>Contact Information</h3>
+                        <% if(user.contactInfo.contactEmail) { %>
+                            <p><strong>Email:</strong> <a href='mailto:<%= user.contactInfo.contactEmail %>'><%= user.contactInfo.contactEmail %></a></p>
                         <% } %>
-                    </p>
+                        <% if(user.contactInfo.contactNumber) { %>
+                            <p><strong>Telephone:</strong> <%= user.contactInfo.contactNumber %></p>
+                        <% } %>
+                        <% if(user.contactInfo.contactWebsite) { %>
+                            <p><strong>Website:</strong> <a href='http://<%= user.contactInfo.contactWebsite %>'><%= user.contactInfo.contactWebsite %></p></a>
+                        <% } %>
+                    <% } else if(currentUser._id.equals(user._id)) { %>
+                        <h3>Contact Information</h3>
+                        <p><%= user.firstName %>, here you can add contact information that will be visible to the public.</p>
+                    <% } %>
+                    
+                    <% if(currentUser._id.equals(user._id)) { %>
+                        <a  class="btn btn-success mb-3" 
+                            href="/users/<%= user._id %>/edit">
+                            Add/Edit Public Contact Info
+                        </a>
+                    <% } %>
+                    
+                    <% if(user.bio) { %>
+                        <h3>User Bio</h3>
+                        <p><%= user.bio %></p>
+                    <% } %> 
+                    <% if(currentUser._id.equals(user._id)) { %>
+                        <% if(!user.bio) { %>
+                        <h3>User Bio</h3>
+                        <p><%= user.firstName %>, here you can add a short bio about yourself that other people can read.</p>
+                        <% } %>
+                        <a  class="btn btn-success" 
+                            href="/users/<%= user._id %>/edit">
+                            Add/Edit Bio
+                        </a>
+                    <% } %>
                 </div>
             </div>
         </div>
         
-        <div class="d-flex flex-column col-lg-8">
+        <div class="col-lg-8">
 
             <% if(currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
-                <div class="d-flex flex-column align-items-start card mb-3">
+                <div class="card d-flex flex-column align-items-start mb-3">
                     <div class="card-body">
                         <h3 class="card-title">Personal User Data</h3>
                         <div class="alert alert-info" role="alert">
@@ -55,12 +91,12 @@
                         <p><strong>First Name:</strong> <%= user.firstName %></p>
                         <p><strong>Last Name:</strong> <%= user.lastName %></p>
                         <p><strong>Email Address:</strong> <%= user.email %></p>
-                        <a class="btn btn-primary" href="/forgot">Change Password</a>
-                        <a  class="btn btn-primary" 
+                        <a class="btn btn-primary mb-2" href="/forgot">Change Password</a>
+                        <a  class="btn btn-primary mb-2" 
                             href="/users/<%= user._id %>/avatar">
                             Change Profile Picture
                         </a>
-                        <a  class="btn btn-success" 
+                        <a  class="btn btn-success mb-2" 
                             href="/users/<%= user._id %>/edit">
                             Edit Info
                         </a>
@@ -68,14 +104,44 @@
                 </div>
             <% } %>
             
+            <div class="card card-body d-flex flex-row justify-content-around mb-3">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                    <div>Activities</div>
+                    <div><strong><%= activities.length %></strong></div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-star fa-2x text-warning"></i>
+                    <div>Points</div>
+                    <div><strong><%= points %></strong></div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-heart fa-2x text-danger"></i>
+                    <div>Loves</div>
+                    <div><strong><%= loves %></strong></div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-comment fa-2x text-success"></i>
+                    <div>Comments</div>
+                    <div><strong><%= comments %></strong></div>
+                </div>
+            </div>
+            
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title"><%= user.displayName %>'s activities</h3>
+                    <h3 class="card-title"><%= user.displayName %>'s Activities</h3>
                     <ul>
                         <% activities.forEach(function(activity){ %>
                             <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>
                         <% }); %>
                     </ul>
+                    <% if(activities.length === 0) { %>
+                        <% if(currentUser._id.equals(user._id)) { %>
+                            <p>You've not added any activities yet, do you know any we could add to our map?</p> <a class="btn btn-info" href="/addActivity">Add an activity</a>
+                        <% } else { %>
+                            <p><%= user.displayName %> hasn't added any activities yet. When they do, this is where you can find them.</p>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
             

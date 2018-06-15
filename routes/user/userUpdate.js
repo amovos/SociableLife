@@ -20,6 +20,11 @@ var updateUserRoute = async function(req, res){
     if(req.body.contactWebsite.length  > 100) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Contact Website is too long (100 characters max)"})}
     if(req.body.userBio.length  > 500) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Bio is too long (" + req.body.userBio.length + "/500 characters)"})}
     
+    //sanitize protocol from contact website if given (so that it works with the <a> tag as a link)
+    if(req.body.contactWebsite){
+        req.body.contactWebsite = req.body.contactWebsite.replace(/^https?\:\/\//i, "");
+    }
+    
     //Find user to see what needs updating
     User.findById(req.params.id, async function(err, foundUser){
         if(err || !foundUser){

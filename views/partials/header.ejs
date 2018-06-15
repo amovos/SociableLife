@@ -43,12 +43,7 @@
 						<a href="/contact" class="nav-link">Contact</a>
 					</li>					
 				</ul>
-				<ul class="navbar-nav"> <!-- <ul class="navbar-nav mr-auto"> When unhide the login/register icons-->
-					<% if(currentUser && currentUser.isAdmin){ %>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'admin' ? 'active' : '' %>">
-							<a href="/admin" class="nav-link text-success"><i class="fa fa-lg fa-cogs"></i></a>
-						</li>
-					<% } %>
+				<ul class="navbar-nav mr-auto"> <!-- <ul class="navbar-nav mr-auto"> When unhide the login/register icons-->
 					<li class="nav-item">
 						<a href="https://twitter.com/SociableLife" class="nav-link"><i class="fab fa-twitter fa-lg" title="Twitter Link"></i></a>
 					</li>					
@@ -56,23 +51,28 @@
 						<a href="https://www.facebook.com/SociableLife/" class="nav-link"><i class="fab fa-facebook-square fa-lg" title="Facebook Link"></i></a>
 					</li>
 				</ul>
-				<!--<ul class="navbar-nav">-->
-				<!--	<% if(!currentUser){ %>-->
-				<!--		<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">-->
-				<!--			<a href="/login" class="nav-link">Login</a>-->
-				<!--		</li>-->
-				<!--		<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">-->
-				<!--			<a href="/inviteCode" class="nav-link">Sign Up</a>-->
-				<!--		</li>-->
-				<!--	<% } else { %>-->
-				<!--		<li class="nav-item">-->
-				<!--			<a href="/users/<%= currentUser.id %>" class="nav-link">Signed In As <%= currentUser.displayName %></a>-->
-				<!--		</li>-->
-    <!--                	<li class="nav-item">-->
-    <!--                		<a href="/logout" class="nav-link">Logout</a>-->
-    <!--                	</li>-->
-				<!--	<% } %>-->
-				<!--</ul>-->
+				<ul class="navbar-nav">
+					<% if(currentUser && currentUser.isAdmin){ %>
+						<li class="nav-item <%= typeof page !== 'undefined' && page === 'admin' ? 'active' : '' %>">
+							<a href="/admin" class="nav-link text-success"><i class="fa fa-lg fa-cogs"></i></a>
+						</li>
+					<% } %>
+					<% if(!currentUser){ %>
+						<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+							<a href="/login" class="nav-link">Login</a>
+						</li>
+						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+							<a href="/inviteCode" class="nav-link">Sign Up</a>
+						</li>
+					<% } else { %>
+						<li class="nav-item">
+							<a href="/users/<%= currentUser.id %>" class="nav-link"><%= currentUser.displayName %></a>
+						</li>
+                    	<li class="nav-item">
+                    		<a href="/logout" class="nav-link">Logout</a>
+                    	</li>
+					<% } %>
+				</ul>
 			</div>
 		</div>
 	</nav>

@@ -12,6 +12,10 @@
             <form id="updateForm" action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 
                 <div class="container">
+                    <h3>Personal Info</h3>
+                </div>
+                
+                <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-center align-items-center">
                             <label class="col-md-4 col-sm-5" for="email"><span class="align-text-top">Email Address</span></label>
@@ -50,6 +54,10 @@
                 <hr>
                 
                 <div class="container">
+                    <h3>Public Info</h3>
+                </div>
+                
+                <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-center align-items-center">
                             <label class="col-md-4 col-sm-5" for="displayName"><span class="align-text-top">Contact Email</span></label>
@@ -76,8 +84,6 @@
                     </div>
                 </div>
                 
-                <hr>
-                
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-start align-items-center">
@@ -99,12 +105,12 @@
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">
-                            <button class="col-md-8 btn btn-lg btn-primary btn-block">Update User</button>
+                            <button class="col-md-8 btn btn-lg btn-primary btn-block">Update Info</button>
                         </div>
                     </div>
                 </div>
             </form>
-            <a href="javascript:history.back()">Go Back</a>
+            <a href="/users/<%= user._id %>">Go Back</a>
         </div>
     </div>
 </div>

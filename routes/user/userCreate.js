@@ -15,7 +15,7 @@ var createRoute = async function(req, res){
     if(checkUserInput(res, req.body.lastName, "Last Name")) {return}
     if(checkUserInput(res, req.body.displayName, "Display Name")) {return}
     
-    // CHECK FOR LENGTH OF INPUTS (MAX 20 CHARACTERS)
+    // CHECK FOR LENGTH OF INPUTS (MAX 30 CHARACTERS)
     if(req.body.firstName.length    > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> First Name is too long (30 characters max)"})}
     if(req.body.lastName.length     > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Last Name is too long (30 characters max)"})}
     if(req.body.displayName.length  > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Display Name is too long (30 characters max)"})}
