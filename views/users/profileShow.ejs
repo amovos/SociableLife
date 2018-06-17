@@ -161,7 +161,7 @@
                         <% }); %>
                     </ul>
                     <% if(activities.length === 0) { %>
-                        <% if(currentUser._id.equals(user._id)) { %>
+                        <% if(currentUser && currentUser._id.equals(user._id)) { %>
                             <p>You've not added any activities yet, do you know any we could add to our map?</p> <a class="btn btn-info" href="/addActivity">Add an activity</a>
                         <% } else { %>
                             <p><%= user.displayName %> hasn't added any activities yet. When they do, this is where you can find them.</p>
