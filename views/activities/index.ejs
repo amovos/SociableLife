@@ -253,6 +253,26 @@
 <!-- Google Maps Clustering Scripts -->
 <script src="/js/lib/GoogleMapsClustering/markerclusterer.js"></script>
 
+<!-- Not sure how to put this user variable into the scritps in a reference file as you can't just use EJS-->
+<script>
+
+    function setIndexCardLoveColor(activity){
+        <% if(currentUser) { %>
+            var isInLoveArray = activity.loves.some(function (user) {
+                return (String(user) === String("<%= currentUser._id %>"))
+            });
+            if(isInLoveArray){
+                return "text-dark";
+            } else {
+                return "text-white";
+            }
+        <% } else { %>
+            return "text-white";
+        <% } %>
+    }
+
+</script>
+
 <script src="/js/activityIndex/listenersIndex.js"></script>
 <script src="/js/activityIndex/activityIndex.js"></script>
 <script src="/js/activityIndex/mapIndex.js"></script>

@@ -69,8 +69,17 @@ var destroyUserRoute = function(req, res){
                 }
             });
 
-            //delete all likes by that user
-            
+            //delete all loves by that user
+            await Activity.find({loves: foundUser._id}).exec(function(err, foundLoveActivities){
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else {
+                    foundLoveActivities.forEach(async function(foundLoveActivity){
+                        foundLoveActivity.loves.splice(foundLoveActivity.loves.indexOf(foundUser._id), 1);
+                        await foundLoveActivity.save();
+                    });
+                }
+            });
             
             //delete user
             //console.log("DELETED USER: " + foundUser.name);

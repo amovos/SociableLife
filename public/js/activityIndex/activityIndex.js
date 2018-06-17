@@ -27,13 +27,10 @@ async function addActivities(activities) { //function used to add activities on 
     
     //order array here (currently just by date created) based on the value of the radio button order options
     if($('#orderLovesCheck').prop('checked')){
-       console.log("love checked");
        activities = await orderActivitiesByLoves(activities);
     } else if($('#orderDistanceCheck').prop('checked')){
-        console.log("distance checked");
         activities = await orderActivitiesByDistance(activities);
     } else {
-        console.log("updated checked");
         activities = await orderActivitiesByDateUpdated(activities);
     }
     
@@ -86,7 +83,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
         statusIcon = statusIconRemoved;
     }
     
-    
+    var loveColorClass = setIndexCardLoveColor(activity);
     
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
@@ -143,7 +140,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
                 '<div class="d-flex flex-row justify-content-around">' +
                     '<span class="fa-stack fa-1x sociable-love mr-3">' +
                         '<i class="fa fa-heart fa-stack-2x heart-offset"></i>' +
-                        '<span class="fa-stack-1x text-white">' + (activity.loves.length) + '</span>' +
+                        '<span class="fa-stack-1x ' + loveColorClass + '">' + (activity.loves.length) + '</span>' +
                     '</span>' +
                     '<span class="fa-stack fa-1x sociable-comment">' +
                         '<i class="fa fa-comment fa-stack-2x comment-offset"></i>' +

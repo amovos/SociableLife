@@ -26,7 +26,7 @@ var filteredActivities; //this global variable is used for the "Load More" butto
 //ACTIVITY INDEX GLOBAL VARIABLES
 //on page load, page number starts at 1
 var pageNumber = 1;
-var perPage = 8
+var perPage = 16
 var activityCounter = 0;
 var $masonryContainer;
 
@@ -47,6 +47,9 @@ var statusIconRemoved = '<span class="tooltip-status" alt="' + statusTextRemoved
 
 // on page load, load all markers and activities and setup listeners
 $(document).ready(function(){ //waits until the DOM has loaded
+    //stops chaching of ajax requests so that the back button re-queries the database (as updates could have happened while they where away)
+    $.ajaxSetup({ cache: false });
+    
     //on load search for activities
     //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience
     initMasonry();

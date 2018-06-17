@@ -38,15 +38,15 @@
                             <div class="d-flex flex-column align-items-center mr-4">
                                 <span>Loves</span>
                                     <span id="sociableLove" class="fa-stack fa-1x sociable-love">
-                                        <i class="fa fa-heart fa-stack-2x heart-offset"></i>
-                                        <span id="sociableLoveNum" class="fa-stack-1x text-white"><%= (activity.loves.length) %></span>
+                                        <i class="fas fa-heart fa-stack-2x heart-offset"></i>
+                                        <span id="sociableLoveNum" class="fa-stack-1x <%= loveColorClass %>"><%= (activity.loves.length) %></span>
                                     </span>
                                 </span>
                             </div>
                             <div class="d-flex flex-column align-items-center">
                                 <span>Comments</span>
                                     <span id="sociableComment" class="fa-stack fa-1x sociable-comment" onclick="scrollToComments()">
-                                        <i class="fa fa-comment fa-stack-2x comment-offset"></i>
+                                        <i class="fas fa-comment fa-stack-2x comment-offset"></i>
                                         <span id="sociableCommentNum" class="fa-stack-1x text-white"><%= (activity.comments.length) %></span>
                                     </span>
                                 </span>
@@ -226,15 +226,35 @@
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAPPING_API_KEY %>&callback=initActivityShowMap"></script>
 
-<!-- Temporary script to increment counter on heart-->
+<!-- Ajax script to increment counter on heart-->
 <script>
-    $('#sociableLove').on('click', function(){
-        window.location.href = "/login";
-        // $('#sociableLoveNum').text((parseInt($('#sociableLoveNum').text()) + 1));
-    });
+    <% if(currentUser) { %>
+        $('#sociableLove').on('click', function(){
+            var ajaxRequestLove = $.get("<%= activity._id %>/<%= currentUser._id %>/love");
+                                
+            /* Process returned result */
+            ajaxRequestLove.done(function( data ) {
+                if(data) {
+                    //add one to love, change color
+                    $('#sociableLoveNum').text((parseInt($('#sociableLoveNum').text()) + 1));
+                    $('#sociableLoveNum').removeClass("text-white")
+                    $('#sociableLoveNum').addClass("text-dark")
+                } else {
+                    //remove one from love, change color
+                    $('#sociableLoveNum').text((parseInt($('#sociableLoveNum').text()) - 1));
+                    $('#sociableLoveNum').removeClass("text-dark")
+                    $('#sociableLoveNum').addClass("text-white")
+                }
+            });
+        });
+    <% } else { %>
+        $('#sociableLove').on('click', function(){
+            window.location.href = "/login";
+        });
+    <% } %>
 </script>
 
-<!-- Temporary script to scroll to comments section when comment bubble is clicked -->
+<!-- Script to scroll to comments section when comment bubble is clicked -->
 <script>
 function scrollToComments() {
     event.preventDefault(); //Prevent default anchor click behavior

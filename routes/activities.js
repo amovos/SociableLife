@@ -33,6 +33,11 @@ router.put("/:id", middleware.checkActivityOwnership, upload.single('image'), re
 // DESTROY ACTIVITY ROUTE
 router.delete("/:id", middleware.checkActivityOwnership, require("./activities/destroy"));
 
+// ==========================
+// OTHER ROUTES
+// ==========================
+// LOVE ROUTE
+router.get("/:activityId/:id/love", middleware.userProfileOwnership, require("./activities/love"));
 
 // ==========================
 // MODULE.EXPORTS

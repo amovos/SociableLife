@@ -23,7 +23,17 @@ var showRoute = function(req, res){
             req.flash("errorMessage", "Activity not found");
             res.redirect("/activities");
         } else {
-            res.render("activities/show", {activity: foundActivity}); //pass the found activity to the show template
+            
+            //if the requesting user has liked this activity then pass that through to change the color of the heart text on the EJS
+            var loveColorClass = "text-white";
+            if(req.user){
+                var isInLoveArray = foundActivity.loves.some(function (user) {
+                    return user.equals(req.user._id);
+                });
+                if(isInLoveArray){loveColorClass = "text-dark"}
+            }
+            
+            res.render("activities/show", {activity: foundActivity, loveColorClass: loveColorClass}); //pass the found activity to the show template
         }
     });
 };
