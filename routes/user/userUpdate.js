@@ -62,11 +62,20 @@ var updateUserRoute = async function(req, res){
         if(req.body.userBio !== foundUser.bio) {                    foundUser.bio = req.body.userBio; changeFlag = true; }
         
         if(changeFlag){
-            await foundUser.save();
+            await foundUser.save(function(err){
+                if(err){
+                    console.log("ERROR: " + err);
+                    return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> A user with that email already exists"});
+                } else {
+                    return res.send({type: "success"});
+                }
+            });
+        } else {
+            return res.send({type: "success"});
         }
     });
 
-    return res.send({type: "success"});
+    //return res.send({type: "success"});
 
 };
 

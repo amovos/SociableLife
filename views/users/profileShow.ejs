@@ -8,12 +8,12 @@
                 
                 <!-- User or admin can click on profile picture to update -->
                 <img    
-                <% if(currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+                <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
                     id="profileAvatar"
                     style="cursor: pointer;"
                 <% } %>
                     class="col-5 col-md-3 col-lg-6 pl-2 pr-2" 
-                    src="https://res.cloudinary.com/amovos/image/upload/c_fill,h_400,w_400,f_auto,q_auto,r_max<%= user.avatar.slice(46) %>" 
+                    src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_400,w_400,f_auto,q_auto,r_max<%= user.avatar.slice(46) %>" 
                     alt="user profile image"
                 >
                 
@@ -59,12 +59,12 @@
                         <% if(user.contactInfo.contactWebsite) { %>
                             <p><strong>Website:</strong> <a href='http://<%= user.contactInfo.contactWebsite %>'><%= user.contactInfo.contactWebsite %></p></a>
                         <% } %>
-                    <% } else if(currentUser._id.equals(user._id)) { %>
+                    <% } else if(currentUser && currentUser._id.equals(user._id)) { %>
                         <h3>Contact Information</h3>
                         <p><span class="text-capitalize"><%= user.firstName %></span>, here you can add your contact information that will be visible to everyone.</p>
                     <% } %>
                     
-                    <% if(currentUser._id.equals(user._id)) { %>
+                    <% if(currentUser && currentUser._id.equals(user._id)) { %>
                         <a  class="btn btn-success mb-3" 
                             href="/users/<%= user._id %>/edit">
                             Add/Edit Public Contact Info
@@ -74,19 +74,19 @@
                     <h3>User Bio</h3>
                     <% if(user.bio) { %>
                         <p><%= user.bio %></p>
-                    <% } %>
-                    
-                    <% if(currentUser._id.equals(user._id)) { %>
-                        <% if(!user.bio) { %>
-                            <p><span class="text-capitalize"><%= user.firstName %></span>, here you can add a short bio about yourself that other people can read.</p>
+                        <% if(currentUser && currentUser._id.equals(user._id)) { %>
+                            <a  class="btn btn-success" 
+                                href="/users/<%= user._id %>/edit">
+                                Add/Edit Bio
+                            </a>
                         <% } %>
+                    <% } else if(currentUser && currentUser._id.equals(user._id)) { %>
+                        <p><span class="text-capitalize"><%= user.firstName %></span>, here you can add a short bio about yourself that other people can read.</p>
                         <a  class="btn btn-success" 
                             href="/users/<%= user._id %>/edit">
                             Add/Edit Bio
                         </a>
-                    <% } %>
-                    
-                    <% if(!currentUser._id.equals(user._id) && !user.bio) { %>
+                    <% } else { %>
                         <p>
                             <span class="text-capitalize"><%= user.displayName %></span> 
                             joined Sociable Life in 
@@ -101,7 +101,7 @@
         
         <div class="col-lg-8">
 
-            <% if(currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+            <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
                 <div class="card d-flex flex-column align-items-start mb-3">
                     <div class="card-body">
                         <h3 class="card-title">Personal User Data</h3>

@@ -17,12 +17,12 @@
 <title><%= process.env.ENV_NAME %></title>
 
 <!-- Set Favicon -->
-<link href="https://res.cloudinary.com/amovos/image/upload/c_limit,fl_lossy,h_64,w_64,q_auto/v1528111490/GeneralAssets/Favicon.png" rel="shortcut icon" type="image/x-icon">
+<link href="<%= process.env.CLOUDINARY_URL_START %>c_limit,fl_lossy,h_64,w_64,q_auto/v1528111490/GeneralAssets/Favicon.png" rel="shortcut icon" type="image/x-icon">
 
 <% /* Set Variables */ %>
 <% var metaTitle = "Sociable Life" %>
 <% var metaDescription = "Accessible activities, for everybody. Find and share accessible activities for anyone with a disability, anywhere in the UK. We're creating an interactive map of accessible, safe and inclusive activities and we need your help to find them!" %>
-<% var metaImage = 'https:\//res.cloudinary.com/amovos/image/upload/c_limit,fl_lossy,h_655,w_1130,f_auto,q_auto/v1528110948/GeneralAssets/MetaImage.png' %>
+<% var metaImage = process.env.CLOUDINARY_URL_START + 'c_limit,fl_lossy,h_655,w_1130,f_auto,q_auto/v1528110948/GeneralAssets/MetaImage.png' %>
 
 <meta itemprop="name" content="<%= metaTitle %>" >
 <meta itemprop="description" content="<%= metaDescription %>">

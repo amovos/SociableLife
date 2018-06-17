@@ -18,7 +18,7 @@ var activitySchema = new mongoose.Schema({
         dateLastChecked: Date
     },
     tags: String,
-    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value
+    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value (current, review, removed)
     age: String,
     location: String,
     lat: Number,

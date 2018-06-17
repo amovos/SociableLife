@@ -67,7 +67,7 @@
 					<% } else { %>
 						<li class="nav-item d-flex flex-row align-items-center justify-content-center mr-3 <%= typeof page !== 'undefined' && page === 'profile' ? 'active' : '' %>">
 							<a href="/users/<%= currentUser.id %>" class="nav-link nopadding d-flex flex-row align-items-center">
-								<img class="mr-1" height="40" width="40" src="https://res.cloudinary.com/amovos/image/upload/c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
+								<img class="mr-1" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
 								<%= currentUser.displayName %>
 							</a>
 						</li>
