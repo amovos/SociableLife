@@ -25,7 +25,7 @@
                             <span class="mb-2">
                                 <em><strong>Last checked by:</strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
                             </span>
-                            <% if(currentUser && activity.author._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || currentUser.isAdmin)){ %>
                                 <div class="d-flex flex-row mb-2">
                                     <a class="btn btn-sm btn-warning mr-2" href="/activities/<%= activity._id %>/edit">Edit</a>
                                     <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
@@ -177,7 +177,7 @@
                                         <p class="float-right"><em><%= moment(comment.createdAt).fromNow() %></em></p>
                                         <p class="card-title"><strong><a href="/users/<%= comment.author._id %>"><%= comment.author.displayName %></a></strong></p>
                                         <p class="card-text"><%= comment.text %></p>
-                                        <% if(currentUser && comment.author._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                        <% if(currentUser && (comment.author._id.equals(currentUser._id) || currentUser.isAdmin)){ %>
                                             <div class="float-right mt-2">
                                                 <a  class="btn btn-sm btn-warning" 
                                                     href="/activities/<%= activity._id %>/comments/<%= comment._id %>/edit">

@@ -8,7 +8,7 @@
                 
                 <!-- User or admin can click on profile picture to update -->
                 <img    
-                <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+                <% if(currentUser && (currentUser._id.equals(user._id) || currentUser.isAdmin)) { %>
                     id="profileAvatar"
                     style="cursor: pointer;"
                 <% } %>
@@ -101,7 +101,7 @@
         
         <div class="col-lg-8">
 
-            <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin) { %>
+            <% if(currentUser && (currentUser._id.equals(user._id) || currentUser.isAdmin)) { %>
                 <div class="card d-flex flex-column align-items-start mb-3">
                     <div class="card-body">
                         <h3 class="card-title">Personal User Data</h3>
