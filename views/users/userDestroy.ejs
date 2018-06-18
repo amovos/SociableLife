@@ -4,7 +4,7 @@
 
     <header class="jumbotron">
         <div class="container">
-            <h1>Delete User: <%= user.username %></h1>
+            <h1>Delete User: <%= user.displayName %></h1>
             <p>
                 All of your comment, likes and points will be deleted.
             </p>
@@ -22,10 +22,12 @@
             
             <form class="inline-form" action="/users/<%= user._id %>/delete?_method=DELETE" method="POST">
                 <button  class="btn btn-danger mb-2">
-                    Yes, delete my profile
+                    Yes, please delete my profile
                 </button>
             </form>
-            
+                <a class="btn btn-primary mb-2" href="/users/<%= user._id %>">
+                    No, don't delete my profile
+                </a>
         </div>
     </header>
 

@@ -23,7 +23,7 @@ var showRoute = function(req, res){
             req.flash("errorMessage", "Activity not found");
             res.redirect("/activities");
         } else {
-            
+
             //if the requesting user has liked this activity then pass that through to change the color of the heart text on the EJS
             var loveColorClass = "text-white";
             if(req.user){
@@ -32,6 +32,14 @@ var showRoute = function(req, res){
                 });
                 if(isInLoveArray){loveColorClass = "text-dark"}
             }
+            
+            //if a comment doesn't have an author then remove it from the array before passing it to the page
+            //this stops the page load error if a user was deleted but their comments weren't
+            foundActivity.comments.forEach(function(comment){
+                if(!comment.author){
+                    foundActivity.comments.splice(foundActivity.comments.indexOf(comment), 1);
+                }
+            });
             
             res.render("activities/show", {activity: foundActivity, loveColorClass: loveColorClass}); //pass the found activity to the show template
         }

@@ -63,8 +63,18 @@ var destroyUserRoute = function(req, res){
                     genericErrorResponse(req, res, err);
                 } else if(foundComments.length > 0) {
                     foundComments.forEach(async function(comment){
-                        //console.log("DELETING COMMENT");
-                        await comment.remove();
+                        //remove reference to deleted comment from activity
+                        await Activity.findOne({ 'comments' : comment._id }, async function(err, foundCommentActivity){
+                            if(err){
+                                genericErrorResponse(req, res, err);
+                            } else {
+                                foundCommentActivity.comments.splice(foundCommentActivity.comments.indexOf(comment), 1);
+                                await foundCommentActivity.save();
+                                
+                                //once the comment has been removed from the activity, then remove the actual comment
+                                await comment.remove();
+                            }
+                        });
                     });
                 }
             });
