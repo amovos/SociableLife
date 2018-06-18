@@ -31,6 +31,10 @@ router.get("/userPermissions", middleware.isAdmin, require("./admin/userPermissi
 // ============================
 router.put("/userPermissions", middleware.isAdmin, require("./admin/userPermissionsUpdate"));
 
+// ============================
+// ALL COMMENTS SHOW ROUTE
+// ============================
+router.get("/allComments", middleware.isAdmin, require("./admin/allCommentsShow"));
 
 // ==========================
 // MODULE.EXPORTS
