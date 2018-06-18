@@ -84,11 +84,24 @@ function addActivity(activity){ //function used whenever we want to add an item 
     }
     
     var loveColorClass = setIndexCardLoveColor(activity);
+    var activityDistanceMiles;
+    
+    //add distance box to top corner of activity images
+    if($('#setLocationInput').val()){
+        activityDistanceMiles =     '<span style="position: absolute; z-index: 3; border: 1px solid #1168F9; border-radius: 3px;" class="alert alert-primary pb-1 pt-1 pr-1 pl-1" role="alert">' + 
+                                    Math.round(0.621371 * getDistanceFromLatLonInKm(searchMarkerLat, searchMarkerLng, activity.lat, activity.lng)) + 
+                                    ' miles</span>';
+    } else {
+        activityDistanceMiles = '';
+    }
     
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
             '<div class="card activity-card" onclick="location.href=\'/activities/' + activity._id + '\'">' +
-              '<a href="/activities/' + activity._id + '"><img class="card-img-top activity-index-image" src="' + activity.image + '" alt="' + activity.name + '"></a>' +
+              '<a style="position: relative; z-index: 1;" href="/activities/' + activity._id + '">' +
+                activityDistanceMiles +
+                '<img style="position: relative; z-index: 2;" class="card-img-top activity-index-image" src="' + activity.image + '" alt="' + activity.name + '">' +
+              '</a>' +
               '<div class="card-body pb-2">' +
                 '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +
                 '<p class="card-text text-left mb-1">' + activity.summary + '</p>' +

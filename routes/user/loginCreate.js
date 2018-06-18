@@ -11,19 +11,22 @@ var createRoute = function(req, res) {
             return res.redirect("/login");
         } else if (!user) {
             req.flash("errorMessage", "Incorrect username or password");
-            return res.redirect("/login");
+            if(req.body.return_url) {
+                res.redirect("/login?return_url=" + req.body.return_url);
+            } else {
+                return res.redirect("/login");
+            }
         } else {
             req.logIn(user, function(err) { //as this is a custom callback we need to explicitly log the user in
                 if (err) {
                     req.flash("errorMessage", err.message);
                     return res.redirect("/login");
                 } else {
+                    req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
                     if(req.body.return_url) {
-                        req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
                         var fixedUrlString = req.body.return_url.replace(/%2F/g, "/");
                         res.redirect(fixedUrlString);
                     } else {
-                        req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
                         res.redirect("/activities");
                     }
                 }
