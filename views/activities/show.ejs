@@ -144,7 +144,7 @@
                             <% if(!currentUser) { %>
                                 <!--If the user is not logged in, direct them to the login page-->
                                 <div class="card-body comment-card">
-                                    <p class="card-text"><strong>You need to login before you can comment. Please <a href="/login">login</a> or <a href="/register">sign up (it's free!)</a></strong></p>
+                                    <p class="card-text"><strong>You need to login before you can comment. Please <a id="commentLogin" href="/login">login</a> or <a id="commentRegister" href="/register">sign up (it's free!)</a></strong></p>
                                 </div>
                             <% } %>
                             <% if(currentUser) { %>
@@ -288,7 +288,7 @@
         });
     <% } else { %>
         $('#sociableLove').on('click', function(){
-            window.location.href = "/login";
+            window.location.href = "/login?return_url=" + window.location.pathname;
         });
     <% } %>
 </script>
@@ -350,18 +350,16 @@
 
 <!-- Script to scroll to comments section when comment bubble is clicked -->
 <script>
-function scrollToComments() {
-    event.preventDefault(); //Prevent default anchor click behavior
-
-    var hash = "#commentSection";
-    
-    $('html, body').animate({
-        scrollTop: $(hash).offset().top
-    }, 800, function(){
-        window.location.hash = hash;
-    });
-    
-}
+    function scrollToComments() {
+        event.preventDefault(); //Prevent default anchor click behavior
+        var hash = "#commentSection";
+        
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function(){
+            window.location.hash = hash;
+        });
+    }
 </script>
 
 <% include ../partials/footer %>

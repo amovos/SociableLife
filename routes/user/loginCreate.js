@@ -18,8 +18,14 @@ var createRoute = function(req, res) {
                     req.flash("errorMessage", err.message);
                     return res.redirect("/login");
                 } else {
-                    req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
-                    res.redirect("/activities");
+                    if(req.body.return_url) {
+                        req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
+                        var fixedUrlString = req.body.return_url.replace(/%2F/g, "/");
+                        res.redirect(fixedUrlString);
+                    } else {
+                        req.flash("successMessage", "Welcome to Sociable Life " + user.displayName);
+                        res.redirect("/activities");
+                    }
                 }
             });
         }

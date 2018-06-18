@@ -59,10 +59,10 @@
 					<% } %>
 					<% if(!currentUser){ %>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-							<a href="/login" class="nav-link">Login</a>
+							<a id="navbarLogin" href="/login" class="nav-link">Login</a>
 						</li>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-							<a href="/inviteCode" class="nav-link">Sign Up</a>
+							<a id="navbarRegister" href="/register" class="nav-link">Sign Up</a>
 						</li>
 					<% } else { %>
 						<li class="nav-item d-flex flex-row align-items-center justify-content-center mr-3 <%= typeof page !== 'undefined' && page === 'profile' ? 'active' : '' %>">

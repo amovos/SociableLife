@@ -115,8 +115,12 @@
                 $('#errorMessageContainer').show();
                 $('#errorMessageDiv').html(data.message);
             } else if (data.type === "success") {
-                //Redirect user to activity map page for now, but ideally back to the page they started on
-                window.location.href = "/activities"
+                if(getUrlVars().return_url){
+                    var fixedUrlString = getUrlVars().return_url.replace(/%2F/g, "/");
+                    window.location.href = fixedUrlString;
+                } else {
+                    window.location.href = "/activities";
+                }
             }
         });
     });
