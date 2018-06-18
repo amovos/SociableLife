@@ -143,8 +143,8 @@
                         <div class="card mb-2">
                             <% if(!currentUser) { %>
                                 <!--If the user is not logged in, direct them to the login page-->
-                                <div class="card-body">
-                                    <p class="card-text"><strong>You need to login before you can comment. <a href="/login">Click here</a> to go to the login/register page.</strong></p>
+                                <div class="card-body comment-card">
+                                    <p class="card-text"><strong>You need to login before you can comment. Please <a href="/login">login</a> or <a href="/register">sign up (it's free!)</a></strong></p>
                                 </div>
                             <% } %>
                             <% if(currentUser) { %>
@@ -169,8 +169,11 @@
                                         <div class="form-group">
                                             <textarea id="addCommentInput" class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70" required></textarea>
                                         </div>
-                                        <div class="form-group d-flex flex-row flex-grow-1 justify-content-end">
-                                            <button class="btn btn-primary">Post Comment</button>
+                                        <div class="form-group d-flex flex-row flex-wrap flex-grow-1 justify-content-end align-items-start mb-0">
+                                            <div id="commentErrorDiv" class="alert mb-0 pt-1 pb-1 mb-1 mr-1" role="alert"></div>
+                                            <div>
+                                                <button id="postNewCommentBtn" class="btn btn-primary">Post Comment</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -212,10 +215,16 @@
                                                         Edit
                                                     </a>
                                                 </div>
-                                                <div>
-                                                    <form class="inline-form" action="/activities/<%= activity._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                <div class="d-flex flew-row commentDeleteBtnDiv">
+                                                    <div class="commentDeleteBtn">
                                                         <button class="btn btn-sm btn-danger">Delete</button>
-                                                    </form>
+                                                    </div>
+                                                    <div class="commentDeleteCheck" style="display:none;">
+                                                        <form class="inline-form" action="/activities/<%= activity._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                            <button class="btn btn-sm btn-danger">Please delete</button>
+                                                        </form>
+                                                        <button class="btn btn-sm btn-primary commentNoDeleteBtn">No, don't delete</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         <% } %>
@@ -287,13 +296,56 @@
 <!-- Script to change focus to comment input when add comment button is clicked -->
 <script>
     $('#addCommentBtn').click(function(){
-        console.log("CLICK");
-        // $('#addCommentInput').focus();
         setTimeout(function() {
             $('#addCommentInput').focus();
-            console.log("AFTER");
         }, 100);
     });
+</script>
+
+<!-- Script to track comment input length -->
+<script>
+    //if between 500 and 1000 show character count
+    $('#addCommentInput').keyup(function(){
+        var commentLength = $(this).val().length;
+        
+        if(commentLength > 1500 && commentLength < 2001) {
+            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
+            $('#commentErrorDiv').removeClass("alert-danger");
+            $('#commentErrorDiv').addClass("alert-warning");
+            $('#postNewCommentBtn').prop('disabled', false);
+        } else if(commentLength >= 2001) {
+            //if over 2000 then disabled button (as this just needs to be browser side validation as the endpoint has additional validation)
+            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
+            $('#commentErrorDiv').removeClass("alert-warning");
+            $('#commentErrorDiv').addClass("alert-danger");
+            $('#postNewCommentBtn').prop('disabled', true);
+        } else {
+            $('#commentErrorDiv').removeClass("alert-warning");
+            $('#commentErrorDiv').removeClass("alert-danger");
+            $('#commentErrorDiv').html("");
+            $('#postNewCommentBtn').prop('disabled', false);
+        }
+    })
+</script>
+
+
+<!-- Script to show/hide check delete buttons -->
+<script>
+    //show confirmation buttons
+    $('.commentDeleteBtnDiv').on('click', function(){
+        $(this).children('.commentDeleteBtn').hide();
+        $(this).children('.commentDeleteCheck').show();
+        $(this).siblings().hide();
+    });
+    
+    //hide confirmation buttons
+    $('.commentNoDeleteBtn').on('click', function(){
+        event.stopPropagation();
+        $(this).parent().hide();
+        $(this).parent().siblings().show();
+        $(this).parent().parent().siblings().show();
+    });
+    
 </script>
 
 <!-- Script to scroll to comments section when comment bubble is clicked -->

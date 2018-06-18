@@ -27,8 +27,10 @@
 }
 
 .comment-text {
-   white-space: pre-wrap;
-   line-height: 1;
+    white-space: pre-wrap;
+    line-height: 1;
+    max-height: 500px; 
+    overflow: scroll; 
 }
 
 /* Used to remove borders on activty show and index pages */

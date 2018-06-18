@@ -8,16 +8,17 @@
             </header>
         </div>
         
-        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
             <form action="/activities/<%= activity.id %>/comments/<%= comment.id %>?_method=PUT" method="POST">
                 <div class="form-group">
-                    <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." rows="5" cols="70" required><%= comment.text %></textarea>
+                    <textarea id="addCommentInput" class="form-control" name="comment[text]" placeholder="Write your comment..." rows="8" cols="70" required><%= comment.text %></textarea>
                 </div>
                 
                 <div class="container">
                     <div class="form-group">
-                        <div class="row justify-content-end">
-                            <button class="col-sm-6 btn btn-lg btn-primary btn-block">Update!</button>
+                        <div class="row justify-content-end align-items-center">
+                            <div id="commentErrorDiv" class="alert mb-0 pt-1 pb-1 mb-1 mr-1" role="alert"></div>
+                            <button id="updateCommentBtn" class="col-sm-6 btn btn-primary btn-block">Update!</button>
                         </div>
                     </div>   
                 </div>                     
@@ -26,5 +27,31 @@
         </div>
     </div>
 </div>
+
+<!-- Script to track comment input length -->
+<script>
+    //if between 500 and 1000 show character count
+    $('#addCommentInput').keyup(function(){
+        var commentLength = $(this).val().length;
+        
+        if(commentLength > 1500 && commentLength < 2001) {
+            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
+            $('#commentErrorDiv').removeClass("alert-danger");
+            $('#commentErrorDiv').addClass("alert-warning");
+            $('#updateCommentBtn').prop('disabled', false);
+        } else if(commentLength >= 2001) {
+            //if over 2000 then disabled button (as this just needs to be browser side validation as the endpoint has additional validation)
+            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
+            $('#commentErrorDiv').removeClass("alert-warning");
+            $('#commentErrorDiv').addClass("alert-danger");
+            $('#updateCommentBtn').prop('disabled', true);
+        } else {
+            $('#commentErrorDiv').removeClass("alert-warning");
+            $('#commentErrorDiv').removeClass("alert-danger");
+            $('#commentErrorDiv').html("");
+            $('#updateCommentBtn').prop('disabled', false);
+        }
+    })
+</script>
 
 <% include ../partials/footer %>
