@@ -143,13 +143,13 @@
                         <div class="card mb-2">
                             <% if(!currentUser) { %>
                                 <!--If the user is not logged in, direct them to the login page-->
-                                <div class="card-body comment-card">
+                                <div class="card-body card-grey">
                                     <p class="card-text"><strong>You need to login before you can comment. Please <a id="commentLogin" href="/login">login</a> or <a id="commentRegister" href="/register">sign up (it's free!)</a></strong></p>
                                 </div>
                             <% } %>
                             <% if(currentUser) { %>
                                 <!--If the user is logged in, show the new comment form-->
-                                <div class="card-body comment-card comment-card-current-user">
+                                <div class="card-body card-grey comment-card-current-user">
                                     <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
                                         <div class="d-flex flex-row flex-wrap align-items-baseline justify-content-between">
                                             <strong>
@@ -187,7 +187,7 @@
                         <% activity.comments.forEach(function(comment){ %>
                             <div class="col-md-12 mb-2">
                                 <div class="card">
-                                    <div class="card-body comment-card <% if(currentUser && comment.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                    <div class="card-body card-grey <% if(currentUser && comment.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
                                         <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
                                             <div class="d-flex flex-row flex-wrap align-items-baseline">
                                                 <strong>

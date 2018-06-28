@@ -38,7 +38,7 @@ function initActivityIndexMap() {
         childrenKeyDivOpacity = 'style="opacity: 0.2;" ';
     }
     
-    var mapKeyHtml = '<div class="d-flex flex-row">' +
+    var mapKeyHtml = '<div class="d-flex flex-row mb-1">' +
                         '<div id="allAgesKeyDiv" ' + allAgesKeyDivOpacity + 'class="d-flex flex-column align-items-center mr-2 mapKeyDiv">' +
                             '<img src="/img/Brown.svg"</img>' +
                             '<span>All Ages<span>' +
@@ -236,8 +236,8 @@ function standardMarkerInfoWindow(currentActivity, marker){
                             '</div>' +
 
                             '<a class="btn btn-primary btn-block mt-1" href="/activities/' + currentActivity._id + '">View Activity Page</a><br>' +
-                            '<p class="text-center mb-3">(scroll down this box for more details)</p>' +
-                            //'<hr class="mb-1 mt-0">' +
+                            
+                            '<hr class="mb-1 mt-0">' +
                             
                             '<div class="d-flex align-items-start">' +
                                 '<div class="mr-5">' +

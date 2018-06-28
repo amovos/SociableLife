@@ -1,0 +1,153 @@
+<% include ../partials/header %>
+
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Add an Activity</h1>
+               <h5>It's FREE and always will be</h5>
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
+            
+            <form>
+                <div class="form-group">
+                    <label for="name">What's the name of the activity you'd like to add?</label>
+                    <input class="form-control" type="text" name="activityName" id="name" autofocus required>
+                </div>
+                
+                <div id="activitiesFoundAlert" style="display: none;" class="alert alert-success text-center" role="alert">
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <button id="checkActivityBtn" class="col-sm-6 btn btn-lg btn-primary btn-block">Check</button>
+                        </div>
+                    </div> 
+                </div>
+            </form>
+            
+            <div id="newActivityDiv" style="display: none;" class="container">
+                <div class="form-group">
+                    <div class="row justify-content-center">
+                        <button id="newActivityBtn" class="col-sm-6 btn btn-lg btn-success btn-block">My activity is new</button>
+                    </div>
+                </div> 
+            </div>
+            
+            <div id="foundActivityList" class="mb-3">
+                
+            </div>
+            
+            <a href="javascript:history.back()">Go Back</a>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        if($('#name').val()){
+            activityInput();
+        }
+    });
+
+    $('#checkActivityBtn').on('click', async function(){
+        activityInput();
+    });
+    
+    async function activityInput(){
+        $('#name').blur(); //should close keyboard on mobile when clicking return
+        
+        console.log("CLICK");
+        
+        if($('#name').val()){
+            if(event){
+                event.preventDefault();
+            }
+    
+            var results = await activitySearch();
+    
+            //Change "check" button to "check again"
+            $('#checkActivityBtn').html("Check Again");
+            $('#newActivityDiv').show();
+            $('#activitiesFoundAlert').show();
+    
+            if(results.length > 0) {
+                $('#activitiesFoundAlert').addClass("alert-warning")
+                $('#activitiesFoundAlert').removeClass("alert-success")
+                $('#activitiesFoundAlert').html("It looks like that activity might already be on our map, or it might just need updating, could you please check for us before adding a new one?<br><br>We found <strong>" + results.length + "</strong> possible matches.");
+                $('#newActivityBtn').html("My activity is new");
+                //generate list of possible matches (showing their status)
+                
+                await generateActivityList(results);
+                
+            } else {
+                $('#foundActivityList').html("");
+                
+                $('#activitiesFoundAlert').removeClass("alert-warning")
+                $('#activitiesFoundAlert').addClass("alert-success")
+                $('#activitiesFoundAlert').html("It looks like this is a new activity that isn't on our map yet, that's exciting! <br> Please add some more information on the next page.");
+                $('#newActivityBtn').html("Great, let's add it!");
+            }
+        }
+    }
+    
+    async function activitySearch() {
+        var searchQuery = $('#name').val();
+        returnedActivities = await $.getJSON("/api/activities/" + searchQuery);
+        return returnedActivities;
+    }
+    
+    async function generateActivityList(results) {
+
+        //TOOLTIP VARIABLES
+        var statusTextCurrent = '<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months';
+        var statusTextReview = '<strong>Under Review</strong><br>This activity has not been checked yet or has not been updated in the last 6 months. The information might be out of date.';
+        var statusTextRemoved = '<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year.';
+        //adding alt text to the span surrounding the icon makes it accessible to screen readers
+        var statusIconCurrent = '<span class="tooltip-status" alt="' + statusTextCurrent + '"><i class="fa fa-check-circle fa-lg text-success"></i><span class="tooltip-status-text">' + statusTextCurrent + '</span></span>';
+        var statusIconReview = '<span class="tooltip-status" alt="' + statusTextReview + '"><i class="fa fa-question-circle fa-lg text-warning"></i><span class="tooltip-status-text">' + statusTextReview + '</span></span>';
+        var statusIconRemoved = '<span class="tooltip-status" alt="' + statusTextRemoved + '"><i class="fa fa-times-circle fa-lg text-danger"></i><span class="tooltip-status-text">' + statusTextRemoved + '</span></span>';
+        
+        var activityList = '<div class="d-flex flex-column">';
+        results.forEach(function(activity) {
+            
+            //set the tooltip content for the status icons
+            var statusIcon;
+            var statusText;
+            if(activity.status === "current"){
+                statusText = statusTextCurrent;
+                statusIcon = statusIconCurrent;
+            } else if(activity.status === "review"){
+                statusText = statusTextReview;
+                statusIcon = statusIconReview;
+            } else {
+                statusText = statusTextRemoved;
+                statusIcon = statusIconRemoved;
+            }
+        
+            activityList += '<div class="d-flex flex-row justify-content-between card mb-2 card-grey">' +
+                                '<div class="card-body">' +
+                                    statusIcon + '<a class="card-title" href="/activities/' + activity._id + '"> ' + activity.name + '</a>' +
+                                    '<p class="card-text">' + activity.summary + '</p>' +
+                                '</div>' +                              
+                                '<div class="d-flex flex-row justify-content-end align-items-end card-body">' +
+                                    '<a  class="btn btn-small btn-primary"' +
+                                        'href="/activities/' + activity._id + '">' +
+                                        'Update' +
+                                    '</a>' +
+                                '</div>' +
+                            '</div>'
+        });
+        
+        activityList += '</div>';
+        
+        $('#foundActivityList').html(activityList);
+    }
+    
+</script>
+
+<% include ../partials/footer %>
