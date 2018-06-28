@@ -11,23 +11,17 @@
         
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
             
-            <form>
-                <div class="form-group">
-                    <label for="name">What's the name of the activity you'd like to add?</label>
+            <form id="activityNameForm" action="/activities/newAuthor" method="GET">
+                <label for="name">What's your activity called?</label>
+                <div class="input-group">
                     <input class="form-control" type="text" name="activityName" id="name" autofocus required>
-                </div>
-                
-                <div id="activitiesFoundAlert" style="display: none;" class="alert alert-success text-center" role="alert">
-                </div>
-                
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <button id="checkActivityBtn" class="col-sm-6 btn btn-lg btn-primary btn-block">Check</button>
-                        </div>
-                    </div> 
+                    <div class="input-group-append">
+                        <button id='checkActivityBtn' class="btn btn-primary" type="button">Check</button>
+                    </div>
                 </div>
             </form>
+            
+            <div id="activitiesFoundAlert" style="display: none;" class="alert alert-success text-center mt-3" role="alert"></div>
             
             <div id="newActivityDiv" style="display: none;" class="container">
                 <div class="form-group">
@@ -49,24 +43,35 @@
 
 <script>
     $(document).ready(function(){
+        //run search on page load if a value exists
         if($('#name').val()){
             activityInput();
         }
+        
+        $(window).keydown(function(event){
+            //if return is pressed
+            if(event.keyCode == 13) {
+                if($('#name').is(":focus")) {
+                    event.preventDefault();
+                    activityInput();
+                    $('#name').focus();
+                }
+            }
+          });
     });
 
     $('#checkActivityBtn').on('click', async function(){
         activityInput();
     });
     
+    $('#newActivityBtn').on('click', async function(){
+        $('#activityNameForm').submit();
+    });
+    
     async function activityInput(){
         $('#name').blur(); //should close keyboard on mobile when clicking return
         
-        console.log("CLICK");
-        
         if($('#name').val()){
-            if(event){
-                event.preventDefault();
-            }
     
             var results = await activitySearch();
     
@@ -78,7 +83,7 @@
             if(results.length > 0) {
                 $('#activitiesFoundAlert').addClass("alert-warning")
                 $('#activitiesFoundAlert').removeClass("alert-success")
-                $('#activitiesFoundAlert').html("It looks like that activity might already be on our map, or it might just need updating, could you please check for us before adding a new one?<br><br>We found <strong>" + results.length + "</strong> possible matches.");
+                $('#activitiesFoundAlert').html("It looks like an activity called <strong>" + $('#name').val() + "</strong> might already be on our map, and it could just have old information that needs updating.<br><br>Check out the list below to see if the one you're thinking of is already there, and please suggest an update if it's out of date.<br><br>We found <strong>" + results.length + "</strong> possible matches.");
                 $('#newActivityBtn').html("My activity is new");
                 //generate list of possible matches (showing their status)
                 
@@ -89,7 +94,7 @@
                 
                 $('#activitiesFoundAlert').removeClass("alert-warning")
                 $('#activitiesFoundAlert').addClass("alert-success")
-                $('#activitiesFoundAlert').html("It looks like this is a new activity that isn't on our map yet, that's exciting! <br> Please add some more information on the next page.");
+                $('#activitiesFoundAlert').html("This is exciting!<br>It looks like <strong>" + $('#name').val() + "</strong> is a new activity that isn't on our map yet!");
                 $('#newActivityBtn').html("Great, let's add it!");
             }
         }

@@ -21,6 +21,9 @@ router.get("/new", middleware.isLoggedIn, require("./activities/new"));
 // NEW ACTIVITY CHECK ROUTE
 router.get("/newCheck", require("./activities/newCheck"));
 
+// NEW ACTIVITY AUTHOR ROUTE
+router.get("/newAuthor", require("./activities/newAuthor"));
+
 // CREATE ACTIVITY ROUTE - Route to add submitted activity to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), require("./activities/create"));
 

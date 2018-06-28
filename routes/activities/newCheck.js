@@ -3,7 +3,7 @@
 // ==========================
 
 var newCheckRoute =  function(req, res){ 
-    res.render("activities/newCheck", {page: 'newCheck'});
+    res.render("activities/newCheck", {page: 'addActivity'});
 };
 
 // ==========================

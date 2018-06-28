@@ -1,6 +1,7 @@
 //on document ready set value of return URL to be the value of the URL query string
 $(document).ready(function(){
     $('#returnUrl').val(getUrlVars().return_url)
+    $('#activityNameRedirectUrl').val(getUrlVars().activityName)
 });
 
 function getUrlVars()
