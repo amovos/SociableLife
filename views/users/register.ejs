@@ -89,8 +89,6 @@
 
 <script type='text/javascript'>
     $("#registerForm").submit(function(event) {
-        console.log("click");
-        
         /* stop form from submitting normally */
         event.preventDefault();
         
@@ -117,6 +115,11 @@
             } else if (data.type === "success") {
                 if(getUrlVars().return_url){
                     var fixedUrlString = getUrlVars().return_url.replace(/%2F/g, "/");
+                    
+                    if(getUrlVars().activityName){
+                        fixedUrlString += "?activityName=" + getUrlVars().activityName;
+                    }
+                    
                     window.location.href = fixedUrlString;
                 } else {
                     window.location.href = "/activities";

@@ -4,17 +4,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <header class="jumbotron d-flex flex-column align-items-center">
-                <h1>Add an Activity</h1>
+                <h1>REVIEW Add an Activity</h1>
                 
                 <% if(currentUser) { %>
        			    <a href="/users/<%= currentUser.id %>" class="nav-link nopadding d-flex flex-row align-items-center">
     					<img class="mr-1" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
     					<%= currentUser.displayName %>
     				</a>
-				<% } else { %>
-				    <div class="d-flex flex-row align-items-baseline">
-				        <i class="fas fa-2x fa-user mr-2"></i> Guest User
-				    </div>
 				<% } %>
             </header>
         </div>
@@ -25,38 +21,42 @@
         		    <p>
         			    You're creating this activity as a guest so you won't be able to edit it once it's been submitted. This activity will be listed under the "Sociable Life Community" user.
         			    <br><br>
-        			    If you'd like to add this activity to your own profile please <a href="/login?return_url=/activities/new&activityName=<%= activityNameQuery %>">login</a> or <a href="/inviteCode?return_url=/activities/new&activityName=<%= activityNameQuery %>">sign up</a> for FREE.
+        			    If you'd like to add this activity to your own profile please <a href="/login?return_url=/activities/new&activityName=<%= activityNameQuery %>">login/register</a> for FREE.
         			</p>
                 </div>
             <% } %>
             
-            <form id="createActivityForm" action="/activities/newReview" method="POST" enctype="multipart/form-data">
+            <form action="/activities" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="name">Activity Name *</label>
+                    <label for="name">Activity Name</label>
                     <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activityNameQuery %>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="summary">Summary (140 characters?) *</label>
-                    <input class="form-control" type="text" name="activity[summary]" id="summary" placeholder="e.g. a short description of the activity" required>
+                    <label for="price">??</label>
+                    <input class="form-control" type="number" name="activity[price]" id="price" placeholder="e.g. 15" min="1" step="1">
                 </div>
                 
                 <div class="form-group">
-                    <label for="location">Location *</label>
+                    <label for="location">Location</label>
                     <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description *</label>
+                    <label for="description">Description</label>
                     <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required></textarea>
                 </div>
                 
-                <!-- Error message box -->
-                <div id="errorMessageContainer" class="container" style="display: none;">
-                    <div class="row justify-content-end">
-                            <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
-                        </div>
+                
+                
+                <div class="form-group">
+                    <label for="imageUpload">Image</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
+                        <label class="custom-file-label" for="imageUpload">Choose file</label>
                     </div>
                 </div>
+                
+                <!-- ADD RECAPTCHA HERE -->
                 
                 <div class="container">
                     <div class="form-group">
@@ -67,41 +67,9 @@
                 </div>
                 
             </form>
-            
             <a href="javascript:history.back()">Go Back</a>
         </div>
     </div>
 </div>
-
-<script type='text/javascript'>
-    $("#createActivityForm").submit(function(event) {
-        
-        /* stop form from submitting normally */
-        event.preventDefault();
-        
-        /* get the action attribute from the <form action=""> element */
-        var $form = $( this ),
-            url = $form.attr( 'action' );
-        
-        /* Send the data using post*/
-        var posting = $.post( url, {    name: $('#name').val(), 
-                                        summary: $('#summary').val(), 
-                                        location: $('#location').val(), 
-                                        description: $('#description').val()
-                                    } 
-                            );
-                            
-        /* Process returned result */
-        posting.done(function( data ) {
-            if(data.type === "error") {
-                //show error message box with error message
-                $('#errorMessageContainer').show();
-                $('#errorMessageDiv').html(data.message);
-            } else if (data.type === "success") {
-                //window.location.href = "/activities";
-            }
-        });
-    });
-</script>
 
 <% include ../partials/footer %>

@@ -16,7 +16,13 @@ var upload = require("../middleware/multer");
 router.get('/', require("./activities/index"));
 
 // NEW ACTIVITY ROUTE - Page to add new activity
-router.get("/new", middleware.isLoggedIn, require("./activities/new"));
+router.get("/new", require("./activities/new"));
+
+// NEW ACTIVITY REVIEW ROUTE
+router.get("/newReview", require("./activities/newReview"));
+
+// NEW ACTIVITY REVIEW POST ROUTE 
+router.post("/newReview", require("./activities/createReview"));
 
 // NEW ACTIVITY CHECK ROUTE
 router.get("/newCheck", require("./activities/newCheck"));
@@ -25,7 +31,7 @@ router.get("/newCheck", require("./activities/newCheck"));
 router.get("/newAuthor", require("./activities/newAuthor"));
 
 // CREATE ACTIVITY ROUTE - Route to add submitted activity to DB
-router.post("/", middleware.isLoggedIn, upload.single('image'), require("./activities/create"));
+router.post("/", upload.single('image'), require("./activities/create"));
 
 // SHOW ACTIVITY ROUTE - shows more info about one activity
 router.get("/:id", require("./activities/show"));

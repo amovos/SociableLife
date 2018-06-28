@@ -17,7 +17,7 @@
                     <% } else { %>
                         this activity 
                     <% } %>
-            to the Sociable Life map you can either add it as a guest or create an account.
+            to the Sociable Life map you can either add it as a guest or create your own account.
             <br><br>
             Sociable Life is a completely FREE service, creating an account just makes your life easier if you want to update and manage the activities you add.
             <br><br>
@@ -26,7 +26,7 @@
             
             <div class="d-flex flex-row flex-wrap justify-content-between align-items-start mb-5">
                 <div class="d-flex flex-column justify-content-start align-items-center card card-body card-grey mb-2 col-md-5">
-                    <a href="/activities/new<% if(activityName) { %>?activityName=<%= activityName %><% } %>" class="btn btn-lg btn-success mb-3">Add as Guest</a>
+                    <h2>Add as Guest</h2>
                     <p>
                         <span class="d-flex flex-row mb-2">
                             <span class="mr-2"><i class="fas fa-chevron-circle-right"></i></span>
@@ -41,10 +41,11 @@
                             <span>You won't receive recognition for adding new activities</span>
                         </span>
                     </p>
+                    <a href="/activities/new<% if(activityName) { %>?activityName=<%= activityName %><% } %>" class="btn btn-lg btn-success mb-3">Add as Guest</a>
                 </div>
                 
-                <div class="d-flex flex-column justify-content-start align-items-center card card-body card-grey col-md-5">
-                    <a href="/login?return_url=/activities/newAuthor<% if(activityName) { %>&activityName=<%= activityName %><% } %>" class="btn btn-lg btn-primary mb-3">Login/Register</a>
+                <div class="d-flex flex-column justify-content-start align-items-center card card-body card-grey col-md-6">
+                    <h2>Use your own account</h2>
                     <p>
                         <span class="d-flex flex-row mb-2">
                             <span class="mr-2"><i class="fas fa-chevron-circle-right"></i></span>
@@ -63,6 +64,10 @@
                             <span>Receive points for adding new activities</span>
                         </span>
                     </p>
+                    <div class="d-flex flex-row flex-wrap justify-content-center">
+                        <a href="/login?return_url=/activities/newAuthor<% if(activityName) { %>&activityName=<%= activityName %><% } %>" class="btn btn-lg btn-primary mr-1 mb-3">Login</a>
+                        <a href="/inviteCode?return_url=/activities/newAuthor<% if(activityName) { %>&activityName=<%= activityName %><% } %>" class="btn btn-lg btn-success mb-3">Sign up for Free</a>
+                    </div>
                 </div>
             </div>
             
