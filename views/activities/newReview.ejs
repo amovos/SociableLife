@@ -37,26 +37,28 @@
                     <textarea class="form-control" rows="6" name="activity[description]" id="description" required hidden><%= activityDescription %></textarea>
                 </div>
                 
-                
+
                 <!-- DISPLAY VALUES -->
-                <h5>Activity Name</h5>
-                <p><%= activityName %></p>
-                
-                <h5>Summary</h5>
-                <p><%= activitySummary %></p>
-                
-                <h5>Location</h5>
-                <p><%= activityLocation %></p>
-                
-                <h5>Description</h5>
-                <p><%= activityDescription %></p>
-                
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-end">
-                            <a id="EditInfoBtn" class="col-sm-6 btn btn-lg btn-success btn-block text-white">Edit Info</a>
-                        </div>
-                    </div> 
+                <div class="card card-body mb-3">
+                    <h5>Activity Name</h5>
+                    <p><%= activityName %></p>
+                    
+                    <h5>Summary</h5>
+                    <p><%= activitySummary %></p>
+                    
+                    <h5>Location</h5>
+                    <p><%= activityLocation %></p>
+                    
+                    <h5>Description</h5>
+                    <p><%= activityDescription %></p>
+                    
+                    <div class="container">
+                        <div class="form-group">
+                            <div class="row justify-content-end">
+                                <a id="EditInfoBtn" class="col-sm-6 btn btn-lg btn-success btn-block text-white">Edit Info</a>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -75,9 +77,10 @@
                             <div class="row justify-content-end col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
                         </div>
                     </div>
-                </div> 
+                </div>
                 
                 <% if(fileValidationError) { %>
+                    <!-- Error message box -->
                     <div id="errorMessageContainer" class="container">
                         <div class="row justify-content-end">
                             <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
@@ -87,6 +90,7 @@
                     </div>
                 <% } %>
                 
+                <!-- Submit form button-->
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">

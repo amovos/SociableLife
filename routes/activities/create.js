@@ -19,12 +19,12 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         return res.render("activities/newReview", activityCreateObject(req, res));
     }
     
-    //while testing
-    return;
-    
+    //not sure why it's in this format here but just req.body.captcha for registering a user
+    req.body.captcha = req.body['g-recaptcha-response'];
+
     // CHECK CAPTCHA
     if (!req.body.captcha) {
-        req.fileValidationError = "<i class='fas fa-exclamation-triangle'></i> Please select reCAPTCHA";
+        req.fileValidationError = "Please select reCAPTCHA (and please check your image is still there)";
         return res.render("activities/newReview", activityCreateObject(req, res));
     } else {
         // secret key
@@ -34,17 +34,16 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         // Make request to Verify URL
         await request.get(verifyURL, (err, response, body) => {
             if(err){
-                req.fileValidationError = "<i class='fas fa-exclamation-triangle'></i> Captcha failed, please try again";
+                req.fileValidationError = "Captcha failed, please try again";
                 return res.render("activities/newReview", activityCreateObject(req, res));
             }
             // if not successful
             if (body.success !== undefined && !body.success) {
-                req.fileValidationError = "<i class='fas fa-exclamation-triangle'></i> Captcha failed, please try again";
+                req.fileValidationError = "Captcha failed, please try again";
                 return res.render("activities/newReview", activityCreateObject(req, res));
             }
         });
     }
-    
     
     //if an image has been added on create then upload it to Cloudinary
     if(req.file){
@@ -67,14 +66,12 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         });
     }
     
-    console.log("BEFORE GEOCODE");
-    
     // GEOCODE Location
     //generate geocode data, use "await" to make sure it completes before creating activity
     await geocoder.geocode(req.body.activity.location, function (err, data) {
         if (err || !data.length) {
-          req.flash('errorMessage', 'Invalid address');
-          return res.redirect('back');
+          req.fileValidationError = "Location is invalid, please edit to fix"; 
+          return res.render("activities/newReview", activityCreateObject(req, res));
         }
         //add the geocode data to the activity object using dot notation
         req.body.activity.lat = data[0].latitude;
@@ -83,11 +80,19 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     });
     
     
-    console.log("BEFORE SET AUTHOR");
+    //ADDITIONAL CHECKS
+    // These should already have been passed in the UI to get to this point, but to stop people adding activities without validating data perform the checks again
     
+    // CHECK FOR LENGTH OF INPUTS
+    if(req.body.activity.name.length         > 100) {req.fileValidationError = "Activity Name is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.summary.length      > 300) {req.fileValidationError = "Summary is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.location.length     > 300) {req.fileValidationError = "Location is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.description.length  > 2000) {req.fileValidationError = "Description is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+
+
     // SET AUTHOR
     if(req.user) {
-        req.body.author = req.user._id;
+        req.body.activity.author = req.user._id;
     } else {
         //set it to be the community user (do a BD search to find the ID)
         await User.findOne({ username: process.env.COMMUNITY_USERNAME }, function(err, user) {
@@ -99,17 +104,20 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         });
     }
     
+    // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
+    req.body.activity.status = "review";
+    
     // CREATE ACTIVITY
     //Create a new activity and save to database
-    // Activity.create(req.body.activity, function(err, newlyCreated){
-    //     if(err){
-    //         genericErrorResponse(req, res, err);
-    //     } else {
-    //         //redirect back to activities page
-    //         req.flash("successMessage", "Successfully created activity - once it's been reviewed we'll add it to the map!");
-    //         res.redirect("/activities/" + newlyCreated._id); //redirects to the newly created activity
-    //     }
-    // }); 
+    Activity.create(req.body.activity, function(err, newlyCreated){
+        if(err){
+            genericErrorResponse(req, res, err);
+        } else {
+            //redirect back to activities page
+            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
+            res.redirect("/activities/" + newlyCreated._id); //redirects to the newly created activity
+        }
+    }); 
 };
 
 
