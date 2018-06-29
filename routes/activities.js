@@ -18,11 +18,14 @@ router.get('/', require("./activities/index"));
 // NEW ACTIVITY ROUTE - Page to add new activity
 router.get("/new", require("./activities/new"));
 
-// NEW ACTIVITY REVIEW ROUTE
-router.get("/newReview", require("./activities/newReview"));
+// NEW ACTIVITY POST ROUTE - route to allow "edit info" button to work during creation to repopulate fields
+router.post("/new", require("./activities/newPostReturn"));
 
-// NEW ACTIVITY REVIEW POST ROUTE 
+// NEW ACTIVITY REVIEW POST ROUTE (AJAX CHECKS)
 router.post("/newReview", require("./activities/createReview"));
+
+// NEW ACTIVITY REVIEW POPULATE POST ROUTE (POST CHECKED DATA TO REVIEW PAGE)
+router.post("/newReviewPopulate", require("./activities/newReview"));
 
 // NEW ACTIVITY CHECK ROUTE
 router.get("/newCheck", require("./activities/newCheck"));

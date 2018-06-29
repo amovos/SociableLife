@@ -4,72 +4,117 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <header class="jumbotron d-flex flex-column align-items-center">
-                <h1>REVIEW Add an Activity</h1>
+                <h1>Review Activity Info</h1>
                 
                 <% if(currentUser) { %>
        			    <a href="/users/<%= currentUser.id %>" class="nav-link nopadding d-flex flex-row align-items-center">
     					<img class="mr-1" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
     					<%= currentUser.displayName %>
     				</a>
+				<% } else { %>
+				    <div class="d-flex flex-row align-items-baseline">
+				        <i class="fas fa-2x fa-user mr-2"></i> Guest User
+				    </div>
 				<% } %>
             </header>
         </div>
         
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
-            <% if(!currentUser) { %>
-                <div class="alert alert-warning" role="alert">
-        		    <p>
-        			    You're creating this activity as a guest so you won't be able to edit it once it's been submitted. This activity will be listed under the "Sociable Life Community" user.
-        			    <br><br>
-        			    If you'd like to add this activity to your own profile please <a href="/login?return_url=/activities/new&activityName=<%= activityNameQuery %>">login/register</a> for FREE.
-        			</p>
-                </div>
-            <% } %>
-            
-            <form action="/activities" method="POST" enctype="multipart/form-data">
+    
+            <!-- The acutal form is hidden from the user and the content for review is just displayed as text -->
+            <form id="createActivityForm" action="/activities" method="POST" enctype="multipart/form-data">
+                <!-- HIDDEN INPUTS -->
                 <div class="form-group">
-                    <label for="name">Activity Name</label>
-                    <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activityNameQuery %>" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="price">??</label>
-                    <input class="form-control" type="number" name="activity[price]" id="price" placeholder="e.g. 15" min="1" step="1">
-                </div>
-                
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" required>
+                    <input class="form-control" type="text" name="activity[name]" id="name" value="<%= activityName %>" required hidden>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required></textarea>
+                    <textarea class="form-control" rows="3" name="activity[summary]" id="summary" required hidden><%= activitySummary %></textarea>
                 </div>
-                
-                
-                
                 <div class="form-group">
-                    <label for="imageUpload">Image</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
-                        <label class="custom-file-label" for="imageUpload">Choose file</label>
-                    </div>
+                    <input class="form-control" type="text" name="activity[location]" id="location" value="<%= activityLocation %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" required hidden><%= activityDescription %></textarea>
                 </div>
                 
-                <!-- ADD RECAPTCHA HERE -->
+                
+                <!-- DISPLAY VALUES -->
+                <h5>Activity Name</h5>
+                <p><%= activityName %></p>
+                
+                <h5>Summary</h5>
+                <p><%= activitySummary %></p>
+                
+                <h5>Location</h5>
+                <p><%= activityLocation %></p>
+                
+                <h5>Description</h5>
+                <p><%= activityDescription %></p>
                 
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">
-                            <button class="col-sm-6 btn btn-lg btn-primary btn-block">Review and add picture</button>
+                            <a id="EditInfoBtn" class="col-sm-6 btn btn-lg btn-success btn-block text-white">Edit Info</a>
                         </div>
                     </div> 
                 </div>
                 
+                <div class="form-group">
+                    <label for="imageUpload"><h5>Add an Image</h5></label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
+                        <label class="custom-file-label" for="imageUpload">Choose file</label>
+                    </div>
+                    <h6 class="mt-2">Ativities look much more interesting when they have a picture, if you don't have one of your own you can get free pictures from <a href="https://unsplash.com" target="_blank">Unsplash</a>. (It's like google images for free pictures!)</h6>
+                </div>
+                
+                <!-- reCaptcha check box -->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <div class="row justify-content-end col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <% if(fileValidationError) { %>
+                    <div id="errorMessageContainer" class="container">
+                        <div class="row justify-content-end">
+                            <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
+                                <i class='fas fa-exclamation-triangle'></i> <%= fileValidationError %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button id="submitActivityBtn" class="col-sm-6 btn btn-lg btn-primary btn-block">Submit Activity!</button>
+                        </div>
+                    </div> 
+                </div>
             </form>
-            <a href="javascript:history.back()">Go Back</a>
         </div>
     </div>
 </div>
+
+<script>
+    //on "Edit Info" button click
+    //make an ajax post request to /activities/new and post the form data
+    $('#EditInfoBtn').on('click', function(){
+        $('#createActivityForm').attr("action", "/activities/new");
+        $('#createActivityForm').removeAttr("enctype"); //need to remove this so the form content can be accessed through req.body.activity
+        $('#createActivityForm').submit();
+    })
+    
+    $("#createActivityForm").submit(function(event) {
+        //disable submit button so a user can't keep clicking on it
+        $('#submitActivityBtn').attr("disabled", "disabled");
+        //change text of button to say "uploading image..."
+        $('#submitActivityBtn').html("Uploading image...")
+    });
+    
+</script>
 
 <% include ../partials/footer %>

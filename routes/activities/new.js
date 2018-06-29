@@ -2,15 +2,18 @@
 // ACTIVITY NEW ROUTE
 // ==========================
 
-var newRoute =  function(req, res){ //REST convention for route to form that will be submitted to /activities POST route
+var activityCreateObject = require("./activityCreateObject");
+
+var newRoute = function(req, res){
     
-    var activityName = "";
+    console.log("HERE");
     
     if(req.query.activityName){
-        activityName = req.query.activityName;
+        req.body.queryName = req.query.activityName;
     }
     
-    res.render("activities/new", {page: 'addActivity', activityNameQuery: activityName});
+    res.render("activities/new", activityCreateObject(req, res));
+
 };
 
 // ==========================

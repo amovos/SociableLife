@@ -25,29 +25,29 @@
         		    <p>
         			    You're creating this activity as a guest so you won't be able to edit it once it's been submitted. This activity will be listed under the "Sociable Life Community" user.
         			    <br><br>
-        			    If you'd like to add this activity to your own profile please <a href="/login?return_url=/activities/new&activityName=<%= activityNameQuery %>">login</a> or <a href="/inviteCode?return_url=/activities/new&activityName=<%= activityNameQuery %>">sign up</a> for FREE.
+        			    If you'd like to add this activity to your own profile please <a href="/login?return_url=/activities/new&activityName=<%= activityName %>">login</a> or <a href="/inviteCode?return_url=/activities/new&activityName=<%= activityName %>">sign up</a> for FREE.
         			</p>
                 </div>
             <% } %>
             
-            <form id="createActivityForm" action="/activities/newReview" method="POST" enctype="multipart/form-data">
+            <form id="createActivityForm" action="/activities/newReviewPopulate" method="POST">
                 <div class="form-group">
                     <label for="name">Activity Name *</label>
-                    <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activityNameQuery %>" required>
+                    <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activityName %>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="summary">Summary (140 characters?) *</label>
-                    <input class="form-control" type="text" name="activity[summary]" id="summary" placeholder="e.g. a short description of the activity" required>
+                    <textarea class="form-control" rows="3" name="activity[summary]" id="summary" placeholder="e.g. a short description of the activity" required><%= activitySummary %></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label for="location">Location *</label>
-                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" required>
+                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activityLocation %>" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description *</label>
-                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required></textarea>
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activityDescription %></textarea>
                 </div>
                 
                 <!-- Error message box -->
@@ -74,14 +74,25 @@
 </div>
 
 <script type='text/javascript'>
+    
+    var passedChecks;
+    
+    $(document).ready(function(){
+        passedChecks = false;
+    });
+    
     $("#createActivityForm").submit(function(event) {
         
-        /* stop form from submitting normally */
-        event.preventDefault();
+        /* stop form from submitting normally if all checks haven't passed */
+        if(!passedChecks){
+            event.preventDefault();
+        } else {
+            return;
+        }
         
         /* get the action attribute from the <form action=""> element */
         var $form = $( this ),
-            url = $form.attr( 'action' );
+            url = "/activities/newReview";
         
         /* Send the data using post*/
         var posting = $.post( url, {    name: $('#name').val(), 
@@ -93,12 +104,19 @@
                             
         /* Process returned result */
         posting.done(function( data ) {
+            //if a location has been returned then update the location field
+            if(data.location) {
+                $('#location').val(data.location);
+            }
+            
             if(data.type === "error") {
                 //show error message box with error message
                 $('#errorMessageContainer').show();
                 $('#errorMessageDiv').html(data.message);
             } else if (data.type === "success") {
-                //window.location.href = "/activities";
+                //submit form
+                passedChecks = true;
+                $("#createActivityForm").submit();
             }
         });
     });

@@ -75,8 +75,6 @@ var updateUserRoute = async function(req, res){
         }
     });
 
-    //return res.send({type: "success"});
-
 };
 
 function checkUserInput(res, input, Str){

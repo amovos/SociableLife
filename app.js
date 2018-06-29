@@ -134,8 +134,13 @@ app.get('/*', function(req,res){
 app.use(function (err, req, res, next) {
     // Error code from multer caused by exceeding file size limit
     if (err.code === 'LIMIT_FILE_SIZE') {
-        req.flash("errorMessage", "Sorry, that file is too big (5MB limit)");
-        return res.redirect("back");
+        if(req.originalUrl === "/activities"){
+            req.fileValidationError = "Sorry, that file is too big (5MB limit)";
+            return res.render("activities/newReview", require("./routes/activities/activityCreateObject")(req, res));
+        } else {
+            req.flash("errorMessage", "Sorry, that file is too big (5MB limit)");
+            return res.redirect("back");  
+        }
     }
 });
 

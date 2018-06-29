@@ -14,7 +14,7 @@ var updateAvatarRoute = async function(req, res){
             return res.redirect('/activities');
         }
         
-        //if multer error display here
+        //if multer error - display here
         if(req.fileValidationError) {
             req.flash("errorMessage", req.fileValidationError);
             return res.redirect("/users/" + foundUser._id + "/avatar");
