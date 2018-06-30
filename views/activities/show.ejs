@@ -55,10 +55,19 @@
                     </div>
                     <hr>
                     <!--START OF ACTIVITY INFO CONTENT-->
+                    <div>
+                        <h4>Description</h4>
+                        <p class="mr-2"><%= activity.description %></p>
+                        <% if(activity.videoUrl) { %>
+                            <div class="d-flex flex-row justify-content-center mb-3">
+                                <iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                            <hr>
+                        <% } %>
+                    </div>
+                    
                     <div class="d-flex flex-row flex-wrap">
                         <div class="d-flex flex-column col-md-8 nopadding">
-                            <h4>Description</h4>
-                            <p class="mr-2"><%= activity.description %></p>
                             <div class="d-flex flex-row">
                                 <div class="col-md-6 nopadding">
                                     <h4>Ages</h4>
@@ -69,17 +78,17 @@
                                     <p class="mr-2"><%= activity.suitable %></p>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row card-grey mr-md-2">
                                 <div class="col-md-6 nopadding">
-                                    <h4>When</h4>
+                                    <h4 class="mt-1">When</h4>
                                     <p class="mr-3"><%= activity.when %></p>
                                 </div>
                                 <div class="col-md-6 nopadding">
-                                    <h4>Cost</h4>
+                                    <h4 class="mt-1">Cost</h4>
                                     <p class="mr-2"><%= activity.price %></p>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row mt-2">
                                 <div class="col-md-6 nopadding">
                                     <h4>Type</h4>
                                     <p class="mr-3"><%= activity.frequency %></p>
@@ -89,8 +98,29 @@
                                     <p class="mr-2"><%= activity.location %></p>
                                 </div>
                             </div>
-                            <h4>Tags</h4>
-                            <p class="mr-2"><%= activity.tags %></p>
+                            <div class="d-flex flex-row card-grey mr-md-2 mb-2">
+                                <div class="col-md-6 nopadding">
+                                    <h4 class="mt-1">Who to contact</h4>
+                                    <% if(activity.contactEmail || activity.contactNum) { %>
+                                        <p class="mr-3">
+                                            <% if(activity.contactNum) { %>
+                                                Telephone: <%= activity.contactNum %>
+                                                <br>
+                                            <% } %>
+                                            <% if(activity.contactEmail) { %>
+                                                Email: <a href="mailto:<%= activity.contactEmail %>asd"><%= activity.contactEmail %></a>
+                                            <% } %>
+                                        </p>
+                                    <% } else { %>
+                                        No contact information has<br>been added <i class="fas fa-phone-slash"></i>
+                                    <% } %>
+                                </div>
+                                <div class="col-md-6 nopadding">
+                                    <h4 class="mt-1">Tags</h4>
+                                    <p class="mr-2"><%= activity.tags %></p>
+                                </div>
+                            </div>
+                            
                             
                             <% if(activity.linkStatus.isLinkBroken && activity.linkStatus.errorMessage === "404") { %>
                                 <div class="alert alert-warning mr-3" role="alert">
@@ -137,7 +167,7 @@
                                     
                                 </div>
                                 
-                                <div class="flex-grow-1 nopadding mr-md-3">
+                                <div class="flex-grow-1 nopadding mr-md-2">
                                     <a class="btn btn-warning btn-block mb-2" href="/contact"><strong>Something not right?</strong></a>
                                 </div>
                                 

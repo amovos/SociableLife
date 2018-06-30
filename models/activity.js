@@ -6,6 +6,8 @@ var activitySchema = new mongoose.Schema({
     imageId: String,
     summary: String,
     description: String,
+    videoUrl: String,
+    youtubeVideoId: String,
     suitable: String,
     when: String,
     frequency: String,
