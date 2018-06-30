@@ -46,8 +46,10 @@ router.get("/:id/edit", middleware.checkActivityOwnership, require("./activities
 router.put("/:id", middleware.checkActivityOwnership, upload.single('image'), require("./activities/update"));
 
 // EDIT ACTIVITY IMAGE ROUTE
+router.get("/:id/editImage", middleware.checkActivityOwnership, require("./activities/editImage"));
 
 // UPDATE ACTIVITY IMAGE ROUTE
+router.put("/:id/updateImage", middleware.checkActivityOwnership, upload.single('image'), require("./activities/updateImage"));
 
 // UPDATE ACTIVITY STATUS ROUTE
 router.post("/updateStatus", middleware.isAdminOrMod, require("./activities/updateStatus"));

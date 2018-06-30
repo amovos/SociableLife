@@ -30,12 +30,13 @@
                             
                             <% if(currentUser && (activity.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
                                 <div class="d-flex flex-row flex-wrap flex-grow-1 justify-content-between mb-2">
-                                    <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                    <div class="d-flex flex-row flex-wrap align-items-baseline mt-2">
                                         <div>
-                                            <h4 class="mb mr-2">Edit Activity Info</h4>
+                                            <h4 class="mb mr-2">Edit Activity</h4>
                                         </div>
                                         <div>
-                                            <a class="btn btn-warning mr-2 mb-2" href="/activities/<%= activity._id %>/edit">Edit</a>
+                                            <a class="btn btn-primary mr-2 mb-2" href="/activities/<%= activity._id %>/editImage">Change Picture</a>
+                                            <a class="btn btn-warning mr-2 mb-2" href="/activities/<%= activity._id %>/edit">Edit Info</a>
                                             <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
                                                 <button class="btn btn-danger mb-2" disabled>Remove</button>
                                             </form>
@@ -69,7 +70,7 @@
                         </div>
                         <div id="showPageLoveAndComment" class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
                             <div class="d-flex flex-column align-items-center mr-4">
-                                <span>Loves</span>
+                                <span><strong>Loves</strong></span>
                                     <span id="sociableLove" class="fa-stack fa-1x sociable-love">
                                         <i class="fas fa-heart fa-stack-2x heart-offset"></i>
                                         <span id="sociableLoveNum" class="fa-stack-1x <%= loveColorClass %>"><%= (activity.loves.length) %></span>
@@ -77,7 +78,7 @@
                                 </span>
                             </div>
                             <div class="d-flex flex-column align-items-center">
-                                <span>Comments</span>
+                                <span><strong>Comments</strong></span>
                                     <span id="sociableComment" class="fa-stack fa-1x sociable-comment" onclick="scrollToComments()">
                                         <i class="fas fa-comment fa-stack-2x comment-offset"></i>
                                         <span id="sociableCommentNum" class="fa-stack-1x text-white"><%= (activity.comments.length) %></span>
@@ -171,7 +172,7 @@
                                 </div>
                             <% } %>
                             <div class="d-flex flex-row flex-wrap mt-1">
-                                <div class="d-flex flex-row flex-wrap nopadding justify-content-between align-items-center flex-grow-1">
+                                <div class="d-flex flex-row flex-wrap nopadding justify-content-between align-items-center flex-grow-1 mb-2">
                                     
                                     <div class="flex-grow-1 nopadding">
                                         <% if(activity.website) { %>
@@ -201,15 +202,15 @@
                                 </div>
                                 
                                 <div class="flex-grow-1 nopadding mr-md-2">
-                                    <a class="btn btn-warning btn-block mb-2" href="/contact"><strong>Something not right?</strong></a>
+                                    <a class="btn btn-warning btn-block mb-3" href="/contact"><strong>Something not right?</strong></a>
                                 </div>
                                 
                             </div>
                         </div>
                         
-                        <div class="d-flex flex-column nopadding col-md-4 mb-2">
+                        <div class="d-flex flex-column nopadding col-md-4 mb-3">
                             <div class="nopadding">
-                                <a class="btn btn-success btn-block mb-1" href="http://maps.google.co.uk/?hl=en&saddr=&daddr=<%= activity.location %>">Get Directions <i class="fas fa-map-marker-alt"></i></a>
+                                <a class="btn btn-success btn-block mb-0" href="http://maps.google.co.uk/?hl=en&saddr=&daddr=<%= activity.location %>">Get Directions <i class="fas fa-map-marker-alt"></i></a>
                             </div>
                             <div id="activity-show-map" style="border-radius: 5px;" class="flex-grow-1"></div>
                         </div>
