@@ -107,19 +107,50 @@
                                     This could be a temporary problem, but if it doesn't get fixed soon we'll automatically remove this activity. (Status Code: <%= activity.linkStatus.errorMessage %>)
                                 </div>
                             <% } %>
-                            
-                            <div class="d-flex flex-row flex-wrap">
-                                <div class="col-md-5 nopadding">
-                                    <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Activity website</a>
+                            <div class="d-flex flex-row flex-wrap mt-1">
+                                <div class="d-flex flex-row flex-wrap nopadding justify-content-between align-items-center flex-grow-1">
+                                    
+                                    <div class="flex-grow-1 nopadding">
+                                        <% if(activity.website) { %>
+                                            <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Activity website</a>
+                                        <% } else { %>
+                                            <a class="btn btn-secondary btn-block mb-2 disabled">Activity website</a>
+                                        <% } %>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-row justify-content-center flex-grow-1">
+                                        <div class="nopadding">
+                                            <% if(activity.twitter) { %>
+                                                <a class="mb-2 mr-2" href="<%= activity.twitter %>"><i class="fab fa-twitter fa-2x fa-fw" title="Activity Twitter Link"></i></a>
+                                            <% } else { %>
+                                                <a class="mb-2 mr-2 disabled text-secondary"><i class="fab fa-twitter fa-2x fa-fw" title="Activity Twitter Link"></i></a>
+                                            <% } %>
+                                        </div>
+                                        <div class="nopadding">
+                                            <% if(activity.facebook) { %>
+                                                <a class="mb-2 ml-2" href="<%= activity.facebook %>"><i class="fab fa-facebook-square fa-2x fa-fw" title="Activity Facebook Link"></i></a>
+                                            <% } else { %>
+                                                <a class="mb-2 ml-2 disabled text-secondary"><i class="fab fa-facebook-square fa-2x fa-fw" title="Activity Facebook Link"></i></a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
-                                <div class="col-md-1">
+                                
+                                <div class="flex-grow-1 nopadding mr-md-3">
+                                    <a class="btn btn-warning btn-block mb-2" href="/contact"><strong>Something not right?</strong></a>
                                 </div>
-                                <div class="col-md-5 nopadding">
-                                    <a class="btn btn-warning btn-block mb-2" href="/contact">Something not right?</a>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div id="activity-show-map" class="col-md-4"></div>
+                        
+                        <div class="d-flex flex-column nopadding col-md-4 mb-2">
+                            <div class="nopadding">
+                                <a class="btn btn-success btn-block mb-1" href="http://maps.google.co.uk/?hl=en&saddr=&daddr=<%= activity.location %>">Get Directions <i class="fas fa-map-marker-alt"></i></a>
+                            </div>
+                            <div id="activity-show-map" style="border-radius: 5px;" class="flex-grow-1"></div>
+                        </div>
+                        
                     </div>
                     <!--END OF ACTIVITY INFO CONTENT-->
                 </div>

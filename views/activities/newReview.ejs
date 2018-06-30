@@ -70,14 +70,16 @@
                     <h6 class="mt-2">Ativities look much more interesting when they have a picture, if you don't have one of your own you can get free pictures from <a href="https://unsplash.com" target="_blank">Unsplash</a>. (It's like google images for free pictures!)</h6>
                 </div>
                 
-                <!-- reCaptcha check box -->
-                <div class="container">
-                    <div class="form-group">
-                        <div class="row justify-content-end">
-                            <div class="row justify-content-end col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                <% if(!currentUser) { %>
+                    <!-- reCaptcha check box  (ONLY IF USER IS NOT LOGGED IN) -->
+                    <div class="container">
+                        <div class="form-group">
+                            <div class="row justify-content-end">
+                                <div class="row justify-content-end col-md-8 g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE %>"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% } %>
                 
                 <% if(fileValidationError) { %>
                     <!-- Error message box -->

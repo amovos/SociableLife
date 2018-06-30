@@ -11,6 +11,10 @@ var activitySchema = new mongoose.Schema({
     frequency: String,
     price: String,
     website: String,
+    facebook: String,
+    twitter: String,
+    contactEmail: String,
+    contactNum: String,
     linkStatus: {
         isLinkBroken: { type: Boolean, default: false },
         errorMessage: String,
@@ -18,7 +22,7 @@ var activitySchema = new mongoose.Schema({
         dateLastChecked: Date
     },
     tags: String,
-    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value (current, review, removed)
+    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value of current for the seed data (all new activities are set to "review")
     age: String,
     location: String,
     lat: Number,

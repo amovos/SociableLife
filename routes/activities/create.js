@@ -4,6 +4,7 @@
 
 var genericErrorResponse = require("../shared/genericErrorResponse");
 var Activity = require("../../models/activity");
+var Comment = require("../../models/comment");
 var User = require("../../models/user");
 var geocoder = require("../shared/geocoder");
 var cloudinary = require('cloudinary');
@@ -22,27 +23,29 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     //not sure why it's in this format here but just req.body.captcha for registering a user
     req.body.captcha = req.body['g-recaptcha-response'];
 
-    // CHECK CAPTCHA
-    if (!req.body.captcha) {
-        req.fileValidationError = "Please select reCAPTCHA (and please check your image is still there)";
-        return res.render("activities/newReview", activityCreateObject(req, res));
-    } else {
-        // secret key
-        var secretKey = process.env.CAPTCHA_SECRET;
-        // Verify URL
-        var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
-        // Make request to Verify URL
-        await request.get(verifyURL, (err, response, body) => {
-            if(err){
-                req.fileValidationError = "Captcha failed, please try again";
-                return res.render("activities/newReview", activityCreateObject(req, res));
-            }
-            // if not successful
-            if (body.success !== undefined && !body.success) {
-                req.fileValidationError = "Captcha failed, please try again";
-                return res.render("activities/newReview", activityCreateObject(req, res));
-            }
-        });
+    // CHECK CAPTCHA (only if no current user)
+    if(!req.user) {
+        if (!req.body.captcha) {
+            req.fileValidationError = "Please select reCAPTCHA (you might also need to reselect your image)";
+            return res.render("activities/newReview", activityCreateObject(req, res));
+        } else {
+            // secret key
+            var secretKey = process.env.CAPTCHA_SECRET;
+            // Verify URL
+            var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
+            // Make request to Verify URL
+            await request.get(verifyURL, (err, response, body) => {
+                if(err){
+                    req.fileValidationError = "Captcha failed, please try again";
+                    return res.render("activities/newReview", activityCreateObject(req, res));
+                }
+                // if not successful
+                if (body.success !== undefined && !body.success) {
+                    req.fileValidationError = "Captcha failed, please try again";
+                    return res.render("activities/newReview", activityCreateObject(req, res));
+                }
+            });
+        }
     }
     
     //if an image has been added on create then upload it to Cloudinary
@@ -107,15 +110,51 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
     req.body.activity.status = "review";
     
+    
+    
     // CREATE ACTIVITY
     //Create a new activity and save to database
-    Activity.create(req.body.activity, function(err, newlyCreated){
+    Activity.create(req.body.activity, async function(err, newlyCreatedActivity){
         if(err){
             genericErrorResponse(req, res, err);
         } else {
-            //redirect back to activities page
-            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
-            res.redirect("/activities/" + newlyCreated._id); //redirects to the newly created activity
+            
+            //find the sociable life community user and add a love and first comment
+            await User.findOne({ username: process.env.COMMUNITY_USERNAME }, async function(err, communityUser) {
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else { 
+                    //add first love
+                    newlyCreatedActivity.loves.push(communityUser._id);
+                    
+                    //if user is currently logged in the automatically add them to the love list as well
+                    if(req.user) {
+                        newlyCreatedActivity.loves.push(req.user._id);
+                    }
+                    
+                    var firstComment = {};
+                    firstComment.text = "Thanks for adding this activity to Sociable Life!";
+                    
+                    //add first comment
+                    await Comment.create(firstComment, async function(err, comment){
+                        if(err){
+                            genericErrorResponse(req, res, err);
+                        } else {
+                            comment.author = communityUser._id;
+                            comment.save();
+                            
+                            // connect new comment to the currently found activity
+                            newlyCreatedActivity.comments.push(comment);
+                            // save activity with new comment
+                            await newlyCreatedActivity.save();
+                            
+                            //then redirect back to new activity page
+                            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
+                            res.redirect("/activities/" + newlyCreatedActivity._id); //redirects to the newly created activity
+                        }
+                    });
+                }
+            });
         }
     }); 
 };
