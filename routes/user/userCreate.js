@@ -20,6 +20,13 @@ var createRoute = async function(req, res){
     if(req.body.lastName.length     > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Last Name is too long (30 characters max)"})}
     if(req.body.displayName.length  > 30) {return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Display Name is too long (30 characters max)"})}
 
+    
+    // CHECK TERMS AND CONDITIONS CHECKBOX
+    if(req.body.termsCheck === "false") {
+        console.log("terms not checked");
+        return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> To create an account please accept our terms and conditions and our privacy policy"});
+    }
+    
     // CHECK CAPTCHA
     if (!req.body.captcha) {
         return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Please select reCAPTCHA"});
@@ -40,6 +47,14 @@ var createRoute = async function(req, res){
         });
     }
     
+    // CHECK MAILING LIST CHECKBOX
+    var mailingList = false;
+    
+    if(req.body.mailingList === "true") {
+        mailingList = true;
+    }
+    
+    
     // CREATE NEW USER OBJECT
     // need to do it this long hand way so that the password isn't stored in the database
     var newUser = new User(
@@ -48,7 +63,9 @@ var createRoute = async function(req, res){
             email: req.body.email,
             displayName: req.body.displayName,
             firstName: req.body.firstName,
-            lastName: req.body.lastName
+            lastName: req.body.lastName,
+            mailingList: mailingList,
+            termsCheck: true
         }
     );
     
@@ -59,6 +76,7 @@ var createRoute = async function(req, res){
             if (err) {
                 return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Error logging in, please try again"});
             } else {
+                //add the new user to mail chimp mailing list that only sends out the first intro email
                 return res.send({type: "success", message: registeredUser._id}); //not currently doing anything with the id on the client side
             }
         });

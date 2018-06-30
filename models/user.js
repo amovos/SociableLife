@@ -6,10 +6,12 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, unique: true, required: true},
     password: String,
     displayName: String,
-    avatar: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526054504/avatarPlaceHolder.jpg" }, //could add a default user avatar here
+    avatar: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526054504/avatarPlaceHolder.jpg" },
     avatarId: String,
     firstName: String,
     lastName: String,
+    mailingList: { type: Boolean, default: false },
+    termsCheck: { type: Boolean, default: true },
     bio: String,
     contactInfo: {
         contactEmail: String,

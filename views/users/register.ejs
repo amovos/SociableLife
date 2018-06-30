@@ -54,7 +54,33 @@
                             <input id="displayName" class="col-md-8 col-sm-7 form-control" type="text" name="displayName" placeholder="What other people will see" required>
                         </div>
                     </div>
-                </div>                
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <span class="col-md-4 col-sm-5"></span>
+                            <label class="checkbox-container col-md-8 col-sm-7 pr-0" for="mailingList">
+                                Would you like to sign up to our mailing list?
+                                <input class="checkbox-input" id="mailingList" type="checkbox" name="mailingList"/>
+                                <span class="checkmark border mt-1"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <span class="col-md-4 col-sm-5"></span>
+                            <label class="checkbox-container col-md-8 col-sm-7 pr-0" for="termsCheck">
+                                *  Please check this box to confirm you agree with our <a href="terms">terms and conditons</a> and our <a href="/privacy">privacy policy</a>
+                                <input class="checkbox-input" id="termsCheck" type="checkbox" name="termsCheck"/>
+                                <span class="checkmark border mt-1"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- reCaptcha check box -->
                 <div class="container">
@@ -102,6 +128,8 @@
                                         firstName: $('#firstName').val(), 
                                         lastName: $('#lastName').val(),
                                         displayName: $('#displayName').val(),
+                                        mailingList: $('#mailingList').is(':checked'),
+                                        termsCheck: $('#termsCheck').is(':checked'),
                                         captcha: grecaptcha.getResponse()
                                     } 
                             );
