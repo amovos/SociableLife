@@ -19,20 +19,53 @@
                                     <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
                                 <% } %>
                                 <%= activity.name %></h3>
-                            <span>
-                                <em><strong>Added by:</strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                            <span class="d-flex flex-row flex-wrap">
+                                <span><em><strong>Added by:&nbsp;</span>
+                                <span></strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em></span>
                             </span>
-                            <span class="mb-2">
-                                <em><strong>Last checked by:</strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em>
+                            <span class="d-flex flex-row flex-wrap mb-2">
+                                <span><em><strong>Last checked by:&nbsp;</span>
+                                <span></strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em></span>
                             </span>
-                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || currentUser.isAdmin)){ %>
-                                <div class="d-flex flex-row mb-2">
-                                    <a class="btn btn-sm btn-warning mr-2" href="/activities/<%= activity._id %>/edit">Edit</a>
-                                    <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-sm btn-danger" disabled>Delete</button>
-                                    </form>
+                            
+                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
+                                <div class="d-flex flex-row flex-wrap flex-grow-1 justify-content-between mb-2">
+                                    <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                        <div>
+                                            <h4 class="mb mr-2">Edit Activity Info</h4>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-warning mr-2 mb-2" href="/activities/<%= activity._id %>/edit">Edit</a>
+                                            <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
+                                                <button class="btn btn-danger mb-2" disabled>Remove</button>
+                                            </form>
+                                            
+                                            <% if(currentUser && currentUser.isAdmin){ %>
+                                            <!-- Admin only permanent destroy-->
+                                                <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
+                                                    <button class="btn btn-dark ml-2 mr-2 mb-2" disabled>Destroy</button>
+                                                </form>
+                                            <% } %>
+                                        </div>
+                                    </div>
                                 </div>
+                                <% if(currentUser && (currentUser.isMod || currentUser.isAdmin)) { %>
+                                    <!-- Mod and Admin set activity status buttons -->
+                                    <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
+                                        <span>
+                                            <h4 class="mr-2">Moderator - Update Status</h4>
+                                        </span>
+                                        <span class="d-flex flex-row flex-wrap">
+                                            <span class="mr-3"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
+                                            <span class="mr-3"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
+                                            <span class="mr-3"><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                                        </span>
+                                    </div>
+                                <% } %>
+
                             <% } %>
+                            
+                            
                         </div>
                         <div id="showPageLoveAndComment" class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
                             <div class="d-flex flex-column align-items-center mr-4">
@@ -60,7 +93,7 @@
                         <p class="mr-2"><%= activity.description %></p>
                         <% if(activity.videoUrl) { %>
                             <div class="d-flex flex-row justify-content-center mb-3">
-                                <iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <iframe  width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                             <hr>
                         <% } %>
@@ -68,7 +101,7 @@
                     
                     <div class="d-flex flex-row flex-wrap">
                         <div class="d-flex flex-column col-md-8 nopadding">
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row flex-wrap">
                                 <div class="col-md-6 nopadding">
                                     <h4>Ages</h4>
                                     <p class="mr-3"><%= activity.age %></p>
@@ -78,7 +111,7 @@
                                     <p class="mr-2"><%= activity.suitable %></p>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row card-grey mr-md-2">
+                            <div class="d-flex flex-row flex-wrap card-grey mr-md-2">
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">When</h4>
                                     <p class="mr-3"><%= activity.when %></p>
@@ -88,7 +121,7 @@
                                     <p class="mr-2"><%= activity.price %></p>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row mt-2">
+                            <div class="d-flex flex-row flex-wrap mt-2">
                                 <div class="col-md-6 nopadding">
                                     <h4>Type</h4>
                                     <p class="mr-3"><%= activity.frequency %></p>
@@ -98,7 +131,7 @@
                                     <p class="mr-2"><%= activity.location %></p>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row card-grey mr-md-2 mb-2">
+                            <div class="d-flex flex-row flex-wrap card-grey mr-md-2 mb-2">
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Who to contact</h4>
                                     <% if(activity.contactEmail || activity.contactNum) { %>
@@ -267,7 +300,7 @@
                                             
                                         </div>
                                         <div class="card-text comment-text"><%= comment.text %></div>
-                                        <% if(currentUser && (comment.author._id.equals(currentUser._id) || currentUser.isAdmin)){ %>
+                                        <% if(currentUser && (comment.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
                                             <hr>
                                             <div class="d-flex flew-row mt-2 justify-content-end align-items-center">
                                                 <div class="mr-2">
@@ -303,7 +336,7 @@
 </div>
 
 
-<!-- Move this script to it's own JS file in /public/ -->
+<!-- These scripts can't be moved to an external file as they use EJS variables -->
 <script>
   function initActivityShowMap() {
     var lat = <%= activity.lat %>;
@@ -312,7 +345,8 @@
     var map = new google.maps.Map(document.getElementById('activity-show-map'), {
         zoom: 10,
         center: center,
-        scrollwheel: false,
+        //scrollwheel: false,
+        gestureHandling: 'cooperative',
         mapTypeControl: false,
         streetViewControl: false,
         scaleControl: false,
@@ -354,73 +388,31 @@
     <% } %>
 </script>
 
-<!-- Script to change focus to comment input when add comment button is clicked -->
+<!-- Update activity status buttons -->
 <script>
-    $('#addCommentBtn').click(function(){
-        setTimeout(function() {
-            $('#addCommentInput').focus();
-        }, 100);
-    });
-</script>
-
-<!-- Script to track comment input length -->
-<script>
-    //if between 500 and 1000 show character count
-    $('#addCommentInput').keyup(function(){
-        var commentLength = $(this).val().length;
-        
-        if(commentLength > 1500 && commentLength < 2001) {
-            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
-            $('#commentErrorDiv').removeClass("alert-danger");
-            $('#commentErrorDiv').addClass("alert-warning");
-            $('#postNewCommentBtn').prop('disabled', false);
-        } else if(commentLength >= 2001) {
-            //if over 2000 then disabled button (as this just needs to be browser side validation as the endpoint has additional validation)
-            $('#commentErrorDiv').html("Comment Length: " + commentLength + "/2000");
-            $('#commentErrorDiv').removeClass("alert-warning");
-            $('#commentErrorDiv').addClass("alert-danger");
-            $('#postNewCommentBtn').prop('disabled', true);
-        } else {
-            $('#commentErrorDiv').removeClass("alert-warning");
-            $('#commentErrorDiv').removeClass("alert-danger");
-            $('#commentErrorDiv').html("");
-            $('#postNewCommentBtn').prop('disabled', false);
-        }
-    })
-</script>
-
-
-<!-- Script to show/hide check delete buttons -->
-<script>
-    //show confirmation buttons
-    $('.commentDeleteBtnDiv').on('click', function(){
-        $(this).children('.commentDeleteBtn').hide();
-        $(this).children('.commentDeleteCheck').show();
-        $(this).siblings().hide();
+    $('#statusUpdateCurrentBtn').on('click', function(){
+        //make a ajax POST to the update activity status route
+        var posting = $.post( "/activities/updateStatus", { status: "current", activityId: "<%= activity._id %>"});
+        posting.done(function( data ) {location.reload()});
     });
     
-    //hide confirmation buttons
-    $('.commentNoDeleteBtn').on('click', function(){
-        event.stopPropagation();
-        $(this).parent().hide();
-        $(this).parent().siblings().show();
-        $(this).parent().parent().siblings().show();
+    $('#statusUpdateReviewBtn').on('click', function(){
+        //make a ajax POST to the update activity status route
+        var posting = $.post( "/activities/updateStatus", { status: "review", activityId: "<%= activity._id %>"});
+        posting.done(function( data ) {location.reload()});
     });
     
+    $('#statusUpdateRemovedBtn').on('click', function(){
+        //make a ajax POST to the update activity status route
+        var posting = $.post( "/activities/updateStatus", { status: "removed", activityId: "<%= activity._id %>"});
+        posting.done(function( data ) {location.reload()});
+    });
 </script>
 
-<!-- Script to scroll to comments section when comment bubble is clicked -->
-<script>
-    function scrollToComments() {
-        event.preventDefault(); //Prevent default anchor click behavior
-        var hash = "#commentSection";
-        
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 800, function(){
-            window.location.hash = hash;
-        });
-    }
-</script>
+<!-- External Script File -->
+<script src="/js/activityShow.js"></script>
+
+
+
 
 <% include ../partials/footer %>

@@ -24,7 +24,7 @@ var activitySchema = new mongoose.Schema({
         dateLastChecked: Date
     },
     tags: String,
-    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value of current for the seed data (all new activities are set to "review")
+    status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value of current for the seed data (all new activities are set to "review") //Options "current", "review", "removed"
     age: String,
     location: String,
     lat: Number,

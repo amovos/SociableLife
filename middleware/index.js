@@ -99,6 +99,16 @@ middlewareObj.isAdmin = function(req, res, next){
     res.redirect("/");
 };
 
+// CHECK ISADMIN OR ISMOD
+middlewareObj.isAdminOrMod = function(req, res, next){
+    if(req.user && (req.user.isAdmin || req.user.isMod)){
+        return next();
+    }
+    req.flash("errorMessage", "You need to be an admin or moderator to do that");
+    res.redirect("/");
+};
+
+
 
 // ==========================
 // MODULE.EXPORTS
