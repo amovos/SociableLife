@@ -9,7 +9,7 @@
                 <img class="card-img-top activity-show-image" src="<%= activity.image %>" alt="<%= activity.name %>">
                 <div class="card-body">
                     <div class="d-flex flex-row flex-wrap justify-content-between">
-                        <div class="d-flex flex-column align-items-start">
+                        <div class="d-flex flex-column align-items-start flex-grow-1">
                             <h3 class="card-title mr-3">
                                 <% if(activity.status === "current"){ %>
                                     <span class="tooltip-status" alt="<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text"><strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months</span></span>
@@ -42,7 +42,7 @@
                                             </form>
                                             
                                             <% if(currentUser && currentUser.isAdmin){ %>
-                                            <!-- Admin only permanent destroy-->
+                                            <!-- Admin only permanent destroy activity -->
                                                 <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
                                                     <button class="btn btn-dark ml-2 mr-2 mb-2" disabled>Destroy</button>
                                                 </form>
@@ -50,23 +50,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <% if(currentUser && (currentUser.isMod || currentUser.isAdmin)) { %>
-                                    <!-- Mod and Admin set activity status buttons -->
-                                    <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
-                                        <span>
-                                            <h4 class="mr-2">Moderator - Update Status</h4>
-                                        </span>
-                                        <span class="d-flex flex-row flex-wrap">
-                                            <span class="mr-3"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
-                                            <span class="mr-3"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
-                                            <span class="mr-3"><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
-                                        </span>
-                                    </div>
-                                <% } %>
-
                             <% } %>
-                            
-                            
                         </div>
                         <div id="showPageLoveAndComment" class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
                             <div class="d-flex flex-column align-items-center mr-4">
@@ -87,6 +71,169 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <% if(currentUser && (currentUser.isMod || currentUser.isAdmin)) { %>
+                        <!-- Mod and Admin Tools -->
+                        <div class="d-flex flex-column align-items-baseline card card-body card-grey mb-2">
+                            <!-- Mod and Admin set activity status buttons -->
+                            <div>
+                                <!--<h3 class="mr-2">Moderator Tools</h3>-->
+                            </div>
+                            <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
+                                <span class="mr-3"><h4>Set Status:</h4></span>
+                                <span class="mr-3"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
+                                <span class="mr-3"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
+                                <span class="mr-3"><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                            </div>
+                            <!-- Mod and Admin view and edit update requests -->
+                            <div class="d-flex flex-row flex-wrap align-items-baseline mt-1">
+                                <span class="mr-3"><h4>Update Requests:</h4></span>
+                                
+                                <% if(!showAllUpdateRequests) { %>
+                                    <a class="btn btn-primary btn-sm mr-2 mb-2" href="/activities/<%= activity._id %>?showAllUpdateRequests=true">Show All Completed Requests</a>
+                                <% } else { %>
+                                    <a class="btn btn-primary btn-sm mr-2 mb-2" href="/activities/<%= activity._id %>?showAllUpdateRequests=false">Hide All Completed Requests</a>
+                                <% } %>
+                                
+                                <a id="createNewUpdateRequestBtn" class="btn btn-success btn-sm mr-2 mb-2" role="button" data-toggle="collapse" href="#collapseAddUpdateRequest" aria-expanded="false" aria-controls="collapseAddUpdateRequest">Create New Request</a>
+                                
+                                
+                                <!-- Show message if status is "review" but there's no pending requests -->
+                                <% if(pendingUpdateRequests.length === 0 && activity.status === "review") { %>
+                                    <div class="alert alert-warning" role="alert">
+                                        It looks like there's no pending update requests but this activity status is still "In Review"
+                                    </div>
+                                <% } %>
+                                
+                                <!-- Show message if status is "current" but there's pending requests -->
+                                <% if(pendingUpdateRequests.length > 0 && activity.status === "current") { %>
+                                    <div class="alert alert-warning" role="alert">
+                                        The status is "Current" but there's still some update requests pending, could you take a look and check everything's ok?
+                                    </div>
+                                <% } %>
+                                
+                                
+                                <!-- Display update requests START -->
+                                <% activity.updateRequests.forEach(function(updateRequest){ %>
+                                    <% if(!updateRequest.isDone) { %>
+                                        <div class="col-md-12 mb-2 nopadding">
+                                            <div class="card">
+                                                <div class="card-body <% if(currentUser && updateRequest.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                                    <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                                        <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                                            <strong>
+                                                                <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
+                                                                    <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
+                                                                    <%= updateRequest.author.displayName %>
+                                                                </a>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
+                                                    </div>
+                                                    <div class="card-text comment-text"><%= updateRequest.text %></div>
+                                                    <% if(currentUser && (updateRequest.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
+                                                        <hr>
+                                                        <div class="d-flex flew-column flex-wrap mt-2">
+                                                            <div class="d-flex flew-row flex-wrap flex-grow-1 justify-content-center mb-2 text-center">
+                                                                Hey <%= currentUser.firstName %>, please could you take a look at this request and see if there's anything you can do to help?
+                                                            </div>
+                                                            <div class="d-flex flew-row flex-wrap justify-content-center flex-grow-1">
+                                                                <div class="mr-2 mb-2">
+                                                                    <form class="inline-form" action="/activities/<%= activity._id %>/updateRequests/<%= updateRequest._id %>" method="POST">
+                                                                        <!-- Hidden Input -->
+                                                                        <input type="hidden" name="changeValue" value="I've made this change">
+                                                                        <button class="btn btn-sm btn-success">I've made this change</button>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="mr-2 mb-2">
+                                                                    <form class="inline-form" action="/activities/<%= activity._id %>/updateRequests/<%= updateRequest._id %>" method="POST">
+                                                                        <!-- Hidden Input -->
+                                                                        <input type="hidden" name="changeValue" value="This change isn't needed">
+                                                                        <button class="btn btn-sm btn-warning">This change isn't needed</button>
+                                                                    </form>
+                                                                </div>
+                                                            
+                                                                <% if(currentUser && currentUser.isAdmin){ %>
+                                                                <!-- Admin only permanent destroy update request -->
+                                                                    <div class="d-flex flew-row commentDeleteBtnDiv mr-2">
+                                                                        <div class="commentDeleteBtn">
+                                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                                        </div>
+                                                                        <div class="commentDeleteCheck" style="display:none;">
+                                                                            <form class="inline-form" action="/activities/<%= activity._id %>/updateRequests/<%= updateRequest._id %>?_method=DELETE" method="POST">
+                                                                                <button class="btn btn-sm btn-danger">Please delete</button>
+                                                                            </form>
+                                                                            <button class="btn btn-sm btn-primary commentNoDeleteBtn mt-md-0 mt-2">No, don't delete</button>
+                                                                        </div>
+                                                                    </div>
+                                                                <% } %>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% } else if(showAllUpdateRequests) { %>
+                                    <!-- If update request isDone -->
+                                        <!-- If url query param "showAllUpdateRequests" is set to true -->
+                                        <div class="col-md-12 mb-2 nopadding">
+                                            <div class="card">
+                                                <div class="card-body <% if(currentUser && updateRequest.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                                    <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                                        <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                                            <strong>
+                                                                <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
+                                                                    <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
+                                                                    <%= updateRequest.author.displayName %>
+                                                                </a>
+                                                            </strong>
+                                                        </div>
+                                                        
+                                                        <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
+                                                        
+                                                    </div>
+                                                    <div class="card-text comment-text"><%= updateRequest.text %></div>
+                                                    <% if(currentUser && (updateRequest.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
+                                                        <hr>
+                                                        <div class="d-flex flew-column flex-wrap justify-content-between mt-2">
+                                                            
+                                                            <p>
+                                                                <strong>
+                                                                    <a class="mr-1" href="/users/<%= updateRequest.isDoneUser._id %>">
+                                                                        <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.isDoneUser.avatar.slice(46) %>" alt="Update Request isDone user avatar">
+                                                                        <%= updateRequest.isDoneUser.displayName %>
+                                                                    </a>
+                                                                </strong>
+                                                            
+                                                                selected "<strong><%= updateRequest.isDoneValue %></strong>" <%= moment(updateRequest.isDoneDate).fromNow() %>
+                                                            </p>
+                                                            
+                                                            <% if(currentUser && currentUser.isAdmin){ %>
+                                                            <!-- Admin only permanent destroy update request -->
+                                                                <div class="d-flex flew-row commentDeleteBtnDiv mr-2">
+                                                                    <div class="commentDeleteBtn">
+                                                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                                                    </div>
+                                                                    <div class="commentDeleteCheck" style="display:none;">
+                                                                        <form class="inline-form" action="/activities/<%= activity._id %>/updateRequests/<%= updateRequest._id %>?_method=DELETE" method="POST">
+                                                                            <button class="btn btn-sm btn-danger">Please delete</button>
+                                                                        </form>
+                                                                        <button class="btn btn-sm btn-primary commentNoDeleteBtn mt-md-0 mt-2">No, don't delete</button>
+                                                                    </div>
+                                                                </div>
+                                                            <% } %>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    
                     <hr>
                     <!--START OF ACTIVITY INFO CONTENT-->
                     <div>
@@ -165,7 +312,7 @@
                                     If you have a second could you check for us and let us know if they have a new page for this activity or if we should remove it?
                                 </div>
                             <% } else if(activity.linkStatus.isLinkBroken) { %>
-                                <div class="alert alert-warning mr-3" role="alert">
+                                <div class="alert alert-warning mr-2" role="alert">
                                     <i class="fa fa-exclamation-circle"></i> We've just checked the website for this activity and it might not be working right now.
                                     <br><br>
                                     This could be a temporary problem, but if it doesn't get fixed soon we'll automatically remove this activity. (Status Code: <%= activity.linkStatus.errorMessage %>)
@@ -202,9 +349,37 @@
                                 </div>
                                 
                                 <div class="flex-grow-1 nopadding mr-md-2">
-                                    <a class="btn btn-warning btn-block mb-3" href="/contact"><strong>Something not right?</strong></a>
+                                    <a id="addUpdateRequestBtn" class="btn btn-warning btn-block mb-3" role="button" data-toggle="collapse" href="#collapseAddUpdateRequest" aria-expanded="false" aria-controls="collapseAddUpdateRequest"><strong>Something not right?</strong></a>
                                 </div>
                                 
+                                <!--Collapse "Something not right?" form START-->
+                                <div class="collapse mr-2" id="collapseAddUpdateRequest">
+                                    <div class="card mb-3">
+                                        <!--If the user is logged in, show the new comment form-->
+                                        <div class="card-body card-grey">
+                                            <!--<form class="inline-form" action="" method="POST">-->
+                                            <!--    <button class="btn btn-dark mr-2 mb-2" disabled>Activity no longer running</button>-->
+                                            <!--</form>-->
+                                            <!--<form class="inline-form" action="" method="POST">-->
+                                            <!--    <button class="btn btn-dark mr-2 mb-2" disabled>Information out of date</button>-->
+                                            <!--</form>-->
+                                            <form id="add-updateRequest-form" action="/activities/<%= activity._id %>/updateRequests" method="POST">
+                                                <div class="form-group mb-3">
+                                                    <label for="addUpdateRequestInput">Please tell us what's wrong so we can fix it as soon as possible <i class="fas fa-wrench"></i></label>
+                                                    <textarea id="addUpdateRequestInput" class="form-control" name="updateRequest[text]" placeholder="e.g. This activity isn't running any more..." form="add-updateRequest-form" rows="5" cols="70" required></textarea>
+                                                </div>
+                                                <div class="form-group d-flex flex-row flex-wrap flex-grow-1 justify-content-end align-items-start mb-0">
+                                                    <div>
+                                                        <button id="addNewUpdateRequestBtn" class="btn btn-primary">Send Message</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Collapse "Something not right?" form END-->
+                    
+                    
                             </div>
                         </div>
                         

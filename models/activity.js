@@ -35,6 +35,12 @@ var activitySchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
     },
+    updateRequests: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "UpdateRequest"
+        }    
+    ],
     comments: [ //this is an array because it returns an array of multiple comments
         {
             type: mongoose.Schema.Types.ObjectId,

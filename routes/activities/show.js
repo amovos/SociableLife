@@ -17,6 +17,18 @@ var showRoute = function(req, res){
             options: { sort: '-createdAt' },
             populate: { path: 'author', select: '_id displayName isMod isAdmin avatar' } //nested populate, limit the information is returned about the author
         })
+        .populate({
+            path: 'updateRequests',
+            model: 'UpdateRequest', //needed to specify the model for the sort to work with the multiple level nesting
+            options: { sort: '-createdAt' },
+            populate: { path: 'author', select: '_id displayName isMod isAdmin avatar' } //nested populate, limit the information is returned about the author
+        })
+        .populate({
+            path: 'updateRequests',
+            model: 'UpdateRequest', //needed to specify the model for the sort to work with the multiple level nesting
+            options: { sort: '-createdAt' },
+            populate: { path: 'isDoneUser', select: '_id displayName isMod isAdmin avatar' } //nested populate, limit the information is returned about the author
+        })
         .exec(function(err, foundActivity){ //inside the returned object "foundActivity" it will now contain actual comments and not just reference ids
         
         if(err || !foundActivity){
@@ -41,7 +53,19 @@ var showRoute = function(req, res){
                 }
             });
             
-            res.render("activities/show", {activity: foundActivity, loveColorClass: loveColorClass}); //pass the found activity to the show template
+            var showAllUpdateRequests = false;
+            if(req.query.showAllUpdateRequests === "true") {
+                showAllUpdateRequests = true;
+            }
+            
+            var pendingUpdateRequests = [];
+            foundActivity.updateRequests.forEach(function(updateRequest){
+                if(!updateRequest.isDone) {
+                    pendingUpdateRequests.push(updateRequest);
+                }
+            });
+            
+            res.render("activities/show", {activity: foundActivity, loveColorClass: loveColorClass, showAllUpdateRequests: showAllUpdateRequests, pendingUpdateRequests: pendingUpdateRequests}); //pass the found activity to the show template
         }
     });
 };

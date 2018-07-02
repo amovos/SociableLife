@@ -2,9 +2,10 @@
 // SEED DATABASE
 // ==========================
 
-var Activity    = require("./models/activity");
-var Comment     = require("./models/comment");
-var User        = require("./models/user");
+var UpdateRequest   = require("./models/updateRequest");
+var Activity        = require("./models/activity");
+var Comment         = require("./models/comment");
+var User            = require("./models/user");
 
 var geocoder = require("./routes/shared/geocoder");
 
@@ -86,6 +87,7 @@ async function seedDB(){
 // Don't delete images from Cloudinary as the links need to stay the same
 
     try {
+        await UpdateRequest.remove({});
         await Activity.remove({});
         await Comment.remove({});
         await User.remove({});

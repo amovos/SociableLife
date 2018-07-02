@@ -5,6 +5,13 @@ $('#addCommentBtn').click(function(){
     }, 100);
 });
 
+//Script to change focus to update request input when "Something not right?"" button is clicked
+$('#addUpdateRequestBtn').click(function(){
+    setTimeout(function() {
+        $('#addUpdateRequestInput').focus();
+    }, 100);
+});
+
 //Script to track comment input length
 //if between 500 and 1000 show character count
 $('#addCommentInput').keyup(function(){
@@ -57,3 +64,19 @@ function scrollToComments() {
         window.location.hash = hash;
     });
 }
+
+//Script to scroll to "Something not right?" section when createNewUpdateRequestBtn is clicked -->
+$('#createNewUpdateRequestBtn').on('click', function(){
+    event.preventDefault(); //Prevent default anchor click behavior
+    var hash = "#addUpdateRequestBtn";
+    
+    $('html, body').animate({
+        scrollTop: $(hash).offset().top
+    }, 800, function(){
+        window.location.hash = hash;
+    });
+    
+    setTimeout(function() {
+        $('#addUpdateRequestInput').focus();
+    }, 100);
+});

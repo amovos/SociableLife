@@ -105,12 +105,13 @@ app.use(function(req, res, next){
 // ==========================
 // ROUTES
 // ==========================
-var indexRoutes     = require("./routes/index"),
-    userRoutes      = require("./routes/user"),
-    commentRoutes   = require("./routes/comments"),
-    activityRoutes  = require("./routes/activities"),
-    adminRoutes  = require("./routes/admin"),
-    apiRoutes  = require("./routes/apis");
+var indexRoutes             = require("./routes/index"),
+    userRoutes              = require("./routes/user"),
+    commentRoutes           = require("./routes/comments"),
+    updateRequestRoutes     = require("./routes/updateRequests"),
+    activityRoutes          = require("./routes/activities"),
+    adminRoutes             = require("./routes/admin"),
+    apiRoutes               = require("./routes/apis");
 
 //once the route files have been required they need to actually be used in the app, using the Express Router
 //the URLs can be shortened here by adding the first common part here e.g. /activities.
@@ -118,6 +119,7 @@ app.use("/", indexRoutes);
 app.use("/", userRoutes);
 app.use("/activities", activityRoutes);
 app.use("/activities/:id/comments", commentRoutes);
+app.use("/activities/:id/updateRequests", updateRequestRoutes);
 app.use("/admin", adminRoutes);
 app.use("/api", apiRoutes);
 
