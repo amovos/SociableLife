@@ -33,8 +33,8 @@ var createRoute = function(req, res){
                         // save activity with new comment
                         activity.save();
                         //redirect back to activity show page
-                        req.flash("successMessage", "Successfully added comment");
-                        res.redirect("/activities/" + activity._id);
+                        //req.flash("successMessage", "Successfully added comment");
+                        res.redirect("/activities/" + activity._id + "#commentSection");
                     }
                 });
             }

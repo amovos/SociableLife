@@ -104,7 +104,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
               '</a>' +
               '<div class="card-body pb-2">' +
                 '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +
-                '<p class="card-text text-left mb-1">' + activity.summary + '</p>' +
+                '<p class="card-text text-left mb-1 first-letter-capitalize">' + activity.summary + '</p>' +
                 
                 '<hr class="mb-2 mt-2">' +
                 

@@ -16,8 +16,8 @@ var updateRoute = function(req, res){
             if(err || !updatedComment){
                 genericErrorResponse(req, res, err);
             } else {
-                req.flash("successMessage", "Successfully edited comment");
-                res.redirect("/activities/" + req.params.id); //this is the ID of the activity that comes from the first part of the request URL that's in the app.js file
+                //req.flash("successMessage", "Successfully edited comment");
+                res.redirect("/activities/" + req.params.id + "#comment-" + updatedComment._id); //this is the ID of the activity that comes from the first part of the request URL that's in the app.js file
             }
         });
     }

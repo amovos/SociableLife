@@ -109,8 +109,8 @@
                           <i class="fas fa-lock"></i> <span class="text-capitalize"><%= user.firstName %></span>, only you can see and edit this information 
                         </div>
                         <p><strong>Display Name:</strong> <%= user.displayName %></p>
-                        <p><strong>First Name:</strong> <%= user.firstName %></p>
-                        <p><strong>Last Name:</strong> <%= user.lastName %></p>
+                        <p><strong>First Name:</strong> <span class="text-capitalize"><%= user.firstName %></p></span>
+                        <p><strong>Last Name:</strong> <span class="text-capitalize"><%= user.lastName %></p></span>
                         <p><strong>Email Address:</strong> <%= user.email %></p>
                         <a class="btn btn-primary mb-2" href="/forgot">Change Password</a>
                         <a  class="btn btn-primary mb-2" 

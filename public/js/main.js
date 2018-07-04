@@ -38,6 +38,11 @@ $('#commentLogin').on('click', function(){
     window.location.href = "/login?return_url=" + window.location.pathname;
 });
 
+$('#requestOwnerLogin').on('click', function(){
+    event.preventDefault(); //Prevent default anchor click behavior
+    window.location.href = "/login?return_url=" + window.location.pathname;
+});
+
 $('#commentRegister').on('click', function(){
     event.preventDefault(); //Prevent default anchor click behavior
     window.location.href = "/inviteCode?return_url=" + window.location.pathname;

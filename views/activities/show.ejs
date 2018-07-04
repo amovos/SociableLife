@@ -40,13 +40,6 @@
                                             <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
                                                 <button class="btn btn-danger mb-2" disabled>Remove</button>
                                             </form>
-                                            
-                                            <% if(currentUser && currentUser.isAdmin){ %>
-                                            <!-- Admin only permanent destroy activity -->
-                                                <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
-                                                    <button class="btn btn-dark ml-2 mr-2 mb-2" disabled>Destroy</button>
-                                                </form>
-                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -76,14 +69,26 @@
                         <!-- Mod and Admin Tools -->
                         <div class="d-flex flex-column align-items-baseline card card-body card-grey mb-2">
                             <!-- Mod and Admin set activity status buttons -->
-                            <div>
-                                <!--<h3 class="mr-2">Moderator Tools</h3>-->
-                            </div>
+                            <% if(currentUser && currentUser.isAdmin){ %>
+                                <div class="d-flex flex-row flex-wrap flex-grow-1 mb-2 align-items-start">
+                                    <span class="mr-3"><h4>Admin Tools:</h4></span>
+                                    <!-- Admin only change author -->
+                                    <button class="btn btn-primary btn-sm mr-2 mb-2">Change Owner</button>
+                                    <!-- Admin only change owner -->
+                                    <button class="btn btn-warning btn-sm mr-2 mb-2">Change Author & Owner</button>
+                                    <!-- Admin only permanent destroy activity -->
+                                    <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-dark btn-sm mr-2 mb-2" disabled>Destroy Activity</button>
+                                    </form>
+                                </div>
+                            <% } %>
                             <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
                                 <span class="mr-3"><h4>Set Status:</h4></span>
-                                <span class="mr-3"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
-                                <span class="mr-3"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
-                                <span class="mr-3"><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                                <div>
+                                    <span class="mr-2"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
+                                    <span class="mr-2"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
+                                    <span class=""><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                                </div>
                             </div>
                             <!-- Mod and Admin view and edit update requests -->
                             <div class="d-flex flex-row flex-wrap align-items-baseline mt-1">
@@ -116,9 +121,9 @@
                                 <!-- Display update requests START -->
                                 <% activity.updateRequests.forEach(function(updateRequest){ %>
                                     <% if(!updateRequest.isDone) { %>
-                                        <div class="col-md-12 mb-2 nopadding">
+                                        <div class="mb-2 nopadding">
                                             <div class="card">
-                                                <div class="card-body <% if(currentUser && updateRequest.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                                <div class="pl-3 pr-3 pt-3 pb-3">
                                                     <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
                                                         <div class="d-flex flex-row flex-wrap align-items-baseline">
                                                             <strong>
@@ -130,12 +135,14 @@
                                                         </div>
                                                         <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
                                                     </div>
-                                                    <div class="card-text comment-text"><%= updateRequest.text %></div>
-                                                    <% if(currentUser && (updateRequest.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
+                                                    <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
+                                                    <% if(currentUser && (currentUser.isMod || currentUser.isAdmin)){ %>
                                                         <hr>
                                                         <div class="d-flex flew-column flex-wrap mt-2">
                                                             <div class="d-flex flew-row flex-wrap flex-grow-1 justify-content-center mb-2 text-center">
-                                                                Hey <%= currentUser.firstName %>, please could you take a look at this request and see if there's anything you can do to help?
+                                                                Hey <%= currentUser.firstName %>, please could you take a look at the request above and see if there's anything you can do to help? 
+                                                                <br><br>
+                                                                Don't worry if you can't, just leave it here so other moderators can see it as well.
                                                             </div>
                                                             <div class="d-flex flew-row flex-wrap justify-content-center flex-grow-1">
                                                                 <div class="mr-2 mb-2">
@@ -178,7 +185,7 @@
                                         <!-- If url query param "showAllUpdateRequests" is set to true -->
                                         <div class="col-md-12 mb-2 nopadding">
                                             <div class="card">
-                                                <div class="card-body <% if(currentUser && updateRequest.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                                <div class="pl-3 pr-3 pt-3 pb-3">
                                                     <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
                                                         <div class="d-flex flex-row flex-wrap align-items-baseline">
                                                             <strong>
@@ -192,7 +199,7 @@
                                                         <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
                                                         
                                                     </div>
-                                                    <div class="card-text comment-text"><%= updateRequest.text %></div>
+                                                    <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
                                                     <% if(currentUser && (updateRequest.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
                                                         <hr>
                                                         <div class="d-flex flew-column flex-wrap justify-content-between mt-2">
@@ -238,7 +245,7 @@
                     <!--START OF ACTIVITY INFO CONTENT-->
                     <div>
                         <h4>Description</h4>
-                        <p class="mr-2"><%= activity.description %></p>
+                        <p class="mr-2 first-letter-capitalize"><%= activity.description %></p>
                         <% if(activity.videoUrl) { %>
                             <div class="d-flex flex-row justify-content-center mb-3">
                                 <iframe  width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -266,7 +273,7 @@
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Cost</h4>
-                                    <p class="mr-2"><%= activity.price %></p>
+                                    <p class="mr-2 first-letter-capitalize"><%= activity.price %></p>
                                 </div>
                             </div>
                             <div class="d-flex flex-row flex-wrap mt-2">
@@ -366,11 +373,22 @@
                                             <form id="add-updateRequest-form" action="/activities/<%= activity._id %>/updateRequests" method="POST">
                                                 <div class="form-group mb-3">
                                                     <label for="addUpdateRequestInput">Please tell us what's wrong so we can fix it as soon as possible <i class="fas fa-wrench"></i></label>
-                                                    <textarea id="addUpdateRequestInput" class="form-control" name="updateRequest[text]" placeholder="e.g. This activity isn't running any more..." form="add-updateRequest-form" rows="5" cols="70" required></textarea>
+                                                    <div class="d-flex flex-row flex-wrap flex-grow-1 justify-content-between">
+                                                        <a id="activityOutOfDateBtn" class="btn btn-info mb-2 text-white">Activity out of date</a>
+                                                        <a id="websiteLinkBrokenBtn" class="btn btn-info mb-2 text-white">Website link broken</a>
+                                                        <a id="iRunThisActivityBtn" class="btn btn-info mb-2 text-white">I run this activity</a>
+                                                        <a id="somethingElseBtn" class="btn btn-secondary mb-2 text-white">Something else?</a>
+                                                    </div>
+                                                    <div id="loginInToRequestOwner" class="alert alert-warning" role="alert" style="display: none;">
+                                                        If you organise or help to run this activity and would like to be able to edit it's details on Sociable Life, please <a id="requestOwnerLogin" href='/login'>login</a> so we can add it to your account (it's free!).
+                                                        <br>
+                                                        Once you've logged in, please click the "I run this activity" button again.
+                                                    </div>
+                                                    <textarea id="addUpdateRequestInput" class="form-control" style="display: none;" name="updateRequest[text]" placeholder="e.g. This activity isn't running any more..." form="add-updateRequest-form" rows="5" cols="70" required></textarea>
                                                 </div>
                                                 <div class="form-group d-flex flex-row flex-wrap flex-grow-1 justify-content-end align-items-start mb-0">
                                                     <div>
-                                                        <button id="addNewUpdateRequestBtn" class="btn btn-primary">Send Message</button>
+                                                        <button id="addNewUpdateRequestBtn" class="btn btn-primary" style="display: none;">Send Message</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -455,9 +473,9 @@
                     <!--Display all comments START-->
                     <div class="row">
                         <% activity.comments.forEach(function(comment){ %>
-                            <div class="col-md-12 mb-2">
+                            <div id="comment-<%= comment._id %>" class="col-md-12 mb-2">
                                 <div class="card">
-                                    <div class="card-body card-grey <% if(currentUser && comment.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
+                                    <div class="pl-3 pr-3 pt-3 pb-3 card-grey <% if(currentUser && comment.author._id.equals(currentUser._id)){ %> comment-card-current-user <% } %>">
                                         <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
                                             <div class="d-flex flex-row flex-wrap align-items-baseline">
                                                 <strong>
@@ -475,7 +493,7 @@
                                             <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(comment.createdAt).fromNow() %></em></div>
                                             
                                         </div>
-                                        <div class="card-text comment-text"><%= comment.text %></div>
+                                        <div class="card-text comment-text first-letter-capitalize"><%= comment.text %></div>
                                         <% if(currentUser && (comment.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
                                             <hr>
                                             <div class="d-flex flew-row mt-2 justify-content-end align-items-center">
@@ -583,6 +601,55 @@
         var posting = $.post( "/activities/updateStatus", { status: "removed", activityId: "<%= activity._id %>"});
         posting.done(function( data ) {location.reload()});
     });
+</script>
+
+<script>
+    //Script to set value of "Something not right?" text area when a template button is clicked
+    $('#activityOutOfDateBtn').on('click', function(){
+        $('#loginInToRequestOwner').hide();
+        
+        $('#addUpdateRequestInput').show();
+        $('#addNewUpdateRequestBtn').show();
+        $('#addUpdateRequestInput').html("This information is out of date, please can you update it? Thanks :)");
+    });
+    $('#websiteLinkBrokenBtn').on('click', function(){
+        $('#loginInToRequestOwner').hide();
+        
+        $('#addUpdateRequestInput').show();
+        $('#addNewUpdateRequestBtn').show();
+        $('#addUpdateRequestInput').html("The website link didn't work for me, can you test it again? Thanks :)");
+    });
+    $('#somethingElseBtn').on('click', function(){
+        $('#loginInToRequestOwner').hide();
+        
+        $('#addUpdateRequestInput').show();
+        $('#addNewUpdateRequestBtn').show();
+        $('#addUpdateRequestInput').attr("placeholder", "Please tell us what we need to fix :)");
+        $('#addUpdateRequestInput').html("");
+    });
+    
+    <% if(currentUser) { %>
+        $('#iRunThisActivityBtn').on('click', function(){
+            $('#loginInToRequestOwner').hide();
+            
+            $('#addUpdateRequestInput').show();
+            $('#addNewUpdateRequestBtn').show();
+            $('#addUpdateRequestInput').html("I run this activity and I'd like to be able to edit it myself, will this be possible?");
+        });
+    <% } else { %>
+        $('#iRunThisActivityBtn').on('click', function(){
+            //hide input box
+            $('#addUpdateRequestInput').hide();
+            //hide "Send Message" button
+            $('#addNewUpdateRequestBtn').hide();
+            
+            //show alert saying you need to login
+            $('#loginInToRequestOwner').show();
+            
+
+        });
+    <% } %>
+    
 </script>
 
 <!-- External Script File -->
