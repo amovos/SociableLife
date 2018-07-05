@@ -35,10 +35,12 @@ var activitySchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
     },
-    owner: {
+    owner: [
+        {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-    },
+        }
+    ],
     updateRequests: [
         {
             type: mongoose.Schema.Types.ObjectId,

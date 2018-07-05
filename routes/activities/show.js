@@ -35,6 +35,14 @@ var showRoute = function(req, res){
             req.flash("errorMessage", "Activity not found");
             res.redirect("/activities");
         } else {
+            
+            //if the requesting user is in the "owner" array on the activity then send through "isOwner"
+            var isOwner = false;
+            if(req.user) {
+                isOwner = foundActivity.owner.some(function(owner){
+                    return owner.equals(req.user._id);
+                });
+            }
 
             //if the requesting user has liked this activity then pass that through to change the color of the heart text on the EJS
             var loveColorClass = "text-white";
@@ -65,7 +73,12 @@ var showRoute = function(req, res){
                 }
             });
             
-            res.render("activities/show", {activity: foundActivity, loveColorClass: loveColorClass, showAllUpdateRequests: showAllUpdateRequests, pendingUpdateRequests: pendingUpdateRequests}); //pass the found activity to the show template
+            res.render("activities/show", { activity: foundActivity, 
+                                            loveColorClass: loveColorClass, 
+                                            showAllUpdateRequests: showAllUpdateRequests, 
+                                            pendingUpdateRequests: pendingUpdateRequests,
+                                            isOwner: isOwner
+                                        });
         }
     });
 };

@@ -19,16 +19,27 @@
                                     <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
                                 <% } %>
                                 <%= activity.name %></h3>
-                            <span class="d-flex flex-row flex-wrap">
-                                <span><em><strong>Added by:&nbsp;</span>
-                                <span></strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em></span>
+                            <span class="d-flex flex-row flex-wrap mb-1">
+                                <span><em><strong>Added by:</strong>&nbsp;</em></span>
+                                <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.createdAt).fromNow() %></em></span>
                             </span>
-                            <span class="d-flex flex-row flex-wrap mb-2">
-                                <span><em><strong>Last checked by:&nbsp;</span>
-                                <span></strong> <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>, <%= moment(activity.createdAt).fromNow() %></em></span>
+                            <span class="d-flex flex-row flex-wrap align-items-baseline mb-2">
+                                <span><em><strong>Last updated by:</strong>&nbsp;</em></span>
+                                <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.createdAt).fromNow() %></em></span>
+                                <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
+                                    <span><button class="btn btn-info btn-sm ml-0 ml-md-2" role="button" data-toggle="collapse" href="#collapseUpdateHistory" aria-expanded="false" aria-controls="collapseUpdateHistory">View update history</button></span>
+                                <% } %>
                             </span>
                             
-                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || currentUser.isMod || currentUser.isAdmin)){ %>
+                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
+                                <div class="collapse" id="collapseUpdateHistory">
+                                    <div class="card card-body">
+                                        UPDATE HISTORY
+                                    </div>
+                                </div>
+                            <% } %>
+                            
+                            <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
                                 <div class="d-flex flex-row flex-wrap flex-grow-1 justify-content-between mb-2">
                                     <div class="d-flex flex-row flex-wrap align-items-baseline mt-2">
                                         <div>
@@ -73,9 +84,7 @@
                                 <div class="d-flex flex-row flex-wrap flex-grow-1 mb-2 align-items-start">
                                     <span class="mr-3"><h4>Admin Tools:</h4></span>
                                     <!-- Admin only change author -->
-                                    <button class="btn btn-primary btn-sm mr-2 mb-2">Change Owner</button>
-                                    <!-- Admin only change owner -->
-                                    <button class="btn btn-warning btn-sm mr-2 mb-2">Change Author & Owner</button>
+                                    <a class="btn btn-primary btn-sm mr-2 mb-2" href="/activities/<%= activity._id %>/updateOwnerAndAuthor">Change Owner and Author</a>
                                     <!-- Admin only permanent destroy activity -->
                                     <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-dark btn-sm mr-2 mb-2" disabled>Destroy Activity</button>
@@ -89,6 +98,7 @@
                                     <span class="mr-2"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
                                     <span class=""><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
                                 </div>
+                                <span class="mr-3"><h4>Most recent change</h4></span>
                             </div>
                             <!-- Mod and Admin view and edit update requests -->
                             <div class="d-flex flex-row flex-wrap align-items-baseline mt-1">
@@ -289,6 +299,9 @@
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2 mb-2">
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Who to contact</h4>
+                                    <% if(activity.owner) { %>
+                                        <a href="/users/<%= activity.owner._id %>"><%= activity.owner.displayName %></a>
+                                    <% } %>
                                     <% if(activity.contactEmail || activity.contactNum) { %>
                                         <p class="mr-3">
                                             <% if(activity.contactNum) { %>
@@ -362,14 +375,7 @@
                                 <!--Collapse "Something not right?" form START-->
                                 <div class="collapse mr-2" id="collapseAddUpdateRequest">
                                     <div class="card mb-3">
-                                        <!--If the user is logged in, show the new comment form-->
                                         <div class="card-body card-grey">
-                                            <!--<form class="inline-form" action="" method="POST">-->
-                                            <!--    <button class="btn btn-dark mr-2 mb-2" disabled>Activity no longer running</button>-->
-                                            <!--</form>-->
-                                            <!--<form class="inline-form" action="" method="POST">-->
-                                            <!--    <button class="btn btn-dark mr-2 mb-2" disabled>Information out of date</button>-->
-                                            <!--</form>-->
                                             <form id="add-updateRequest-form" action="/activities/<%= activity._id %>/updateRequests" method="POST">
                                                 <div class="form-group mb-3">
                                                     <label for="addUpdateRequestInput">Please tell us what's wrong so we can fix it as soon as possible <i class="fas fa-wrench"></i></label>

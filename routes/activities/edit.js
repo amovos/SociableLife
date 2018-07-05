@@ -7,7 +7,7 @@ var Activity = require("../../models/activity"); //require the activity database
 
 var editRoute = function(req, res) {
     Activity.findById(req.params.id, function(err, foundActivity){ //foundActivity.author.id isn't a string (even though it may look like it when printed out) it's infact a mongoose object
-        if(err){
+        if(err || !foundActivity){
             genericErrorResponse(req, res, err);
         } else {
             res.render("activities/edit", {activity: foundActivity});

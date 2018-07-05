@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <header class="jumbotron text-center">
+               <h1>Update Owner and Author for: <%= activity.name %></h1> 
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
+            <h2>Set Author</h2>
+            <form action="/activities/<%= activity._id %>/updateOwnerAndAuthor" method="POST">
+                <strong>Current Author ID:</strong>
+                <br>
+                <%= activity.author._id %>
+                <div class="form-group">
+                    <label for="newAuthorId"><strong>New Author ID:</strong></label>
+                    <input class="form-control" type="text" name="newAuthorId" id="newAuthorId">
+                </div>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-end">
+                            <button class="col-sm-6 btn btn-primary btn-block">Update Author</button>
+                        </div>
+                    </div> 
+                </div> 
+                <h2>Set Owner(s)</h2>
+                <strong>Current Owner ID(s):</strong>
+                <br>
+                <% if(activity.owner.length > 0) { %>
+                    <% activity.owner.forEach(function(owner){ %>
+                        <%= owner %>
+                        <br>
+                    <% }); %>
+                <% } else { %>
+                    This activity doesn't have an owner yet.
+                <% } %>
+                <div id="newOwnerFormGroup" class="form-group">
+                    <label for="newOwnerId"><strong>New Owner ID(s)</strong> - (Not incremental, you need to add them all again)</label>
+                    <input id="newOwnerId" class="form-control" type="text" placeholder="New Owner ID..." name="newOwnerId[]">
+                </div>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-between">
+                            <button id="addNewOwnerInputBtn" class="btn btn-success"><i class="fa fa-plus"></i> Additional Owner</button>
+                            <button class="col-sm-6 btn btn-primary btn-block">Update Owner(s)</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#addNewOwnerInputBtn').on('click', function(){
+        event.preventDefault();
+        $('#newOwnerFormGroup').append('<input class="form-control mt-2" type="text" placeholder="New Owner ID..." name="newOwnerId[]">')
+    })
+</script>
+
+<% include ../partials/footer %>

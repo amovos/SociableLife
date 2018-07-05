@@ -18,8 +18,16 @@ middlewareObj.checkActivityOwnership = function(req, res, next) {
                 req.flash("errorMessage", "Activity not found");
                 res.redirect("/activities");
             } else {
-                //does user own activity?
-                if(foundActivity.author._id.equals(req.user._id) || req.user && (req.user.isAdmin || req.user.isMod)){ //use this mongoose method .equals() to make a comparison of user ids
+                
+                var isOwner = false;
+                if(req.user) {
+                    isOwner = foundActivity.owner.some(function(owner){
+                        return owner.equals(req.user._id);
+                    });
+                }
+            
+                //is the requesting user the author, owner, mod or an admin?
+                if(foundActivity.author._id.equals(req.user._id) || isOwner || req.user && (req.user.isAdmin || req.user.isMod)){ //use this mongoose method .equals() to make a comparison of user ids
                     next(); // if everything works, the middleware is done and it carries on with the code in the particular route
                 } else {
                     req.flash("errorMessage", "You don't have permission to edit this activity");

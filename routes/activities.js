@@ -54,6 +54,12 @@ router.put("/:id/updateImage", middleware.checkActivityOwnership, upload.single(
 // UPDATE ACTIVITY STATUS ROUTE
 router.post("/updateStatus", middleware.isAdminOrMod, require("./activities/updateStatus"));
 
+// SHOW OWNER AND AUTHOR ROUTE
+router.get("/:id/updateOwnerAndAuthor", middleware.isAdmin, require("./activities/ownerAndAuthorShow"));
+
+// UPDATE OWNER AND AUTHOR ROUTE
+router.post("/:id/updateOwnerAndAuthor", middleware.isAdmin, require("./activities/ownerAndAuthorUpdate"));
+
 // DESTROY ACTIVITY ROUTE
 router.delete("/:id", middleware.checkActivityOwnership, require("./activities/destroy"));
 
