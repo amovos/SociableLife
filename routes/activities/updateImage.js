@@ -3,6 +3,8 @@
 // ============================
 
 var Activity = require("../../models/activity");
+var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
+var genericErrorResponse = require("../shared/genericErrorResponse");
 var cloudinary = require('cloudinary');
 var cloudinaryConf = require("../shared/cloudinary");
 
@@ -43,6 +45,23 @@ var updateAvatarRoute = async function(req, res){
                 foundActivity.image = result.secure_url;
                 // add image's public_id to foundActivity object
                 foundActivity.imageId = result.public_id;
+                
+                //add change to activity updateHistory
+                var updateLog = {};
+                updateLog.author = req.user._id;
+                updateLog.updateType = "Picture Changed";
+                updateLog.oldStatus = foundActivity.status;
+                updateLog.newStatus = foundActivity.status;
+                
+                await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
+                    if(err){
+                        genericErrorResponse(req, res, err);
+                    } else {
+                        // connect new comment to the currently found activity
+                        foundActivity.updateHistory.push(updateLog);
+                        await foundActivity.save();
+                    }
+                });
                 
                 //save new avatar to foundActivity
                 await foundActivity.save();

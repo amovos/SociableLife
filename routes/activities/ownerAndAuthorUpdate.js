@@ -5,6 +5,7 @@
 var genericErrorResponse = require("../shared/genericErrorResponse"); 
 var Activity = require("../../models/activity"); 
 var User = require("../../models/user"); 
+var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 
 var updateActivityOwnerAndAuthorRoute = async function(req, res) {
     var errorFlag = false;
@@ -55,6 +56,24 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
             }
             
             if(!errorFlag){
+                
+                //add change to activity updateHistory
+                var updateLog = {};
+                updateLog.author = req.user._id;
+                updateLog.updateType = "Owner/Author Changed";
+                updateLog.oldStatus = foundActivity.status;
+                updateLog.newStatus = foundActivity.status;
+                
+                await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
+                    if(err){
+                        genericErrorResponse(req, res, err);
+                    } else {
+                        // connect new comment to the currently found activity
+                        foundActivity.updateHistory.push(updateLog);
+                        await foundActivity.save();
+                    }
+                });
+                
                 // Return success message
                 req.flash("successMessage", "Successfully updated activity");
                 res.redirect("/activities/" + req.params.id);

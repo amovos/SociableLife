@@ -29,6 +29,12 @@ var showRoute = function(req, res){
             options: { sort: '-createdAt' },
             populate: { path: 'isDoneUser', select: '_id displayName isMod isAdmin avatar' } //nested populate, limit the information is returned about the author
         })
+        .populate({
+            path: 'updateHistory',
+            model: 'ActivityUpdateHistory', //needed to specify the model for the sort to work with the multiple level nesting
+            options: { sort: '-updatedAt' },
+            populate: { path: 'author', select: '_id displayName isMod isAdmin avatar' } //nested populate, limit the information is returned about the author
+        })
         .exec(function(err, foundActivity){ //inside the returned object "foundActivity" it will now contain actual comments and not just reference ids
         
         if(err || !foundActivity){

@@ -15,12 +15,15 @@ var userProfileRoute = async function(req, res){
         } else {
             try {
                 var foundActivities = await Activity.find().where('author').equals(foundUser._id);
+                var ownerActivities = await Activity.find({ 'owner' : foundUser._id });
+                var allActivities = foundActivities.concat(ownerActivities);
+                
                 var foundComments = await Comment.find().where('author').equals(foundUser._id);
                 var foundLoves = await Activity.find({loves: foundUser._id});
                 var foundPoints = 0;
 
                 res.render("users/profileShow", {   user: foundUser, 
-                                                    activities: foundActivities, 
+                                                    activities: allActivities, 
                                                     comments: foundComments.length, 
                                                     loves: foundLoves.length, 
                                                     points: foundPoints,

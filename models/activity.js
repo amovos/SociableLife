@@ -30,7 +30,13 @@ var activitySchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     createdAt: { type: Date, default: Date.now },
-    updatedAt: Date,
+    updatedAt: { type: Date, default: Date.now },
+    updateHistory: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "ActivityUpdateHistory"
+        }    
+    ],
     author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"

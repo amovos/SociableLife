@@ -20,22 +20,79 @@
                                 <% } %>
                                 <%= activity.name %></h3>
                             <span class="d-flex flex-row flex-wrap mb-1">
-                                <span><em><strong>Added by:</strong>&nbsp;</em></span>
+                                <span><strong>Added by:</strong>&nbsp;</span>
                                 <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.createdAt).fromNow() %></em></span>
                             </span>
                             <span class="d-flex flex-row flex-wrap align-items-baseline mb-2">
-                                <span><em><strong>Last updated by:</strong>&nbsp;</em></span>
-                                <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.createdAt).fromNow() %></em></span>
+                                <span><strong>Last updated by:</strong>&nbsp;</span>
+                                <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.updatedAt).fromNow() %></em></span>
                                 <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
-                                    <span><button class="btn btn-info btn-sm ml-0 ml-md-2" role="button" data-toggle="collapse" href="#collapseUpdateHistory" aria-expanded="false" aria-controls="collapseUpdateHistory">View update history</button></span>
+                                    <span><button class="btn btn-info btn-sm ml-0 ml-md-2 mt-2 mt-md-0" role="button" data-toggle="collapse" href="#collapseUpdateHistory" aria-expanded="false" aria-controls="collapseUpdateHistory">See update history</button></span>
                                 <% } %>
                             </span>
                             
                             <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
-                                <div class="collapse" id="collapseUpdateHistory">
-                                    <div class="card card-body">
-                                        UPDATE HISTORY
-                                    </div>
+                                <div class="collapse mb-3" id="collapseUpdateHistory">
+                                    <% if(activity.updateHistory.length > 0) { %>
+                                        <% for(var i=0; i<activity.updateHistory.length; i++) { %>
+                                            <% if(i<5) { %>
+                                                <div class="d-flex flex-row flex-wrap card card-grey pt-2 pr-2 pb-2 pl-2 text-center mb-1">
+                                                    <div class="mr-2">
+                                                        <strong><%= activity.updateHistory[i].updateType %></strong>
+                                                    </div>
+                                                    <div class="mr-2">
+                                                        <% if(activity.updateHistory[i].oldStatus === activity.updateHistory[i].newStatus) { %>
+                                                            <% if(activity.updateHistory[i].updateType === "Picture Changed") { %>
+                                                                <span>
+                                                                    <i class="far fa-image text-success fa-lg"></i>
+                                                                </span>
+                                                            <% } else if(activity.updateHistory[i].updateType === "Info Changed") { %>
+                                                                <span>
+                                                                    <i class="far fa-edit text-success fa-lg"></i>
+                                                                </span>
+                                                            <% } else if(activity.updateHistory[i].updateType === "Owner/Author Changed") { %>
+                                                                <span>
+                                                                    <i class="fas fa-users text-primary fa-lg"></i>
+                                                                </span>
+                                                            <% } else if(activity.updateHistory[i].updateType === "Activity Created") { %>
+                                                                <span>
+                                                                    <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                                </span>
+                                                            <% } %>
+                                                            <span class="ml-1"><em><%= moment(activity.updateHistory[i].updatedAt).fromNow() %></em></span>
+                                                        <% } else { %>
+                                                            <span>
+                                                                <% if(activity.updateHistory[i].oldStatus === "current") { %>
+                                                                    <i class="fa fa-check-circle fa-lg text-success"></i>
+                                                                <% } else if(activity.updateHistory[i].oldStatus === "review") { %>
+                                                                    <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                                <% } else { %>
+                                                                    <i class="fa fa-times-circle fa-lg text-danger"></i>
+                                                                <% } %>
+                                                            </span>
+                                                            <span><i class="fas fa-arrow-right"></i></span>
+                                                            <span class="mr-1">
+                                                                <% if(activity.updateHistory[i].newStatus === "current") { %>
+                                                                    <i class="fa fa-check-circle fa-lg text-success"></i>
+                                                                <% } else if(activity.updateHistory[i].newStatus === "review") { %>
+                                                                    <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                                <% } else { %>
+                                                                    <i class="fa fa-times-circle fa-lg text-danger"></i>
+                                                                <% } %>
+                                                            </span>
+                                                            <span><em><%= moment(activity.updateHistory[i].updatedAt).fromNow() %></em></span>
+                                                        <% } %>
+                                                    </div>
+                                                    <div>
+                                                        by <a href="/users/<%= activity.updateHistory[i].author._id %>"><span class="text-capitalize"><%= activity.updateHistory[0].author.displayName %></span></a>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                    <% if(activity.updateHistory.length > 5) { %>
+                                        <a href="" class="btn btn-info btn-sm disabled">See full update history... (coming soon)</a>
+                                    <% } %>
                                 </div>
                             <% } %>
                             
@@ -91,14 +148,71 @@
                                     </form>
                                 </div>
                             <% } %>
-                            <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
-                                <span class="mr-3"><h4>Set Status:</h4></span>
-                                <div>
-                                    <span class="mr-2"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
-                                    <span class="mr-2"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
-                                    <span class=""><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                            <div class="d-flex flex-row flex-wrap flex-grow-1 align-items-start mb-2">
+                                <div class="d-flex flex-row flex-wrap align-items-center">
+                                    <span class="mr-3"><h4>Set Status:</h4></span>
+                                    <div class="mr-0 mr-md-4">
+                                        <span class="mr-2"><button id="statusUpdateCurrentBtn" class="btn btn-link"><i class="fa fa-check-circle fa-2x <% if(activity.status === 'current') { %>text-success<% } else { %>text-secondary<% } %>"></i></button></span>
+                                        <span class="mr-2"><button id="statusUpdateReviewBtn" class="btn btn-link"><i class="fa fa-question-circle fa-2x <% if(activity.status === 'review') { %>text-warning<% } else { %>text-secondary<% } %>"></i></button></span>
+                                        <span class=""><button id="statusUpdateRemovedBtn" class="btn btn-link"><i class="fa fa-times-circle fa-2x <% if(activity.status === 'removed') { %>text-danger<% } else { %>text-secondary<% } %>"></i></button></span>
+                                    </div>
                                 </div>
-                                <span class="mr-3"><h4>Most recent change</h4></span>
+                                <% if(activity.updateHistory.length > 0) { %>
+                                    <div class="d-flex flex-row flex-wrap flex-grow-1 align-items-center mt-1">
+                                        <span class="d-flex flex-row align-self-start mr-3"><h4>Latest change: </h4></span>
+                                        <div class="card pt-2 pr-2 pb-2 pl-2 text-center">
+                                            <div>
+                                                <strong><%= activity.updateHistory[0].updateType %></strong>
+                                            </div>
+                                            <div>
+                                                <% if(activity.updateHistory[0].oldStatus === activity.updateHistory[0].newStatus) { %>
+                                                    <% if(activity.updateHistory[0].updateType === "Picture Changed") { %>
+                                                        <span>
+                                                            <i class="far fa-image text-success fa-lg"></i>
+                                                        </span>
+                                                    <% } else if(activity.updateHistory[0].updateType === "Info Changed") { %>
+                                                        <span>
+                                                            <i class="far fa-edit text-success fa-lg"></i>
+                                                        </span>
+                                                    <% } else if(activity.updateHistory[0].updateType === "Owner/Author Changed") { %>
+                                                        <span>
+                                                            <i class="fas fa-users text-primary fa-lg"></i>
+                                                        </span>
+                                                    <% } else if(activity.updateHistory[0].updateType === "Activity Created") { %>
+                                                        <span>
+                                                            <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                        </span>
+                                                    <% } %>
+                                                    <span><em><%= moment(activity.updateHistory[0].updatedAt).fromNow() %></em></span>
+                                                <% } else { %>
+                                                    <span>
+                                                        <% if(activity.updateHistory[0].oldStatus === "current") { %>
+                                                            <i class="fa fa-check-circle fa-lg text-success"></i>
+                                                        <% } else if(activity.updateHistory[0].oldStatus === "review") { %>
+                                                            <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                        <% } else { %>
+                                                            <i class="fa fa-times-circle fa-lg text-danger"></i>
+                                                        <% } %>
+                                                    </span>
+                                                    <span><i class="fas fa-arrow-right"></i></span>
+                                                    <span>
+                                                        <% if(activity.updateHistory[0].newStatus === "current") { %>
+                                                            <i class="fa fa-check-circle fa-lg text-success"></i>
+                                                        <% } else if(activity.updateHistory[0].newStatus === "review") { %>
+                                                            <i class="fa fa-question-circle fa-lg text-warning"></i>
+                                                        <% } else { %>
+                                                            <i class="fa fa-times-circle fa-lg text-danger"></i>
+                                                        <% } %>
+                                                    </span>
+                                                    <span><em><%= moment(activity.updateHistory[0].updatedAt).fromNow() %></em></span>
+                                                <% } %>
+                                            </div>
+                                            <div>
+                                                By <a href="/users/<%= activity.updateHistory[0].author._id %>"><span class="text-capitalize"><%= activity.updateHistory[0].author.displayName %></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% } %>
                             </div>
                             <!-- Mod and Admin view and edit update requests -->
                             <div class="d-flex flex-row flex-wrap align-items-baseline mt-1">
@@ -386,7 +500,7 @@
                                                         <a id="somethingElseBtn" class="btn btn-secondary mb-2 text-white">Something else?</a>
                                                     </div>
                                                     <div id="loginInToRequestOwner" class="alert alert-warning" role="alert" style="display: none;">
-                                                        If you organise or help to run this activity and would like to be able to edit it's details on Sociable Life, please <a id="requestOwnerLogin" href='/login'>login</a> so we can add it to your account (it's free!).
+                                                        If you organise or help to run this activity and would like to be able to edit its details on Sociable Life, please <a id="requestOwnerLogin" href='/login'>login</a> so we can add it to your account (it's free!).
                                                         <br>
                                                         Once you've logged in, please click the "I run this activity" button again.
                                                     </div>
