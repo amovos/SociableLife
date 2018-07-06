@@ -55,6 +55,11 @@
                     <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" value="<%= activityContactNum %>" hidden>
                 </div>
                 
+                <% if(currentUser) { %>
+                    <div class="form-group">
+                        <input class="form-control" type="checkbox" name="activity[isOwner]" id="isOwner" <% if(activityIsOwner) { %>checked<% } %> hidden>
+                    </div>
+                <% } %>
 
                 <!-- DISPLAY VALUES -->
                 <div class="card card-body mb-3">
@@ -81,6 +86,10 @@
                     
                     <h5>Type</h5>
                     <p><%= activityFrequency %></p>
+                    
+                    <% if(currentUser && activityIsOwner) { %>
+                        <strong>Owner: </strong>You help to run or organise this activity
+                    <% } %>
                     
                     <% if(activityContactEmail) { %>
                         <h5>Contact Email</h5>
@@ -146,19 +155,29 @@
 </div>
 
 <script>
+    var editInfo = false
+    
     //on "Edit Info" button click
     //make an ajax post request to /activities/new and post the form data
     $('#EditInfoBtn').on('click', function(){
         $('#createActivityForm').attr("action", "/activities/new");
         $('#createActivityForm').removeAttr("enctype"); //need to remove this so the form content can be accessed through req.body.activity
+        editInfo = true;
         $('#createActivityForm').submit();
     })
     
     $("#createActivityForm").submit(function(event) {
-        //disable submit button so a user can't keep clicking on it
-        $('#submitActivityBtn').attr("disabled", "disabled");
-        //change text of button to say "uploading image..."
-        $('#submitActivityBtn').html("Uploading image...")
+        if(!editInfo) {
+            //disable submit button so a user can't keep clicking on it
+            $('#submitActivityBtn').attr("disabled", "disabled");
+            
+            //change text of button to say "uploading image..." if an image has been selected
+            if($('#imageUpload').val()) {
+                $('#submitActivityBtn').html("Uploading image...");
+            } else {
+                $('#submitActivityBtn').html("Creating activity...");
+            }
+        }
     });
     
 </script>

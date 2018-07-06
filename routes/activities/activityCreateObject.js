@@ -18,6 +18,8 @@ function activityCreateObject(req, res) {
     var contactEmail;
     var contactNum;
     
+    var isOwner;
+    
     //if a name has been set in the query string then set it as the name
     if(req.body.queryName) {
         name = req.body.queryName;
@@ -35,6 +37,8 @@ function activityCreateObject(req, res) {
         frequency = req.body.activity.frequency;
         contactEmail = req.body.activity.contactEmail;
         contactNum = req.body.activity.contactNum;
+        
+        isOwner = req.body.activity.isOwner;
     }
 
     return {
@@ -50,6 +54,7 @@ function activityCreateObject(req, res) {
         activityFrequency: frequency,
         activityContactEmail: contactEmail,
         activityContactNum: contactNum,
+        activityIsOwner: isOwner,
         fileValidationError: req.fileValidationError
     };
 }

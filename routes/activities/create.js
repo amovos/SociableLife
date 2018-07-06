@@ -11,6 +11,7 @@ var geocoder = require("../shared/geocoder");
 var cloudinary = require('cloudinary');
 var cloudinaryConf = require("../shared/cloudinary");
 var request = require("request");
+var UpdateRequest = require("../../models/updateRequest");
 
 var activityCreateObject = require("./activityCreateObject");
 
@@ -137,6 +138,16 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         });
     }
     
+    // SET OWNER (if that was ticked on the form)
+    if(req.body.activity.isOwner) {
+        var ownerArray = [];
+        
+        
+        //create the first update request
+        //then push it into the ownerArray and save that array to req.body.activity.owner
+    }
+    
+    
     // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
     req.body.activity.status = "review";
     
@@ -163,6 +174,41 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
                 }
             });
             
+            //ADD FIRST UPDATE REQUEST
+            //Build update request object
+            var firstUpdateRequest = {
+                text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy?"
+            };
+            
+            await UpdateRequest.create(firstUpdateRequest, async function(err, newUpdateRequest){
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else {
+                    // SET AUTHOR
+                    // if there is a current user then set them as the author
+                    if(req.user) {
+                        newUpdateRequest.author = req.user._id;
+                    } else {
+                        //else set it to be the community user (do a BD search to find the ID)
+                        await User.findOne({ username: process.env.COMMUNITY_USERNAME }, function(err, user) {
+                            if(err){
+                                genericErrorResponse(req, res, err);
+                            } else {
+                                newUpdateRequest.author = user._id;
+                            }
+                        });
+                    }
+
+                    // save updateRequest
+                    await newUpdateRequest.save();
+                    // connect new updateRequest to the currently found activity
+                    newlyCreatedActivity.updateRequests.push(newUpdateRequest);
+                    
+                    // save activity with new updateRequest
+                    await newlyCreatedActivity.save();
+                }
+            });
+            
             //find the sociable life community user and add a love and first comment
             await User.findOne({ username: process.env.COMMUNITY_USERNAME }, async function(err, communityUser) {
                 if(err){
@@ -175,6 +221,8 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
                     if(req.user) {
                         newlyCreatedActivity.loves.push(req.user._id);
                     }
+                    
+                    await newlyCreatedActivity.save();
                     
                     var firstComment = {};
                     firstComment.text = "Thanks for adding this activity to Sociable Life!";

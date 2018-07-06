@@ -94,9 +94,20 @@
                     <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="" value="<%= activityContactNum %>">
                 </div>
                 
-                
-                <% if(currentUser) { //add "I run this activity" (owner) checkbox %>
-                    
+                <% if(currentUser) { %>
+                    <div class="container card bg-warning mb-3">
+                        <div class="form-group mr-2 ml-2 mt-2">
+                            <div class="row justify-content-center align-items-center">
+                                <label class="checkbox-container pr-0" for="isOwner">
+                                    <strong>Do you help to run or organise this activity?</strong>
+                                    <br>
+                                    If you tick this box then your profile will show as one of the "owners" of this activity.
+                                    <input class="checkbox-input" id="isOwner" type="checkbox" name="activity[isOwner]" <% if(activityIsOwner) { %>checked<% } %>/>
+                                    <span class="checkmark border mt-1"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 <% } %>
                 
                 <!-- Error message box -->
