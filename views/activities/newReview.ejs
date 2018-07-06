@@ -36,6 +36,24 @@
                 <div class="form-group">
                     <textarea class="form-control" rows="6" name="activity[description]" id="description" required hidden><%= activityDescription %></textarea>
                 </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[age]" id="age" value="<%= activityAge %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[when]" id="when" value="<%= activityWhen %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[price]" id="price" value="<%= activityPrice %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[frequency]" id="frequency" value="<%= activityFrequency %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[contactEmail]" id="contactEmail" value="<%= activityContactEmail %>" hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" value="<%= activityContactNum %>" hidden>
+                </div>
                 
 
                 <!-- DISPLAY VALUES -->
@@ -46,11 +64,33 @@
                     <h5>Summary</h5>
                     <p><%= activitySummary %></p>
                     
+                    <h5>Description</h5>
+                    <p><%= activityDescription %></p>
+                    
                     <h5>Location</h5>
                     <p><%= activityLocation %></p>
                     
-                    <h5>Description</h5>
-                    <p><%= activityDescription %></p>
+                    <h5>Ages</h5>
+                    <p><%= activityAge %></p>
+                    
+                    <h5>When</h5>
+                    <p><%= activityWhen %></p>
+                    
+                    <h5>Cost</h5>
+                    <p><%= activityPrice %></p>
+                    
+                    <h5>Type</h5>
+                    <p><%= activityFrequency %></p>
+                    
+                    <% if(activityContactEmail) { %>
+                        <h5>Contact Email</h5>
+                        <p><%= activityContactEmail %></p>
+                    <% } %>
+                    
+                    <% if(activityContactNum) { %>
+                        <h5>Contact Number</h5>
+                        <p><%= activityContactNum %></p>
+                    <% } %>
                     
                     <div class="container">
                         <div class="form-group">

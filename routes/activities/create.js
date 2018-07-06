@@ -3,6 +3,7 @@
 // ==========================
 
 var genericErrorResponse = require("../shared/genericErrorResponse");
+var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 var Activity = require("../../models/activity");
 var Comment = require("../../models/comment");
 var User = require("../../models/user");
@@ -86,12 +87,41 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     //ADDITIONAL CHECKS
     // These should already have been passed in the UI to get to this point, but to stop people adding activities without validating data perform the checks again
     
-    // CHECK FOR LENGTH OF INPUTS
-    if(req.body.activity.name.length         > 100) {req.fileValidationError = "Activity Name is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    if(req.body.activity.summary.length      > 300) {req.fileValidationError = "Summary is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    if(req.body.activity.location.length     > 300) {req.fileValidationError = "Location is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    if(req.body.activity.description.length  > 2000) {req.fileValidationError = "Description is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    //check if inputs are not just whitespace
+    if (!(/\S/.test(req.body.activity.name)))           {req.fileValidationError = "Activity Name can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.summary)))        {req.fileValidationError = "Summary can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.description)))    {req.fileValidationError = "Description can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.location)))       {req.fileValidationError = "Location can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.age)))            {req.fileValidationError = "Age can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.when)))           {req.fileValidationError = "When can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.price)))          {req.fileValidationError = "Cost can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if (!(/\S/.test(req.body.activity.frequency)))      {req.fileValidationError = "Type can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    
+    //check optional inputs are not just whitespace
+    if(req.body.activity.contactEmail) {
+        if (!(/\S/.test(req.body.activity.contactEmail))) {req.fileValidationError = "Contact Email can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
+    if(req.body.activity.contactNum) {
+        if (!(/\S/.test(req.body.activity.contactNum))) {req.fileValidationError = "Contact Number can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
 
+    // CHECK FOR LENGTH OF INPUTS
+    if(req.body.activity.name.length         > 100)     {req.fileValidationError = "Activity Name is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.summary.length      > 300)     {req.fileValidationError = "Summary is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.description.length  > 2000)    {req.fileValidationError = "Description is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.location.length     > 300)     {req.fileValidationError = "Location is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.age.length          > 10)      {req.fileValidationError = "Age is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.when.length         > 300)     {req.fileValidationError = "When is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.price.length        > 300)     {req.fileValidationError = "Price is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    if(req.body.activity.frequency.length    > 50)      {req.fileValidationError = "Type is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+
+    //check optional inputs lengths
+    if(req.body.activity.contactEmail) {
+        if(req.body.activity.contactEmail.length > 300) {req.fileValidationError = "Contact Email is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
+    if(req.body.activity.contactNum) {
+        if(req.body.activity.contactNum.length > 50)    {req.fileValidationError = "Contact Number is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
 
     // SET AUTHOR
     if(req.user) {
@@ -111,13 +141,27 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     req.body.activity.status = "review";
     
     
-    
     // CREATE ACTIVITY
     //Create a new activity and save to database
     Activity.create(req.body.activity, async function(err, newlyCreatedActivity){
         if(err){
             genericErrorResponse(req, res, err);
         } else {
+            //add first update history log
+            var updateLog = {};
+            updateLog.author = req.body.activity.author;
+            updateLog.updateType = "Activity Created";
+            updateLog.oldStatus = newlyCreatedActivity.status;
+            updateLog.newStatus = newlyCreatedActivity.status;
+            
+            await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else {
+                    newlyCreatedActivity.updateHistory.push(updateLog);
+                    await newlyCreatedActivity.save();
+                }
+            });
             
             //find the sociable life community user and add a love and first comment
             await User.findOne({ username: process.env.COMMUNITY_USERNAME }, async function(err, communityUser) {

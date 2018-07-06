@@ -11,6 +11,12 @@ function activityCreateObject(req, res) {
     var location;
     var description;
     var image;
+    var age;
+    var when;
+    var price;
+    var frequency;
+    var contactEmail;
+    var contactNum;
     
     //if a name has been set in the query string then set it as the name
     if(req.body.queryName) {
@@ -23,6 +29,12 @@ function activityCreateObject(req, res) {
         summary = req.body.activity.summary;
         location = req.body.activity.location;
         description = req.body.activity.description;
+        age = req.body.activity.age;
+        when = req.body.activity.when;
+        price = req.body.activity.price;
+        frequency = req.body.activity.frequency;
+        contactEmail = req.body.activity.contactEmail;
+        contactNum = req.body.activity.contactNum;
     }
 
     return {
@@ -32,6 +44,12 @@ function activityCreateObject(req, res) {
         activityLocation: location,
         activityDescription: description,
         activityImage: image,
+        activityAge: age,
+        activityWhen: when,
+        activityPrice: price,
+        activityFrequency: frequency,
+        activityContactEmail: contactEmail,
+        activityContactNum: contactNum,
         fileValidationError: req.fileValidationError
     };
 }

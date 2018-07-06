@@ -9,43 +9,140 @@
         </div>
         
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
-            <form action="/activities/<%= activity._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form id="updateForm" action="/activities/<%= activity._id %>?_method=PUT" method="POST">
                 <div class="form-group">
-                    <label for="name">Activity Name</label>
+                    <label for="name">Activity Name *</label>
                     <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activity.name %>" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="price">Price per Night (£)</label>
-                    <input class="form-control" type="number" name="activity[price]" id="price" placeholder="e.g. 15" value="<%= activity.price %>" min="0.01" step="0.01">
+                    <label for="summary">Summary (300 characters) *</label>
+                    <textarea class="form-control" rows="3" name="activity[summary]" id="summary" placeholder="e.g. a short description of the activity" required><%= activity.summary %></textarea>
                 </div>
+                
                 <div class="form-group">
-                    <label for="location">Location</label>
+                    <label for="description">Description *</label>
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activity.description %></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Location *</label>
                     <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activity.location %>" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="imageUpload">Image</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
-                        <label class="custom-file-label" for="imageUpload">Choose file</label>
+                    <label for="name">Ages *</label>
+                    <select id="age" class="form-control" name="activity[age]" required>
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="All Ages" <% if(activity.age === "All Ages") { %>selected="selected" <% } %>>All Ages</option>
+                        <option value="Adults" <% if(activity.age === "Adults") { %>selected="selected" <% } %>>Adults</option>
+                        <option value="Children" <% if(activity.age === "Children") { %>selected="selected" <% } %>>Children</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="when">When *</label>
+                    <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activity.when %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Cost *</label>
+                    <input class="form-control" type="text" name="activity[price]" id="price" placeholder="e.g. £5 per session or Free!" value="<%= activity.price %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">Type *</label>
+                    <select id="frequency" class="form-control" name="activity[frequency]" required>
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Daily Activities" <% if(activity.frequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities</option>
+                        <option value="Weekly Activities" <% if(activity.frequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities</option>
+                        <option value="Monthly Activities" <% if(activity.frequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activities</option>
+                        <option value="Annual Activities" <% if(activity.frequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities</option>
+                        <option value="One-Off Activities" <% if(activity.frequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities</option>
+                        <option value="Book Yourself" <% if(activity.frequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email (optional)</label>
+                    <input class="form-control" type="email" name="activity[contactEmail]" id="contactEmail" placeholder="" value="<%= activity.contactEmail %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactNum">Contact Number (optional)</label>
+                    <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="" value="<%= activity.contactNum %>">
+                </div>
+                
+                <!-- Error message box -->
+                <div id="errorMessageContainer" class="container" style="display: none;">
+                    <div class="row justify-content-end">
+                            <div id="errorMessageDiv" class="alert alert-warning fade show col-md-8" role="alert">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="image">Description</label>
-                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activity.description %></textarea>
-                </div>  
                 
                 <div class="container">
                     <div class="form-group">
                         <div class="row justify-content-end">
-                            <button class="col-sm-6 btn btn-lg btn-primary btn-block">Update!</button>
+                            <button class="col-md-5 btn btn-lg btn-primary btn-block">Update!</button>
                         </div>
                     </div> 
-                </div> 
+                </div>
                 
             </form>
-            <a href="javascript:history.back()">Go Back</a>
+            <a href="/activities/<%= activity._id %>">Go Back</a>
         </div>
     </div>
 </div>
+
+<script type='text/javascript'>
+    
+    var passedChecks;
+    
+    $(document).ready(function(){
+        passedChecks = false;
+    });
+    
+    $("#updateForm").submit(function(event) {
+        
+        /* stop form from submitting normally if all checks haven't passed */
+        if(!passedChecks){
+            event.preventDefault();
+        } else {
+            return;
+        }
+        
+        /* get the action attribute from the <form action=""> element */
+        var $form = $( this ),
+            url = "/activities/newReview";
+        
+        /* Send the data using post*/
+        var posting = $.post( url, {    name: $('#name').val(), 
+                                        summary: $('#summary').val(), 
+                                        location: $('#location').val(), 
+                                        description: $('#description').val(),
+                                        age: $('#age').val(),
+                                        when: $('#when').val(),
+                                        price: $('#price').val(),
+                                        frequency: $('#frequency').val(),
+                                        contactEmail: $('#contactEmail').val(),
+                                        contactNum: $('#contactNum').val()
+                                    } 
+                            );
+                            
+        /* Process returned result */
+        posting.done(function( data ) {
+            if(data.type === "error") {
+                //show error message box with error message
+                $('#errorMessageContainer').show();
+                $('#errorMessageDiv').html(data.message);
+            } else if (data.type === "success") {
+                //submit form
+                passedChecks = true;
+                $("#updateForm").submit();
+            }
+        });
+    });
+</script>
 
 <% include ../partials/footer %>

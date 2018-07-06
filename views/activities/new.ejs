@@ -42,13 +42,62 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="location">Location *</label>
-                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activityLocation %>" required>
-                </div>
-                <div class="form-group">
                     <label for="description">Description *</label>
                     <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activityDescription %></textarea>
                 </div>
+                
+                <div class="form-group">
+                    <label for="location">Location *</label>
+                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activityLocation %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Ages *</label>
+                    <select id="age" class="form-control" name="activity[age]" required>
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="All Ages" <% if(activityAge === "All Ages") { %>selected="selected" <% } %>>All Ages</option>
+                        <option value="Adults" <% if(activityAge === "Adults") { %>selected="selected" <% } %>>Adults</option>
+                        <option value="Children" <% if(activityAge === "Children") { %>selected="selected" <% } %>>Children</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="when">When *</label>
+                    <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activityWhen %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Cost *</label>
+                    <input class="form-control" type="text" name="activity[price]" id="price" placeholder="e.g. £5 per session or Free!" value="<%= activityPrice %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">Type *</label>
+                    <select id="frequency" class="form-control" name="activity[frequency]" required>
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Daily Activities" <% if(activityFrequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities</option>
+                        <option value="Weekly Activities" <% if(activityFrequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities</option>
+                        <option value="Monthly Activities" <% if(activityFrequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activities</option>
+                        <option value="Annual Activities" <% if(activityFrequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities</option>
+                        <option value="One-Off Activities" <% if(activityFrequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities</option>
+                        <option value="Book Yourself" <% if(activityFrequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email (optional)</label>
+                    <input class="form-control" type="email" name="activity[contactEmail]" id="contactEmail" placeholder="" value="<%= activityContactEmail %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactNum">Contact Number (optional)</label>
+                    <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="" value="<%= activityContactNum %>">
+                </div>
+                
+                
+                <% if(currentUser) { //add "I run this activity" (owner) checkbox %>
+                    
+                <% } %>
                 
                 <!-- Error message box -->
                 <div id="errorMessageContainer" class="container" style="display: none;">
@@ -98,7 +147,13 @@
         var posting = $.post( url, {    name: $('#name').val(), 
                                         summary: $('#summary').val(), 
                                         location: $('#location').val(), 
-                                        description: $('#description').val()
+                                        description: $('#description').val(),
+                                        age: $('#age').val(),
+                                        when: $('#when').val(),
+                                        price: $('#price').val(),
+                                        frequency: $('#frequency').val(),
+                                        contactEmail: $('#contactEmail').val(),
+                                        contactNum: $('#contactNum').val()
                                     } 
                             );
                             
