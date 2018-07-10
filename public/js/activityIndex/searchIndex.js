@@ -255,7 +255,6 @@ function mapKeyClickFunction(passedThis){
             
             $("#adultsCheck").prop('checked', true);
             $("#childrenCheck").prop('checked', false);
-            $("#allAgesCheck").prop('checked', true);
         }
     } else {
         if(mapKeySelectedVar === "childrenKeyDiv"){
@@ -273,7 +272,6 @@ function mapKeyClickFunction(passedThis){
             $("#adultsKeyDiv").css('opacity', '0.2');
             
             $("#childrenCheck").prop('checked', true);
-            $("#allAgesCheck").prop('checked', true);
             $("#adultsCheck").prop('checked', false);
         }
     }
@@ -284,7 +282,6 @@ function mapKeyAllCheckedAndTrue(){
     $("#adultsKeyDiv").css('opacity', '1');
     $("#childrenKeyDiv").css('opacity', '1');
     
-    $("#allAgesCheck").prop('checked', true);
     $("#adultsCheck").prop('checked', true);
     $("#childrenCheck").prop('checked', true);
 }
@@ -298,7 +295,7 @@ function resetSearch(){
     $('#searchQueryClearBtn').hide();
     
     //reset filters
-    $('#allAgesCheck,#adultsCheck,#childrenCheck').prop('checked', true);
+    $('#adultsCheck,#childrenCheck').prop('checked', true);
     $('#allAgesKeyDiv,#adultsKeyDiv,#childrenKeyDiv').css('opacity', '1');
     
     //check all boxes

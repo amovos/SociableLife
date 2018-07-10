@@ -110,7 +110,6 @@ $(document).ready(function(){ //waits until the DOM has loaded
             $('#statusCheckboxToggle').html('Select All');
     }
     if(
-        !($('#allAgesCheck').prop('checked')) &&
         !($('#adultsCheck').prop('checked')) &&
         !($('#childrenCheck').prop('checked'))
         ){
@@ -336,7 +335,7 @@ $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckb
     if(this.id === "statusCheckboxToggle"){
         checkBoxes = '#currentStatusCheck,#reviewStatusCheck,#removedStatusCheck';
     } else if(this.id === "agesCheckboxToggle"){
-        checkBoxes = '#allAgesCheck,#adultsCheck,#childrenCheck';
+        checkBoxes = '#adultsCheck,#childrenCheck';
         
         
     } else if(this.id === "suitableCheckboxToggle"){

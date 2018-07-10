@@ -28,7 +28,7 @@ function initActivityIndexMap() {
     var childrenKeyDivOpacity = '';
     
     //check the value of the input boxes so the markers have the correct opacity when created
-    if(!($('#allAgesCheck').prop('checked'))) {
+    if(!($('#adultsCheck').prop('checked')) && !($('#childrenCheck').prop('checked'))) {
         allAgesKeyDivOpacity = 'style="opacity: 0.2;" ';
     }
     if(!($('#adultsCheck').prop('checked'))) {
