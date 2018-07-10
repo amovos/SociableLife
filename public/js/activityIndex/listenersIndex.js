@@ -51,31 +51,32 @@ $(document).ready(function(){ //waits until the DOM has loaded
     $.ajaxSetup({ cache: false });
     
     //if any filter queries are saved then populate the fields (stored in searchIndex.js activityFilter()
-    if(localStorage.getItem("activityFilterLocation")){
-        $('#setLocationInput').val(localStorage.getItem("activityFilterLocation"));
-    }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
-    // if(localStorage.getItem("")){
-    //     $('#').val(localStorage.getItem(""));
-    // }
+    if(localStorage.getItem("activityFilterLocation")){ $('#setLocationInput').val(localStorage.getItem("activityFilterLocation")); }
+    if(localStorage.getItem("activityFilterSearchQuery")){ $('#searchQueryInput').val(localStorage.getItem("activityFilterSearchQuery")); }
+    if(localStorage.getItem("activityFilterDistance")){ $('#setDistanceInput').val(localStorage.getItem("activityFilterDistance")); }
     
+    if(localStorage.getItem("activityFilterOrderByLocation")){ $('#orderDistanceCheck').prop('checked', true); }
+    if(localStorage.getItem("activityFilterOrderByDateUpdated")){ $('#orderDateUpdatedCheck').prop('checked', true); }
+    if(localStorage.getItem("activityFilterOrderByLoves")){ $('#orderLovesCheck').prop('checked', true); }
+    
+    if(localStorage.getItem("activityFilterStatusCurrent")){ $('#currentStatusCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterStatusReview")){ $('#reviewStatusCheck').prop('checked', true); }
+    if(localStorage.getItem("activityFilterStatusRemoved")){ $('#removedStatusCheck').prop('checked', true); }
+    
+    if(localStorage.getItem("activityFilterAgeAdult")){ $('#adultsCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterAgeChildren")){ $('#childrenCheck').prop('checked', false); }
+    
+    if(localStorage.getItem("activityFilterSuitableLearning")){ $('#learningDisabilitiesCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterSuitablePhysical")){ $('#physicalDisabilitiesCheck').prop('checked', false); }
+    
+    
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+
     
     //on load search for activities
     //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience

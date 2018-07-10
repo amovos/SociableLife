@@ -64,19 +64,26 @@ async function activityFilter(activities){
     //store filter variables in browser localStorage so that it will save them when returning
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem("activityFilterLocation", $('#setLocationInput').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
-        // localStorage.setItem("", $('#').val());
+        localStorage.setItem("activityFilterDistance", $('#setDistanceInput').val());
+        localStorage.setItem("activityFilterSearchQuery", $('#searchQueryInput').val());
+        
+        if($('#orderDistanceCheck').prop('checked')) { localStorage.setItem("activityFilterOrderByLocation", "checked"); } else { localStorage.setItem("activityFilterOrderByLocation", ""); }
+        if($('#orderDateUpdatedCheck').prop('checked')) { localStorage.setItem("activityFilterOrderByDateUpdated", "checked"); } else { localStorage.setItem("activityFilterOrderByDateUpdated", ""); }
+        if($('#orderLovesCheck').prop('checked')) { localStorage.setItem("activityFilterOrderByLoves", "checked"); } else { localStorage.setItem("activityFilterOrderByLoves", ""); }
+        
+        if($('#currentStatusCheck').prop('checked')) { localStorage.setItem("activityFilterStatusCurrent", ""); } else { localStorage.setItem("activityFilterStatusCurrent", "notChecked"); }
+        if($('#reviewStatusCheck').prop('checked')) { localStorage.setItem("activityFilterStatusReview", "checked"); } else { localStorage.setItem("activityFilterStatusReview", ""); }
+        if($('#removedStatusCheck').prop('checked')) { localStorage.setItem("activityFilterStatusRemoved", "checked"); } else { localStorage.setItem("activityFilterStatusRemoved", ""); }
+        
+        if($('#adultsCheck').prop('checked')) { localStorage.setItem("activityFilterAgeAdult", ""); } else { localStorage.setItem("activityFilterAgeAdult", "notChecked"); }
+        if($('#childrenCheck').prop('checked')) { localStorage.setItem("activityFilterAgeChildren", ""); } else { localStorage.setItem("activityFilterAgeChildren", "notChecked"); }
+        
+        if($('#learningDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitableLearning", ""); } else { localStorage.setItem("activityFilterSuitableLearning", "notChecked"); }
+        if($('#physicalDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitablePhysical", ""); } else { localStorage.setItem("activityFilterSuitablePhysical", "notChecked"); }
+        
+        // if($('#physicalDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitablePhysical", "checked"); } else { localStorage.setItem("activityFilterSuitablePhysical", ""); }
+        
+
     }
     
     //return the list of filtered activities to be used by the next function in the promise chain
