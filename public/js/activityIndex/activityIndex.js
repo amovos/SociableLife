@@ -100,6 +100,25 @@ function addActivity(activity){ //function used whenever we want to add an item 
         activityDistanceMiles = '';
     }
     
+    var activityAge = '';
+    if(activity.age.isChild && activity.age.isAdult) { 
+        activityAge = 'All Ages';
+    } else if(activity.age.isChild) {
+        activityAge = 'Children';
+    } else if(activity.age.isAdult) {
+        activityAge = 'Adults';
+    }
+        
+        
+    var activitySuitable = '';
+    if(activity.suitable.isPhysical && activity.suitable.isLearning) { 
+        activitySuitable = 'All Abilities';
+    } else if(activity.suitable.isPhysical) {
+        activitySuitable = 'Physical Disabilities';
+    } else if(activity.suitable.isLearning) {
+        activitySuitable = 'Learning Disabilities';
+    }
+    
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
             '<div class="card activity-card" onclick="location.href=\'/activities/' + activity._id + '\'">' +
@@ -119,7 +138,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
                             '<strong>Ages</strong>' +
                         '</div>' +
                         '<div>' +
-                            activity.age +
+                             activityAge +
                         '</div>' +
                     '</div>' +
                     '<div class="d-flex flex-column col-7 nopadding text-left">' +
@@ -127,7 +146,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
                             '<strong>Suitable for</strong>' +
                         '</div>' +
                         '<div>' +
-                            activity.suitable +
+                            activitySuitable +
                         '</div>' +
                     '</div>' +
                 '</div>' +

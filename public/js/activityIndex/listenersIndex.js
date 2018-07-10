@@ -116,7 +116,6 @@ $(document).ready(function(){ //waits until the DOM has loaded
             $('#agesCheckboxToggle').html('Select All');
     }
     if(
-        !($('#allAbilitiesCheck').prop('checked')) &&
         !($('#learningDisabilitiesCheck').prop('checked')) &&
         !($('#physicalDisabilitiesCheck').prop('checked'))
         ){
@@ -339,7 +338,7 @@ $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckb
         
         
     } else if(this.id === "suitableCheckboxToggle"){
-        checkBoxes = '#allAbilitiesCheck,#learningDisabilitiesCheck,#physicalDisabilitiesCheck';
+        checkBoxes = '#learningDisabilitiesCheck,#physicalDisabilitiesCheck';
     } else {
         checkBoxes = '#dailyActivitiesCheck,#weeklyActivitiesCheck,#monthlyActivitiesCheck,#annualActivitiesCheck,#oneOffEventsCheck,#bookYourselfCheck';
     }

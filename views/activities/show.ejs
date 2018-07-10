@@ -394,11 +394,28 @@
                             <div class="d-flex flex-row flex-wrap">
                                 <div class="col-md-6 nopadding">
                                     <h4>Ages</h4>
-                                    <p class="mr-3"><%= activity.age %></p>
+                                    <p class="mr-3">
+                                        <% if(activity.age.isChild && activity.age.isAdult) { %>
+                                            All Ages
+                                        <% } else if(activity.age.isChild) { %>
+                                            Children
+                                        <% } else if(activity.age.isAdult) { %>
+                                            Adults
+                                        <% } %>
+                                    </p>
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4>Suitable for</h4>
-                                    <p class="mr-2"><%= activity.suitable %></p>
+                                    <p class="mr-2">
+                                        <% if(activity.suitable.isPhysical && activity.suitable.isLearning) { %>
+                                            All Abilities
+                                        <% } else if(activity.suitable.isPhysical) { %>
+                                            Physical Disabilities
+                                        <% } else if(activity.suitable.isLearning) { %>
+                                            Learning Disabilities
+                                        <% } %>
+                                    </p>
+                                    </p>
                                 </div>
                             </div>
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2">

@@ -211,6 +211,25 @@ function standardMarkerInfoWindow(currentActivity, marker){
     } else {
         statusIcon = statusIconRemoved;
     }
+    
+    var activityAge = '';
+    if(currentActivity.age.isChild && currentActivity.age.isAdult) { 
+        activityAge = 'All Ages';
+    } else if(currentActivity.age.isChild) {
+        activityAge = 'Children';
+    } else if(currentActivity.age.isAdult) {
+        activityAge = 'Adults';
+    }
+        
+        
+    var activitySuitable = '';
+    if(currentActivity.suitable.isPhysical && currentActivity.suitable.isLearning) { 
+        activitySuitable = 'All Abilities';
+    } else if(currentActivity.suitable.isPhysical) {
+        activitySuitable = 'Physical Disabilities';
+    } else if(currentActivity.suitable.isLearning) {
+        activitySuitable = 'Learning Disabilities';
+    }
 
     //create content for infowindow
     var content =  '<div id="iw-container">' +
@@ -242,11 +261,11 @@ function standardMarkerInfoWindow(currentActivity, marker){
                             '<div class="d-flex align-items-start">' +
                                 '<div class="mr-5">' +
                                     '<div class="iw-subTitle">Ages</div>' +
-                                    '<p class="mb-1">' + currentActivity.age + '</p>' +
+                                    '<p class="mb-1">' + activityAge + '</p>' +
                                 '</div>' +
                                 '<div>' +
                                     '<div class="iw-subTitle">Suitable for</div>' +
-                                    '<p class="mb-1">' + currentActivity.suitable + '</p>' +
+                                    '<p class="mb-1">' + activitySuitable + '</p>' +
                                 '</div>' +
                             '</div>' +
                             
