@@ -13,11 +13,17 @@ var activityDataFile = [
       "5b0fb78751cdf71139e2a462"
     ],
     "_id": "5b0f24b09e560517b40cb638",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Odyssians Camp",
     "frequency": "Annual Activities",
     "summary": "A week long summer activity camp for young adults with disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£125 for the week (includes accommodation, food and activities)",
     "when": "Annual - August",
     "location": "Woodlarks Camp Site Trust, Tilford Rd, Farnham GU10 3RN, UK",
@@ -50,11 +56,17 @@ var activityDataFile = [
       "5b0fb78751cdf71139e2a465"
     ],
     "_id": "5b0f24b09e560517b40cb639",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Jay's Disco's",
     "frequency": "Monthly Activities",
     "summary": "Night Club Event for People With Learning Disabilities",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Monthly",
     "location": "42-46 Bridge St, Walsall WS1 8HR, UK",
@@ -85,11 +97,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b19e560517b40cb63b",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Multiple Abilities Club (MAC)",
     "frequency": "Weekly Activities",
     "summary": "Disco, Bingo, Karaoke, Chip Butty Nights, Live Entertainment.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£2",
     "when": "Tuesday and Thursday evenings",
     "location": "Birches Head Rd, Stoke-on-Trent ST2 8DD, UK",
@@ -117,11 +135,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b19e560517b40cb63a",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Rhythm of the Night",
     "frequency": "Monthly Activities",
     "summary": "Night club for adults with any disability.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5",
     "when": "Monthly (see link for exact dates)",
     "location": "Trinity Community Arts, Trinity Centre, Trinity Rd, Bristol BS2 0NW, UK",
@@ -147,11 +171,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b29e560517b40cb63c",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Pulp Friction CIC",
     "frequency": "Daily Activities",
     "summary": "Smoothie Bar Project providing opportunities for young adults with learning disabilities",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "TBC",
     "when": "Daily",
     "location": "High Pavement, Nottingham NG1 1HN, UK",
@@ -182,11 +212,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b29e560517b40cb63d",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Work-Shop CIC",
     "frequency": "Daily Activities",
     "summary": "Work based activities, such as light assembly work, collecting and sorting recyclables.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "~£20 for half day",
     "when": "Daily",
     "location": "Rye House Park Business Centre, Clifford, Clifford Ln, Stratford-upon-Avon CV37 8HW, United Kingdom",
@@ -212,11 +248,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b39e560517b40cb63e",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Camtrust - Bike Workshop",
     "frequency": "Daily Activities",
     "summary": "Lively day programmes of activities for adults with disabilities and learning difficulties",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£50 for a full day",
     "when": "Daily",
     "location": "22 Cambridge Rd, Impington, Cambridge CB24 9NU, UK",
@@ -242,11 +284,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b39e560517b40cb63f",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Oxford",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "Grenoble Rd, Littlemore, Oxford OX4 4XP, UK",
@@ -274,11 +322,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b49e560517b40cb640",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Lakeside",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "Intu Lakeside, The Boardwalk, Grays RM20 2ZP, UK",
@@ -306,11 +360,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b59e560517b40cb642",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Basildon",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "11, 14 Repton Cl, Basildon SS13 1LJ, UK",
@@ -342,11 +402,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b49e560517b40cb641",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Braintree",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "Unit L8 - 12, Century Drive, Off Charter Way,, Braintree, Essex CM77 8YL, United Kingdom",
@@ -377,11 +443,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b59e560517b40cb643",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Eastleigh",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "L10, Southampton Road, Eastleigh SO50 5SF, United Kingdom",
@@ -409,11 +481,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b69e560517b40cb644",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Ipswich",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "9 Cavendish St, Ipswich IP3 8AX, UK",
@@ -441,11 +519,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b69e560517b40cb645",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Stevenage",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "Roaring Meg Retail Park, London Rd, Stevenage SG1 1XN, UK",
@@ -472,11 +556,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b79e560517b40cb646",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SEN World of Play Wembley",
     "frequency": "Weekly Activities",
     "summary": "Play sessions dedicated to children & young adults with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 (with one free helper/carer)",
     "when": "Weekly (Wednesdays and Sundays)",
     "location": "Vale Farm, Watford Rd, Wembley HA0 3HG, UK",
@@ -502,11 +592,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b79e560517b40cb647",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Beat It Night Huddersfield",
     "frequency": "Monthly Activities",
     "summary": "A monthly accessible nightclub event for people with learning disabilities, physical disabilities and mental health conditions to get together and just have some fun.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5.00 pre booked tickets, £6.00 on the door and £2.50 for supporters.",
     "when": "2nd Thursday of Each Month. 7.00pm – 10.00pm",
     "location": "86 Fitzwilliam St, Huddersfield HD1 5BB, UK",
@@ -538,11 +634,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b89e560517b40cb648",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Beat It Night Halifax",
     "frequency": "Monthly Activities",
     "summary": "A monthly accessible nightclub event for people with learning disabilities, physical disabilities and mental health conditions to get together and just have some fun.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5.00 per person if you pre-book. £6.00 per person on the door. £2.50 per staff and support.",
     "when": "3rd Thursday of each month. 7.00pm – 10.00pm",
     "location": "Bull Green, Halifax HX1 2DZ, UK",
@@ -570,11 +672,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b89e560517b40cb649",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Pathfinders Camp",
     "frequency": "Annual Activities",
     "summary": "Camping holiday for disabled adult ladies aged 18+, run by volunteers, aged 17+",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£90 for the week for ALL participants to cover food and accomodation",
     "when": "Annual - August",
     "location": "Woodlarks Camp Site Trust, Tilford Rd, Farnham GU10 3RN, UK",
@@ -601,11 +709,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b99e560517b40cb64a",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Active8",
     "frequency": "One-Off Events",
     "summary": "Active8 is a small Cornish charity which aims to empower and motivate young people with physical disabilities to become autonomous.",
-    "suitable": "Physical disabilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "false"
+    },
     "price": "Depends on each activity",
     "when": "Contact charity or check on website for upcoming events",
     "location": "Victoria Beacon Place, Station Approach, Victoria, Roche PL26 8LG, UK",
@@ -633,11 +747,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24b99e560517b40cb64b",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Runways End Outdoor Centre",
     "frequency": "Book Yourself",
     "summary": "Making the impossible possible for young people with disabilities and their siblings",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Depends on each activity. Sessions are subsidised for Hampshire Gateway Card Holders",
     "when": "Activities and accommodation available all year",
     "location": "1 Forge Ln, Aldershot GU11 2RE, UK",
@@ -663,11 +783,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ba9e560517b40cb64c",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Swimming at Bungay Pool",
     "frequency": "Weekly Activities",
     "summary": "Accessible swimming session for anyone with disabilities",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Adults: £5.10 Kids (over 4): £3.60 Under 4: £1.00 Family swim (2 Adults and up to 3 children) £15.45",
     "when": "Sundays 6pm - 7pm",
     "location": "St John's Hill, Bungay NR35 1PH, UK",
@@ -693,11 +819,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ba9e560517b40cb64d",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Swansea Boccia Club",
     "frequency": "Weekly Activities",
     "summary": "We are an all ability Boccia club.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Cost £5 per session (£10 annual membership)",
     "when": "Tuesdays 4pm - 6pm",
     "location": "Oystermouth Rd, Swansea SA1 3ST, UK",
@@ -728,11 +860,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bb9e560517b40cb64e",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Up at the O2",
     "frequency": "Book Yourself",
     "summary": "Ascend all the way to the top of The O2 via a walkway, suspended 52m above ground level.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Each wheelchair booking is from £28 and includes a free ticket for a personal assistant. You can also buy tickets for up to eight friends and family members.",
     "when": "Call or email for available dates",
     "location": "Peninsula Square, London SE10 0DX, UK",
@@ -758,11 +896,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bc9e560517b40cb650",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Calshot Activities Centre",
     "frequency": "Book Yourself",
     "summary": "No Limits - Making the impossible possible for young people with disabilities and their siblings",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Depends on each activity.",
     "when": "Activities and accommodation available all year",
     "location": "Calshot, Calshot Spit, Fawley, Calshot, Southampton SO45 1BR, UK",
@@ -793,11 +937,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bb9e560517b40cb64f",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Disability Sports Forum",
     "frequency": "Weekly Activities",
     "summary": "Sporting events, activities and tournaments for disabled people and their families",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£2.00 per annum",
     "when": "Tuesday & Thursday evenings",
     "location": "140 Ladysmith Rd, Grimsby DN32 9SW, UK",
@@ -829,11 +979,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bc9e560517b40cb651",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "The Lion Swimming Club",
     "frequency": "Weekly Activities",
     "summary": "The Lion Swimming Club is open to any disabled person of any age with a permanent physical, learning, mental or sensory disability.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "There are no subscription charges or session fees (members can make donations to the club at sessions) but members are required to purchase a Greenwich Card (you need to inform the Eltham Centre that you belong to the Lion Swimming Club).",
     "when": "Evenings and weekend (check website link for times and dates)",
     "location": "2 Archery Rd, London SE9 1HA, UK",
@@ -865,11 +1021,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bd9e560517b40cb652",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Alice Holt Cycling",
     "frequency": "Book Yourself",
     "summary": "Adaptive/Inclusive Cycle Hire",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£7.50 for 2 hours",
     "when": "Every Day",
     "location": "Alice Holt Forest, Bucks Horn Oak, Farnham GU10 4LS, United Kingdom",
@@ -897,11 +1059,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bd9e560517b40cb653",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Grimsby Leisure Centre",
     "frequency": "Weekly Activities",
     "summary": "We deliver a number of weekly activities (swimming, basketball, multi-sport) across our centres for people with disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Check website link for details",
     "when": "Activities on Mondays and Wednesdays (see website link for more details)",
     "location": "Cromwell Rd, Grimsby DN31 2BH, UK",
@@ -927,11 +1095,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24be9e560517b40cb654",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Sensory planet",
     "frequency": "Book Yourself",
     "summary": "A unique space where children and adults with Autism and other complex needs, can come and relax in our safe, state of the art, sensory environments.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Approx £5 - £10 per session. Check website for full pricing details",
     "when": "Tuesday to Saturday. Check website for exact booking times available",
     "location": "51, Thurnscoe Business Centre, Princess Dr, Thurnscoe, Rotherham S63 0BL, UK",
@@ -957,11 +1131,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24be9e560517b40cb655",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Sandwell Activ8ors",
     "frequency": "Weekly Activities",
     "summary": "We lead adaptive sports sessions to help disabled children enjoy a wealth of activities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Cost: £3.00 per child per Session Maximum cost : £6.00/family",
     "when": "Tuesdays during term time (see website for dates)",
     "location": "Dudley Road East, Oldbury, Sandwell B69 3BU, UK",
@@ -993,11 +1173,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bf9e560517b40cb656",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "ZigZag Leeds Autism Support Group",
     "frequency": "Weekly Activities",
     "summary": "Come along for a coffee and a chat and meet other parents within the group :)",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website.",
     "when": "Weekly, see Facebook events for dates and times",
     "location": "7 Iveson Approach, Leeds LS16 6LJ, UK",
@@ -1025,11 +1211,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24bf9e560517b40cb657",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SNAPS Penny Field",
     "frequency": "Monthly Activities",
     "summary": "At SNAPS sessions you can access swim sessions, Hydrotherapy/Physiotherapy pool sessions and rebound sessions.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£7 per session",
     "when": "Monthly sessions (check website for details)",
     "location": "Parkside House, Tongue Ln, Leeds LS6 4QD, UK",
@@ -1057,11 +1249,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c09e560517b40cb658",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Little Hiccups - Stay and Play",
     "frequency": "Weekly Activities",
     "summary": "A support group set up by parents who have children with special needs",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Suggested donation of £1 per session",
     "when": "Every alternative Thursday 1.00pm - 2.30pm (See website for exact dates)",
     "location": "The Vinery Centre, 20 Vinery Terrace, Leeds LS9 9LU, United Kingdom",
@@ -1087,11 +1285,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c09e560517b40cb659",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "LWCA - Weekenders Club",
     "frequency": "Monthly Activities",
     "summary": "Weekenders Club is a weekend playscheme providing a short break for children and young people with additional needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£18 per session",
     "when": "Attendance is one Saturday or Sunday every 4 weeks. We are open 47 weeks a year. Once allocated a group, attendance is in the same group each visit.",
     "location": "3 Foxcroft Cl, Leeds LS6 3NT, UK",
@@ -1119,11 +1323,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c19e560517b40cb65b",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "ZigZag Trampolining",
     "frequency": "Monthly Activities",
     "summary": "Autism friendly trampoline sessions",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£5.00 if you're with zigzag  £2.00 socks if needed. These once bought can be reused and exchanged for free. Parent/carers jump free.",
     "when": "Monthly sessions (check website for details)",
     "location": "Cardigan Fields Leisure Park, Kirkstall Rd, Leeds LS4 2DG, UK",
@@ -1158,11 +1368,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c19e560517b40cb65a",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "ZigZag Soft Play Session",
     "frequency": "Monthly Activities",
     "summary": "Great fun session for the kids and parents and carers get the chance to meet up with others within the group",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£2 per child",
     "when": "Monthly sessions (check website for details)",
     "location": "75 New Rd Side, Horsforth, Leeds LS18 4QD, UK",
@@ -1188,11 +1404,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c29e560517b40cb65c",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "LWCA - Music Mondays Group",
     "frequency": "Weekly Activities",
     "summary": "Music Mondays is a project for teenagers aged 10-18 years with mild to moderate learning disabilities to access music and to help make new friends.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£7 per week",
     "when": "Each block has 6 sessions, every Monday during term time between 6.30-8.30pm. Young people should be able to attend all 6 sessions in the block they are registered for.",
     "location": "Middleton Rd, Belle Isle, Leeds LS10 3JA, United Kingdom",
@@ -1220,11 +1442,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c39e560517b40cb65e",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "LD & Autism Disco",
     "frequency": "Weekly Activities",
     "summary": "A weekly disco for adults (16+) with LD & Autism Disco in a safe, fun and interactive environment",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£2",
     "when": "Weekly. Wednesdays 6pm - 8:30pm",
     "location": "Station St, Swinton, Mexborough S64 8PU, UK",
@@ -1255,11 +1483,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c39e560517b40cb65d",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Flip Out: Brent Cross",
     "frequency": "Weekly Activities",
     "summary": "Autism friendly trampoline sessions.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£10 per hour. 1 x carer jumps for FREE, socks are included.",
     "when": "Tuesdays 4pm - 6pm. Thursdays 10am - 12pm (term time only).",
     "location": "Geron Way, London NW2 6LW, UK",
@@ -1287,11 +1521,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c39e560517b40cb65f",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Active Fridays",
     "frequency": "Weekly Activities",
     "summary": "Trampolining, swimming, dance, cycling, fitness sessions, golf and much more.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£7 per session with Life Style Card Membership renewed yearly.",
     "when": "Weekly. Fridays 10am - 3pm",
     "location": "Stafford Rd, Cannock WS11 4AL, UK",
@@ -1319,11 +1559,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c49e560517b40cb660",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Dolphin Disco",
     "frequency": "Monthly Activities",
     "summary": "Dolphin Disco is a club for anyone with a disability and is held at the Obelisk Rise in Kingsthorpe, Northampton",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£2 with carers going free",
     "when": "Monthly. First Thursday of each month. The disco is usually from 7pm until 9pm except on special occasions when we sometimes open till 10pm.",
     "location": "Obelisk Centre, 400 Obelisk Rise, Northampton NN2 8UE, UK",
@@ -1349,11 +1595,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c49e560517b40cb661",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Camberley",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "10 France Hill Dr, Camberley GU15 3QB, UK",
@@ -1382,11 +1634,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c59e560517b40cb662",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Esher",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "19 Esher Green, Esher KT10 8AA, UK",
@@ -1417,11 +1675,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c59e560517b40cb663",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Farnham",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "25 West St, Farnham GU9 7DR, UK",
@@ -1449,11 +1713,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c69e560517b40cb664",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Guildford",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "Sydenham Rd, Guildford GU1 3RX, UK",
@@ -1479,11 +1749,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c69e560517b40cb665",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Molesey",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "Ray Rd, West Molesey KT8 2LG, United Kingdom",
@@ -1511,11 +1787,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c79e560517b40cb666",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Sunbury",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "The Avenue, Shepperton, Sunbury-on-Thames TW16 5DZ, UK",
@@ -1541,11 +1823,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c79e560517b40cb667",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Surrey Supported Learning Woking",
     "frequency": "Daily Activities",
     "summary": "Surrey Supported Learning offer part-time courses for adults aged 19+ with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for prices for each course",
     "when": "See website for course dates",
     "location": "Hoebrook Cl, Woking GU22 9PE, UK",
@@ -1576,11 +1864,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c89e560517b40cb668",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Soundalight Experiences",
     "frequency": "Book Yourself",
     "summary": "Mobile Soundbeam Sessions",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Varies according to location. See website for details",
     "when": "Bookings can be made every day. See website for more details.",
     "location": "Coulsdon, UK",
@@ -1606,11 +1900,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c89e560517b40cb669",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Special Yoga Workshops",
     "frequency": "Monthly Activities",
     "summary": "Our mission is to inclusively and holistically support children with additional needs through our multi-dimensional Special Yoga and Mindfulness methodology.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details",
     "when": "Monthly classes. See Facebook page for event details.",
     "location": "25 Browning Ave, Bournemouth BH5 1NS, UK",
@@ -1638,11 +1938,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c99e560517b40cb66a",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Westminster",
     "frequency": "Weekly Activities",
     "summary": "Favourite sports at the club are basketball, tennis and boccia. All ages 11 plus are welcome, including adults!",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Every Thursday (term-time). 4pm - 5:30pm",
     "location": "10 Crompton St, London W2 1ND, UK",
@@ -1670,11 +1976,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24c99e560517b40cb66b",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Hillingdon",
     "frequency": "Weekly Activities",
     "summary": "Club Hillingdon offers a wide range of sports to suit participants’ individual needs. All ages 11 plus are welcome, including adults!",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Saturdays 11am - 1pm",
     "location": "East Avenue, Hayes, Middlesex UB3 2HW, United Kingdom",
@@ -1703,11 +2015,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ca9e560517b40cb66c",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Wandsworth",
     "frequency": "Weekly Activities",
     "summary": "The participants at Club Wandsworth are true sports enthusiasts and a lot of fun is had every session. The energetic volunteers also add to the quality of the session, sports wise and socially.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3 (£1.50 with WAND Card)",
     "when": "Tuesdays 4:30pm - 6pm",
     "location": "2 Holman Rd, Battersea, London SW11 3RL, UK",
@@ -1735,11 +2053,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ca9e560517b40cb66d",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Lambeth",
     "frequency": "Weekly Activities",
     "summary": "Popular sports include basketball, tennis and new age Kurling, but this is just a few sports delivered at the club.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Tuesdays 4:30pm - 6pm",
     "location": "27 Brixton Station Rd, Brixton, London SW9 8QQ, UK",
@@ -1765,11 +2089,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cb9e560517b40cb66e",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Southwark",
     "frequency": "Weekly Activities",
     "summary": "Athletics, boccia and volleyball are amongst the popular sports at this club.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Saturdays 2:30pm - 4pm",
     "location": "2 St Gabriel Walk, London SE1 6FG, UK",
@@ -1797,11 +2127,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cb9e560517b40cb66f",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Hackney",
     "frequency": "Weekly Activities",
     "summary": "Club Hackney are particular fans of basketball and boccia and always attend our club sports days and Festivals in force.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Wednesdays 11am - 12:30pm",
     "location": "30 Holly St, London E8 3XW, UK",
@@ -1832,11 +2168,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cc9e560517b40cb670",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Islington",
     "frequency": "Weekly Activities",
     "summary": "The club also has regular specialist dance, badminton and golf visits, including the occasional visit from Arsenal in the Community.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Saturdays 11am - 1pm",
     "location": "Hornsey Road, London N7 7NY, United Kingdom",
@@ -1862,11 +2204,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cc9e560517b40cb671",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Community Club Kensington & Chelsea",
     "frequency": "Weekly Activities",
     "summary": "The club takes place on Saturday mornings with football, boccia, basketball and cricket the most popular sports!",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3",
     "when": "Saturdays 11am - 1pm",
     "location": "Silchester Rd, London W10 6EX, UK",
@@ -1897,11 +2245,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cd9e560517b40cb672",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Dramatize Dance Workshops",
     "frequency": "Weekly Activities",
     "summary": "Dance and Theatre Workshops",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£5 - £15 depending on the workshop",
     "when": "Monday, Wednesday and Friday. See website for more details",
     "location": "Ashford Recreation Ground, 11 Rosary Gardens, Ashford TW15 1BX, UK",
@@ -1929,11 +2283,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cd9e560517b40cb673",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Act the Part: Xplosion DDM",
     "frequency": "Weekly Activities",
     "summary": "A performing arts group for young people to begin to experience Drama, Dance and Music.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Wednesdays after school for 2 – 2.5 hours",
     "location": "52-53 The Market Square, London N9 0TZ, UK",
@@ -1959,11 +2319,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ce9e560517b40cb674",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Act the Part: Broken Silence",
     "frequency": "Weekly Activities",
     "summary": "‘Broken Silence’ is an adult drama group of approximately 20 disabled participants with sensory and mobility impairments, mental health issues and learning difficulties.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Wednesdays for two hours during term time",
     "location": "65C Park Ave, Enfield EN1 2HL, UK",
@@ -1998,11 +2364,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ce9e560517b40cb675",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Act the Part: InterACTion",
     "frequency": "Weekly Activities",
     "summary": "The group learns music and theatre skills, write and perform their own shows, led by experienced professional artist/facilitators.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Thursdays during term time",
     "location": "8 Loraine Cl, Enfield EN3 4AL, UK",
@@ -2030,11 +2402,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24cf9e560517b40cb676",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Act the Part: Blue Sky Actors",
     "frequency": "Weekly Activities",
     "summary": "The Blue Sky Actors is an inclusive ensemble of adult disabled and non-disabled actors.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£20 per term",
     "when": "Saturdays three hours per session - during term time",
     "location": "Theatre Square, London E15 1BX, UK",
@@ -2062,11 +2440,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d09e560517b40cb677",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Festival Spirit: Wychwood Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "The cost for individual Guest applications is £350 which includes your necessary PA/carer(s). The cost for buddies is £100 reduced to £50 for those  helping out fully on set up and break down days. Nurses come free of charge. (See website FAQ for more details)",
     "when": "1-4 June 2018",
     "location": "Evesham Rd, Prestbury, Cheltenham GL50 4SH, UK",
@@ -2092,11 +2476,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d09e560517b40cb678",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Festival Spirit: WOMAD Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "The cost for individual Guest applications is £350 which includes your necessary PA/carer(s). The cost for buddies is £100 reduced to £50 for those  helping out fully on set up and break down days. Nurses come free of charge. (See website FAQ for more details)",
     "when": "27-30 July 2018",
     "location": "Charlton Park, Malmesbury SN16 9DG, UK",
@@ -2127,11 +2517,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d09e560517b40cb679",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Festival Spirit: Wilderness Festival",
     "frequency": "Annual Activities",
     "summary": "Festival experiences for life-limited and disabled people",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "The cost for individual Guest applications is £350 which includes your necessary PA/carer(s). The cost for buddies is £100 reduced to £50 for those  helping out fully on set up and break down days. Nurses come free of charge. (See website FAQ for more details)",
     "when": "3-6 August 2018",
     "location": "Cornbury Park, Charlbury OX7 3EH, UK",
@@ -2159,11 +2555,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d19e560517b40cb67a",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Twisting Ducks: Band/Performing Arts/DJ Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Work with professional musicians to develop your music skills, to write your own songs, and to perform live at gig nights and events.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "Full day £39 Half day £19.50 2 hour session £13.00 The Academy programme runs for 47 week per year.",
     "when": "Tuesdays 10pm – 4 pm",
     "location": "TD Studio, Heaton Centre, Trewhitt Rd, Newcastle upon Tyne NE6 5DY, UK",
@@ -2191,11 +2593,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d19e560517b40cb67b",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Twisting Ducks: Performing Arts Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Develop your skills in writing, acting, physical theatre and directing. Make you own drama and film and perform live at theatre nights",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "Full day £39 Half day £19.50 2 hour session £13.00 The Academy programme runs for 47 week per year.",
     "when": "Fridays 1pm – 4 pm",
     "location": "1 Howard Rd, Morpeth NE61 1HU, UK",
@@ -2221,11 +2629,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d29e560517b40cb67c",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Twisting Ducks: Dance Academy Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Learn musical dance routines and different dance styles. Create your own dance numbers for music videos and live performances.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "Full day £39 Half day £19.50 2 hour session £13.00 The Academy programme runs for 47 week per year.",
     "when": "Fridays 1pm - 4pm (aged 16+). Fridays 4:30pm - 6:30pm (aged 13 - 18)",
     "location": "Front St, Stanley DH9 0NA, UK",
@@ -2254,11 +2668,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d29e560517b40cb67d",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Twisting Ducks: Youth Theatre Academy",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Develop your skills in writing, acting and directing. Make you own drama and film and perform live at theatre nights",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "Full day £39 Half day £19.50 2 hour session £13.00 The Academy programme runs for 47 week per year.",
     "when": "Saturdays 10am – 4pm",
     "location": "Market St, Newcastle upon Tyne NE1 6JE, UK",
@@ -2286,11 +2706,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d39e560517b40cb67e",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Twisting Ducks: Teenage Kicks Youth Band",
     "frequency": "Weekly Activities",
     "summary": "Anyone with a learning disability or autism, aged 11+. Work with professional musicians to develop your music and performance skills, to write and record your own songs, and to perform live at gigs and events.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "Full day £39 Half day £19.50 2 hour session £13.00 The Academy programme runs for 47 week per year.",
     "when": "Tuesdays 5:30pm - 7:30pm",
     "location": "Carliol St, Newcastle upon Tyne NE1 6BH, UK",
@@ -2322,11 +2748,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d39e560517b40cb67f",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Buzz: Youth Activity Group Chester",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Tuesdays (Contact for more details)",
     "location": "Chester, UK",
@@ -2354,11 +2786,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d39e560517b40cb680",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Buzz: Youth Activity Group Northwich",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Mondays (Contact for more details)",
     "location": "Northwich, UK",
@@ -2386,11 +2824,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d49e560517b40cb681",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Buzz: Youth Activity Group Crewe",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Wednesdays (Contact for more details)",
     "location": "Crewe, UK",
@@ -2416,11 +2860,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d49e560517b40cb682",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Buzz: Youth Activity Group Macclesfield",
     "frequency": "Weekly Activities",
     "summary": "The BUZZ Youth Group is a fully inclusive youth group for disabled young people aged up to 18 years.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Thursdays (Contact for more details)",
     "location": "Macclesfield, UK",
@@ -2446,11 +2896,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d59e560517b40cb683",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Para Dance UK Swansea",
     "frequency": "Weekly Activities",
     "summary": "Inclusive Dance Classes",
-    "suitable": "Physical disabilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "false"
+    },
     "price": "Free",
     "when": "See website for details",
     "location": "Oystermouth Rd, Swansea SA1 3ST, UK",
@@ -2486,11 +2942,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d59e560517b40cb684",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Para Dance UK Llantrisant",
     "frequency": "Weekly Activities",
     "summary": "Inclusive Dance Classes",
-    "suitable": "Physical disabilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "false"
+    },
     "price": "Free",
     "when": "See website for details",
     "location": "7 Park View, Llantrisant, Pontyclun CF72 8DL, UK",
@@ -2516,11 +2978,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d69e560517b40cb685",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Para-cycling Session",
     "frequency": "Monthly Activities",
     "summary": "Para-cycling sessions are dedicated coaching sessions for disabled riders who want to keep fit, have fun and improve performance with the help of the coaching sessions.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Saturdays. Check website for dates",
     "location": "Royal Way, Derby DE24 8JB, UK",
@@ -2551,11 +3019,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d69e560517b40cb686",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Fun-abili8y Clubs",
     "frequency": "Weekly Activities",
     "summary": "A range of weekly activities including crafts and play sessions",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details",
     "when": "Most days. See website for more details",
     "location": "Malcolm St, Derby DE23 8LU, UK",
@@ -2583,11 +3057,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d79e560517b40cb688",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Brake Thru Cycling Club",
     "frequency": "Daily Activities",
     "summary": "You can ride a bike! We have lots of different bikes for you to try. Even if you cannot ride a bike someone can help you.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "The project runs throughout the week. See website for more details",
     "location": "Lordship Recreation Ground, Lordship Lane, Harringay, London N17 6BD, UK",
@@ -2615,11 +3095,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d69e560517b40cb687",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Derby Wheel Blazers",
     "frequency": "Weekly Activities",
     "summary": "Derbys Wheelchair Basketball Club. Open to anyone that fancys giving the sport a try but always on the lookout for future superstars!",
-    "suitable": "Physical disabilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "false"
+    },
     "price": "See website",
     "when": "Weekly training sessions. See website for more details",
     "location": "Richmond Park Road, Mackworth, Derby DE22 4FB, United Kingdom",
@@ -2645,11 +3131,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb689",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Kith and Kids: Healthy Living Activities",
     "frequency": "Weekly Activities",
     "summary": "Join us for a range of inclusive healthy activities and sports.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Sanjuro Fridays 3:00pm - 4:00pm. Footbal Wednesdays 6:30pm – 8:30pm",
     "location": "The Irish Centre 3rd Floor, Pretoria Rd, London N17 8DX, United Kingdom",
@@ -2680,11 +3172,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb68a",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Kith and Kids: Weekend Clubs",
     "frequency": "Weekly Activities",
     "summary": "Activities for people with learning disabilities or autism and volunteers.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Saturday or Sunday. Each fortnight (during term time)",
     "location": "The Irish Centre 3rd Floor, Pretoria Rd, London N17 8DX, United Kingdom",
@@ -2710,11 +3208,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb68b",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Kith and Kids: Social Development Projects",
     "frequency": "Annual Activities",
     "summary": "Our unique 2:1 Social Development Projects link children and adults with learning disabilities or autism with two trained volunteers.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "5 days at Xmas and Easter. 10 days in the summer",
     "location": "The Irish Centre 3rd Floor, Pretoria Rd, London N17 8DX, United Kingdom",
@@ -2745,11 +3249,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb68c",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Kith and Kids: Employment & Life Skills Project",
     "frequency": "Weekly Activities",
     "summary": "The Employment & Life Skills Project provides an autism specific term-time service for young adults (18+) at the higher functioning end of the autistic spectrum.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Monday/Friday daytimes, term-time",
     "location": "The Irish Centre 3rd Floor, Pretoria Rd, London N17 8DX, United Kingdom",
@@ -2777,11 +3287,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb68d",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Kith and Kids: Summer Camp",
     "frequency": "Annual Activities",
     "summary": "Each year at the end of the summer holiday we run a one-week residential camp.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "7 nights away at the end of August",
     "location": "The Irish Centre 3rd Floor, Pretoria Rd, London N17 8DX, United Kingdom",
@@ -2809,11 +3325,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d89e560517b40cb68e",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Kith and Kids: D's Day",
     "frequency": "Annual Activities",
     "summary": "D's Day is an annual event held in celebration of the life of Doreen Collins – artist/sculptor and co-founder of Kith & Kids.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Usuaully the first Sunday in June. 12:00pm - 4:30pm",
     "location": "93 Guilford St, London WC1N 1DN, UK",
@@ -2841,11 +3363,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d99e560517b40cb68f",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Parity: Day Services Cove",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Daily fee usually funded through adult services, continuing healthcare or direct payments",
     "when": "Monday to Friday with students choosing to attend anywhere from a half day to a full five days per week.",
     "location": "92 Whetstone Rd, Farnborough GU14 9SX, UK",
@@ -2873,11 +3401,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24d99e560517b40cb690",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Parity: Day Services Camberley",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Daily fee usually funded through adult services, continuing healthcare or direct payments",
     "when": "Monday to Friday with students choosing to attend anywhere from a half day to a full five days per week.",
     "location": "231 Upper College Ride, Camberley GU15 4HE, UK",
@@ -2903,11 +3437,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24da9e560517b40cb691",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Parity: Day Services Mytchett",
     "frequency": "Daily Activities",
     "summary": "Students take part in mainstream life, shopping, eating out and visiting places. They interact with people, meet visitors and act as ambassadors.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Daily fee usually funded through adult services, continuing healthcare or direct payments",
     "when": "Monday to Friday with students choosing to attend anywhere from a half day to a full five days per week.",
     "location": "23 Salisbury Grove, Mytchett, Camberley GU16, UK",
@@ -2938,11 +3478,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24da9e560517b40cb692",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Rowan Art Centre",
     "frequency": "Weekly Activities",
     "summary": "Art centre and charity for people with learning disabilities",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "Weekly courses. See website for details.",
     "location": "40 Humberstone Rd, Cambridge CB4 1JG, UK",
@@ -2970,11 +3516,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24da9e560517b40cb693",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Lowlands Farm RDA",
     "frequency": "Daily Activities",
     "summary": "Our horses and ponies provide therapy with amazing physical and psychological  benefits. Even more importantly it's great fun!",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Between £16 and £35 depending on type and length of session. See website for full pricing details.",
     "when": "Riding lessons are available Tuesdays, Wednesdays and Thursdays during the day. Group lessons are available on Saturday and Sunday.",
     "location": "Lowlands Farm Old Warwick Road, Shrewley, Warwick CV35 7AX, United Kingdom",
@@ -3000,11 +3552,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24db9e560517b40cb694",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "SNAPS Broomfield",
     "frequency": "Monthly Activities",
     "summary": "At SNAPS sessions you can access swim sessions, Hydrotherapy/Physiotherapy pool sessions and rebound sessions.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£7 per session",
     "when": "Monthly sessions (check website for details)",
     "location": "Broom Pl, Leeds LS10 3JP, UK",
@@ -3030,11 +3588,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24db9e560517b40cb695",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Flip Out: Chatham",
     "frequency": "Weekly Activities",
     "summary": "Autism friendly trampoline sessions.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£7 per hour including a carer for free. Siblings also welcome for the same great price.",
     "when": "Tuesdays 1pm - 2pm. Thursdays 6pm - 7pm.",
     "location": "Dock Head Road, Chatham Maritime ME4 4ZJ, United Kingdom",
@@ -3062,11 +3626,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24dc9e560517b40cb696",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Bendrigg Trust",
     "frequency": "Book Yourself",
     "summary": "Residential and day activity courses for disabled and disadvantaged people",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website",
     "when": "See website for activity and residential dates",
     "location": "Bendrigg Lodge, Old Hutton, Kendal LA8 0NR, UK",
@@ -3097,11 +3667,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24dc9e560517b40cb697",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Seagull Trust Cruises: Falkirk",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Daily from April to October. See website for booking forms.",
     "location": "Bantaskin Estate, Falkirk FK1 5NW, UK",
@@ -3127,11 +3703,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24dd9e560517b40cb698",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Seagull Trust Cruises: Highland",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Daily from April to October. See website for booking forms.",
     "location": "Inverness IV3 8JL, UK",
@@ -3162,11 +3744,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24dd9e560517b40cb699",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Seagull Trust Cruises: Kirkintilloch",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Daily from April to October. See website for booking forms.",
     "location": "NCR754, Kirkintilloch, Glasgow G66 1XU, UK",
@@ -3192,11 +3780,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24de9e560517b40cb69a",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Seagull Trust Cruises: Ratho",
     "frequency": "Book Yourself",
     "summary": "Seagull Trust Cruises charity offers free cruises on Scotland’s canals for people with special needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Daily from April to October. See website for booking forms.",
     "location": "27 Baird Rd, Ratho, Newbridge EH28 8RA, UK",
@@ -3227,11 +3821,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24de9e560517b40cb69b",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Elhap Adventure Playground",
     "frequency": "Weekly Activities",
     "summary": "A Special Needs Adventure Playground",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "Saturday Clubs every fortnight throughout term time and run holiday playschemes in every school holiday. See website for details.",
     "location": "119 Roding Ln N, Woodford, Woodford Green IG8 8NA, UK",
@@ -3259,11 +3859,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24df9e560517b40cb69c",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Eddie's Cambridge",
     "frequency": "Daily Activities",
     "summary": "A range of services for children, young people and adults with learning disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "See website for dates.",
     "location": "Lancaster House, Capper Rd, Waterbeach CB25 9LY, UK",
@@ -3289,11 +3895,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e09e560517b40cb69e",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Aiming High Trampolining Sessions",
     "frequency": "Weekly Activities",
     "summary": "Specialist trampolining sessions",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£3 per session payable in advance",
     "when": "Friday evenings",
     "location": "Oakham Enterprise Park, Ashwell Rd, Oakham LE15 7TU, UK",
@@ -3319,11 +3931,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24df9e560517b40cb69d",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Kepplewray Center",
     "frequency": "Book Yourself",
     "summary": "Accessible Outdoor Activity Centre",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "See website for details.",
     "location": "The Kepplewray Centre, Broughton-in-Furness LA20 6HE, United Kingdom",
@@ -3359,11 +3977,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e09e560517b40cb69f",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Greenbank Sports Academy",
     "frequency": "Weekly Activities",
     "summary": "Greenbank Sports Academy offers a disabled people the opportunity to try a range of sports, at low cost.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See individual activities for details.",
     "when": "Sessions take place evenings and weekends.",
     "location": "Greenbank Ln, Liverpool L17 1AG, UK",
@@ -3389,11 +4013,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e19e560517b40cb6a0",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Exim Dance: Adapt",
     "frequency": "Weekly Activities",
     "summary": "A dance company for young people age 12-25 with and without disabilities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Friday 4:30pm - 6:30pm (term time)",
     "location": "22 Millbay Rd, Millbay, Plymouth PL1 3EG, UK",
@@ -3421,11 +4051,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e19e560517b40cb6a1",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Routeways Project: Rooted Club",
     "frequency": "Weekly Activities",
     "summary": "Gardening, Craft & Cooking Activities for disabled kids & kids with additional needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£5 for first or only child and £3 for each additional sibling, paid on attendance (additional costs may apply if support workers are needed contact us for more detail)",
     "when": "Every Monday 4pm - 6pm (term time only) and Saturdays 10am - 1pm (all year round)",
     "location": "Devonport Park Activity Centre, Fore St, Plymouth PL1 4BT, United Kingdom",
@@ -3456,11 +4092,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e29e560517b40cb6a2",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Plymouth Life Centre",
     "frequency": "Daily Activities",
     "summary": "A range of accessible activities at the Life Centre in Plymouth",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details",
     "when": "Activities every day of the week. See website for details.",
     "location": "40 Mayflower Dr, Plymouth PL2 3DF, UK",
@@ -3486,11 +4128,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e29e560517b40cb6a3",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Adaptive Martial Arts: Bath",
     "frequency": "Weekly Activities",
     "summary": "Martial Art and exercise sessions",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "First session is free. £7.50 for one or £10 for two people, we also offer 121's @ £35",
     "when": "Sunday ​12:30pm - 1:30pm",
     "location": "N Parade Rd, Bath BA2 4ET, UK",
@@ -3519,11 +4167,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e39e560517b40cb6a4",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Pedal Power: Cardiff",
     "frequency": "Book Yourself",
     "summary": "Accessible cycle hire",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Varies, depends on whether you are a member, for a guide its £6 for a child non- member, please see website for full details",
     "when": "Open 7 days a week. See website for opening times.",
     "location": "22 Dogo St, Cardiff CF11 9JJ, UK",
@@ -3549,11 +4203,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e39e560517b40cb6a5",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Chester Terrapins",
     "frequency": "Weekly Activities",
     "summary": "Specialist swimming club for people with disabilities",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£2 per week for adults and £1 for juniors (16 and under)",
     "when": "Monday (except bank holidays) 7:15pm - 8:30pm",
     "location": "Northgate Arena, Victoria Rd, Chester CH2 2AU, UK",
@@ -3584,11 +4244,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e49e560517b40cb6a6",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Adult Phab Club Chester Monthly Social",
     "frequency": "Monthly Activities",
     "summary": "A social club for people with and without disabilities",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£1.00 per member, payable during attendance at each monthly social – volunteers are free of charge at socials. New members do not pay a subsidy at their first social.",
     "when": "Second Monday of every month (excluding December) 7:00 pm to 10:00 pm",
     "location": "1 Gawer Park, Chester CH1 4DA, UK",
@@ -3616,11 +4282,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e59e560517b40cb6a7",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Walton Lea: Walled Garden",
     "frequency": "Daily Activities",
     "summary": "Providing work experience and learning for people with learning difficulties",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "See website for opening times and workshop details.",
     "location": "Chester Rd, Warrington WA4 6TB, United Kingdom",
@@ -3646,11 +4318,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e69e560517b40cb6a9",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Walton Lea: Long Lane",
     "frequency": "Daily Activities",
     "summary": "Providing work experience and learning for people with learning difficulties",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "See website for opening times and workshop details.",
     "location": "Warrington Business Pk/Long La, Warrington WA2 8TX, United Kingdom",
@@ -3678,11 +4356,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e59e560517b40cb6a8",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Adaptive Martial Arts: Bristol",
     "frequency": "Weekly Activities",
     "summary": "Martial Art and exercise sessions",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "First session is free. £7.50 for one or £10 for two people, we also offer 121's @ £36",
     "when": "Saturday 4pm - 5pm",
     "location": "Shine Community Sport Hall,, Brecon Rd, Bristol BS9 4DT, United Kingdom",
@@ -3710,11 +4394,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e69e560517b40cb6aa",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Hylands Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day! (when Hylands Park is open)",
     "location": "Hylands House, London Rd, Writtle, Chelmsford CM2 8WQ, UK",
@@ -3740,11 +4430,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e69e560517b40cb6ab",
-    "age": "All Ages",
+    "age": {
+      "isAdult": "true",
+      "isChild": "true"
+    },
     "name": "Rebounders Cardiff",
     "frequency": "Weekly Activities",
     "summary": "Trampoline club which specialises in working with children and adults with disabilities",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "Weekly classes. See website for dates and times.",
     "location": "9 Quay Point, Collivaud Place, Ocean Way, Cardiff CF24 5HF, United Kingdom",
@@ -3772,11 +4468,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e79e560517b40cb6ac",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Cardiff Whales Swimming Club",
     "frequency": "Weekly Activities",
     "summary": "Fun Swimming Club for children and young people with additional needs and their families.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Annual Fees: £90 for 1 young person. £40 for each additional sibling.",
     "when": "Sunday 4:30pm - 5:30pm",
     "location": "Caerau Lane, Caerau, Cardiff CF5 5HJ, United Kingdom",
@@ -3802,11 +4504,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e79e560517b40cb6ae",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Wyldwoods: Creative arts and crafts sessions",
     "frequency": "Weekly Activities",
     "summary": "Workshops available to adults with additional needs.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "£45 per person per day usually \"personal budget\" through social services and local authority.",
     "when": "Every Wednesday throughout the year (some occasional holidays at easter and Christmas) from 10am - 2pm",
     "location": "Dean Corner Farmhouse, Broseley TF12 5JH, United Kingdom",
@@ -3838,11 +4546,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e79e560517b40cb6ad",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Wyldwoods: Arts cafe",
     "frequency": "One-Off Events",
     "summary": "A 2 hour session where people can meet and eat and enjoy a taste of 2 creative arts activities.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "FREE (donations always welcome)",
     "when": "Tuesday 29th May 5:30pm - 7:30pm",
     "location": "Dean Corner Farmhouse, Broseley TF12 5JH, United Kingdom",
@@ -3878,11 +4592,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e89e560517b40cb6af",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Wyldwoods: Respite and short breaks",
     "frequency": "Book Yourself",
     "summary": "Three wonderful venues for anyone in need of some respite.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Garden Room £75 per night, Yurt and Orchard cabin £50 per night. Additional charges may apply.",
     "when": "Book all year.",
     "location": "Dean Corner Farmhouse, Broseley TF12 5JH, United Kingdom",
@@ -3908,11 +4628,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e89e560517b40cb6b0",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Hijinx Theatre: Odyssey",
     "frequency": "Weekly Activities",
     "summary": "Odyssey is an inclusive community group for adults with and without learning disabilities who share a passion for performance.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "Weekly sessions. See website for more details.",
     "location": "Bute Pl, Cardiff, Cardiff Bay CF10 5AL, UK",
@@ -3938,11 +4664,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e89e560517b40cb6b1",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Hijinx Theatre: Telemachus",
     "frequency": "Weekly Activities",
     "summary": "Telemachus is an inclusive group for young people with and without learning disabilities who are adventurous, and love to create and perform.",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "See website for details.",
     "when": "Weekly sessions. See website for more details.",
     "location": "Bute Pl, Cardiff, Cardiff Bay CF10 5AL, UK",
@@ -3978,11 +4710,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e99e560517b40cb6b2",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Meriden Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Meriden Way, Watford WD25 9DU, UK",
@@ -4010,11 +4748,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24e99e560517b40cb6b3",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Waterwise",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "W Parade, Worthing BN11 5EF, UK",
@@ -4040,11 +4784,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ea9e560517b40cb6b4",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Dinton Pastures",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Dinton Pastures Country Park, Davis St, Hurst, Wokingham RG10 0TH, UK",
@@ -4072,11 +4822,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ea9e560517b40cb6b5",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Oakfield Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Oakfield Park, 51 Oakfield Cres, Blaby, Leicester LE8 4HS, UK",
@@ -4108,11 +4864,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24eb9e560517b40cb6b6",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Manor Heath Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day! (see website for opening times)",
     "location": "Manor Heath Rd, Halifax HX3 0BE, UK",
@@ -4138,11 +4900,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24eb9e560517b40cb6b7",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Centre Vale Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Open 7 days a week 10am - 4pm",
     "location": "Centre Vale Park, 180 Burnley Rd, Todmorden OL14 7DE, UK",
@@ -4168,11 +4936,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ec9e560517b40cb6b8",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Marine Hall Gardens",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "The Esplanade, Fleetwood FY7 6HF, UK",
@@ -4207,11 +4981,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ec9e560517b40cb6b9",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Sol Joel",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Sol Joel Park, 8 Church Rd, Earley, Reading RG6 7DG, UK",
@@ -4237,11 +5017,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ed9e560517b40cb6ba",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: King George Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "King George Recreation Ground, 75 Chiltern Ave, Bushey WD23 4RF, UK",
@@ -4270,11 +5056,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ed9e560517b40cb6bb",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Winton Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Fitzharris Ave, Bournemouth BH9 1BX, UK",
@@ -4305,11 +5097,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ed9e560517b40cb6bc",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Hednesford Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Gaskins Wood, Rugeley Rd, Hednesford WS12 1TH, United Kingdom",
@@ -4337,11 +5135,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ee9e560517b40cb6bd",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Meadowbank Recreation Ground",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Meadowbank Recreation Ground, 80 Rothes Rd, Dorking RH4 1LB, UK",
@@ -4369,11 +5173,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ee9e560517b40cb6be",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: The Level",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "The Level, Union Rd, Brighton BN2 9SY, UK",
@@ -4401,11 +5211,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ef9e560517b40cb6bf",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Grange Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Grange Park, Coulsdon CR5 1EA, UK",
@@ -4433,11 +5249,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24ef9e560517b40cb6c0",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Anderson Crescent",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Anderson Cres, Queenzieburn, Kilsyth, Glasgow G65 9EW, UK",
@@ -4465,11 +5287,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24f09e560517b40cb6c1",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Drumpellier Country Park",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "Drumpellier Country Park, Coatbridge ML5 1RX, UK",
@@ -4497,11 +5325,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24f09e560517b40cb6c2",
-    "age": "Children",
+    "age": {
+      "isAdult": "false",
+      "isChild": "true"
+    },
     "name": "Pipa Inclusive Play Area: Harwoods",
     "frequency": "Daily Activities",
     "summary": "Accessible and inclusive play area",
-    "suitable": "All abilities",
+    "suitable": {
+      "isPhysical": "true",
+      "isLearning": "true"
+    },
     "price": "Free",
     "when": "Every day!",
     "location": "209 Vicarage Rd, Watford WD18 0GD, UK",
@@ -4529,11 +5363,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24f19e560517b40cb6c3",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Nutley Edge Activity Breaks",
     "frequency": "Monthly Activities",
     "summary": "At Nutley Edge, we run holidays for people with learning disabilities or Autism Spectrum Conditions (ASC). These are our specialist Activity Breaks and are run by Outward, a London-based charity that has been successfully supporting people with learning disabilities and ASC for over forty years.",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£780 - £825",
     "when": "See website for dates.",
     "location": "Nutley Edge Cottages, Horney Common, Maresfield, Uckfield TN22 3EE, UK",
@@ -4560,11 +5400,17 @@ var activityDataFile = [
       
     ],
     "_id": "5b0f24f19e560517b40cb6c4",
-    "age": "Adults",
+    "age": {
+      "isAdult": "true",
+      "isChild": "false"
+    },
     "name": "Summer Fun",
     "frequency": "Annual Activities",
     "summary": "A range of activities in a rural setting",
-    "suitable": "Learning disabilities",
+    "suitable": {
+      "isPhysical": "false",
+      "isLearning": "true"
+    },
     "price": "£80 per day",
     "when": "See website for dates.",
     "location": "Rectory Ln, Great Bookham, Leatherhead KT23 4DZ, UK",

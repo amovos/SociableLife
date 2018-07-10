@@ -8,7 +8,10 @@ var activitySchema = new mongoose.Schema({
     description: String,
     videoUrl: String,
     youtubeVideoId: String,
-    suitable: String,
+    suitable: {
+        isPhysical: Boolean,
+        isLearning: Boolean
+    },
     when: String,
     frequency: String,
     price: String,
@@ -25,7 +28,10 @@ var activitySchema = new mongoose.Schema({
     },
     tags: String,
     status: { type: String, default: 'current' }, //Need to make this dynamic, but for testing needs a value of current for the seed data (all new activities are set to "review") //Options "current", "review", "removed"
-    age: String,
+    age: {
+        isChild: Boolean,
+        isAdult: Boolean
+    },
     location: String,
     lat: Number,
     lng: Number,

@@ -5,25 +5,25 @@ function mapKeyFilter(activities){
     
     var optionsArray = [
             {
-                checkboxId: '#allAgesCheck',
-                searchValue: 'All Ages'
-            },
-            {
                 checkboxId: '#adultsCheck',
-                searchValue: 'Adults'
+                searchValue: "isAdult"
             },
             {
                 checkboxId: '#childrenCheck',
-                searchValue: 'Children'
+                searchValue: "isChild"
             }
         ];
     
     for(var i=0; i<optionsArray.length; i++){
         if($(optionsArray[i].checkboxId).prop('checked')){
             activities.forEach(function(activity, index){
-                if(activity.age === optionsArray[i].searchValue){
-                    filteredActivitiesLocal.push(activity);
+                if(activity.age[optionsArray[i].searchValue] === true){
+                    //if activity is not already in array then push it into array
+                    if(!filteredActivitiesLocal.includes(activity)) {
+                        filteredActivitiesLocal.push(activity);
+                    }
                 }
+                
             });
         }
     }
@@ -109,24 +109,23 @@ function suitableFilter(activities){
     
     var optionsArray = [
             {
-                checkboxId: '#allAbilitiesCheck',
-                searchValue: 'All abilities'
-            },
-            {
                 checkboxId: '#learningDisabilitiesCheck',
-                searchValue: 'Learning disabilities'
+                searchValue: 'isLearning'
             },
             {
                 checkboxId: '#physicalDisabilitiesCheck',
-                searchValue: 'Physical disabilities'
+                searchValue: 'isPhysical'
             }
         ];
     
     for(var i=0; i<optionsArray.length; i++){
         if($(optionsArray[i].checkboxId).prop('checked')){
             activities.forEach(function(activity, index){
-                if(activity.suitable === optionsArray[i].searchValue){
-                    filteredActivitiesLocal.push(activity);
+                if(activity.suitable[optionsArray[i].searchValue] === true){
+                    //if activity is not already in array then push it into array
+                    if(!filteredActivitiesLocal.includes(activity)) {
+                        filteredActivitiesLocal.push(activity);
+                    }
                 }
             });
         }
