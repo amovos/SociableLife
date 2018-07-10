@@ -25,7 +25,7 @@ async function addActivities(activities) { //function used to add activities on 
     }
     
     
-    //order array here (currently just by date created) based on the value of the radio button order options
+    //order array here based on the value of the radio button order options
     if($('#orderLovesCheck').prop('checked')){
        activities = await orderActivitiesByLoves(activities);
     } else if($('#orderDistanceCheck').prop('checked')){
@@ -34,6 +34,11 @@ async function addActivities(activities) { //function used to add activities on 
         activities = await orderActivitiesByDateUpdated(activities);
     }
     
+    //once ordered set the window storage variable to filteredActivities so it can be used when moving to other activities
+    if (typeof(Storage) !== "undefined") {
+        //store the object in localStorage under filteredActivities
+        localStorage.setItem("filteredActivities", JSON.stringify(filteredActivities));
+    }
     
     activities.forEach(function(activity, index){
         if(index <= pageNumber * perPage - 1){

@@ -75,7 +75,7 @@ function initActivityIndexMap() {
     controlUI.appendChild(controlText);
     
     mapKeyDiv.index = 1;
-    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(mapKeyDiv);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(mapKeyDiv);
     
 }
 
@@ -235,7 +235,7 @@ function standardMarkerInfoWindow(currentActivity, marker){
                                 '</div>' +
                             '</div>' +
 
-                            '<a class="btn btn-primary btn-block mt-1" href="/activities/' + currentActivity._id + '">View Activity Page</a><br>' +
+                            '<a class="btn btn-primary btn-block mt-1 border" href="/activities/' + currentActivity._id + '">View Activity Page</a><br>' +
                             
                             '<hr class="mb-1 mt-0">' +
                             
@@ -275,6 +275,7 @@ function standardMarkerInfoWindow(currentActivity, marker){
                                     '<span class="fa-stack-1x text-white">' + (currentActivity.comments.length) + '</span>' +
                                 '</span>' +
                             '</div>' +
+                            '<hr style="height:3px;border:none;color:#333;background-color:#333;" />' +
                             
                         '</div>' +
                         '<div class="iw-bottom-gradient"></div>' +

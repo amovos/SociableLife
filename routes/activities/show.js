@@ -37,6 +37,8 @@ var showRoute = function(req, res){
         })
         .exec(function(err, foundActivity){ //inside the returned object "foundActivity" it will now contain actual comments and not just reference ids
         
+        
+        
         if(err || !foundActivity){
             req.flash("errorMessage", "Activity not found");
             res.redirect("/activities");

@@ -4,6 +4,17 @@
     <div class="d-flex justify-content-center">
         <!--<div class="col-lg-1"></div>-->
         <div class="col-lg-10 nopadding">
+            <div class="d-flex flex-row justify-content-between mb-2">
+                <div>
+                    <a href="javascript:history.back()" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to map</a>
+                </div>
+                
+                <div>
+                    <a id="previousActivityBtn" href="#" class="btn btn-success"><i class="fas fa-arrow-left"></i> Previous</a>
+                    <a id="nextActivityBtn" href="#" class="btn btn-success">Next <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
             <!-- INFO SECTION START -->
             <div class="card mb-3">
                 <img class="card-img-top activity-show-image" src="<%= activity.image %>" alt="<%= activity.name %>">
@@ -438,7 +449,7 @@
                             
                             
                             <% if(activity.linkStatus.isLinkBroken && activity.linkStatus.errorMessage === "404") { %>
-                                <div class="alert alert-warning mr-3" role="alert">
+                                <div class="alert alert-warning mr-2" role="alert">
                                     <i class="fa fa-exclamation-circle"></i> Oops! It looks like the website for this activity has moved...
                                     <br><br>
                                     The activity might still be running, they could have just moved the page. 
@@ -457,9 +468,9 @@
                                     
                                     <div class="flex-grow-1 nopadding">
                                         <% if(activity.website) { %>
-                                            <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Activity website</a>
+                                            <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Go to website</a>
                                         <% } else { %>
-                                            <a class="btn btn-secondary btn-block mb-2 disabled">Activity website</a>
+                                            <a class="btn btn-secondary btn-block mb-2 disabled">Go to website</a>
                                         <% } %>
                                     </div>
                                     
@@ -771,6 +782,48 @@
     <% } %>
     
 </script>
+
+
+<script>
+    //script to retrieve stored variables for search used for "Previous" and "Next" buttons
+    if(localStorage.getItem("filteredActivities")){
+        var filterActivities = JSON.parse(localStorage.getItem("filteredActivities"));
+        var indexValue = filterActivities.map(function(e) { return e._id; }).indexOf('<%= activity._id %>');
+        
+        setNavigationButtons(filterActivities, indexValue);
+        
+    } else {
+        //if nothing is stored in local storage then just get the full array from the API and use that
+        getAllActivities();
+    }
+    
+function setNavigationButtons(activities, indexValue) {
+    //set href of "Previous" button if it exists
+    if(activities[indexValue - 1]) {
+        $('#previousActivityBtn').attr("href", "/activities/" + activities[indexValue - 1]._id);
+    } else {
+        $('#previousActivityBtn').addClass("disabled");
+        $('#previousActivityBtn').hide();
+    }
+    
+    //set href of "Next" button if it exists
+    if(activities[indexValue + 1]) {
+        $('#nextActivityBtn').attr("href", "/activities/" + activities[indexValue + 1]._id);
+    } else {
+        $('#nextActivityBtn').addClass("disabled");
+        $('#nextActivityBtn').hide();
+    }
+}
+
+async function getAllActivities(){
+    var allActivities = await $.getJSON("/api/activities/");
+    var indexValue = allActivities.map(function(e) { return e._id; }).indexOf('<%= activity._id %>');
+    
+    setNavigationButtons(allActivities, indexValue);
+}
+
+</script>
+
 
 <!-- External Script File -->
 <script src="/js/activityShow.js"></script>
