@@ -6,7 +6,7 @@
         <div class="col-lg-10 nopadding">
             <div class="d-flex flex-row justify-content-between mb-2">
                 <div>
-                    <a href="javascript:history.back()" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to map</a>
+                    <a href="/activities" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to map</a>
                 </div>
                 
                 <div>
@@ -785,7 +785,7 @@
 
 
 <script>
-    //script to retrieve stored variables for search used for "Previous" and "Next" buttons
+//script to retrieve stored variables for search used for "Previous" and "Next" buttons
     if(localStorage.getItem("filteredActivities")){
         var filterActivities = JSON.parse(localStorage.getItem("filteredActivities"));
         var indexValue = filterActivities.map(function(e) { return e._id; }).indexOf('<%= activity._id %>');
@@ -818,7 +818,6 @@ function setNavigationButtons(activities, indexValue) {
 async function getAllActivities(){
     var allActivities = await $.getJSON("/api/activities/");
     var indexValue = allActivities.map(function(e) { return e._id; }).indexOf('<%= activity._id %>');
-    
     setNavigationButtons(allActivities, indexValue);
 }
 

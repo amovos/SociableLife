@@ -50,6 +50,33 @@ $(document).ready(function(){ //waits until the DOM has loaded
     //stops chaching of ajax requests so that the back button re-queries the database (as updates could have happened while they where away)
     $.ajaxSetup({ cache: false });
     
+    //if any filter queries are saved then populate the fields (stored in searchIndex.js activityFilter()
+    if(localStorage.getItem("activityFilterLocation")){
+        $('#setLocationInput').val(localStorage.getItem("activityFilterLocation"));
+    }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    // if(localStorage.getItem("")){
+    //     $('#').val(localStorage.getItem(""));
+    // }
+    
+    
     //on load search for activities
     //this is useful because if the page returns and repopulates existing content fields then it will re-run the search, which gives a better user experience
     initMasonry();

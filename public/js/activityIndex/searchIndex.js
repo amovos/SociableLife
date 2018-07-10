@@ -61,6 +61,24 @@ async function activityFilter(activities){
     //set the returned list of filtered activities to the global variable filteredActivities so it can be used later by other functions without filtering again
     filteredActivities = filteredActivitiesLocal;
     
+    //store filter variables in browser localStorage so that it will save them when returning
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("activityFilterLocation", $('#setLocationInput').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+        // localStorage.setItem("", $('#').val());
+    }
+    
     //return the list of filtered activities to be used by the next function in the promise chain
     return filteredActivitiesLocal;
 }
