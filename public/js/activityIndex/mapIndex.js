@@ -178,9 +178,9 @@ function removeDuplicateLocations(myArr, prop) {
 function standardMarkerCreate(currentActivity){
     //check age range of current activity and set marker color
     var image;
-    if(currentActivity.age === 'All Ages') {
+    if(currentActivity.age.isAdult && currentActivity.age.isChild) {
         image = {url: '/img/Brown.svg'};
-    } else if(currentActivity.age === 'Children') {
+    } else if(currentActivity.age.isChild) {
         image = {url: '/img/Aqua.svg'};
     } else {
         image = {url: '/img/Blue.svg'};

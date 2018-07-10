@@ -311,7 +311,8 @@ $('#moreFiltersBtn').on('click', function(){
 });
 
 //Ages checkboxes
-$('#allAgesCheck,#adultsCheck,#childrenCheck').on('click', async function(){
+$('#adultsCheck,#childrenCheck').on('click', async function(){
+
     //this if statement is a hack to get around the check boxes double flipping when it's clicked and then evaluated mapKeyFilter() function
     if($(this).prop('checked')) {
         $(this).prop('checked', false);

@@ -200,10 +200,7 @@ function mapKeyUpdateFunction(passedThis){
     //reset this global selector variable so the mapKeyClickFunction() works as expected
     mapKeySelectedVar = "";
     
-    if(passedThis.id === "allAgesCheck"){
-        selectedCheck = $("#allAgesCheck");
-        selectIconDiv = $("#allAgesKeyDiv");
-    } else if(passedThis.id === "adultsCheck"){
+    if(passedThis.id === "adultsCheck"){
         selectedCheck = $("#adultsCheck");
         selectIconDiv = $("#adultsKeyDiv");
     } else {
@@ -220,6 +217,14 @@ function mapKeyUpdateFunction(passedThis){
         selectIconDiv.css('opacity', '1');
         mapKeyOpacityVar = '1'; //sets the global variable mapKeyOpacityVar to be the new value after click, so the hover effect works as expected
     }
+    
+    //if neither adults or children are selected then "all ages" should also be grey
+    if(!($('#adultsCheck').prop('checked')) && !($('#childrenCheck').prop('checked')) ) {
+        $("#allAgesKeyDiv").css('opacity', '0.2');
+    } else {
+        $("#allAgesKeyDiv").css('opacity', '1');
+    }
+    
 }
 
 function mapKeyClickFunction(passedThis){
@@ -229,24 +234,10 @@ function mapKeyClickFunction(passedThis){
     //and set the global variable mapKeySelectedVar to be the clicked id
     //so that if the same one is clicked again, then it will show all
     if(passedThis.id === "allAgesKeyDiv"){
-        if(mapKeySelectedVar === "allAgesKeyDiv"){
-            //select all
-            mapKeyAllCheckedAndTrue();
-            
-            //clear global variable selector
-            mapKeySelectedVar = "";
-            
-        } else {
-            mapKeySelectedVar = "allAgesKeyDiv";
-            
-            $("#allAgesKeyDiv").css('opacity', '1');
-            $("#adultsKeyDiv").css('opacity', '0.2');
-            $("#childrenKeyDiv").css('opacity', '0.2');
-            
-            $("#allAgesCheck").prop('checked', true);
-            $("#adultsCheck").prop('checked', false);
-            $("#childrenCheck").prop('checked', false);
-        }
+    //select all and clear global variable selector
+    mapKeyAllCheckedAndTrue();
+    mapKeySelectedVar = "";
+
     } else if(passedThis.id === "adultsKeyDiv"){
         if(mapKeySelectedVar === "adultsKeyDiv"){
             //select all
@@ -260,11 +251,11 @@ function mapKeyClickFunction(passedThis){
             
             $("#adultsKeyDiv").css('opacity', '1');
             $("#childrenKeyDiv").css('opacity', '0.2');
-            $("#allAgesKeyDiv").css('opacity', '0.2');
+            $("#allAgesKeyDiv").css('opacity', '1');
             
             $("#adultsCheck").prop('checked', true);
             $("#childrenCheck").prop('checked', false);
-            $("#allAgesCheck").prop('checked', false);
+            $("#allAgesCheck").prop('checked', true);
         }
     } else {
         if(mapKeySelectedVar === "childrenKeyDiv"){
@@ -278,11 +269,11 @@ function mapKeyClickFunction(passedThis){
             mapKeySelectedVar = "childrenKeyDiv";
             
             $("#childrenKeyDiv").css('opacity', '1');
-            $("#allAgesKeyDiv").css('opacity', '0.2');
+            $("#allAgesKeyDiv").css('opacity', '1');
             $("#adultsKeyDiv").css('opacity', '0.2');
             
             $("#childrenCheck").prop('checked', true);
-            $("#allAgesCheck").prop('checked', false);
+            $("#allAgesCheck").prop('checked', true);
             $("#adultsCheck").prop('checked', false);
         }
     }
