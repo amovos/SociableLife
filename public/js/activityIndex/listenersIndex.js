@@ -69,13 +69,12 @@ $(document).ready(function(){ //waits until the DOM has loaded
     if(localStorage.getItem("activityFilterSuitableLearning")){ $('#learningDisabilitiesCheck').prop('checked', false); }
     if(localStorage.getItem("activityFilterSuitablePhysical")){ $('#physicalDisabilitiesCheck').prop('checked', false); }
     
-    
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
-    if(localStorage.getItem("")){ $('#').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeDaily")){ $('#dailyActivitiesCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeWeekly")){ $('#weeklyActivitiesCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeMonthly")){ $('#monthlyActivitiesCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeAnnual")){ $('#annualActivitiesCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeOneOff")){ $('#oneOffEventsCheck').prop('checked', false); }
+    if(localStorage.getItem("activityFilterTypeBookYourself")){ $('#bookYourselfCheck').prop('checked', false); }
 
     
     //on load search for activities

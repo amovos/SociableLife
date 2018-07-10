@@ -81,9 +81,12 @@ async function activityFilter(activities){
         if($('#learningDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitableLearning", ""); } else { localStorage.setItem("activityFilterSuitableLearning", "notChecked"); }
         if($('#physicalDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitablePhysical", ""); } else { localStorage.setItem("activityFilterSuitablePhysical", "notChecked"); }
         
-        // if($('#physicalDisabilitiesCheck').prop('checked')) { localStorage.setItem("activityFilterSuitablePhysical", "checked"); } else { localStorage.setItem("activityFilterSuitablePhysical", ""); }
-        
-
+        if($('#dailyActivitiesCheck').prop('checked')) { localStorage.setItem("activityFilterTypeDaily", ""); } else { localStorage.setItem("activityFilterTypeDaily", "notChecked"); }
+        if($('#weeklyActivitiesCheck').prop('checked')) { localStorage.setItem("activityFilterTypeWeekly", ""); } else { localStorage.setItem("activityFilterTypeWeekly", "notChecked"); }
+        if($('#monthlyActivitiesCheck').prop('checked')) { localStorage.setItem("activityFilterTypeMonthly", ""); } else { localStorage.setItem("activityFilterTypeMonthly", "notChecked"); }
+        if($('#annualActivitiesCheck').prop('checked')) { localStorage.setItem("activityFilterTypeAnnual", ""); } else { localStorage.setItem("activityFilterTypeAnnual", "notChecked"); }
+        if($('#oneOffEventsCheck').prop('checked')) { localStorage.setItem("activityFilterTypeOneOff", ""); } else { localStorage.setItem("activityFilterTypeOneOff", "notChecked"); }
+        if($('#bookYourselfCheck').prop('checked')) { localStorage.setItem("activityFilterTypeBookYourself", ""); } else { localStorage.setItem("activityFilterTypeBookYourself", "notChecked"); }
     }
     
     //return the list of filtered activities to be used by the next function in the promise chain
@@ -311,6 +314,9 @@ function resetSearch(){
     $('#reviewStatusCheck,#removedStatusCheck').prop('checked', false);
     //then reset all the button text
     $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckboxToggle').html('Clear All');
+    
+    //select "Updated Date" order by
+    $('#orderDateUpdatedCheck').prop('checked', true);
     
     //hide "Back to Top" button
     $('#backToTopBtn').hide();
