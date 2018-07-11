@@ -31,13 +31,31 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Ages *</label>
-                    <select id="age" class="form-control" name="activity[age]" required>
-                        <option disabled selected value> -- Select an option -- </option>
-                        <option value="All Ages" <% if(activity.age === "All Ages") { %>selected="selected" <% } %>>All Ages</option>
-                        <option value="Adults" <% if(activity.age === "Adults") { %>selected="selected" <% } %>>Adults</option>
-                        <option value="Children" <% if(activity.age === "Children") { %>selected="selected" <% } %>>Children</option>
-                    </select>
+                    <label for="">What ages are suitable for this activity? *</label>
+                    <label class="checkbox-container pr-0" for="isAdult">
+                        Adults
+                        <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activity.age.isAdult) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                    <label class="checkbox-container pr-0" for="isChild">
+                        Children
+                        <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activity.age.isChild) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">What abilities are suitable for this activity? *</label>
+                    <label class="checkbox-container pr-0" for="isPhysical">
+                        Physical Disabilities
+                        <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activity.suitable.isPhysical) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                    <label class="checkbox-container pr-0" for="isLearning">
+                        Learning Disabilities
+                        <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activity.suitable.isLearning) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
                 </div>
                 
                 <div class="form-group">
@@ -61,6 +79,21 @@
                         <option value="One-Off Activities" <% if(activity.frequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities</option>
                         <option value="Book Yourself" <% if(activity.frequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself</option>
                     </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="website">Activity Website (optional)</label>
+                    <input class="form-control" type="text" name="activity[website]" id="website" placeholder="" value="<%= activity.website %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="facebook">Activity Facebook (optional)</label>
+                    <input class="form-control" type="text" name="activity[facebook]" id="facebook" placeholder="" value="<%= activity.facebook %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="twitter">Activity Twitter (optional)</label>
+                    <input class="form-control" type="text" name="activity[twitter]" id="twitter" placeholder="" value="<%= activity.twitter %>">
                 </div>
                 
                 <div class="form-group">

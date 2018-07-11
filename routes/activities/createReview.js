@@ -20,12 +20,11 @@ var createRoute = async function(req, res){
     if (!(/\S/.test(req.body.price)))           {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Cost can't be empty"})}
     
     //check optional inputs for whitespace
-    if(req.body.contactEmail) {
-        if (!(/\S/.test(req.body.contactEmail)))    {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Email can't be just spaces"})}
-    }
-    if(req.body.contactNum) {
-        if (!(/\S/.test(req.body.contactNum)))      {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Number can't be just spaces"})}
-    }
+    if(req.body.contactEmail)   { if (!(/\S/.test(req.body.contactEmail)))  {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Email can't be just spaces"})}}
+    if(req.body.contactNum)     { if (!(/\S/.test(req.body.contactNum)))    {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Number can't be just spaces"})}}
+    if(req.body.website)        { if (!(/\S/.test(req.body.website)))       {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Website can't be just spaces"})}}
+    if(req.body.facebook)       { if (!(/\S/.test(req.body.facebook)))      {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Facebook can't be just spaces"})}}
+    if(req.body.twitter)        { if (!(/\S/.test(req.body.twitter)))       {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Twitter can't be just spaces"})}}
 
     // CHECK FOR LENGTH OF INPUTS
     if(req.body.name.length         > 100)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Name is too long (" + req.body.name.length + "/100 characters)"})}
@@ -36,11 +35,22 @@ var createRoute = async function(req, res){
     if(req.body.price.length        > 300)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Cost is too long (" + req.body.price.length + "/300 characters)"})}
 
     //check optional inputs for lengths
-    if(req.body.contactEmail) {
-        if(req.body.contactEmail.length > 300)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Email is too long (" + req.body.contactEmail.length + "/300 characters)"})}
+    if(req.body.contactEmail) { if(req.body.contactEmail.length > 300)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Email is too long (" + req.body.contactEmail.length + "/300 characters)"})}}
+    if(req.body.contactNum) {   if(req.body.contactNum.length > 50)     {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Number is too long (" + req.body.contactNum.length + "/50 characters)"})}}
+    if(req.body.website) {      if(req.body.website.length > 2000)      {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Website Address is too long (" + req.body.website.length + "/2000 characters)"})}}
+    if(req.body.facebook) {     if(req.body.facebook.length > 2000)     {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Facebook Address is too long (" + req.body.facebook.length + "/2000 characters)"})}}
+    if(req.body.twitter) {      if(req.body.twitter.length > 2000)      {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Twitter Address is too long (" + req.body.twitter.length + "/2000 characters)"})}}
+    
+    //check if neither age box has been checked
+    if(req.body.isAdult === "false" && req.body.isChild === "false") {
+        errorFlag = true; 
+        return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Please select ages for this activity"});
     }
-    if(req.body.contactNum) {
-        if(req.body.contactNum.length > 50)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Contact Number is too long (" + req.body.contactNum.length + "/50 characters)"})}
+    
+    //check if neither suitable box has been checked
+    if(req.body.isPhysical === "false" && req.body.isLearning === "false") {
+        errorFlag = true; 
+        return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Please select suitable abilities for this activity"});
     }
 
 
@@ -55,9 +65,23 @@ var createRoute = async function(req, res){
         }
     });
     
+    
+    var formattedWebsite;
+    var formattedFacebook;
+    var formattedTwitter;
+    //sanitize protocol from links if given (so that it works with the <a> tag as a link)
+    if(req.body.website){   formattedWebsite = req.body.website.replace(/^https?\:\/\/|\/$/, "") }
+    if(req.body.facebook){  formattedFacebook = req.body.facebook.replace(/^https?\:\/\/|\/$/, "") }
+    if(req.body.twitter){   formattedTwitter = req.body.twitter.replace(/^https?\:\/\/|\/$/, "") }
+    
     //If no error then send success response
     if (!errorFlag) { 
-        return res.send({type: "success", location: formattedLocation});
+        return res.send({   type: "success", 
+                            location: formattedLocation,
+                            website: formattedWebsite,
+                            facebook: formattedFacebook,
+                            twitter: formattedTwitter
+        });
     }
     
     //Don't actually create the activity yet, just run all the checks

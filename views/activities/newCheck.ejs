@@ -134,16 +134,17 @@
                 statusIcon = statusIconRemoved;
             }
         
-            activityList += '<div class="d-flex flex-row justify-content-between card mb-2 card-grey">' +
-                                '<div class="card-body">' +
+            activityList += '<div class="d-flex flex-column justify-content-between card mb-2 card-grey">' +
+                                '<div class="card-body pb-0">' +
                                     statusIcon + '<a class="card-title" href="/activities/' + activity._id + '"> ' + activity.name + '</a>' +
                                     '<p class="card-text">' + activity.summary + '</p>' +
-                                '</div>' +                              
-                                '<div class="d-flex flex-row justify-content-end align-items-end card-body">' +
-                                    '<a  class="btn btn-small btn-primary"' +
+                                '</div>' + 
+                                '<div class="d-flex flex-row justify-content-between align-items-start card-body">' +
+                                    '<span><strong class="mr-1">Location: </strong>' + activity.location + '</span>' +
+                                    '<span class="d-flex flex-row justify-content-center"><a  class="btn btn-small btn-primary ml-2"' +
                                         'href="/activities/' + activity._id + '">' +
                                         'Update' +
-                                    '</a>' +
+                                    '</a></span>' +
                                 '</div>' +
                             '</div>'
         });

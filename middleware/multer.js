@@ -23,7 +23,7 @@ var imageFilter = function (req, file, callback) {
 
 var upload = multer({
     storage: storage,
-    limits: { fileSize: 5242880 }, //5MB (error handled in app.js)
+    limits: { fileSize: 10485760 }, //10MB (error handled in app.js)
     fileFilter: imageFilter
 });
 

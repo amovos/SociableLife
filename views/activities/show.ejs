@@ -441,17 +441,23 @@
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2 mb-2">
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Who to contact</h4>
-                                    <% if(activity.owner) { %>
-                                        <a href="/users/<%= activity.owner._id %>"><%= activity.owner.displayName %></a>
+                                    <% if(activity.owner.length > 0) { %>
+                                        <% activity.owner.forEach(function(owner){ %>
+                                            <a href="/users/<%= owner._id %>">
+                                                <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= owner.avatar.slice(46) %>" alt="Owner avatar">
+                                                <%= owner.displayName %>
+                                            </a>
+                                            <br>
+                                        <% }); %>
                                     <% } %>
                                     <% if(activity.contactEmail || activity.contactNum) { %>
-                                        <p class="mr-3">
+                                        <p class="mr-3 mt-1">
                                             <% if(activity.contactNum) { %>
-                                                Telephone: <%= activity.contactNum %>
+                                                <strong>Telephone: </strong><%= activity.contactNum %>
                                                 <br>
                                             <% } %>
                                             <% if(activity.contactEmail) { %>
-                                                Email: <a href="mailto:<%= activity.contactEmail %>asd"><%= activity.contactEmail %></a>
+                                                <strong>Email: </strong><a href="mailto:<%= activity.contactEmail %>asd"><%= activity.contactEmail %></a>
                                             <% } %>
                                         </p>
                                     <% } else { %>
@@ -485,7 +491,7 @@
                                     
                                     <div class="flex-grow-1 nopadding">
                                         <% if(activity.website) { %>
-                                            <a class="btn btn-primary btn-block mb-2" href="<%= activity.website %>">Go to website</a>
+                                            <a class="btn btn-primary btn-block mb-2" href="http://<%= activity.website %>">Go to website</a>
                                         <% } else { %>
                                             <a class="btn btn-secondary btn-block mb-2 disabled">Go to website</a>
                                         <% } %>
@@ -494,14 +500,14 @@
                                     <div class="d-flex flex-row justify-content-center flex-grow-1">
                                         <div class="nopadding">
                                             <% if(activity.twitter) { %>
-                                                <a class="mb-2 mr-2" href="<%= activity.twitter %>"><i class="fab fa-twitter fa-2x fa-fw" title="Activity Twitter Link"></i></a>
+                                                <a class="mb-2 mr-2" href="http://<%= activity.twitter %>"><i class="fab fa-twitter fa-2x fa-fw" title="Activity Twitter Link"></i></a>
                                             <% } else { %>
                                                 <a class="mb-2 mr-2 disabled text-secondary"><i class="fab fa-twitter fa-2x fa-fw" title="Activity Twitter Link"></i></a>
                                             <% } %>
                                         </div>
                                         <div class="nopadding">
                                             <% if(activity.facebook) { %>
-                                                <a class="mb-2 ml-2" href="<%= activity.facebook %>"><i class="fab fa-facebook-square fa-2x fa-fw" title="Activity Facebook Link"></i></a>
+                                                <a class="mb-2 ml-2" href="http://<%= activity.facebook %>"><i class="fab fa-facebook-square fa-2x fa-fw" title="Activity Facebook Link"></i></a>
                                             <% } else { %>
                                                 <a class="mb-2 ml-2 disabled text-secondary"><i class="fab fa-facebook-square fa-2x fa-fw" title="Activity Facebook Link"></i></a>
                                             <% } %>

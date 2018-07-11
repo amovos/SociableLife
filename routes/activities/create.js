@@ -93,7 +93,6 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     if (!(/\S/.test(req.body.activity.summary)))        {req.fileValidationError = "Summary can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if (!(/\S/.test(req.body.activity.description)))    {req.fileValidationError = "Description can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if (!(/\S/.test(req.body.activity.location)))       {req.fileValidationError = "Location can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    if (!(/\S/.test(req.body.activity.age)))            {req.fileValidationError = "Age can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if (!(/\S/.test(req.body.activity.when)))           {req.fileValidationError = "When can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if (!(/\S/.test(req.body.activity.price)))          {req.fileValidationError = "Cost can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if (!(/\S/.test(req.body.activity.frequency)))      {req.fileValidationError = "Type can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
@@ -111,7 +110,6 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     if(req.body.activity.summary.length      > 300)     {req.fileValidationError = "Summary is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if(req.body.activity.description.length  > 2000)    {req.fileValidationError = "Description is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if(req.body.activity.location.length     > 300)     {req.fileValidationError = "Location is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    if(req.body.activity.age.length          > 10)      {req.fileValidationError = "Age is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if(req.body.activity.when.length         > 300)     {req.fileValidationError = "When is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if(req.body.activity.price.length        > 300)     {req.fileValidationError = "Price is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     if(req.body.activity.frequency.length    > 50)      {req.fileValidationError = "Type is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
@@ -122,6 +120,16 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     }
     if(req.body.activity.contactNum) {
         if(req.body.activity.contactNum.length > 50)    {req.fileValidationError = "Contact Number is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
+    
+    //check if neither age box has been checked
+    if(!req.body.activity.isAdult && !req.body.activity.isChild) {
+        {req.fileValidationError = "No age selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
+    }
+    
+    //check if neither suitable box has been checked
+    if(!req.body.activity.isPhysical && !req.body.activity.isLearning) {
+        {req.fileValidationError = "No ability selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     }
 
     // SET AUTHOR
@@ -138,16 +146,6 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         });
     }
     
-    // SET OWNER (if that was ticked on the form)
-    if(req.body.activity.isOwner) {
-        var ownerArray = [];
-        
-        
-        //create the first update request
-        //then push it into the ownerArray and save that array to req.body.activity.owner
-    }
-    
-    
     // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
     req.body.activity.status = "review";
     
@@ -158,6 +156,27 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
         if(err){
             genericErrorResponse(req, res, err);
         } else {
+            
+            // SET AGES
+            if(req.body.activity.isAdult) { newlyCreatedActivity.age.isAdult = true; } else { newlyCreatedActivity.age.isAdult = false; }
+            if(req.body.activity.isChild) { newlyCreatedActivity.age.isChild = true; } else { newlyCreatedActivity.age.isChild = false; }
+            
+            // SET SUITABLE
+            if(req.body.activity.isPhysical) { newlyCreatedActivity.suitable.isPhysical = true; } else { newlyCreatedActivity.suitable.isPhysical = false; }
+            if(req.body.activity.isLearning) { newlyCreatedActivity.suitable.isLearning = true; } else { newlyCreatedActivity.suitable.isLearning = false; }
+            
+            // SET OWNER (if that was ticked on the form)
+            if(req.user && req.body.activity.isOwner) {
+                newlyCreatedActivity.owner.push(req.user._id);
+                await newlyCreatedActivity.save();
+            }
+            
+            //sanitize protocol from links if given (so that it works with the <a> tag as a link)
+            if(req.body.activity.website){   newlyCreatedActivity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") }
+            if(req.body.activity.facebook){  newlyCreatedActivity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") }
+            if(req.body.activity.twitter){   newlyCreatedActivity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") }
+            await newlyCreatedActivity.save();
+            
             //add first update history log
             var updateLog = {};
             updateLog.author = req.body.activity.author;

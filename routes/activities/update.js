@@ -22,7 +22,6 @@ var updateRoute = function(req, res){
             if (!(/\S/.test(req.body.activity.summary)))        {req.flash("errorMessage", "Activity summary can't be empty"); return res.redirect("back")}
             if (!(/\S/.test(req.body.activity.description)))    {req.flash("errorMessage", "Activity description can't be empty"); return res.redirect("back")}
             if (!(/\S/.test(req.body.activity.location)))       {req.flash("errorMessage", "Activity location can't be empty"); return res.redirect("back")}
-            if (!(/\S/.test(req.body.activity.age)))            {req.flash("errorMessage", "Activity Age can't be empty"); return res.redirect("back")}
             if (!(/\S/.test(req.body.activity.when)))           {req.flash("errorMessage", "Activity When can't be empty"); return res.redirect("back")}
             if (!(/\S/.test(req.body.activity.price)))          {req.flash("errorMessage", "Activity Cost can't be empty"); return res.redirect("back")}
             if (!(/\S/.test(req.body.activity.frequency)))      {req.flash("errorMessage", "Activity Type can't be empty"); return res.redirect("back")}
@@ -40,7 +39,6 @@ var updateRoute = function(req, res){
             if(req.body.activity.summary.length      > 300)     {req.flash("errorMessage", "Summary is too long"); return res.redirect("back")}
             if(req.body.activity.description.length  > 2000)    {req.flash("errorMessage", "Description is too long"); return res.redirect("back")}
             if(req.body.activity.location.length     > 300)     {req.flash("errorMessage", "Location is too long"); return res.redirect("back")}
-            if(req.body.activity.age.length          > 10)      {req.flash("errorMessage", "Age is too long"); return res.redirect("back")}
             if(req.body.activity.when.length         > 300)     {req.flash("errorMessage", "When is too long"); return res.redirect("back")}
             if(req.body.activity.price.length        > 300)     {req.flash("errorMessage", "Cost is too long"); return res.redirect("back")}
             if(req.body.activity.frequency.length    > 50)      {req.flash("errorMessage", "Type is too long"); return res.redirect("back")}
@@ -51,6 +49,16 @@ var updateRoute = function(req, res){
             }
             if(req.body.activity.contactNum) {
                 if(req.body.activity.contactNum.length > 50)    {req.flash("errorMessage", "Contact Number is too long"); return res.redirect("back")}
+            }
+            
+            //check if neither age box has been checked
+            if(!req.body.activity.isAdult && !req.body.activity.isChild) {
+                {req.flash("errorMessage", "No age selected"); return res.redirect("back")}
+            }
+            
+            //check if neither suitable box has been checked
+            if(!req.body.activity.isPhysical && !req.body.activity.isLearning) {
+                {req.flash("errorMessage", "No ability selected"); return res.redirect("back")}
             }
 
             // GEOCODER 
@@ -72,12 +80,20 @@ var updateRoute = function(req, res){
             activity.name = req.body.activity.name;
             activity.summary = req.body.activity.summary;
             activity.description = req.body.activity.description;
-            activity.age = req.body.activity.age;
+            if(req.body.activity.isAdult) { activity.age.isAdult = true; } else { activity.age.isAdult = false; }
+            if(req.body.activity.isChild) { activity.age.isChild = true; } else { activity.age.isChild = false; }
+            if(req.body.activity.isPhysical) { activity.suitable.isPhysical = true; } else { activity.suitable.isPhysical = false; }
+            if(req.body.activity.isLearning) { activity.suitable.isLearning = true; } else { activity.suitable.isLearning = false; }
             activity.when = req.body.activity.when;
             activity.price = req.body.activity.price;
             activity.frequency = req.body.activity.frequency;
             activity.contactEmail = req.body.activity.contactEmail;
             activity.contactNum = req.body.activity.contactNum;
+            
+            //sanitize protocol from links if given (so that it works with the <a> tag as a link)
+            if(req.body.activity.website){   activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") } else { activity.website = '' }
+            if(req.body.activity.facebook){  activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") } else { activity.facebook = '' }
+            if(req.body.activity.twitter){   activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") } else { activity.twitter = '' }
             
             //create new update history log
             var updateLog = {};

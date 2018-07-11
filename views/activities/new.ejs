@@ -52,13 +52,31 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Ages *</label>
-                    <select id="age" class="form-control" name="activity[age]" required>
-                        <option disabled selected value> -- Select an option -- </option>
-                        <option value="All Ages" <% if(activityAge === "All Ages") { %>selected="selected" <% } %>>All Ages</option>
-                        <option value="Adults" <% if(activityAge === "Adults") { %>selected="selected" <% } %>>Adults</option>
-                        <option value="Children" <% if(activityAge === "Children") { %>selected="selected" <% } %>>Children</option>
-                    </select>
+                    <label for="">What ages are suitable for this activity? *</label>
+                    <label class="checkbox-container pr-0" for="isAdult">
+                        Adults
+                        <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activityIsAdult) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                    <label class="checkbox-container pr-0" for="isChild">
+                        Children
+                        <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activityIsChild) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">What abilities are suitable for this activity? *</label>
+                    <label class="checkbox-container pr-0" for="isPhysical">
+                        Physical Disabilities
+                        <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activityIsPhysical) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
+                    <label class="checkbox-container pr-0" for="isLearning">
+                        Learning Disabilities
+                        <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activityIsLearning) { %>checked<% } %>/>
+                        <span class="checkmark border mt-0"></span>
+                    </label>
                 </div>
                 
                 <div class="form-group">
@@ -85,12 +103,27 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="contactEmail">Contact Email (optional)</label>
+                    <label for="website">Activity Website (optional)</label>
+                    <input class="form-control" type="text" name="activity[website]" id="website" placeholder="" value="<%= activityWebsite %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="facebook">Activity Facebook (optional)</label>
+                    <input class="form-control" type="text" name="activity[facebook]" id="facebook" placeholder="" value="<%= activityFacebook %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="twitter">Activity Twitter (optional)</label>
+                    <input class="form-control" type="text" name="activity[twitter]" id="twitter" placeholder="" value="<%= activityTwitter %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Activity Contact Email (optional)</label>
                     <input class="form-control" type="email" name="activity[contactEmail]" id="contactEmail" placeholder="" value="<%= activityContactEmail %>">
                 </div>
                 
                 <div class="form-group">
-                    <label for="contactNum">Contact Number (optional)</label>
+                    <label for="contactNum">Activity Contact Number (optional)</label>
                     <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="" value="<%= activityContactNum %>">
                 </div>
                 
@@ -103,7 +136,7 @@
                                     <br>
                                     If you tick this box then your profile will show as one of the "owners" of this activity.
                                     <input class="checkbox-input" id="isOwner" type="checkbox" name="activity[isOwner]" <% if(activityIsOwner) { %>checked<% } %>/>
-                                    <span class="checkmark border mt-1"></span>
+                                    <span class="checkmark border mt-0"></span>
                                 </label>
                             </div>
                         </div>
@@ -159,21 +192,28 @@
                                         summary: $('#summary').val(), 
                                         location: $('#location').val(), 
                                         description: $('#description').val(),
-                                        age: $('#age').val(),
+                                        isAdult: $('#isAdult').is(':checked'),
+                                        isChild: $('#isChild').is(':checked'),
+                                        isPhysical: $('#isPhysical').is(':checked'),
+                                        isLearning: $('#isLearning').is(':checked'),
                                         when: $('#when').val(),
                                         price: $('#price').val(),
                                         frequency: $('#frequency').val(),
                                         contactEmail: $('#contactEmail').val(),
-                                        contactNum: $('#contactNum').val()
+                                        contactNum: $('#contactNum').val(),
+                                        website: $('#website').val(),
+                                        facebook: $('#facebook').val(),
+                                        twitter: $('#twitter').val()
                                     } 
                             );
                             
         /* Process returned result */
         posting.done(function( data ) {
             //if a location has been returned then update the location field
-            if(data.location) {
-                $('#location').val(data.location);
-            }
+            if(data.location) { $('#location').val(data.location) }
+            if(data.website) { $('#website').val(data.website) }
+            if(data.facebook) { $('#facebook').val(data.facebook) }
+            if(data.twitter) { $('#twitter').val(data.twitter) }
             
             if(data.type === "error") {
                 //show error message box with error message

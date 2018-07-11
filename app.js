@@ -140,7 +140,7 @@ app.use(function (err, req, res, next) {
             req.fileValidationError = "Sorry, that file is too big (5MB limit)";
             return res.render("activities/newReview", require("./routes/activities/activityCreateObject")(req, res));
         } else {
-            req.flash("errorMessage", "Sorry, that file is too big (5MB limit)");
+            req.flash("errorMessage", "Sorry, that file is too big (10MB limit)");
             return res.redirect("back");  
         }
     }

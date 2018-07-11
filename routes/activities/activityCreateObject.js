@@ -11,12 +11,18 @@ function activityCreateObject(req, res) {
     var location;
     var description;
     var image;
-    var age;
+    var isAdult;
+    var isChild;
+    var isPhysical;
+    var isLearning;
     var when;
     var price;
     var frequency;
     var contactEmail;
     var contactNum;
+    var website;
+    var facebook;
+    var twitter;
     
     var isOwner;
     
@@ -31,12 +37,18 @@ function activityCreateObject(req, res) {
         summary = req.body.activity.summary;
         location = req.body.activity.location;
         description = req.body.activity.description;
-        age = req.body.activity.age;
+        isAdult = req.body.activity.isAdult;
+        isChild = req.body.activity.isChild;
+        isPhysical = req.body.activity.isPhysical;
+        isLearning = req.body.activity.isLearning;
         when = req.body.activity.when;
         price = req.body.activity.price;
         frequency = req.body.activity.frequency;
         contactEmail = req.body.activity.contactEmail;
         contactNum = req.body.activity.contactNum;
+        website = req.body.activity.website;
+        facebook = req.body.activity.facebook;
+        twitter = req.body.activity.twitter;
         
         isOwner = req.body.activity.isOwner;
     }
@@ -48,12 +60,18 @@ function activityCreateObject(req, res) {
         activityLocation: location,
         activityDescription: description,
         activityImage: image,
-        activityAge: age,
+        activityIsAdult: isAdult,
+        activityIsChild: isChild,
+        activityIsPhysical: isPhysical,
+        activityIsLearning: isLearning,
         activityWhen: when,
         activityPrice: price,
         activityFrequency: frequency,
         activityContactEmail: contactEmail,
         activityContactNum: contactNum,
+        activityWebsite: website,
+        activityFacebook: facebook,
+        activityTwitter: twitter,
         activityIsOwner: isOwner,
         fileValidationError: req.fileValidationError
     };

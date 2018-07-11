@@ -22,7 +22,7 @@ var updateUserRoute = async function(req, res){
     
     //sanitize protocol from contact website if given (so that it works with the <a> tag as a link)
     if(req.body.contactWebsite){
-        req.body.contactWebsite = req.body.contactWebsite.replace(/^https?\:\/\//i, "");
+        req.body.contactWebsite = req.body.contactWebsite.replace(/^https?\:\/\/|\/$/, "");
     }
     
     //Find user to see what needs updating

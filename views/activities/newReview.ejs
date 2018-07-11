@@ -37,7 +37,16 @@
                     <textarea class="form-control" rows="6" name="activity[description]" id="description" required hidden><%= activityDescription %></textarea>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="activity[age]" id="age" value="<%= activityAge %>" required hidden>
+                    <input class="form-control" type="checkbox" name="activity[isAdult]" id="isAdult" <% if(activityIsAdult) { %>checked<% } %> hidden/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" name="activity[isChild]" id="isChild" <% if(activityIsChild) { %>checked<% } %> hidden/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" name="activity[isPhysical]" id="isPhysical" <% if(activityIsPhysical) { %>checked<% } %> hidden/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" name="activity[isLearning]" id="isLearning" <% if(activityIsLearning) { %>checked<% } %> hidden/>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="activity[when]" id="when" value="<%= activityWhen %>" required hidden>
@@ -47,6 +56,15 @@
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="activity[frequency]" id="frequency" value="<%= activityFrequency %>" required hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[website]" id="website" value="<%= activityWebsite %>" hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[facebook]" id="facebook" value="<%= activityFacebook %>" hidden>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[twitter]" id="twitter" value="<%= activityTwitter %>" hidden>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="activity[contactEmail]" id="contactEmail" value="<%= activityContactEmail %>" hidden>
@@ -76,7 +94,27 @@
                     <p><%= activityLocation %></p>
                     
                     <h5>Ages</h5>
-                    <p><%= activityAge %></p>
+                    <p>
+                        <% if(activityIsAdult && activityIsChild) { %>
+                            All Ages
+                        <% } else if(activityIsAdult) { %>
+                            Adults
+                        <% } else if(activityIsChild) { %>
+                            Children
+                        <% } %>
+                    </p>
+                    
+                    <h5>Suitable for</h5>
+                    <p>
+                        <% if(activityIsPhysical && activityIsLearning) { %>
+                            All Abilities
+                        <% } else if(activityIsPhysical) { %>
+                            Physical Disabilities
+                        <% } else if(activityIsLearning) { %>
+                            Learning Disabilities
+                        <% } %>
+                    </p>
+                    
                     
                     <h5>When</h5>
                     <p><%= activityWhen %></p>
@@ -88,16 +126,32 @@
                     <p><%= activityFrequency %></p>
                     
                     <% if(currentUser && activityIsOwner) { %>
-                        <strong>Owner: </strong>You help to run or organise this activity
+                        <h5>Owner</h5>
+                        <p>You help to run or organise this activity</p>
+                    <% } %>
+                    
+                    <% if(activityWebsite) { %>
+                        <h5>Activity Website</h5>
+                        <p><%= activityWebsite %></p>
+                    <% } %>
+                    
+                    <% if(activityFacebook) { %>
+                        <h5>Activity Facebook</h5>
+                        <p><%= activityFacebook %></p>
+                    <% } %>
+                    
+                    <% if(activityTwitter) { %>
+                        <h5>Activity Twitter</h5>
+                        <p><%= activityTwitter %></p>
                     <% } %>
                     
                     <% if(activityContactEmail) { %>
-                        <h5>Contact Email</h5>
+                        <h5>Activity Contact Email</h5>
                         <p><%= activityContactEmail %></p>
                     <% } %>
                     
                     <% if(activityContactNum) { %>
-                        <h5>Contact Number</h5>
+                        <h5>Activity Contact Number</h5>
                         <p><%= activityContactNum %></p>
                     <% } %>
                     
@@ -114,7 +168,7 @@
                     <label for="imageUpload"><h5>Add an Image</h5></label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
-                        <label class="custom-file-label" for="imageUpload">Choose file</label>
+                        <label class="custom-file-label" for="imageUpload">Choose file (10MB limit)</label>
                     </div>
                     <h6 class="mt-2">Ativities look much more interesting when they have a picture, if you don't have one of your own you can get free pictures from <a href="https://unsplash.com" target="_blank">Unsplash</a>. (It's like google images for free pictures!)</h6>
                 </div>
