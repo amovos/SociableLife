@@ -18,25 +18,24 @@ var activityCreateObject = require("./activityCreateObject");
 var req;
 var res;
 
-var createRoute = async function(localReq, localRes){ //REST convention to use the same route name but as a post to submit 
+var createRoute = async function(localReq, localRes){
     
     req = localReq;
     res = localRes;
     
+    //all these functions will run in parallel but the .then(createActivity) won't run until they have all completed
     Promise.all([
-                multerErrorCheck(), 
-                captchaCheck(), 
-                cloudinaryUpload(),
-                geocodeLocation(),
-                additionalChecks(),
-                setValues(),
-                createFirstUpdateHistoryLog(),
-                createFirstUpdateRequest(),
-                addFirstCommentAndLove()
+                    multerErrorCheck(), 
+                    captchaCheck(), 
+                    cloudinaryUpload(),
+                    geocodeLocation(),
+                    additionalChecks(),
+                    setValues(),
+                    createFirstUpdateHistoryLog(),
+                    createFirstUpdateRequest(),
+                    addFirstCommentAndLove()
                 ])
-    .then(function(values) {
-        createActivity();
-    });
+    .then(createActivity);
     
 };
   
@@ -265,7 +264,7 @@ async function createFirstUpdateRequest() {
     }
     
     var firstUpdateRequest = {
-        text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy?",
+        text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy? Things to check are: 1) It looks legitimate, 2) Does the website work? 3)...",
         author: firstUpdateRequestAuthor
     };
     
