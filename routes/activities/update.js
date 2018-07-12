@@ -27,12 +27,12 @@ var updateRoute = function(req, res){
             if (!(/\S/.test(req.body.activity.frequency)))      {req.flash("errorMessage", "Activity Type can't be empty"); return res.redirect("back")}
             
             //check optional inputs are not just whitespace
-            if(req.body.activity.contactEmail) {
-                if (!(/\S/.test(req.body.activity.contactEmail)))   {req.flash("errorMessage", "Contact Email can't be just white space"); return res.redirect("back")}
-            }
-            if(req.body.activity.contactNum) {
-                if (!(/\S/.test(req.body.activity.contactNum)))     {req.flash("errorMessage", "Contact Number can't be just white space"); return res.redirect("back")}
-            }
+            if(req.body.activity.contactEmail) {    if (!(/\S/.test(req.body.activity.contactEmail)))   {req.flash("errorMessage", "Contact Email can't be just white space"); return res.redirect("back")}}
+            if(req.body.activity.contactNum) {      if (!(/\S/.test(req.body.activity.contactNum)))     {req.flash("errorMessage", "Contact Number can't be just white space"); return res.redirect("back")}}
+            if(req.body.activity.website) {         if (!(/\S/.test(req.body.activity.website)))        {req.flash("errorMessage", "Website address can't be just white space"); return res.redirect("back")}}
+            if(req.body.activity.facebook) {        if (!(/\S/.test(req.body.activity.facebook)))       {req.flash("errorMessage", "Facebook address can't be just white space"); return res.redirect("back")}}
+            if(req.body.activity.twitter) {         if (!(/\S/.test(req.body.activity.twitter)))        {req.flash("errorMessage", "Twitter address can't be just white space"); return res.redirect("back")}}
+            if(req.body.activity.videoUrl) {        if (!(/\S/.test(req.body.activity.videoUrl)))       {req.flash("errorMessage", "Video address can't be just white space"); return res.redirect("back")}}
 
             // CHECK FOR LENGTH OF INPUTS
             if(req.body.activity.name.length         > 100)     {req.flash("errorMessage", "Activity Name is too long"); return res.redirect("back")}
@@ -44,22 +44,20 @@ var updateRoute = function(req, res){
             if(req.body.activity.frequency.length    > 50)      {req.flash("errorMessage", "Type is too long"); return res.redirect("back")}
             
             //check optional inputs lengths
-            if(req.body.activity.contactEmail) {
-                if(req.body.activity.contactEmail.length > 300) {req.flash("errorMessage", "Contact Email is too long"); return res.redirect("back")}
-            }
-            if(req.body.activity.contactNum) {
-                if(req.body.activity.contactNum.length > 50)    {req.flash("errorMessage", "Contact Number is too long"); return res.redirect("back")}
-            }
+            if(req.body.activity.contactEmail)  { if(req.body.activity.contactEmail.length > 300) {req.flash("errorMessage", "Contact Email is too long"); return res.redirect("back")}}
+            if(req.body.activity.contactNum)    { if(req.body.activity.contactNum.length > 50)    {req.flash("errorMessage", "Contact Number is too long"); return res.redirect("back")}}
+            if(req.body.activity.website)       { if(req.body.activity.website.length > 2000)     {req.flash("errorMessage", "Website address is too long"); return res.redirect("back")}}
+            if(req.body.activity.facebook)      { if(req.body.activity.facebook.length > 2000)    {req.flash("errorMessage", "Facebook address is too long"); return res.redirect("back")}}
+            if(req.body.activity.twitter)       { if(req.body.activity.twitter.length > 2000)     {req.flash("errorMessage", "Twitter address is too long"); return res.redirect("back")}}
+            if(req.body.activity.videoUrl)      { if(req.body.activity.videoUrl.length > 2000)    {req.flash("errorMessage", "Video address is too long"); return res.redirect("back")}}
+            
             
             //check if neither age box has been checked
-            if(!req.body.activity.isAdult && !req.body.activity.isChild) {
-                {req.flash("errorMessage", "No age selected"); return res.redirect("back")}
-            }
+            if(!req.body.activity.isAdult && !req.body.activity.isChild) { {req.flash("errorMessage", "No age selected"); return res.redirect("back")}}
             
             //check if neither suitable box has been checked
-            if(!req.body.activity.isPhysical && !req.body.activity.isLearning) {
-                {req.flash("errorMessage", "No ability selected"); return res.redirect("back")}
-            }
+            if(!req.body.activity.isPhysical && !req.body.activity.isLearning) { {req.flash("errorMessage", "No ability selected"); return res.redirect("back")}}
+
 
             // GEOCODER 
             // check if location info has changed otherwise don't re-geocode and charge for it
@@ -90,10 +88,16 @@ var updateRoute = function(req, res){
             activity.contactEmail = req.body.activity.contactEmail;
             activity.contactNum = req.body.activity.contactNum;
             
-            //sanitize protocol from links if given (so that it works with the <a> tag as a link)
-            if(req.body.activity.website){   activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") } else { activity.website = '' }
-            if(req.body.activity.facebook){  activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") } else { activity.facebook = '' }
-            if(req.body.activity.twitter){   activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") } else { activity.twitter = '' }
+            //sanitize protocol from links if given (so that it works with the <a> tag as a link) and update
+            if(req.body.activity.website){   activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/i, "") } else { activity.website = '' }
+            if(req.body.activity.facebook){  activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/i, "") } else { activity.facebook = '' }
+            if(req.body.activity.twitter){   activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/i, "") } else { activity.twitter = '' }
+            
+            //Youtube URL
+            activity.videoUrl = req.body.activity.videoUrl;
+            if(req.body.activity.videoUrl) {
+                activity.youtubeVideoId = await getYoutubeUrlId(req.body.activity.videoUrl);
+            }
             
             //create new update history log
             var updateLog = {};
@@ -120,6 +124,11 @@ var updateRoute = function(req, res){
         }
     });
 };
+
+function getYoutubeUrlId(url){
+    var code = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i);
+    return (typeof code[1] == 'string') ? code[1] : false;
+}
 
 // ==========================
 // MODULE.EXPORTS

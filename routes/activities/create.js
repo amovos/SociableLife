@@ -15,13 +15,42 @@ var UpdateRequest = require("../../models/updateRequest");
 
 var activityCreateObject = require("./activityCreateObject");
 
-var createRoute = async function(req, res){ //REST convention to use the same route name but as a post to submit 
+var req;
+var res;
+
+var createRoute = async function(localReq, localRes){ //REST convention to use the same route name but as a post to submit 
     
+    req = localReq;
+    res = localRes;
+    
+    Promise.all([
+                multerErrorCheck(), 
+                captchaCheck(), 
+                cloudinaryUpload(),
+                geocodeLocation(),
+                additionalChecks(),
+                setValues(),
+                createFirstUpdateHistoryLog(),
+                createFirstUpdateRequest(),
+                addFirstCommentAndLove()
+                ])
+    .then(function(values) {
+        createActivity();
+    });
+    
+};
+  
+
+async function multerErrorCheck() {
     //if multer error - display here
     if(req.fileValidationError) {
         return res.render("activities/newReview", activityCreateObject(req, res));
+    } else {
+        return;
     }
-    
+}
+
+async function captchaCheck() {
     //not sure why it's in this format here but just req.body.captcha for registering a user
     req.body.captcha = req.body['g-recaptcha-response'];
 
@@ -48,8 +77,12 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
                 }
             });
         }
+    } else {
+        return;
     }
-    
+}
+
+async function cloudinaryUpload() {
     //if an image has been added on create then upload it to Cloudinary
     if(req.file){
         // CLOUDINARY
@@ -63,28 +96,37 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
             if(err) {
                 req.flash('errorMessage', err.message);
                 return res.redirect('back');
+            } else {
+                // add cloudinary url for the image to the activity object under image property
+                req.body.activity.image = result.secure_url;
+                // add image's public_id to activity object
+                req.body.activity.imageId = result.public_id;
+                return;
             }
-            // add cloudinary url for the image to the activity object under image property
-            req.body.activity.image = result.secure_url;
-            // add image's public_id to activity object
-            req.body.activity.imageId = result.public_id;
         });
+    } else {
+        return;
     }
-    
+}
+
+async function geocodeLocation() {
     // GEOCODE Location
     //generate geocode data, use "await" to make sure it completes before creating activity
     await geocoder.geocode(req.body.activity.location, function (err, data) {
         if (err || !data.length) {
-          req.fileValidationError = "Location is invalid, please edit to fix"; 
+          req.fileValidationError = "Location is invalid, please edit to fix";
           return res.render("activities/newReview", activityCreateObject(req, res));
+        } else {
+            //add the geocode data to the activity object using dot notation
+            req.body.activity.lat = data[0].latitude;
+            req.body.activity.lng = data[0].longitude;
+            req.body.activity.location = data[0].formattedAddress; //This uses the nicely formatted location that is returned by geocoder and replaces the original content
+            return;
         }
-        //add the geocode data to the activity object using dot notation
-        req.body.activity.lat = data[0].latitude;
-        req.body.activity.lng = data[0].longitude;
-        req.body.activity.location = data[0].formattedAddress; //This uses the nicely formatted location that is returned by geocoder and replaces the original content 
     });
-    
-    
+}
+
+async function additionalChecks() {
     //ADDITIONAL CHECKS
     // These should already have been passed in the UI to get to this point, but to stop people adding activities without validating data perform the checks again
     
@@ -98,12 +140,11 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     if (!(/\S/.test(req.body.activity.frequency)))      {req.fileValidationError = "Type can't be empty, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
     
     //check optional inputs are not just whitespace
-    if(req.body.activity.contactEmail) {
-        if (!(/\S/.test(req.body.activity.contactEmail))) {req.fileValidationError = "Contact Email can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
-    if(req.body.activity.contactNum) {
-        if (!(/\S/.test(req.body.activity.contactNum))) {req.fileValidationError = "Contact Number can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
+    if(req.body.activity.contactEmail) {    if (!(/\S/.test(req.body.activity.contactEmail))) {req.fileValidationError = "Contact Email can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.contactNum) {      if (!(/\S/.test(req.body.activity.contactNum))) {req.fileValidationError = "Contact Number can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.website) {         if (!(/\S/.test(req.body.activity.website))) {req.fileValidationError = "Website address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.facebook) {        if (!(/\S/.test(req.body.activity.facebook))) {req.fileValidationError = "Facebook address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.twitter) {         if (!(/\S/.test(req.body.activity.twitter))) {req.fileValidationError = "Twitter address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
 
     // CHECK FOR LENGTH OF INPUTS
     if(req.body.activity.name.length         > 100)     {req.fileValidationError = "Activity Name is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
@@ -115,23 +156,23 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     if(req.body.activity.frequency.length    > 50)      {req.fileValidationError = "Type is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
 
     //check optional inputs lengths
-    if(req.body.activity.contactEmail) {
-        if(req.body.activity.contactEmail.length > 300) {req.fileValidationError = "Contact Email is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
-    if(req.body.activity.contactNum) {
-        if(req.body.activity.contactNum.length > 50)    {req.fileValidationError = "Contact Number is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
+    if(req.body.activity.contactEmail) {    if(req.body.activity.contactEmail.length > 300)   {req.fileValidationError = "Contact Email is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.contactNum) {      if(req.body.activity.contactNum.length > 50)      {req.fileValidationError = "Contact Number is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.website) {         if(req.body.activity.website.length > 2000)       {req.fileValidationError = "Website address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.facebook) {        if(req.body.activity.facebook.length > 2000)      {req.fileValidationError = "Facebook address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.twitter) {         if(req.body.activity.twitter.length > 2000)       {req.fileValidationError = "Twitter address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     
     //check if neither age box has been checked
-    if(!req.body.activity.isAdult && !req.body.activity.isChild) {
-        {req.fileValidationError = "No age selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
+    if(!req.body.activity.isAdult && !req.body.activity.isChild) { {req.fileValidationError = "No age selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     
     //check if neither suitable box has been checked
-    if(!req.body.activity.isPhysical && !req.body.activity.isLearning) {
-        {req.fileValidationError = "No ability selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
-    }
+    if(!req.body.activity.isPhysical && !req.body.activity.isLearning) { {req.fileValidationError = "No ability selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
 
+    return;
+
+}
+
+async function setValues() {
     // SET AUTHOR
     if(req.user) {
         req.body.activity.author = req.user._id;
@@ -149,126 +190,157 @@ var createRoute = async function(req, res){ //REST convention to use the same ro
     // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
     req.body.activity.status = "review";
     
+    // SET AGES
+    req.body.activity.age = {};
+    if(req.body.activity.isAdult) { req.body.activity.age.isAdult = true; } else { req.body.activity.age.isAdult = false; }
+    if(req.body.activity.isChild) { req.body.activity.age.isChild = true; } else { req.body.activity.age.isChild = false; }
     
-    // CREATE ACTIVITY
-    //Create a new activity and save to database
-    Activity.create(req.body.activity, async function(err, newlyCreatedActivity){
+    // SET SUITABLE
+    req.body.activity.suitable = {};
+    if(req.body.activity.isPhysical) { req.body.activity.suitable.isPhysical = true; } else { req.body.activity.suitable.isPhysical = false; }
+    if(req.body.activity.isLearning) { req.body.activity.suitable.isLearning = true; } else { req.body.activity.suitable.isLearning = false; }
+
+    // SET OWNER (if that was ticked on the form)
+    req.body.activity.owner= [];
+    if(req.user && req.body.activity.isOwner) {
+        req.body.activity.owner.push(req.user._id);
+    }
+
+    //sanitize protocol from links if given (so that it works with the <a> tag as a link)
+    if(req.body.activity.website){   req.body.activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") }
+    if(req.body.activity.facebook){  req.body.activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") }
+    if(req.body.activity.twitter){   req.body.activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") }
+    
+    if(req.body.activity.videoUrl) {
+        req.body.activity.videoUrl = req.body.activity.videoUrl;
+        req.body.activity.youtubeVideoId = await getYoutubeUrlId(req.body.activity.videoUrl);
+    }
+    
+    return;
+}
+
+
+async function createFirstUpdateHistoryLog() {
+    //*********************************
+    // CREATE FIRST UPDATE HISTORY LOG
+    //*********************************
+    req.body.activity.updateHistory = [];
+    
+    var updateLog = {};
+    updateLog.author = req.body.activity.author;
+    updateLog.updateType = "Activity Created";
+    updateLog.oldStatus = req.body.activity.status;
+    updateLog.newStatus = req.body.activity.status;
+    
+    await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
         if(err){
             genericErrorResponse(req, res, err);
         } else {
-            
-            // SET AGES
-            if(req.body.activity.isAdult) { newlyCreatedActivity.age.isAdult = true; } else { newlyCreatedActivity.age.isAdult = false; }
-            if(req.body.activity.isChild) { newlyCreatedActivity.age.isChild = true; } else { newlyCreatedActivity.age.isChild = false; }
-            
-            // SET SUITABLE
-            if(req.body.activity.isPhysical) { newlyCreatedActivity.suitable.isPhysical = true; } else { newlyCreatedActivity.suitable.isPhysical = false; }
-            if(req.body.activity.isLearning) { newlyCreatedActivity.suitable.isLearning = true; } else { newlyCreatedActivity.suitable.isLearning = false; }
-            
-            // SET OWNER (if that was ticked on the form)
-            if(req.user && req.body.activity.isOwner) {
-                newlyCreatedActivity.owner.push(req.user._id);
-                await newlyCreatedActivity.save();
-            }
-            
-            //sanitize protocol from links if given (so that it works with the <a> tag as a link)
-            if(req.body.activity.website){   newlyCreatedActivity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") }
-            if(req.body.activity.facebook){  newlyCreatedActivity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") }
-            if(req.body.activity.twitter){   newlyCreatedActivity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") }
-            await newlyCreatedActivity.save();
-            
-            //add first update history log
-            var updateLog = {};
-            updateLog.author = req.body.activity.author;
-            updateLog.updateType = "Activity Created";
-            updateLog.oldStatus = newlyCreatedActivity.status;
-            updateLog.newStatus = newlyCreatedActivity.status;
-            
-            await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
-                if(err){
-                    genericErrorResponse(req, res, err);
-                } else {
-                    newlyCreatedActivity.updateHistory.push(updateLog);
-                    await newlyCreatedActivity.save();
-                }
-            });
-            
-            //ADD FIRST UPDATE REQUEST
-            //Build update request object
-            var firstUpdateRequest = {
-                text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy?"
-            };
-            
-            await UpdateRequest.create(firstUpdateRequest, async function(err, newUpdateRequest){
-                if(err){
-                    genericErrorResponse(req, res, err);
-                } else {
-                    // SET AUTHOR
-                    // if there is a current user then set them as the author
-                    if(req.user) {
-                        newUpdateRequest.author = req.user._id;
-                    } else {
-                        //else set it to be the community user (do a BD search to find the ID)
-                        await User.findOne({ username: process.env.COMMUNITY_USERNAME }, function(err, user) {
-                            if(err){
-                                genericErrorResponse(req, res, err);
-                            } else {
-                                newUpdateRequest.author = user._id;
-                            }
-                        });
-                    }
+            await req.body.activity.updateHistory.push(updateLog);
+            return;
+         }
+    }); 
+}
 
-                    // save updateRequest
-                    await newUpdateRequest.save();
-                    // connect new updateRequest to the currently found activity
-                    newlyCreatedActivity.updateRequests.push(newUpdateRequest);
-                    
-                    // save activity with new updateRequest
-                    await newlyCreatedActivity.save();
-                }
-            });
-            
-            //find the sociable life community user and add a love and first comment
-            await User.findOne({ username: process.env.COMMUNITY_USERNAME }, async function(err, communityUser) {
-                if(err){
-                    genericErrorResponse(req, res, err);
-                } else { 
-                    //add first love
-                    newlyCreatedActivity.loves.push(communityUser._id);
-                    
-                    //if user is currently logged in the automatically add them to the love list as well
-                    if(req.user) {
-                        newlyCreatedActivity.loves.push(req.user._id);
-                    }
-                    
-                    await newlyCreatedActivity.save();
-                    
-                    var firstComment = {};
-                    firstComment.text = "Thanks for adding this activity to Sociable Life!";
-                    
-                    //add first comment
-                    await Comment.create(firstComment, async function(err, comment){
-                        if(err){
-                            genericErrorResponse(req, res, err);
-                        } else {
-                            comment.author = communityUser._id;
-                            comment.save();
-                            
-                            // connect new comment to the currently found activity
-                            newlyCreatedActivity.comments.push(comment);
-                            // save activity with new comment
-                            await newlyCreatedActivity.save();
-                            
-                            //then redirect back to new activity page
-                            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
-                            res.redirect("/activities/" + newlyCreatedActivity._id); //redirects to the newly created activity
-                        }
-                    });
-                }
-            });
+async function createFirstUpdateRequest() {
+    //*************************
+    //ADD FIRST UPDATE REQUEST
+    //*************************
+    req.body.activity.updateRequests = [];
+    
+    // SET UPDATE REQUEST AUTHOR
+    // if there is a current user then set them as the author
+    var firstUpdateRequestAuthor;
+    if(req.user) {
+        firstUpdateRequestAuthor = req.user._id;
+    } else {
+        //else set it to be the community user (do a BD search to find the ID)
+        await User.findOne({ username: process.env.COMMUNITY_USERNAME }, function(err, user) {
+            if(err){
+                genericErrorResponse(req, res, err);
+            } else {
+                firstUpdateRequestAuthor = user._id;
+            }
+        });
+    }
+    
+    var firstUpdateRequest = {
+        text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy?",
+        author: firstUpdateRequestAuthor
+    };
+    
+    await UpdateRequest.create(firstUpdateRequest, async function(err, newUpdateRequest){
+        if(err){
+            genericErrorResponse(req, res, err);
+        } else {
+            // connect new updateRequest to the current activity
+            await req.body.activity.updateRequests.push(newUpdateRequest);
+            return;
+        }
+    });
+}
+
+async function addFirstCommentAndLove() {
+    //***************************
+    // ADD FIRST LOVE AND COMMENT
+    //***************************
+    //find the sociable life community user and add a love and first comment
+    req.body.activity.loves = [];
+    
+    var communityUser = await User.findOne({ username: process.env.COMMUNITY_USERNAME });
+    
+    if(!communityUser) {
+        genericErrorResponse(req, res, "Couldn't find Community User");
+    } else {
+        //add first love
+        req.body.activity.loves.push(communityUser._id);
+    
+        //if user is currently logged in the automatically add them to the love list as well
+        if(req.user) {
+            req.body.activity.loves.push(req.user._id);
+        }
+    
+        var firstComment = {};
+        firstComment.text = "Thanks for adding this activity to Sociable Life!";
+        firstComment.author = communityUser._id;
+        
+        
+        //add first comment
+        req.body.activity.comments = [];
+        await Comment.create(firstComment, async function(err, comment){
+            if(err){
+                genericErrorResponse(req, res, err);
+            } else {
+                // connect new comment to the current activity
+                req.body.activity.comments.push(comment);
+            }
+        });
+    }
+}
+
+async function createActivity() {
+    // CREATE ACTIVITY
+    //Create a new activity and save to database
+    await Activity.create(req.body.activity, async function(err, newlyCreatedActivity){
+        if(err){
+            genericErrorResponse(req, res, err);
+        } else {
+            //then redirect back to new activity page
+            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
+            res.redirect("/activities/" + newlyCreatedActivity._id); //redirects to the newly created activity
         }
     }); 
-};
+}
+
+function getYoutubeUrlId(url){
+    var code = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i);
+    
+    if(code) {
+        return (typeof code[1] == 'string') ? code[1] : false;
+    } else {
+        return;
+    }
+}
 
 
 // ==========================

@@ -25,6 +25,7 @@ var createRoute = async function(req, res){
     if(req.body.website)        { if (!(/\S/.test(req.body.website)))       {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Website can't be just spaces"})}}
     if(req.body.facebook)       { if (!(/\S/.test(req.body.facebook)))      {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Facebook can't be just spaces"})}}
     if(req.body.twitter)        { if (!(/\S/.test(req.body.twitter)))       {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Twitter can't be just spaces"})}}
+    if(req.body.videoUrl)       { if (!(/\S/.test(req.body.videoUrl)))      {errorFlag = true; return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Video address can't be just spaces"})}}
 
     // CHECK FOR LENGTH OF INPUTS
     if(req.body.name.length         > 100)  {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Name is too long (" + req.body.name.length + "/100 characters)"})}
@@ -40,6 +41,7 @@ var createRoute = async function(req, res){
     if(req.body.website) {      if(req.body.website.length > 2000)      {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Website Address is too long (" + req.body.website.length + "/2000 characters)"})}}
     if(req.body.facebook) {     if(req.body.facebook.length > 2000)     {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Facebook Address is too long (" + req.body.facebook.length + "/2000 characters)"})}}
     if(req.body.twitter) {      if(req.body.twitter.length > 2000)      {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Twitter Address is too long (" + req.body.twitter.length + "/2000 characters)"})}}
+    if(req.body.videoUrl) {     if(req.body.videoUrl.length > 2000)     {errorFlag = true;   return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Activity Video Address is too long (" + req.body.twitter.length + "/2000 characters)"})}}
     
     //check if neither age box has been checked
     if(req.body.isAdult === "false" && req.body.isChild === "false") {
@@ -70,9 +72,9 @@ var createRoute = async function(req, res){
     var formattedFacebook;
     var formattedTwitter;
     //sanitize protocol from links if given (so that it works with the <a> tag as a link)
-    if(req.body.website){   formattedWebsite = req.body.website.replace(/^https?\:\/\/|\/$/, "") }
-    if(req.body.facebook){  formattedFacebook = req.body.facebook.replace(/^https?\:\/\/|\/$/, "") }
-    if(req.body.twitter){   formattedTwitter = req.body.twitter.replace(/^https?\:\/\/|\/$/, "") }
+    if(req.body.website){   formattedWebsite = req.body.website.replace(/^https?\:\/\/|\/$/i, "") }
+    if(req.body.facebook){  formattedFacebook = req.body.facebook.replace(/^https?\:\/\/|\/$/i, "") }
+    if(req.body.twitter){   formattedTwitter = req.body.twitter.replace(/^https?\:\/\/|\/$/i, "") }
     
     //If no error then send success response
     if (!errorFlag) { 

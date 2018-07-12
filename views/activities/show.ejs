@@ -381,7 +381,7 @@
                     <div>
                         <h4>Description</h4>
                         <p class="mr-2 first-letter-capitalize"><%= activity.description %></p>
-                        <% if(activity.videoUrl) { %>
+                        <% if(activity.videoUrl && activity.youtubeVideoId) { %>
                             <div class="d-flex flex-row justify-content-center mb-3">
                                 <iframe  width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>

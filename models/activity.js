@@ -41,7 +41,7 @@ var activitySchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "ActivityUpdateHistory"
-        }    
+        }
     ],
     author: {
             type: mongoose.Schema.Types.ObjectId,
@@ -69,7 +69,7 @@ var activitySchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-        }  
+        }
     ]
 });
 

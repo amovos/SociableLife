@@ -67,6 +67,9 @@
                     <input class="form-control" type="text" name="activity[twitter]" id="twitter" value="<%= activityTwitter %>" hidden>
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="activity[videoUrl]" id="videoUrl" value="<%= activityVideoUrl %>" hidden>
+                </div>
+                <div class="form-group">
                     <input class="form-control" type="text" name="activity[contactEmail]" id="contactEmail" value="<%= activityContactEmail %>" hidden>
                 </div>
                 <div class="form-group">
@@ -143,6 +146,11 @@
                     <% if(activityTwitter) { %>
                         <h5>Activity Twitter</h5>
                         <p><%= activityTwitter %></p>
+                    <% } %>
+                    
+                    <% if(activityVideoUrl) { %>
+                        <h5>Activity Youtube Video</h5>
+                        <p><%= activityVideoUrl %></p>
                     <% } %>
                     
                     <% if(activityContactEmail) { %>

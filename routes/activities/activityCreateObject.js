@@ -23,6 +23,7 @@ function activityCreateObject(req, res) {
     var website;
     var facebook;
     var twitter;
+    var videoUrl;
     
     var isOwner;
     
@@ -49,6 +50,7 @@ function activityCreateObject(req, res) {
         website = req.body.activity.website;
         facebook = req.body.activity.facebook;
         twitter = req.body.activity.twitter;
+        videoUrl = req.body.activity.videoUrl;
         
         isOwner = req.body.activity.isOwner;
     }
@@ -72,6 +74,7 @@ function activityCreateObject(req, res) {
         activityWebsite: website,
         activityFacebook: facebook,
         activityTwitter: twitter,
+        activityVideoUrl: videoUrl,
         activityIsOwner: isOwner,
         fileValidationError: req.fileValidationError
     };
