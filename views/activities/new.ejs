@@ -7,8 +7,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <header class="jumbotron d-flex flex-column align-items-center">
-                <h1>Add an Activity</h1>
-                
+                <h1>Add activity info</h1>
+                <span><i class="far fa-edit fa-4x m-auto text-success"></i></span>
+                <br>
                 <% if(currentUser) { %>
        			    <a href="/users/<%= currentUser.id %>" class="nav-link nopadding d-flex flex-row align-items-center">
     					<img class="mr-1" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
@@ -16,7 +17,7 @@
     				</a>
 				<% } else { %>
 				    <div class="d-flex flex-row align-items-baseline">
-				        <i class="fas fa-2x fa-user mr-2"></i> Guest User
+				        <i class="fas fa-2x fa-user mr-2 text-info"></i> <h5>Guest User</h5>
 				    </div>
 				<% } %>
             </header>
@@ -97,7 +98,7 @@
                         <option value="Monthly Activities" <% if(activityFrequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activitie (e.g. happens every month)</option>
                         <option value="Annual Activities" <% if(activityFrequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities (e.g. happens every year)</option>
                         <option value="One-Off Activities" <% if(activityFrequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities (e.g. a one-off trip or event)</option>
-                        <option value="Book Yourself" <% if(activityFrequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself (e.g. accessible bicycle hire)</option>
+                        <option value="Book Yourself" <% if(activityFrequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself (e.g. an activity you organise yourself)</option>
                     </select>
                 </div>
                 

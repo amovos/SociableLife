@@ -164,8 +164,8 @@ function deg2rad(deg) {
 }
 
 function increaseSearchDistance(activities){
-    if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 20
-        $('#setDistanceInput').val("15");
+    if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 30
+        $('#setDistanceInput').val("25");
     }
     
     $('#setDistanceInput').val(function(i, oldval) {
@@ -174,8 +174,8 @@ function increaseSearchDistance(activities){
 }
 
 function decreaseSearchDistance(activities){
-    if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 20
-        $('#setDistanceInput').val("25");
+    if(!($('#setDistanceInput').val())){ //if value is still undefined, set it to 30
+        $('#setDistanceInput').val("35");
     }
     
     $('#setDistanceInput').val(function(i, oldval) {

@@ -264,7 +264,7 @@ async function createFirstUpdateRequest() {
     }
     
     var firstUpdateRequest = {
-        text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy? Things to check are: 1) It looks legitimate, 2) Does the website work? 3)...",
+        text: "I've just created this activity, please can you check it for me and change it's status to current if you're happy? Things to check are: 1) Does it look legitimate? 2) Does the website work? 3) Has enough information been filled in?",
         author: firstUpdateRequestAuthor
     };
     

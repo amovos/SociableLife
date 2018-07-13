@@ -4,8 +4,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <header class="jumbotron d-flex flex-column align-items-center">
-                <h1>Review Activity Info</h1>
-                
+                <h1>Review activity info</h1>
+                <span><i class="fas fa-map-marker-alt fa-4x m-auto text-primary"></i></span>
+                <br>
                 <% if(currentUser) { %>
        			    <a href="/users/<%= currentUser.id %>" class="nav-link nopadding d-flex flex-row align-items-center">
     					<img class="mr-1" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= currentUser.avatar.slice(46) %>" alt="current user avatar">
@@ -13,7 +14,7 @@
     				</a>
 				<% } else { %>
 				    <div class="d-flex flex-row align-items-baseline">
-				        <i class="fas fa-2x fa-user mr-2"></i> Guest User
+				        <i class="fas fa-2x fa-user mr-2 text-info"></i> <h5>Guest User</h5>
 				    </div>
 				<% } %>
             </header>

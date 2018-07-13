@@ -52,12 +52,12 @@ async function locationFilter(activities){
     //expand 'distanceInputDiv' to show input options
     $('#collapseDistanceSearch').collapse('show');
     
-    //set the 'distanceInput' to be a default of 20 and add searchCircle()
+    //set the 'distanceInput' to be a default of 30 and add searchCircle()
     if($('#setDistanceInput').val()){
         searchCircle($('#setDistanceInput').val());
     } else {
-        $('#setDistanceInput').val('20');
-        searchCircle(20);
+        $('#setDistanceInput').val('30');
+        searchCircle(30);
     }
     
     //update "setLocationInput" with newly formatted address

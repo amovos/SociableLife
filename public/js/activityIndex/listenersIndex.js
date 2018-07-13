@@ -82,6 +82,11 @@ $(document).ready(function(){ //waits until the DOM has loaded
     initMasonry();
     newSearch();
     
+    //on load, if no location input has no value, then autofocus
+    if(!($('#setLocationInput').val())){
+        $('#setLocationInput').focus();
+    }
+    
     //TEMPORARY HACK TO FIX THE MASONRY BUG OF OVERLAPPING IMAGES ON PAGE LOAD
     window.setInterval(function() {
         reloadMasonryLayout();
