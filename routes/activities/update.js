@@ -96,6 +96,7 @@ var updateRoute = function(req, res){
             activity.frequency = req.body.activity.frequency;
             activity.contactEmail = req.body.activity.contactEmail;
             activity.contactNum = req.body.activity.contactNum;
+            activity.tags = req.body.activity.tags;
             
             //sanitize protocol from links if given (so that it works with the <a> tag as a link) and update
             if(req.body.activity.website){   activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/i, "") } else { activity.website = '' }
@@ -142,10 +143,13 @@ var updateRoute = function(req, res){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else {
-                    activity.updateHistory.push(updateLog);
+                    await activity.updateHistory.push(updateLog);
                     await activity.save();
                 }
             });
+            
+            // SET UPDATED AT DATE
+            activity.updatedAt = new Date().toISOString();
             
             // UPDATE ACTIVITY IN DATABASE
             await activity.save();

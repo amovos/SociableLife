@@ -31,6 +31,9 @@ var updateStatusRoute =  function(req, res){
                 
                 foundActivity.status = req.body.status;
                 
+                // SET UPDATED AT DATE
+                foundActivity.updatedAt = new Date().toISOString();
+                
                 await foundActivity.save();
                 return res.send();
             }

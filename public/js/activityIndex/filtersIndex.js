@@ -185,9 +185,10 @@ function activityFilterMessage(activities){
         
         $('#noActivitiesFoundMessage').show();
         $('#noActivitiesFoundMessage').html(
-            "Sorry, we couldn't find any activities that matched your search <i class='far fa-frown'></i> <br><br>" +
-            "We're currently building a option to allow people to add activites to the Sociable Life map, but it's <a href='/addActivity'>not quite ready yet</a> <i class='far fa-clock'></i><br>" +
-            "If you'd like to be part of the early access and help us test out this feature <a href='/contact'>please contact us</a> <i class='fas fa-pencil-alt'></i>"
+            "<h4>Sorry, we couldn't find any activities that matched your search <i class='far fa-frown'></i></h4> <br>" +
+            
+            "<h5>Anyone can add an activity to Sociable Life and it's completely FREE!<br>If you know of any activities that aren't on our map yet please could you add them?</h5>" + 
+            '<a class="col-md-4 btn btn-success btn-lg mt-3" href="/addActivity">Add an activity</a>'
             );
     } else {
         $('#noActivitiesFoundMessage').hide();

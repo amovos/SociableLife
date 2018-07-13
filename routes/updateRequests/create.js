@@ -45,7 +45,7 @@ var createUpdateRequestRoute = function(req, res){
                         // save updateRequest
                         await newUpdateRequest.save();
                         // connect new updateRequest to the currently found activity
-                        activity.updateRequests.push(newUpdateRequest);
+                        await activity.updateRequests.push(newUpdateRequest);
                         
                         // set activity status to "review"
                         activity.status = "review";

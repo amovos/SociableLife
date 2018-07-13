@@ -58,10 +58,13 @@ var updateAvatarRoute = async function(req, res){
                         genericErrorResponse(req, res, err);
                     } else {
                         // connect new comment to the currently found activity
-                        foundActivity.updateHistory.push(updateLog);
+                        await foundActivity.updateHistory.push(updateLog);
                         await foundActivity.save();
                     }
                 });
+                
+                // SET UPDATED AT DATE
+                foundActivity.updatedAt = new Date().toISOString();
                 
                 //save new avatar to foundActivity
                 await foundActivity.save();

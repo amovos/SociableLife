@@ -135,7 +135,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-danger"></i></span>
                         </div>
-                        <input class="form-control" name="activity[endDate]" id="endDate" placeholder="DD/MM/YYYY" type="text" value="<%= activityEndDate %>"/>
+                        <input class="form-control" name="activity[endDate]" id="endDate" placeholder="DD/MM/YYYY" autocomplete="off" type="text" value="<%= activityEndDate %>"/>
                     </div>
                     We can automatically remove this activity from Sociable Life if you have an end date in mind. 
                     <br>
@@ -202,6 +202,14 @@
                     </div>
                 </div>
                 
+                <div class="form-group">
+                    <label for="tags"><i class="fas fa-tags fa-lg text-primary"></i> Activity Tags (optional)</label>
+                    <input class="form-control" type="text" name="activity[tags]" id="tags" value="<%= activityTags %>" hidden>
+                    <div id="tagsDiv" class="border rounded pt-2 pb-1">
+                        
+                    </div>
+                </div>
+                
                 <% if(currentUser) { %>
                     <div class="container card bg-warning mb-3">
                         <div class="form-group mr-2 ml-2 mt-2">
@@ -258,6 +266,8 @@
             autoclose: true,
         };
         date_input.datepicker(options);
+        
+        createTagCheckboxes(); //main.js
     });
     
     $("#createActivityForm").submit(function(event) {
@@ -266,7 +276,17 @@
         if(!passedChecks){
             event.preventDefault();
         } else {
-            return;
+            //combine tag checkboxes into a string
+            var tagsString = '';
+            $('.activity-tag').each(function(){
+                if($(this).is(':checked')){
+                    var tagName = $(this).attr('id').slice(4);
+                    tagsString += tagName + ", ";
+                }
+            });
+            $('#tags').val(tagsString.slice(0,-2));
+            
+            return; //submit form normally
         }
         
         /* get the action attribute from the <form action=""> element */
@@ -314,6 +334,7 @@
             }
         });
     });
+
 </script>
 
 <% include ../partials/footer %>

@@ -79,6 +79,9 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" value="<%= activityContactNum %>" hidden>
                 </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="activity[tags]" id="tags" value="<%= activityTags %>" hidden>
+                </div>
                 
                 <% if(currentUser) { %>
                     <div class="form-group">
@@ -166,6 +169,11 @@
                     <% if(activityContactNum) { %>
                         <h5>Activity Contact Number</h5>
                         <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-phone fa-lg text-primary mr-3"></i><%= activityContactNum %></p>
+                    <% } %>
+                    
+                    <% if(activityTags) { %>
+                        <h5>Activity Tags</h5>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-tags fa-lg text-primary mr-2"></i><%= activityTags %></p>
                     <% } %>
                     
                     <% if(currentUser && activityIsOwner) { %>

@@ -62,3 +62,48 @@ $('.custom-file-input').on('change',function(){
     //replace the "Choose a file" label
     $(this).next('.custom-file-label').html(filenameClean);
 });
+
+
+// TAG LIST
+tagsList = [
+    "Adventurous",
+    "Art",
+    "Charity",
+    "CIC",
+    "Club",
+    "Council",
+    "Dance",
+    "Disco",
+    "Drama",
+    "Holiday",
+    "Learning",
+    "Music",
+    "Nightclub",
+    "Outdoor",
+    "Play",
+    "Sport",
+    "Support",
+    "Swimming",
+    "Volunteers",
+    "Work"
+];
+
+function createTagCheckboxes() {
+    
+    tagsList.forEach(function(tag){
+        var isChecked = "";
+        if($('#tags').val().includes(tag)) {
+            isChecked = "checked";
+        }
+        
+        $("#tagsDiv").append(
+            '<div class="col-lg-4 col-6" style="display: inline-block;">' +
+                '<label class="checkbox-container" for="tag-' + tag + '">' +
+                    tag +
+                    '<input class="checkbox-input activity-tag" id="tag-' + tag + '" type="checkbox" name="tag-' + tag + '"' + isChecked + '/>' +
+                    '<span class="checkmark border"></span>' +
+                '</label>' +
+            '<div>'
+        );
+    });
+}

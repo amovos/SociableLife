@@ -234,7 +234,7 @@ async function setValues() {
     // SET OWNER (if that was ticked on the form)
     req.body.activity.owner= [];
     if(req.user && req.body.activity.isOwner) {
-        req.body.activity.owner.push(req.user._id);
+        await req.body.activity.owner.push(req.user._id);
     }
 
     //sanitize protocol from links if given (so that it works with the <a> tag as a link)
@@ -324,7 +324,7 @@ async function addFirstCommentAndLove() {
         genericErrorResponse(req, res, "Couldn't find Community User");
     } else {
         //add first love
-        req.body.activity.loves.push(communityUser._id);
+        await req.body.activity.loves.push(communityUser._id);
     
         //if user is currently logged in the automatically add them to the love list as well
         if(req.user) {
@@ -343,7 +343,7 @@ async function addFirstCommentAndLove() {
                 genericErrorResponse(req, res, err);
             } else {
                 // connect new comment to the current activity
-                req.body.activity.comments.push(comment);
+                await req.body.activity.comments.push(comment);
                 return;
             }
         });

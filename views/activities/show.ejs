@@ -472,7 +472,11 @@
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Tags</h4>
-                                    <p class="mr-2"><%= activity.tags %></p>
+                                    <% if(activity.tags) { %>
+                                        <p class="mr-2"><%= activity.tags %></p>
+                                    <% } else { %>
+                                        <p class="mr-2">No tags have been selected for this activity.</p>
+                                    <% } %>
                                 </div>
                             </div>
                             
