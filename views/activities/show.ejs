@@ -380,7 +380,7 @@
                     <!--START OF ACTIVITY INFO CONTENT-->
                     <div>
                         <h4>Description</h4>
-                        <p class="mr-2 first-letter-capitalize"><%= activity.description %></p>
+                        <p class="mr-2 description-text first-letter-capitalize"><%= activity.description %></p>
                         <% if(activity.videoUrl && activity.youtubeVideoId) { %>
                             <div class="d-flex flex-row justify-content-center mb-3">
                                 <iframe  width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -421,7 +421,13 @@
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2">
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">When</h4>
-                                    <p class="mr-3"><%= activity.when %></p>
+                                    <p class="mr-3">
+                                        <%= activity.when %>
+                                        <% if(activity.endDate) { %>
+                                            <br>
+                                            <strong>End Date:</strong> <%= moment(activity.endDate).format("Do MMM YYYY"); %>
+                                        <% } %>
+                                    </p>
                                 </div>
                                 <div class="col-md-6 nopadding">
                                     <h4 class="mt-1">Cost</h4>
@@ -845,7 +851,6 @@ async function getAllActivities(){
 }
 
 </script>
-
 
 <!-- External Script File -->
 <script src="/js/activityShow.js"></script>

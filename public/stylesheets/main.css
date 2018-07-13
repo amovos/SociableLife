@@ -8,6 +8,10 @@
     text-transform: capitalize;
 }
 
+.description-text {
+    white-space: pre-wrap;
+}
+
 .inline-form {
     display: inline;
 }

@@ -144,6 +144,7 @@ async function additionalChecks() {
     if(req.body.activity.website) {         if (!(/\S/.test(req.body.activity.website))) {req.fileValidationError = "Website address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     if(req.body.activity.facebook) {        if (!(/\S/.test(req.body.activity.facebook))) {req.fileValidationError = "Facebook address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     if(req.body.activity.twitter) {         if (!(/\S/.test(req.body.activity.twitter))) {req.fileValidationError = "Twitter address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.videoUrl) {        if (!(/\S/.test(req.body.activity.videoUrl))) {req.fileValidationError = "Video address can't be just white space, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
 
     // CHECK FOR LENGTH OF INPUTS
     if(req.body.activity.name.length         > 100)     {req.fileValidationError = "Activity Name is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}
@@ -160,12 +161,22 @@ async function additionalChecks() {
     if(req.body.activity.website) {         if(req.body.activity.website.length > 2000)       {req.fileValidationError = "Website address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     if(req.body.activity.facebook) {        if(req.body.activity.facebook.length > 2000)      {req.fileValidationError = "Facebook address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     if(req.body.activity.twitter) {         if(req.body.activity.twitter.length > 2000)       {req.fileValidationError = "Twitter address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+    if(req.body.activity.videoUrl) {        if(req.body.activity.videoUrl.length > 2000)      {req.fileValidationError = "Video address is too long, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     
     //check if neither age box has been checked
     if(!req.body.activity.isAdult && !req.body.activity.isChild) { {req.fileValidationError = "No age selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
     
     //check if neither suitable box has been checked
     if(!req.body.activity.isPhysical && !req.body.activity.isLearning) { {req.fileValidationError = "No ability selected, please edit to fix"; return res.render("activities/newReview", activityCreateObject(req, res))}}
+
+    //check endDate is formatted correctly
+    if(req.body.activity.endDate) {
+        if (!(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+        .test(req.body.activity.endDate))) {
+            req.fileValidationError = "End date format is wrong (DD/MM/YYYY), please edit to fix"; 
+            return res.render("activities/newReview", activityCreateObject(req, res));
+        }
+    }
 
     return;
 
@@ -184,6 +195,27 @@ async function setValues() {
                 req.body.activity.author = user._id;
             }
         });
+    }
+    
+    // SET END DATE
+    if(req.body.activity.endDate) {
+        //convert string to date format for MongoDB
+        var endDateDD = req.body.activity.endDate.substring(0, 2);
+        var endDateMM = req.body.activity.endDate.substring(3, 5);
+        var endDateYYYY = req.body.activity.endDate.substring(6, 10);
+        
+        var endDate = new Date();
+        endDate.setYear(endDateYYYY);
+        endDate.setMonth(endDateMM - 1); //zero index on months
+        endDate.setDate(endDateDD);
+        
+        //check the endDate is in the future from now
+        if(endDate < new Date()) {
+            req.fileValidationError = "End date can't be in the past, please edit to fix"; 
+            return res.render("activities/newReview", activityCreateObject(req, res));
+        }
+        
+        req.body.activity.endDate = endDate.toISOString();
     }
     
     // SET STATUS (could just be the default in the DB model in future, but then my seed DB script won't work so for now this is fine)
@@ -312,6 +344,7 @@ async function addFirstCommentAndLove() {
             } else {
                 // connect new comment to the current activity
                 req.body.activity.comments.push(comment);
+                return;
             }
         });
     }
@@ -325,7 +358,7 @@ async function createActivity() {
             genericErrorResponse(req, res, err);
         } else {
             //then redirect back to new activity page
-            req.flash("successMessage", "You activity has been created - once it's been reviewed we'll add it to the map!");
+            req.flash("successMessage", "Your activity has been created - once it's been reviewed we'll add it to the map!");
             res.redirect("/activities/" + newlyCreatedActivity._id); //redirects to the newly created activity
         }
     }); 

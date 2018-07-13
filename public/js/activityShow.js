@@ -76,7 +76,32 @@ $('#createNewUpdateRequestBtn').on('click', function(){
         window.location.hash = hash;
     });
     
-    setTimeout(function() {
-        $('#addUpdateRequestInput').focus();
-    }, 100);
+});
+
+//Script to scroll to "Something not right?" section when "Update=true" in query param on load
+$(document).ready(function(){
+    
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    
+    if(getParameterByName('update') === "true") {
+        var hash = "#addUpdateRequestBtn";
+        
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function(){
+            window.location.hash = hash;
+        });
+        
+        //expand 
+        $('#collapseAddUpdateRequest').collapse();
+    }
+    
 });

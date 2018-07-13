@@ -59,6 +59,15 @@ var updateRoute = function(req, res){
             if(!req.body.activity.isPhysical && !req.body.activity.isLearning) { {req.flash("errorMessage", "No ability selected"); return res.redirect("back")}}
 
 
+            //check endDate is formatted correctly
+            if(req.body.activity.endDate) {
+                if (!(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+                .test(req.body.activity.endDate))) {
+                    req.flash("errorMessage", "End date format is wrong (DD/MM/YYYY)"); 
+                    return res.redirect("back");
+                }
+            }
+
             // GEOCODER 
             // check if location info has changed otherwise don't re-geocode and charge for it
             if(req.body.activity.location !== activity.location){
@@ -97,6 +106,29 @@ var updateRoute = function(req, res){
             activity.videoUrl = req.body.activity.videoUrl;
             if(req.body.activity.videoUrl) {
                 activity.youtubeVideoId = await getYoutubeUrlId(req.body.activity.videoUrl);
+            }
+            
+            // SET END DATE
+            if(req.body.activity.endDate) {
+                //convert string to date format for MongoDB
+                var endDateDD = req.body.activity.endDate.substring(0, 2);
+                var endDateMM = req.body.activity.endDate.substring(3, 5);
+                var endDateYYYY = req.body.activity.endDate.substring(6, 10);
+                
+                var endDate = new Date();
+                endDate.setYear(endDateYYYY);
+                endDate.setMonth(endDateMM - 1); //zero index on months
+                endDate.setDate(endDateDD);
+                
+                //check the endDate is in the future from now
+                if(endDate < new Date()) {
+                    req.flash("errorMessage", "End date can't be in the past"); 
+                    return res.redirect("back");
+                }
+                
+                activity.endDate = endDate.toISOString();
+            } else {
+                activity.endDate = undefined;
             }
             
             //create new update history log

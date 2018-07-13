@@ -1,5 +1,8 @@
 <% include ../partials/header %>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <div class="container pb-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -10,6 +13,7 @@
         
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
             <form id="updateForm" action="/activities/<%= activity._id %>?_method=PUT" method="POST">
+                <h4>Required Information</h4>
                 <div class="form-group">
                     <label for="name">Activity Name *</label>
                     <input class="form-control" type="text" name="activity[name]" id="name" placeholder="e.g. Woodlarks Campsite" value="<%= activity.name %>" required>
@@ -21,94 +25,159 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="description">Description *</label>
-                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="e.g. A fully accessible campsite with an outdoor heated pool and a zipline!" required><%= activity.description %></textarea>
+                    <label for="description"><i class="far fa-edit fa-lg text-success"></i> Description *</label>
+                    <textarea class="form-control" rows="6" name="activity[description]" id="description" placeholder="A longer description of the activity telling people everything about it. We'll use this on the activities own page" required><%= activity.description %></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label for="location">Location *</label>
-                    <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activity.location %>" required>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[location]" id="location" placeholder="e.g. Woodlarks Campsite, Farnham, Surrey" value="<%= activity.location %>" required>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="">What ages are suitable for this activity? *</label>
-                    <label class="checkbox-container pr-0" for="isAdult">
-                        Adults
-                        <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activity.age.isAdult) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                    <label class="checkbox-container pr-0" for="isChild">
-                        Children
-                        <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activity.age.isChild) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
+                    <div class="border rounded pl-1 pt-2">
+                        <label class="checkbox-container pr-0" for="isAdult">
+                            Adults
+                            <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activity.age.isAdult) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                        <label class="checkbox-container pr-0" for="isChild">
+                            Children
+                            <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activity.age.isChild) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="">What abilities are suitable for this activity? *</label>
-                    <label class="checkbox-container pr-0" for="isPhysical">
-                        Physical Disabilities
-                        <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activity.suitable.isPhysical) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                    <label class="checkbox-container pr-0" for="isLearning">
-                        Learning Disabilities
-                        <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activity.suitable.isLearning) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
+                    <div class="border rounded pl-1 pt-2">
+                        <label class="checkbox-container pr-0" for="isPhysical">
+                            Physical Disabilities
+                            <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activity.suitable.isPhysical) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                        <label class="checkbox-container pr-0" for="isLearning">
+                            Learning Disabilities
+                            <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activity.suitable.isLearning) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="when">When *</label>
-                    <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activity.when %>" required>
+                    <label for="name">How much does this activity cost? *</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-money-bill-wave fa-lg text-success"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[price]" id="price" placeholder="e.g. £5 per session or Free!" value="<%= activity.price %>" required>
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Cost *</label>
-                    <input class="form-control" type="text" name="activity[price]" id="price" placeholder="e.g. £5 per session or Free!" value="<%= activity.price %>" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="frequency">Type *</label>
+                    <label for="frequency">What type of activity is this? (see options) *</label>
                     <select id="frequency" class="form-control" name="activity[frequency]" required>
                         <option disabled selected value> -- Select an option -- </option>
-                        <option value="Daily Activities" <% if(activity.frequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities</option>
-                        <option value="Weekly Activities" <% if(activity.frequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities</option>
-                        <option value="Monthly Activities" <% if(activity.frequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activities</option>
-                        <option value="Annual Activities" <% if(activity.frequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities</option>
-                        <option value="One-Off Activities" <% if(activity.frequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities</option>
-                        <option value="Book Yourself" <% if(activity.frequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself</option>
+                        <option value="Daily Activities" <% if(activity.frequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities (e.g. happens every day)</option>
+                        <option value="Weekly Activities" <% if(activity.frequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities (e.g. happens every week)</option>
+                        <option value="Monthly Activities" <% if(activity.frequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activities (e.g. happens every month)</option>
+                        <option value="Annual Activities" <% if(activity.frequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities (e.g. happens every year)</option>
+                        <option value="One-Off Activities" <% if(activity.frequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities (e.g. a one-off trip or event)</option>
+                        <option value="Book Yourself" <% if(activity.frequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself (e.g. an activity you organise yourself)</option>
                     </select>
+                </div>
+                
+                <div class="form-group pb-3">
+                    <label for="when">When does this activity happen? *</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activity.when %>" required>
+                    </div>
+                </div>
+                
+                <hr class="pb-3">
+                <h4>Optional Information</h4>
+                
+                <div class="form-group ">
+                    <label for="endDate">Would you like this activity to be <strong>removed</strong> after a given date? (optional)</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-danger"></i></span>
+                        </div>
+                        <input class="form-control" name="activity[endDate]" id="endDate" placeholder="DD/MM/YYYY" type="text" value="<% if(activity.endDate) { %><%= moment(activity.endDate).format("DD/MM/YYYY"); %><% } %>"/>
+                    </div>
+                    We can automatically remove this activity from Sociable Life if you have an end date in mind. 
+                    <br>
+                    If you don't set an end date then this activity will automatically be removed if it's not updated for 12 months.
                 </div>
                 
                 <div class="form-group">
                     <label for="website">Activity Website (optional)</label>
-                    <input class="form-control" type="text" name="activity[website]" id="website" placeholder="" value="<%= activity.website %>">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-desktop fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[website]" id="website" placeholder="e.g. www.sociablelife.uk" value="<%= activity.website %>">
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="facebook">Activity Facebook (optional)</label>
-                    <input class="form-control" type="text" name="activity[facebook]" id="facebook" placeholder="" value="<%= activity.facebook %>">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fab fa-facebook-square fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[facebook]" id="facebook" placeholder="https://facebook.com/..." value="<%= activity.facebook %>">
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="twitter">Activity Twitter (optional)</label>
-                    <input class="form-control" type="text" name="activity[twitter]" id="twitter" placeholder="" value="<%= activity.twitter %>">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fab fa-twitter fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[twitter]" id="twitter" placeholder="https://twitter.com/..." value="<%= activity.twitter %>">
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="videoUrl">Activity Youtube Video (optional)</label>
-                    <input class="form-control" type="text" name="activity[videoUrl]" id="videoUrl" placeholder="" value="<%= activity.videoUrl %>">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fab fa-youtube fa-lg text-danger"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[videoUrl]" id="videoUrl" placeholder="https://youtube.com/..." value="<%= activity.videoUrl %>">
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="contactEmail">Contact Email (optional)</label>
-                    <input class="form-control" type="email" name="activity[contactEmail]" id="contactEmail" placeholder="" value="<%= activity.contactEmail %>">
+                    <label for="contactEmail">Activity Contact Email (optional)</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-envelope fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="email" name="activity[contactEmail]" id="contactEmail" placeholder="e.g. hello@sociablelife.uk" value="<%= activity.contactEmail %>">
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="contactNum">Contact Number (optional)</label>
-                    <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="" value="<%= activity.contactNum %>">
+                    <label for="contactNum">Activity Contact Number (optional)</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-phone fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[contactNum]" id="contactNum" placeholder="e.g. 0123456..." value="<%= activity.contactNum %>">
+                    </div>
                 </div>
                 
                 <!-- Error message box -->
@@ -139,6 +208,17 @@
     
     $(document).ready(function(){
         passedChecks = false;
+        
+        //code for date picker
+        var date_input=$('#endDate');
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+            format: 'dd/mm/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
     });
     
     $("#updateForm").submit(function(event) {

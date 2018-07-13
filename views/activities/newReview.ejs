@@ -3,7 +3,7 @@
 <div class="container pb-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <header class="jumbotron d-flex flex-column align-items-center">
+            <header class="jumbotron d-flex flex-column align-items-center text-center">
                 <h1>Review activity info</h1>
                 <span><i class="fas fa-map-marker-alt fa-4x m-auto text-primary"></i></span>
                 <br>
@@ -53,6 +53,9 @@
                     <input class="form-control" type="text" name="activity[when]" id="when" value="<%= activityWhen %>" required hidden>
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="activity[endDate]" id="endDate" value="<%= activityEndDate %>" hidden>
+                </div>
+                <div class="form-group">
                     <input class="form-control" type="text" name="activity[price]" id="price" value="<%= activityPrice %>" required hidden>
                 </div>
                 <div class="form-group">
@@ -86,19 +89,19 @@
                 <!-- DISPLAY VALUES -->
                 <div class="card card-body mb-3">
                     <h5>Activity Name</h5>
-                    <p><%= activityName %></p>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><%= activityName %></p>
                     
                     <h5>Summary</h5>
-                    <p><%= activitySummary %></p>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><%= activitySummary %></p>
                     
-                    <h5>Description</h5>
-                    <p><%= activityDescription %></p>
+                    <h5><i class="far fa-edit text-success"></i> Description</h5>
+                    <p class="description-text first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><%= activityDescription %></p>
                     
                     <h5>Location</h5>
-                    <p><%= activityLocation %></p>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-map-marker-alt fa-lg text-primary mr-3"></i><%= activityLocation %></p>
                     
-                    <h5>Ages</h5>
-                    <p>
+                    <h5>Ages suitable for this activity</h5>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey">
                         <% if(activityIsAdult && activityIsChild) { %>
                             All Ages
                         <% } else if(activityIsAdult) { %>
@@ -108,8 +111,8 @@
                         <% } %>
                     </p>
                     
-                    <h5>Suitable for</h5>
-                    <p>
+                    <h5>Abilities suitable for this activity</h5>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey">
                         <% if(activityIsPhysical && activityIsLearning) { %>
                             All Abilities
                         <% } else if(activityIsPhysical) { %>
@@ -119,49 +122,55 @@
                         <% } %>
                     </p>
                     
+                    <h5>How much this activity costs</h5>
+                    <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey">
+                        <i class="fas fa-money-bill-wave fa-lg text-success mr-3"></i><%= activityPrice %>
+                    </p>
                     
-                    <h5>When</h5>
-                    <p><%= activityWhen %></p>
+                    <h5>Type of activity</h5>
+                    <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><%= activityFrequency %></p>
                     
-                    <h5>Cost</h5>
-                    <p><%= activityPrice %></p>
+                    <h5>When this activity happens</h5>
+                    <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-calendar-alt fa-lg text-primary mr-3"></i><%= activityWhen %></p>
                     
-                    <h5>Type</h5>
-                    <p><%= activityFrequency %></p>
-                    
-                    <% if(currentUser && activityIsOwner) { %>
-                        <h5>Owner</h5>
-                        <p>You help to run or organise this activity</p>
+                    <% if(activityEndDate) { %>
+                        <h5>Activity End Date</h5>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-calendar-alt fa-lg text-danger mr-3"></i><%= activityEndDate %></p>
                     <% } %>
                     
                     <% if(activityWebsite) { %>
                         <h5>Activity Website</h5>
-                        <p><%= activityWebsite %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-desktop fa-lg text-primary mr-3"></i><%= activityWebsite %></p>
                     <% } %>
                     
                     <% if(activityFacebook) { %>
                         <h5>Activity Facebook</h5>
-                        <p><%= activityFacebook %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fab fa-facebook-square fa-lg text-primary mr-3"></i><%= activityFacebook %></p>
                     <% } %>
                     
                     <% if(activityTwitter) { %>
                         <h5>Activity Twitter</h5>
-                        <p><%= activityTwitter %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fab fa-twitter fa-lg text-primary mr-3"></i><%= activityTwitter %></p>
                     <% } %>
                     
                     <% if(activityVideoUrl) { %>
                         <h5>Activity Youtube Video</h5>
-                        <p><%= activityVideoUrl %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fab fa-youtube fa-lg text-danger mr-3"></i><%= activityVideoUrl %></p>
                     <% } %>
                     
                     <% if(activityContactEmail) { %>
                         <h5>Activity Contact Email</h5>
-                        <p><%= activityContactEmail %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="far fa-envelope fa-lg text-primary mr-3"></i><%= activityContactEmail %></p>
                     <% } %>
                     
                     <% if(activityContactNum) { %>
                         <h5>Activity Contact Number</h5>
-                        <p><%= activityContactNum %></p>
+                        <p class="border rounded pt-2 pr-2 pb-2 pl-2 card-grey"><i class="fas fa-phone fa-lg text-primary mr-3"></i><%= activityContactNum %></p>
+                    <% } %>
+                    
+                    <% if(currentUser && activityIsOwner) { %>
+                        <h5>Owner</h5>
+                        <p class="first-letter-capitalize border rounded pt-2 pr-2 pb-2 pl-2 bg-warning">You help to run or organise this activity</p>
                     <% } %>
                     
                     <div class="container">

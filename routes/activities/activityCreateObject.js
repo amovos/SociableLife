@@ -16,6 +16,7 @@ function activityCreateObject(req, res) {
     var isPhysical;
     var isLearning;
     var when;
+    var endDate;
     var price;
     var frequency;
     var contactEmail;
@@ -43,6 +44,7 @@ function activityCreateObject(req, res) {
         isPhysical = req.body.activity.isPhysical;
         isLearning = req.body.activity.isLearning;
         when = req.body.activity.when;
+        endDate = req.body.activity.endDate;
         price = req.body.activity.price;
         frequency = req.body.activity.frequency;
         contactEmail = req.body.activity.contactEmail;
@@ -67,6 +69,7 @@ function activityCreateObject(req, res) {
         activityIsPhysical: isPhysical,
         activityIsLearning: isLearning,
         activityWhen: when,
+        activityEndDate: endDate,
         activityPrice: price,
         activityFrequency: frequency,
         activityContactEmail: contactEmail,

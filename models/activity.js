@@ -37,6 +37,7 @@ var activitySchema = new mongoose.Schema({
     lng: Number,
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
+    endDate: Date,
     updateHistory: [
         {
             type: mongoose.Schema.Types.ObjectId,

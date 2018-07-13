@@ -61,64 +61,39 @@
                     </div>
                 </div>
                 
-                <div class="form-group border rounded pl-1 pt-1">
+                <div class="form-group">
                     <label for="">What ages are suitable for this activity? *</label>
-                    <label class="checkbox-container pr-0" for="isAdult">
-                        Adults
-                        <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activityIsAdult) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                    <label class="checkbox-container pr-0" for="isChild">
-                        Children
-                        <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activityIsChild) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                </div>
-                
-                <div class="form-group border rounded pl-1 pt-1">
-                    <label for="">What abilities does this activity support? *</label>
-                    <label class="checkbox-container pr-0" for="isPhysical">
-                        Physical Disabilities
-                        <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activityIsPhysical) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                    <label class="checkbox-container pr-0" for="isLearning">
-                        Learning Disabilities
-                        <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activityIsLearning) { %>checked<% } %>/>
-                        <span class="checkmark border mt-0"></span>
-                    </label>
-                </div>
-                
-                <div class="form-group">
-                    <label for="frequency">What type of activity is this? (see options) *</label>
-                    <select id="frequency" class="form-control" name="activity[frequency]" required>
-                        <option disabled selected value> -- Select an option -- </option>
-                        <option value="Daily Activities" <% if(activityFrequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities (e.g. happens every day)</option>
-                        <option value="Weekly Activities" <% if(activityFrequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities (e.g. happens every week)</option>
-                        <option value="Monthly Activities" <% if(activityFrequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activitie (e.g. happens every month)</option>
-                        <option value="Annual Activities" <% if(activityFrequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities (e.g. happens every year)</option>
-                        <option value="One-Off Activities" <% if(activityFrequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities (e.g. a one-off trip or event)</option>
-                        <option value="Book Yourself" <% if(activityFrequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself (e.g. an activity you organise yourself)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="when">When does this activity happen? *</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-primary"></i></span>
-                        </div>
-                        <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activityWhen %>" required>
+                    <div class="border rounded pl-1 pt-2">
+                        <label class="checkbox-container pr-0" for="isAdult">
+                            Adults
+                            <input class="checkbox-input" id="isAdult" type="checkbox" name="activity[isAdult]" <% if(activityIsAdult) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                        <label class="checkbox-container pr-0" for="isChild">
+                            Children
+                            <input class="checkbox-input" id="isChild" type="checkbox" name="activity[isChild]" <% if(activityIsChild) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="start">Removal Date</label>
-                    <input class="form-control" id="removalDate" name="removalDate" placeholder="DD/MM/YYY" type="text"/>
-                    We can automatically remove this activity from Sociable Life if you have an end date in mind, or leave this blank for a default of 12 months from now
+                    <label for="">What abilities are suitable for this activity? *</label>
+                    <div class="border rounded pl-1 pt-2">
+                        <label class="checkbox-container pr-0" for="isPhysical">
+                            Physical Disabilities
+                            <input class="checkbox-input" id="isPhysical" type="checkbox" name="activity[isPhysical]" <% if(activityIsPhysical) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                        <label class="checkbox-container pr-0" for="isLearning">
+                            Learning Disabilities
+                            <input class="checkbox-input" id="isLearning" type="checkbox" name="activity[isLearning]" <% if(activityIsLearning) { %>checked<% } %>/>
+                            <span class="checkmark border mt-0"></span>
+                        </label>
+                    </div>
                 </div>
                 
-                <div class="form-group pb-3">
+                <div class="form-group">
                     <label for="name">How much does this activity cost? *</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -128,8 +103,44 @@
                     </div>
                 </div>
                 
+                <div class="form-group">
+                    <label for="frequency">What type of activity is this? (see options) *</label>
+                    <select id="frequency" class="form-control" name="activity[frequency]" required>
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Daily Activities" <% if(activityFrequency === "Daily Activities") { %>selected="selected" <% } %>>Daily Activities (e.g. happens every day)</option>
+                        <option value="Weekly Activities" <% if(activityFrequency === "Weekly Activities") { %>selected="selected" <% } %>>Weekly Activities (e.g. happens every week)</option>
+                        <option value="Monthly Activities" <% if(activityFrequency === "Monthly Activities") { %>selected="selected" <% } %>>Monthly Activities (e.g. happens every month)</option>
+                        <option value="Annual Activities" <% if(activityFrequency === "Annual Activities") { %>selected="selected" <% } %>>Annual Activities (e.g. happens every year)</option>
+                        <option value="One-Off Activities" <% if(activityFrequency === "One-Off Activities") { %>selected="selected" <% } %>>One-Off Activities (e.g. a one-off trip or event)</option>
+                        <option value="Book Yourself" <% if(activityFrequency === "Book Yourself") { %>selected="selected" <% } %>>Book Yourself (e.g. an activity you organise yourself)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group pb-3">
+                    <label for="when">When does this activity happen? *</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-primary"></i></span>
+                        </div>
+                        <input class="form-control" type="text" name="activity[when]" id="when" placeholder="e.g. Every Tuesday at 7pm" value="<%= activityWhen %>" required>
+                    </div>
+                </div>
+                
                 <hr class="pb-3">
                 <h4>Optional Information</h4>
+                
+                <div class="form-group">
+                    <label for="endDate">Would you like this activity to be <strong>removed</strong> after a given date? (optional)</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt fa-lg text-danger"></i></span>
+                        </div>
+                        <input class="form-control" name="activity[endDate]" id="endDate" placeholder="DD/MM/YYYY" type="text" value="<%= activityEndDate %>"/>
+                    </div>
+                    We can automatically remove this activity from Sociable Life if you have an end date in mind. 
+                    <br>
+                    If you don't set an end date then this activity will automatically be removed if it's not updated for 12 months.
+                </div>
                 
                 <div class="form-group">
                     <label for="website">Activity Website (optional)</label>
@@ -238,7 +249,7 @@
         passedChecks = false;
         
         //code for date picker
-        var date_input=$('input[name="removalDate"]');
+        var date_input=$('#endDate');
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         var options={
             format: 'dd/mm/yyyy',
@@ -272,6 +283,7 @@
                                         isPhysical: $('#isPhysical').is(':checked'),
                                         isLearning: $('#isLearning').is(':checked'),
                                         when: $('#when').val(),
+                                        endDate: $('#endDate').val(),
                                         price: $('#price').val(),
                                         frequency: $('#frequency').val(),
                                         contactEmail: $('#contactEmail').val(),
