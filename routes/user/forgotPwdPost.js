@@ -49,11 +49,14 @@ var forgotPwdRoute = function(req, res, next) {
                     to:         user.email,
                     from:       'no-reply@sociablelife.uk',
                     subject:    'Sociable Life Password Reset',
-                    text:       'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                    text:       'Hi ' + user.firstName + ',\n\n' +
+                                'You are receiving this because you (or someone else) have requested the reset of the password for your account for Sociable Life (' + user.email + ').\n\n' +
                                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                                 'https://' + req.headers.host + '/reset/' + token + '\n\n' +
                                 'This link will only work for 1 hour. You will need to reset your passowrd again if the link has expired\n\n' +
-                                'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                                'If you did not request this, please ignore this email and your password will remain unchanged.\n\n' +
+                                'Have a great day :)\n\n' +
+                                'The Sociable Life Team\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
                 req.flash('successMessage', 'An e-mail has been sent to ' + user.email + ' with further instructions.');

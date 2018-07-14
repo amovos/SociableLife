@@ -54,8 +54,10 @@ var resetPwdRoute = function(req, res, next) {
                     to: user.email,
                     from:       'no-reply@sociablelife.uk',
                     subject:    'Your password has been changed',
-                    text:       'Hello,\n\n' +
-                                'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                    text:       'Hi ' + user.firstName + ',\n\n' +
+                                'This is a confirmation email to let you know that the password for your account for Sociable Life (' + user.email + ') has just been changed.\n\n' +
+                                'Have a great day :)\n\n' +
+                                'The Sociable Life Team\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
                 req.flash('successMessage', 'Success! Your password has been changed.');
