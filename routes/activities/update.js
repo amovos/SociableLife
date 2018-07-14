@@ -155,7 +155,12 @@ var updateRoute = function(localReq, localRes){
 
 function getYoutubeUrlId(url){
     var code = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i);
-    return (typeof code[1] == 'string') ? code[1] : false;
+    
+    if(code) {
+        return (typeof code[1] == 'string') ? code[1] : false;
+    } else {
+        return;
+    }
 }
 
 async function createUpdateHistoryLog(foundActivity) {

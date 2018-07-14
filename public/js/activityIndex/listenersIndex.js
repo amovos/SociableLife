@@ -89,21 +89,24 @@ $(document).ready(function(){ //waits until the DOM has loaded
     
     //regularly store the map zoom and center so they can be returned when coming back to this page
     window.setInterval(function() {
-        if (typeof(Storage) !== "undefined") {    
-            localStorage.setItem("mapZoomBrowserStorage", map.getZoom());
-            localStorage.setItem("mapCenterLatBrowserStorage", map.getCenter().lat());
-            localStorage.setItem("mapCenterLngBrowserStorage", map.getCenter().lng());
-            
-            // console.log("map.getZoom(): " + map.getZoom());
-            // console.log("map.getCenter(): " + map.getCenter());
-            
-            // console.log("localStorage.getItem('mapZoomBrowserStorage'): " + localStorage.getItem("mapZoomBrowserStorage"));
-            // console.log("localStorage.getItem('mapCenterBrowserStorage'): " + localStorage.getItem("mapCenterBrowserStorage"));
-            
-            // console.log("localStorage.getItem('mapCenterLatBrowserStorage'): " + localStorage.getItem("mapCenterLatBrowserStorage"));
-            // console.log("localStorage.getItem('mapCenterLngBrowserStorage'): " + localStorage.getItem("mapCenterLngBrowserStorage"));
-        }
+        $(window).focus(function() { //if the user has multiple tabs open then the map location of the current tab will be stored
+            if (typeof(Storage) !== "undefined") {    
+                localStorage.setItem("mapZoomBrowserStorage", map.getZoom());
+                localStorage.setItem("mapCenterLatBrowserStorage", map.getCenter().lat());
+                localStorage.setItem("mapCenterLngBrowserStorage", map.getCenter().lng());
+                
+                // console.log("map.getZoom(): " + map.getZoom());
+                // console.log("map.getCenter(): " + map.getCenter());
+                
+                // console.log("localStorage.getItem('mapZoomBrowserStorage'): " + localStorage.getItem("mapZoomBrowserStorage"));
+                // console.log("localStorage.getItem('mapCenterBrowserStorage'): " + localStorage.getItem("mapCenterBrowserStorage"));
+                
+                // console.log("localStorage.getItem('mapCenterLatBrowserStorage'): " + localStorage.getItem("mapCenterLatBrowserStorage"));
+                // console.log("localStorage.getItem('mapCenterLngBrowserStorage'): " + localStorage.getItem("mapCenterLngBrowserStorage"));
+            }
+        });
     }, 500);
+    
     
     //TEMPORARY HACK TO FIX THE MASONRY BUG OF OVERLAPPING IMAGES ON PAGE LOAD
     window.setInterval(function() {

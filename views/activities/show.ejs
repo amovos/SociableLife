@@ -389,8 +389,10 @@
                     <hr>
                     <!--START OF ACTIVITY INFO CONTENT-->
                     <div>
-                        <h4>Description</h4>
-                        <p class="mr-2 description-text first-letter-capitalize"><%= activity.description %></p>
+                        <div class="pl-1">
+                            <h4>Description</h4>
+                            <p class="mr-2 description-text first-letter-capitalize"><%= activity.description %></p>
+                        </div>
                         <% if(activity.videoUrl && activity.youtubeVideoId) { %>
                             <div class="d-flex flex-row justify-content-center mb-3">
                                 <iframe  width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/<%= activity.youtubeVideoId %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -402,7 +404,7 @@
                     <div class="d-flex flex-row flex-wrap">
                         <div class="d-flex flex-column col-md-8 nopadding">
                             <div class="d-flex flex-row flex-wrap">
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4>Ages</h4>
                                     <p class="mr-3">
                                         <% if(activity.age.isChild && activity.age.isAdult) { %>
@@ -414,7 +416,7 @@
                                         <% } %>
                                     </p>
                                 </div>
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4>Suitable for</h4>
                                     <p class="mr-2">
                                         <% if(activity.suitable.isPhysical && activity.suitable.isLearning) { %>
@@ -429,7 +431,7 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2">
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4 class="mt-1">When</h4>
                                     <p class="mr-3">
                                         <%= activity.when %>
@@ -439,33 +441,24 @@
                                         <% } %>
                                     </p>
                                 </div>
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4 class="mt-1">Cost</h4>
                                     <p class="mr-2 first-letter-capitalize"><%= activity.price %></p>
                                 </div>
                             </div>
                             <div class="d-flex flex-row flex-wrap mt-2">
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4>Type</h4>
                                     <p class="mr-3"><%= activity.frequency %></p>
                                 </div>
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4>Where</h4>
                                     <p class="mr-2"><%= activity.location %></p>
                                 </div>
                             </div>
                             <div class="d-flex flex-row flex-wrap card-grey mr-md-2 mb-2">
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1 pb-2">
                                     <h4 class="mt-1">Who to contact</h4>
-                                    <% if(activity.owner.length > 0) { %>
-                                        <% activity.owner.forEach(function(owner){ %>
-                                            <a href="/users/<%= owner._id %>">
-                                                <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= owner.avatar.slice(46) %>" alt="Owner avatar">
-                                                <%= owner.displayName %>
-                                            </a>
-                                            <br>
-                                        <% }); %>
-                                    <% } %>
                                     <% if(activity.contactEmail || activity.contactNum) { %>
                                         <p class="mr-3 mt-1">
                                             <% if(activity.contactNum) { %>
@@ -479,8 +472,18 @@
                                     <% } else { %>
                                         No contact information has<br>been added <i class="fas fa-phone-slash"></i>
                                     <% } %>
+                                    <% if(activity.owner.length > 0) { %>
+                                        <hr class="mr-5 ml-1">
+                                        <% activity.owner.forEach(function(owner){ %>
+                                            <a href="/users/<%= owner._id %>">
+                                                <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= owner.avatar.slice(46) %>" alt="Owner avatar">
+                                                <%= owner.displayName %>
+                                            </a>
+                                            <br>
+                                        <% }); %>
+                                    <% } %>
                                 </div>
-                                <div class="col-md-6 nopadding">
+                                <div class="col-md-6 pl-1">
                                     <h4 class="mt-1">Tags</h4>
                                     <% if(activity.tags) { %>
                                         <p class="mr-2"><%= activity.tags %></p>
