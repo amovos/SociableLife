@@ -36,7 +36,13 @@
                             </span>
                             <span class="d-flex flex-row flex-wrap align-items-baseline mb-2">
                                 <span><strong>Last updated by:</strong>&nbsp;</span>
-                                <span><em><a href="/users/<%= activity.updateHistory[0].author._id %>"><span class="text-capitalize"><%= activity.updateHistory[0].author.displayName %></span></a> <%= moment(activity.updatedAt).fromNow() %></em></span>
+                                <span><em>
+                                    <% if(activity.updateHistory.length > 0) { %>
+                                        <a href="/users/<%= activity.updateHistory[0].author._id %>"><span class="text-capitalize"><%= activity.updateHistory[0].author.displayName %></span></a>
+                                    <% } else { %>
+                                        <a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a>
+                                    <% } %>
+                                    <%= moment(activity.updatedAt).fromNow() %></em></span>
                                 <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
                                     <span><button class="btn btn-info btn-sm ml-0 ml-md-2 mt-2 mt-md-0" role="button" data-toggle="collapse" href="#collapseUpdateHistory" aria-expanded="false" aria-controls="collapseUpdateHistory">See update history</button></span>
                                 <% } %>

@@ -133,7 +133,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
                     <div>Activities</div>
-                    <div><strong><%= activities.length %></strong></div>
+                    <div><strong><%= allActivities.length %></strong></div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-star fa-2x text-warning"></i>
@@ -156,11 +156,19 @@
                 <div class="card-body">
                     <h3 class="card-title"><span class="text-capitalize"><%= user.displayName %></span>'s Activities</h3>
                     <ul>
-                        <% activities.forEach(function(activity){ %>
-                            <li><a href="/activities/<%= activity.id %>"><%= activity.name %></a></li>
+                        <% allActivities.forEach(function(activity){ %>
+                            <li>
+                                <a href="/activities/<%= activity.id %>"><%= activity.name %></a>
+                                <% if(authorActivityIds.includes(activity._id)) { %>
+                                    (Author)
+                                <% } %>
+                                <% if(ownerActivityIds.includes(activity._id)) { %>
+                                    (Owner)
+                                <% } %>
+                            </li>
                         <% }); %>
                     </ul>
-                    <% if(activities.length === 0) { %>
+                    <% if(allActivities.length === 0) { %>
                         <% if(currentUser && currentUser._id.equals(user._id)) { %>
                             <p>You've not added any activities yet, do you know any we could add to our map?</p> <a class="btn btn-info" href="/addActivity">Add an activity</a>
                         <% } else { %>
