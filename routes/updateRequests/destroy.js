@@ -16,7 +16,7 @@ var destroyUpdateRequestRoute = function(req, res){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else {
-                    foundActivity.updateRequests.splice(foundActivity.updateRequests.indexOf(req.params.updateRequest_id), 1);
+                    await foundActivity.updateRequests.splice(foundActivity.updateRequests.indexOf(req.params.updateRequest_id), 1);
                     await foundActivity.save();
                     
                     req.flash("successMessage", "Successfully deleted update request");

@@ -5,6 +5,8 @@
 var genericErrorResponse = require("../shared/genericErrorResponse"); //require the shared function for a database error
 var Activity = require("../../models/activity"); //require the activity database model
 var Comment = require("../../models/comment");
+var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
+var UpdateRequest = require("../../models/updateRequest");
 var User = require("../../models/user");
 var cloudinary = require('cloudinary');
 var cloudinaryConf = require("../shared/cloudinary");
@@ -32,7 +34,6 @@ var destroyUserRoute = function(req, res){
                             genericErrorResponse(req, res, err);
                         } else {
                             foundActivities.forEach(async function(activity){
-                                //console.log("CHANING ACTIVITY OWNERSHIP");
                                 activity.author = foundCommunityUser._id;
                                 activity.status = "review"; //if a person deletes an account it's likely that any activities they added will need to be checked again
                                 await activity.save();
@@ -42,13 +43,58 @@ var destroyUserRoute = function(req, res){
                 }
             });
             
+            await User.findOne().where('username').equals(process.env.COMMUNITY_USERNAME).exec(async function(err, foundCommunityUser){
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else {
+                    //change author of any update histories to community user
+                    await ActivityUpdateHistory.find({author: foundUser._id}).exec(function(err, foundUpdateHistories){
+                        if(err){
+                            genericErrorResponse(req, res, err);
+                        } else {
+                            foundUpdateHistories.forEach(async function(foundUpdateHistory){
+                                foundUpdateHistory.author = foundCommunityUser._id;
+                                await foundUpdateHistory.save();
+                            });
+                        }
+                    });
+                    
+                    //change author of any update requests to community user
+                    await UpdateRequest.find({author: foundUser._id}).exec(function(err, foundUpdateRequest){
+                        if(err){
+                            genericErrorResponse(req, res, err);
+                        } else {
+                            foundUpdateRequest.forEach(async function(updateRequest){
+                                updateRequest.author = foundCommunityUser._id;
+                                await updateRequest.save();
+                            });
+                        }
+                    });
+                    
+                    //change isDoneUser of any update requests to community user
+                    await UpdateRequest.find({isDoneUser: foundUser._id}).exec(function(err, foundUpdateRequest){
+                        if(err){
+                            genericErrorResponse(req, res, err);
+                        } else {
+                            foundUpdateRequest.forEach(async function(updateRequest){
+                                updateRequest.isDoneUser = foundCommunityUser._id;
+                                await updateRequest.save();
+                            });
+                        }
+                    });
+                }
+            });
+            
+            
+            
+            
+            
             //delete user profile image from cloudinary (if it exists and it's not the placeholder it will have an ID set in the DB)
             if(foundUser.avatarId){
                 try {
                     // set cloudinary config from shared file
                     cloudinary.config(cloudinaryConf);
                     //delete avatar from cloudinary
-                    //console.log("DELETING AVATAR");
                     await cloudinary.v2.uploader.destroy(foundUser.avatarId);
                 } catch(err) {
                     if(err) {
@@ -68,7 +114,7 @@ var destroyUserRoute = function(req, res){
                             if(err){
                                 genericErrorResponse(req, res, err);
                             } else {
-                                foundCommentActivity.comments.splice(foundCommentActivity.comments.indexOf(comment), 1);
+                                await foundCommentActivity.comments.splice(foundCommentActivity.comments.indexOf(comment), 1);
                                 await foundCommentActivity.save();
                                 
                                 //once the comment has been removed from the activity, then remove the actual comment
@@ -85,8 +131,20 @@ var destroyUserRoute = function(req, res){
                     genericErrorResponse(req, res, err);
                 } else {
                     foundLoveActivities.forEach(async function(foundLoveActivity){
-                        foundLoveActivity.loves.splice(foundLoveActivity.loves.indexOf(foundUser._id), 1);
+                        await foundLoveActivity.loves.splice(foundLoveActivity.loves.indexOf(foundUser._id), 1);
                         await foundLoveActivity.save();
+                    });
+                }
+            });
+            
+            //delete all instances where user owns an activity
+            await Activity.find({owner: foundUser._id}).exec(function(err, foundOwnerActivities){
+                if(err){
+                    genericErrorResponse(req, res, err);
+                } else {
+                    foundOwnerActivities.forEach(async function(foundOwnerActivity){
+                        await foundOwnerActivity.owner.splice(foundOwnerActivity.owner.indexOf(foundUser._id), 1);
+                        await foundOwnerActivity.save();
                     });
                 }
             });

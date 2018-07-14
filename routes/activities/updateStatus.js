@@ -24,7 +24,7 @@ var updateStatusRoute =  function(req, res){
                         genericErrorResponse(req, res, err);
                     } else {
                         // connect new comment to the currently found activity
-                        foundActivity.updateHistory.push(updateLog);
+                        await foundActivity.updateHistory.push(updateLog);
                         await foundActivity.save();
                     }
                 });

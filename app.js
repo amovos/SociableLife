@@ -2,6 +2,7 @@
 // REQUIRE NPM PACKAGES
 // ==========================
 var flash           = require("connect-flash"),
+    async           = require("async"),
     crypto          = require("crypto"), //comes with node so doesn't need to be installed
     express         = require("express"),
     mongoose        = require("mongoose"),

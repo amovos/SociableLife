@@ -22,6 +22,9 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
                         req.flash("errorMessage", "Sorry, we couldn't find a user with that ID for the new author");
                         res.redirect("back");
                     } else {
+                        // SET UPDATED AT DATE
+                        foundActivity.updatedAt = new Date().toISOString();
+                        
                         foundActivity.author = foundAuthor;
                         foundActivity.save();
                     }
@@ -47,6 +50,10 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
                 //once all the owner IDs have been validated then save them to the activity
                 if(!errorFlag) {
                     //need to add a check here so only unique IDs are added
+                    
+                    // SET UPDATED AT DATE
+                    foundActivity.updatedAt = new Date().toISOString();
+                    
                     foundActivity.owner = newOwnerValidatedArray;
                     foundActivity.save();
                 } else {
@@ -73,6 +80,8 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
                         await foundActivity.save();
                     }
                 });
+                
+                
                 
                 // Return success message
                 req.flash("successMessage", "Successfully updated activity");
