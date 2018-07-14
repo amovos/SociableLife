@@ -9,6 +9,16 @@ function initActivityIndexMap() {
         mapInitZoom = 5;
     }
     
+    //if a zoom level has been stored in the browser then set mapInitZoom and mapInitCenter
+    if (typeof(Storage) !== "undefined") {
+        if(localStorage.getItem("mapZoomBrowserStorage")) {
+            mapInitZoom = Number(localStorage.getItem("mapZoomBrowserStorage"));
+        }
+        if(localStorage.getItem("mapCenterLatBrowserStorage") && localStorage.getItem("mapCenterLngBrowserStorage")) {
+            mapInitCenter = {lat: Number(localStorage.getItem("mapCenterLatBrowserStorage")), lng: Number(localStorage.getItem("mapCenterLngBrowserStorage")) };
+        }
+    }
+    
     map = new google.maps.Map(document.getElementById('activity-index-map'), {
         zoom: mapInitZoom,
         center: mapInitCenter,

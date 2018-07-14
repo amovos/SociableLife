@@ -322,6 +322,13 @@ function resetSearch(){
     $('#backToTopBtn').hide();
     
     //re-center map
+    mapInitCenter = {lat: 54.4800, lng: -4.1000 };
+    if($(window).width() > 500){
+        mapInitZoom = 6;
+    } else {
+        mapInitZoom = 5;
+    }
+    
     map.setCenter(mapInitCenter);
     map.setZoom(mapInitZoom);
     
