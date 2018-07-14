@@ -6,28 +6,20 @@ var Activity = require("../../models/activity");
 var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 var genericErrorResponse = require("../shared/genericErrorResponse");
 
-var updateStatusRoute =  function(req, res){ 
+var req;
+var res;
+
+var updateStatusRoute =  function(localReq, localRes){ 
+    
+    req = localReq;
+    res = localRes;
+    
     Activity.findById(req.body.activityId, async function(err, foundActivity){
         if(err){
             genericErrorResponse(req, res, err);
         } else {
             if(foundActivity.status !== req.body.status) {
-                //add change to activity updateHistory
-                var updateLog = {};
-                updateLog.author = req.user._id;
-                updateLog.updateType = "Status Changed";
-                updateLog.oldStatus = foundActivity.status;
-                updateLog.newStatus = req.body.status;
-                
-                await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
-                    if(err){
-                        genericErrorResponse(req, res, err);
-                    } else {
-                        // connect new comment to the currently found activity
-                        await foundActivity.updateHistory.push(updateLog);
-                        await foundActivity.save();
-                    }
-                });
+                await foundActivity.updateHistory.push(await createUpdateHistoryLog(foundActivity));
                 
                 foundActivity.status = req.body.status;
                 
@@ -40,6 +32,17 @@ var updateStatusRoute =  function(req, res){
         }
     });
 };
+
+async function createUpdateHistoryLog(foundActivity) {
+    var updateLog = {};
+    updateLog.author = req.user._id;
+    updateLog.updateType = "Status Changed";
+    updateLog.oldStatus = foundActivity.status;
+    updateLog.newStatus = req.body.status;
+    
+    var newUpdateLog = await ActivityUpdateHistory.create(updateLog);
+    return newUpdateLog;
+}
 
 // ==========================
 // MODULE.EXPORTS

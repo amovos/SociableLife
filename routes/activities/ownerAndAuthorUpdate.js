@@ -7,7 +7,14 @@ var Activity = require("../../models/activity");
 var User = require("../../models/user"); 
 var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 
-var updateActivityOwnerAndAuthorRoute = async function(req, res) {
+var req;
+var res;
+
+var updateActivityOwnerAndAuthorRoute = async function(localReq, localRes) {
+    
+    req = localReq;
+    res = localRes;
+    
     var errorFlag = false;
     
     await Activity.findById(req.params.id, async function(err, foundActivity){
@@ -22,11 +29,7 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
                         req.flash("errorMessage", "Sorry, we couldn't find a user with that ID for the new author");
                         res.redirect("back");
                     } else {
-                        // SET UPDATED AT DATE
-                        foundActivity.updatedAt = new Date().toISOString();
-                        
                         foundActivity.author = foundAuthor;
-                        foundActivity.save();
                     }
                 });
             }
@@ -50,38 +53,24 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
                 //once all the owner IDs have been validated then save them to the activity
                 if(!errorFlag) {
                     //need to add a check here so only unique IDs are added
-                    
-                    // SET UPDATED AT DATE
-                    foundActivity.updatedAt = new Date().toISOString();
-                    
                     foundActivity.owner = newOwnerValidatedArray;
-                    foundActivity.save();
                 } else {
                     req.flash("errorMessage", "Sorry, we couldn't find a user with that ID for the new owner");
                     res.redirect("back");
                 }
+            } else {
+                //no owner set so clear owner
+                foundActivity.owner = [];
             }
             
             if(!errorFlag){
                 
-                //add change to activity updateHistory
-                var updateLog = {};
-                updateLog.author = req.user._id;
-                updateLog.updateType = "Owner/Author Changed";
-                updateLog.oldStatus = foundActivity.status;
-                updateLog.newStatus = foundActivity.status;
+                // SET UPDATED AT DATE
+                foundActivity.updatedAt = new Date().toISOString();
                 
-                await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
-                    if(err){
-                        genericErrorResponse(req, res, err);
-                    } else {
-                        // connect new comment to the currently found activity
-                        foundActivity.updateHistory.push(updateLog);
-                        await foundActivity.save();
-                    }
-                });
+                await foundActivity.updateHistory.push(await createUpdateHistoryLog(foundActivity));
                 
-                
+                await foundActivity.save();
                 
                 // Return success message
                 req.flash("successMessage", "Successfully updated activity");
@@ -90,6 +79,17 @@ var updateActivityOwnerAndAuthorRoute = async function(req, res) {
         }
     });
 };
+
+async function createUpdateHistoryLog(foundActivity) {
+    var updateLog = {};
+    updateLog.author = req.user._id;
+    updateLog.updateType = "Owner/Author Changed";
+    updateLog.oldStatus = foundActivity.status;
+    updateLog.newStatus = foundActivity.status;
+    
+    var newUpdateLog = await ActivityUpdateHistory.create(updateLog);
+    return newUpdateLog;
+}
 
 // ==========================
 // MODULE.EXPORTS

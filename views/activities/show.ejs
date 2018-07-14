@@ -164,9 +164,7 @@
                                     <!-- Admin only change author -->
                                     <a class="btn btn-primary btn-sm mr-2 mb-2" href="/activities/<%= activity._id %>/updateOwnerAndAuthor">Change Owner and Author</a>
                                     <!-- Admin only permanent destroy activity -->
-                                    <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-dark btn-sm mr-2 mb-2" disabled>Destroy Activity</button>
-                                    </form>
+                                    <a class="btn btn-dark btn-sm mr-2 mb-2" href="/activities/<%= activity._id %>/destroy">Destroy Activity</a>
                                 </div>
                             <% } %>
                             <div class="d-flex flex-row flex-wrap flex-grow-1 align-items-start mb-2">

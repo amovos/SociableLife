@@ -60,8 +60,11 @@ router.get("/:id/updateOwnerAndAuthor", middleware.isAdmin, require("./activitie
 // UPDATE OWNER AND AUTHOR ROUTE
 router.post("/:id/updateOwnerAndAuthor", middleware.isAdmin, require("./activities/ownerAndAuthorUpdate"));
 
+// DESTROY SHOW ROUTE
+router.get("/:id/destroy", middleware.isAdmin, require("./activities/destroyShow"));
+
 // DESTROY ACTIVITY ROUTE
-router.delete("/:id", middleware.checkActivityOwnership, require("./activities/destroy"));
+router.delete("/:id", middleware.isAdmin, require("./activities/destroy"));
 
 // ==========================
 // OTHER ROUTES

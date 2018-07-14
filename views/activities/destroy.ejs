@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<div class="container pb-5">
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Delete Activity: <%= activity.name %></h1>
+            
+            <p>
+                Are you sure you want to delete this activity? 
+                <br>
+                <strong>This action cannot be undone.</strong>
+            </p>
+            
+            <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
+                <button  class="btn btn-danger mb-2">
+                    Yes, please delete this activity
+                </button>
+            </form>
+                <a class="btn btn-primary mb-2" href="/activities/<%= activity._id %>">
+                    No, don't delete this activity
+                </a>
+        </div>
+    </header>
+
+</div>
+
+<% include ../partials/footer %>

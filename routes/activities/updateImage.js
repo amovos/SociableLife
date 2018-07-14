@@ -8,7 +8,13 @@ var genericErrorResponse = require("../shared/genericErrorResponse");
 var cloudinary = require('cloudinary');
 var cloudinaryConf = require("../shared/cloudinary");
 
-var updateAvatarRoute = async function(req, res){
+var req;
+var res;
+
+var updateAvatarRoute = async function(localReq, localRes){
+    
+    req = localReq;
+    res = localRes;
 
     Activity.findById(req.params.id, async function(err, foundActivity){
         if(err || !foundActivity){
@@ -46,22 +52,7 @@ var updateAvatarRoute = async function(req, res){
                 // add image's public_id to foundActivity object
                 foundActivity.imageId = result.public_id;
                 
-                //add change to activity updateHistory
-                var updateLog = {};
-                updateLog.author = req.user._id;
-                updateLog.updateType = "Picture Changed";
-                updateLog.oldStatus = foundActivity.status;
-                updateLog.newStatus = foundActivity.status;
-                
-                await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
-                    if(err){
-                        genericErrorResponse(req, res, err);
-                    } else {
-                        // connect new comment to the currently found activity
-                        await foundActivity.updateHistory.push(updateLog);
-                        await foundActivity.save();
-                    }
-                });
+                await foundActivity.updateHistory.push(await createUpdateHistoryLog(foundActivity));
                 
                 // SET UPDATED AT DATE
                 foundActivity.updatedAt = new Date().toISOString();
@@ -79,6 +70,17 @@ var updateAvatarRoute = async function(req, res){
         }
     });
 };
+
+async function createUpdateHistoryLog(foundActivity) {
+    var updateLog = {};
+    updateLog.author = req.user._id;
+    updateLog.updateType = "Picture Changed";
+    updateLog.oldStatus = foundActivity.status;
+    updateLog.newStatus = foundActivity.status;
+    
+    var newUpdateLog = await ActivityUpdateHistory.create(updateLog);
+    return newUpdateLog;
+}
 
 // ==========================
 // MODULE.EXPORTS

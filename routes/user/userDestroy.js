@@ -33,7 +33,7 @@ var destroyUserRoute = function(req, res){
                         if(err){
                             genericErrorResponse(req, res, err);
                         } else {
-                            foundActivities.forEach(async function(activity){
+                            await foundActivities.forEach(async function(activity){
                                 activity.author = foundCommunityUser._id;
                                 activity.status = "review"; //if a person deletes an account it's likely that any activities they added will need to be checked again
                                 await activity.save();
@@ -47,6 +47,7 @@ var destroyUserRoute = function(req, res){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else {
+                    
                     //change author of any update histories to community user
                     await ActivityUpdateHistory.find({author: foundUser._id}).exec(function(err, foundUpdateHistories){
                         if(err){
@@ -54,17 +55,20 @@ var destroyUserRoute = function(req, res){
                         } else {
                             foundUpdateHistories.forEach(async function(foundUpdateHistory){
                                 foundUpdateHistory.author = foundCommunityUser._id;
-                                await foundUpdateHistory.save();
+                                await foundUpdateHistory.save(); //allowed as it's only updating this once
                             });
                         }
                     });
                     
+                    //**********
+                    //Instead of using .save() for the update requests I could do a pull and push
+                    
                     //change author of any update requests to community user
-                    await UpdateRequest.find({author: foundUser._id}).exec(function(err, foundUpdateRequest){
+                    await UpdateRequest.find({author: foundUser._id}).exec(async function(err, foundUpdateRequest){
                         if(err){
                             genericErrorResponse(req, res, err);
                         } else {
-                            foundUpdateRequest.forEach(async function(updateRequest){
+                            await foundUpdateRequest.forEach(async function(updateRequest){
                                 updateRequest.author = foundCommunityUser._id;
                                 await updateRequest.save();
                             });
@@ -72,11 +76,11 @@ var destroyUserRoute = function(req, res){
                     });
                     
                     //change isDoneUser of any update requests to community user
-                    await UpdateRequest.find({isDoneUser: foundUser._id}).exec(function(err, foundUpdateRequest){
+                    await UpdateRequest.find({isDoneUser: foundUser._id}).exec(async function(err, foundUpdateRequest){
                         if(err){
                             genericErrorResponse(req, res, err);
                         } else {
-                            foundUpdateRequest.forEach(async function(updateRequest){
+                            await foundUpdateRequest.forEach(async function(updateRequest){
                                 updateRequest.isDoneUser = foundCommunityUser._id;
                                 await updateRequest.save();
                             });
@@ -104,18 +108,17 @@ var destroyUserRoute = function(req, res){
             }
             
             //delete all comments by that user
-            await Comment.find().where('author').equals(foundUser._id).exec(function(err, foundComments){
+            await Comment.find().where('author').equals(foundUser._id).exec(async function(err, foundComments){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else if(foundComments.length > 0) {
-                    foundComments.forEach(async function(comment){
+                    await foundComments.forEach(async function(comment){
                         //remove reference to deleted comment from activity
                         await Activity.findOne({ 'comments' : comment._id }, async function(err, foundCommentActivity){
                             if(err){
                                 genericErrorResponse(req, res, err);
                             } else {
-                                await foundCommentActivity.comments.splice(foundCommentActivity.comments.indexOf(comment), 1);
-                                await foundCommentActivity.save();
+                                await Activity.update( { _id: foundCommentActivity._id }, { $pullAll: { comments: [comment._id] } } );
                                 
                                 //once the comment has been removed from the activity, then remove the actual comment
                                 await comment.remove();
@@ -126,31 +129,28 @@ var destroyUserRoute = function(req, res){
             });
 
             //delete all loves by that user
-            await Activity.find({loves: foundUser._id}).exec(function(err, foundLoveActivities){
+            await Activity.find({loves: foundUser._id}).exec(async function(err, foundLoveActivities){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else {
-                    foundLoveActivities.forEach(async function(foundLoveActivity){
-                        await foundLoveActivity.loves.splice(foundLoveActivity.loves.indexOf(foundUser._id), 1);
-                        await foundLoveActivity.save();
+                    await foundLoveActivities.forEach(async function(foundLoveActivity){
+                        await Activity.update( { _id: foundLoveActivity._id }, { $pullAll: { loves: [foundUser._id] } } );
                     });
                 }
             });
             
             //delete all instances where user owns an activity
-            await Activity.find({owner: foundUser._id}).exec(function(err, foundOwnerActivities){
+            await Activity.find({owner: foundUser._id}).exec(async function(err, foundOwnerActivities){
                 if(err){
                     genericErrorResponse(req, res, err);
                 } else {
-                    foundOwnerActivities.forEach(async function(foundOwnerActivity){
-                        await foundOwnerActivity.owner.splice(foundOwnerActivity.owner.indexOf(foundUser._id), 1);
-                        await foundOwnerActivity.save();
+                    await foundOwnerActivities.forEach(async function(foundOwnerActivity){
+                        await Activity.update( { _id: foundOwnerActivity._id }, { $pullAll: { owner: [foundUser._id] } } );
                     });
                 }
             });
             
             //delete user
-            //console.log("DELETED USER: " + foundUser.name);
             await foundUser.remove();
             
             req.flash("successMessage", "User has been deleted");

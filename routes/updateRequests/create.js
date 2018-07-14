@@ -8,8 +8,6 @@ var User = require("../../models/user");
 var UpdateRequest = require("../../models/updateRequest");
 var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 
-var async = require("async");
-
 var req;
 var res;
 

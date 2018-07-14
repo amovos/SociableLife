@@ -7,7 +7,13 @@ var ActivityUpdateHistory = require("../../models/activityUpdateHistory");
 var Activity = require("../../models/activity");
 var geocoder = require("../shared/geocoder");
 
-var updateRoute = function(req, res){
+var req;
+var res;
+
+var updateRoute = function(localReq, localRes){
+    
+    req = localReq;
+    res = localRes;
     
     Activity.findById(req.params.id, async function(err, activity){
         if(err || !activity){
@@ -132,21 +138,7 @@ var updateRoute = function(req, res){
                 activity.endDate = undefined;
             }
             
-            //create new update history log
-            var updateLog = {};
-            updateLog.author = req.user._id;
-            updateLog.updateType = "Info Changed";
-            updateLog.oldStatus = activity.status;
-            updateLog.newStatus = activity.status;
-            
-            await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
-                if(err){
-                    genericErrorResponse(req, res, err);
-                } else {
-                    await activity.updateHistory.push(updateLog);
-                    await activity.save();
-                }
-            });
+            await activity.updateHistory.push(await createUpdateHistoryLog(activity));
             
             // SET UPDATED AT DATE
             activity.updatedAt = new Date().toISOString();
@@ -164,6 +156,17 @@ var updateRoute = function(req, res){
 function getYoutubeUrlId(url){
     var code = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i);
     return (typeof code[1] == 'string') ? code[1] : false;
+}
+
+async function createUpdateHistoryLog(foundActivity) {
+    var updateLog = {};
+    updateLog.author = req.user._id;
+    updateLog.updateType = "Info Changed";
+    updateLog.oldStatus = foundActivity.status;
+    updateLog.newStatus = foundActivity.status;
+    
+    var newUpdateLog = await ActivityUpdateHistory.create(updateLog);
+    return newUpdateLog;
 }
 
 // ==========================
