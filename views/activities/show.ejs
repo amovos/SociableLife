@@ -126,9 +126,7 @@
                                         <div>
                                             <a class="btn btn-primary mr-2 mb-2" href="/activities/<%= activity._id %>/editImage">Change Picture</a>
                                             <a class="btn btn-warning mr-2 mb-2" href="/activities/<%= activity._id %>/edit">Edit Info</a>
-                                            <form class="inline-form" action="/activities/<%= activity._id %>?_method=DELETE" method="POST">
-                                                <button class="btn btn-danger mb-2" disabled>Remove</button>
-                                            </form>
+                                            <button id="ownerAuthorRemovedBtn" class="btn btn-danger mb-2 text-white" <% if(activity.status === "removed") { %>disabled<% } %>>Remove</button>
                                         </div>
                                     </div>
                                 </div>
@@ -777,6 +775,13 @@
         var posting = $.post( "/activities/updateStatus", { status: "removed", activityId: "<%= activity._id %>"});
         posting.done(function( data ) {location.reload()});
     });
+    
+    //update for author/owner remove button
+    $('#ownerAuthorRemovedBtn').on('click', function(){
+        var posting = $.post( "/activities/<%= activity._id %>/ownerAuthorStatusRemove");
+        posting.done(function( data ) {location.reload()});
+    });
+    
 </script>
 
 <script>
