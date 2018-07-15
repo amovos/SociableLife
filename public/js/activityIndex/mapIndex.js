@@ -378,6 +378,8 @@ function clusterMarkerInfoWindow(locationObj, clusterMarker, activities){
     var contentMiddle = '';
     
     var contentEnd =        '</div>' +
+                            
+                            '<hr style="height:3px;border:none;color:#333;background-color:#333;" />' +
 
                         '</div>' +
                         '<div class="iw-bottom-gradient"></div>' +

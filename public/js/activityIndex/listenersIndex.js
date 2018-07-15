@@ -89,7 +89,7 @@ $(document).ready(function(){ //waits until the DOM has loaded
     
     //regularly store the map zoom and center so they can be returned when coming back to this page
     window.setInterval(function() {
-        $(window).focus(function() { //if the user has multiple tabs open then the map location of the current tab will be stored
+        // $(window).focus(function() { //if the user has multiple tabs open then the map location of the current tab will be stored
             if (typeof(Storage) !== "undefined") {    
                 localStorage.setItem("mapZoomBrowserStorage", map.getZoom());
                 localStorage.setItem("mapCenterLatBrowserStorage", map.getCenter().lat());
@@ -104,7 +104,7 @@ $(document).ready(function(){ //waits until the DOM has loaded
                 // console.log("localStorage.getItem('mapCenterLatBrowserStorage'): " + localStorage.getItem("mapCenterLatBrowserStorage"));
                 // console.log("localStorage.getItem('mapCenterLngBrowserStorage'): " + localStorage.getItem("mapCenterLngBrowserStorage"));
             }
-        });
+        // });
     }, 500);
     
     
@@ -177,6 +177,16 @@ $('#findNearMeBtn').on('click', function(){
 $('#searchQueryBtn').on('click', function(){
     newSearch();
 });
+
+//on clicking on the "Find Activities" label focus on the "location" input box
+$('#locationInputLabel').on('click', function() {
+    $('#setLocationInput').focus();
+});
+//on clicking on the "Search Activities" label focus on the "query" input box
+$('#searchActivitiesInputLabel').on('click', function() {
+    $('#searchQueryInput').focus();
+});
+
 
 //when typing in text search input or location search input, if enter is pressed run the search
 $('#searchQueryInput,#setLocationInput').keyup(function(e){

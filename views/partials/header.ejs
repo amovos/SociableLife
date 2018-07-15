@@ -33,9 +33,6 @@
 					<li class="nav-item <%= typeof page !== 'undefined' && page === 'addActivity' ? 'active' : '' %>">
 						<a href="/addActivity" class="nav-link">Add Activity</a>
 					</li>
-					<!--<li class="nav-item <%= typeof page !== 'undefined' && page === 'addActivity' ? 'active' : '' %>">-->
-					<!--	<a href="/activities/new" class="nav-link">Add Activity</a>-->
-					<!--</li>-->
 					<li class="nav-item <%= typeof page !== 'undefined' && page === 'aboutUs' ? 'active' : '' %>">
 						<a href="/aboutUs" class="nav-link">Our Story</a>
 					</li>
@@ -53,7 +50,7 @@
 				</ul>
 				<ul class="navbar-nav">
 					<% if(currentUser && currentUser.isMod){ %>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'updateRequests' ? 'active' : '' %>">
+						<li class="nav-item mr-3 <%= typeof page !== 'undefined' && page === 'updateRequests' ? 'active' : '' %>">
 							<a href="/admin/updateRequests" class="nav-link text-warning"><i class="fas fa-exclamation-circle fa-lg"></i></a>
 						</li>
 					<% } %>

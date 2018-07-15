@@ -15,7 +15,7 @@
                 <br>
                 <%= activity.author._id %>
                 <div class="form-group">
-                    <label for="newAuthorId"><strong>New Author ID:</strong></label>
+                    <label for="newAuthorId"><strong>New Author ID:</strong> (Can be left blank as the author can't be removed)</label>
                     <input class="form-control" type="text" name="newAuthorId" id="newAuthorId">
                 </div>
                 <div class="container">
@@ -26,7 +26,7 @@
                     </div> 
                 </div> 
                 <h2>Set Owner(s)</h2>
-                <strong>Current Owner ID(s):</strong>
+                <strong>Current Owner ID(s): </strong>
                 <br>
                 <% if(activity.owner.length > 0) { %>
                     <% activity.owner.forEach(function(owner){ %>

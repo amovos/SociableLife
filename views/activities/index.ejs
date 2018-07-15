@@ -17,7 +17,7 @@
     
     <div class='col-lg-5 mb-1 nopadding'>
         <div class="input-group align-items-baseline mb-2">
-            <label for="location">Find Activities</label>
+            <label id="locationInputLabel" for="location">Find Activities</label>
             <input id='setLocationInput' class="form-control ml-2" type="text" name="location" placeholder="Where are you?">
             <div class="input-group-append">
                 <button id='findNearMeClearBtn' class="btn btn-outline-secondary" type="button" style="display: none;"><i class="fa fa-times"></i></button>
@@ -38,7 +38,7 @@
     </div>
     
     <div class="input-group align-items-baseline mb-2 col-lg-6 nopadding"> <!-- Use 6 for search and 5 for the loaction box, then use justify-content-between to create a gap on large screens-->
-        <label for="search">Search Activities</label>
+        <label id="searchActivitiesInputLabel" for="search">Search Activities</label>
         <input id='searchQueryInput' class="form-control ml-2" type="text" name="search" placeholder="e.g. swimming, camping, disco, etc.">
         <div class="input-group-append">
             <button id='searchQueryClearBtn' class="btn btn-outline-secondary" type="button" style="display: none;"><i class="fa fa-times"></i></button>

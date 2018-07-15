@@ -41,7 +41,8 @@
 .comment-text {
     white-space: pre-wrap;
     line-height: 1.1em;
-    max-height: 500px;
+    max-height: 25em;  /*500px;*/
+    min-height: 1.7em;
     overflow: scroll;
 }
 
