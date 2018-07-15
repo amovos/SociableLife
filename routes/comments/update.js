@@ -12,6 +12,8 @@ var updateRoute = function(req, res){
         req.flash("errorMessage", "Comment too long (2000 characters max)");
         res.redirect("/activities/" + req.params.id);
     } else {
+        req.body.comment.updatedAt = new Date().toISOString();
+        
         Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
             if(err || !updatedComment){
                 genericErrorResponse(req, res, err);

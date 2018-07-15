@@ -6,7 +6,7 @@ var Comment = require("../../models/comment");
 var Activity = require("../../models/activity");
 
 var allCommentsShow = async function(req, res) {
-    var foundComments = await Comment.find().sort({createdAt: -1})
+    var foundComments = await Comment.find().sort({updatedAt: -1})
         .populate({
             path: 'author',
             model: 'User'

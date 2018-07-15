@@ -693,7 +693,14 @@
                                                 <% } %>
                                             </div>
                                             
-                                            <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(comment.createdAt).fromNow() %></em></div>
+                                            <div class="d-flex flex-row flex-grow-1 justify-content-end">
+                                                <div class="d-flex flex-column align-items-end">
+                                                    <em><%= moment(comment.createdAt).fromNow() %></em>
+                                                    <% if(comment.updatedAt.toString() !== comment.createdAt.toString()) { %>
+                                                        <em>(edited <%= moment(comment.updatedAt).fromNow() %>)</em>
+                                                    <% } %>
+                                                </div>
+                                            </div>
                                             
                                         </div>
                                         <div class="card-text comment-text first-letter-capitalize"><%= comment.text %></div>

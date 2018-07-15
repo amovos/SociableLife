@@ -5,9 +5,9 @@ function orderActivitiesByDateUpdated(activities){
     return activities.sort(compareByDateUpdated).reverse();
 }
 function compareByDateUpdated(a,b) {
-  if (a.createdAt < b.createdAt) //change to updated when that's part of the DB model
+  if (a.updatedAt < b.updatedAt)
     return -1;
-  if (a.createdAt > b.createdAt) //change to updated when that's part of the DB model
+  if (a.updatedAt > b.updatedAt)
     return 1;
   return 0;
 }
