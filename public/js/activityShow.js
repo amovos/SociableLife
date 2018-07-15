@@ -79,7 +79,7 @@ $('#createNewUpdateRequestBtn').on('click', function(){
 });
 
 //Script to scroll to "Something not right?" section when "Update=true" in query param on load
-$(document).ready(function(){
+// $(document).ready(function(){
     
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -100,8 +100,14 @@ $(document).ready(function(){
             window.location.hash = hash;
         });
         
-        //expand 
         $('#collapseAddUpdateRequest').collapse();
     }
     
-});
+    if(getParameterByName('isNew') === "true") {
+        $('#nextActivityBtn').addClass("disabled");
+        $('#nextActivityBtn').hide();
+        $('#previousActivityBtn').addClass("disabled");
+        $('#previousActivityBtn').hide();
+    }
+    
+// });

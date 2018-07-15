@@ -373,8 +373,8 @@ async function createActivity() {
             genericErrorResponse(req, res, err);
         } else {
             //then redirect back to new activity page
-            req.flash("successMessage", "Your activity has been created - once it's been reviewed we'll add it to the map!");
-            res.redirect("/activities/" + newlyCreatedActivity._id); //redirects to the newly created activity
+            req.flash("successMessage", "Your activity has been created - once it's been reviewed we'll add it to the map! (You can find all your activities listed on your user profile page)");
+            res.redirect("/activities/" + newlyCreatedActivity._id + "?isNew=true"); //redirects to the newly created activity
         }
     }); 
 }

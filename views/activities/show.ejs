@@ -54,7 +54,8 @@
                                 <% } else { %>
                                     <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
                                 <% } %>
-                                <%= activity.name %></h3>
+                                <%= activity.name %>
+                            </h3>
                             <span class="d-flex flex-row flex-wrap mb-1">
                                 <span><strong>Added by:</strong>&nbsp;</span>
                                 <span><em><a href="/users/<%= activity.author._id %>"><%= activity.author.displayName %></a> <%= moment(activity.createdAt).fromNow() %></em></span>

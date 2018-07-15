@@ -155,16 +155,67 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title"><span class="text-capitalize"><%= user.displayName %></span>'s Activities</h3>
-                    <ul>
+                    <ul class="pl-0" style="list-style-type: none;">
                         <% allActivities.forEach(function(activity){ %>
-                            <li>
-                                <a href="/activities/<%= activity.id %>"><%= activity.name %></a>
-                                <% if(authorActivityIds.includes(activity._id)) { %>
-                                    (Author)
-                                <% } %>
-                                <% if(ownerActivityIds.includes(activity._id)) { %>
-                                    (Owner)
-                                <% } %>
+                            <li class="mb-2 border pt-2 pr-2 pl-2 card-grey">
+                                
+                                <div class="d-flex flex-row flex-wrap justify-content-between align-items-center">
+                                    <div class="d-flex flex-column flex-wrap">
+                                        <div class="d-flex flex-row flex-wrap align-items-baseline mb-2">
+                                            <h5 class="card-title mr-2 mb-1">
+                                                <% if(activity.status === "current"){ %>
+                                                    <span class="tooltip-status" alt="<strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months"><i class="fa fa-check-circle fa-1x text-success"></i><span class="tooltip-status-text"><strong>Current Info</strong><br>This activity has been checked or updated in the last 6 months</span></span>
+                                                <% } else if(activity.status === "review"){ %>
+                                                    <span class="tooltip-status" alt="<strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date."><i class="fa fa-question-circle fa-1x text-warning"></i><span class="tooltip-status-text"><strong>Under Review</strong><br>This activity has not been checked or updated in the last 6 months. The information might be out of date.</span></span>
+                                                <% } else { %>
+                                                    <span class="tooltip-status" alt="<strong>Out of Date</strong><br>This activity has been removed because it has already happened or has not been updated for over a year."><i class="fa fa-times-circle fa-1x text-danger"></i><span class="tooltip-status-text"><strong>Out of Date</strong><br>This activity has been removed because it has already happend or has not been updated for over a year.</span></span>
+                                                <% } %>
+                                                <a href="/activities/<%= activity.id %>"><%= activity.name %></a>
+                                            </h5>
+                                                
+                                            <% if(authorActivityIds.includes(activity._id)) { %>
+                                                (Author)
+                                            <% } %>
+                                            <% if(ownerActivityIds.includes(activity._id)) { %>
+                                                (Owner)
+                                            <% } %>
+                                        </div>
+                                        
+                                        <div>
+                                            <span class="d-flex flex-row flex-wrap mb-1">
+                                                <span><strong>Added:</strong>&nbsp;</span>
+                                                <span><em><%= moment(activity.createdAt).fromNow() %></em></span>
+                                            </span>
+                                            <span class="d-flex flex-row flex-wrap align-items-baseline mb-2">
+                                                <span><strong>Last updated:</strong>&nbsp;</span>
+                                                <span><em>
+                                                    <%= moment(activity.updatedAt).fromNow() %></em></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
+                                        <div class="d-flex flex-column align-items-center mr-4">
+                                            <span><strong>Loves</strong></span>
+                                                <span class="fa-stack fa-1x sociable-love">
+                                                    <i class="fas fa-heart fa-stack-2x heart-offset"></i>
+                                                    <span class="fa-stack-1x text-white"><%= (activity.loves.length) %></span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <span><strong>Comments</strong></span>
+                                                <span class="fa-stack fa-1x sociable-comment">
+                                                    <i class="fas fa-comment fa-stack-2x comment-offset"></i>
+                                                    <span class="fa-stack-1x text-white"><%= (activity.comments.length) %></span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
                             </li>
                         <% }); %>
                     </ul>
