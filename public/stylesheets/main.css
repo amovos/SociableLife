@@ -29,6 +29,10 @@
     background-color: #f9f9f9;
 }
 
+.card-green {
+    background-color: rgb(60, 216, 81, 0.3);
+}
+
 .comment-card-current-user {
     border: 1px solid #157EFB;
     border-radius: 3px
