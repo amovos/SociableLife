@@ -119,12 +119,19 @@ function addActivity(activity){ //function used whenever we want to add an item 
         activitySuitable = 'Learning Disabilities';
     }
     
+    var activityImgUrl;
+    if(activity.imageId) {
+        activityImgUrl = "https://res.cloudinary.com/amovos/image/upload/f_auto,q_auto:good" + activity.image.slice(46);
+    } else {
+        activityImgUrl = activity.image;
+    }
+    
     var newActivity = $(
         '<div class="grid-item col-lg-3 col-md-4 col-sm-6 mb-4">' +
             '<div class="card activity-card" onclick="location.href=\'/activities/' + activity._id + '\'">' +
               '<a style="position: relative; z-index: 1;" href="/activities/' + activity._id + '">' +
                 activityDistanceMiles +
-                '<img style="position: relative; z-index: 2;" class="card-img-top activity-index-image" src="' + activity.image + '" alt="' + activity.name + '">' +
+                '<img style="position: relative; z-index: 2;" class="card-img-top activity-index-image" src="' + activityImgUrl + '" alt="' + activity.name + ' Picture">' +
               '</a>' +
               '<div class="card-body pb-2">' +
                 '<h5 class="card-title">' + statusIcon + ' <a href="/activities/' + activity._id + '">' + activity.name + '</a></h5>' +

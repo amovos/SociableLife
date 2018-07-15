@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var activitySchema = new mongoose.Schema({
     name: String,
-    image: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526052638/activityPlaceHolder.png" },
+    image: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1531648884/GeneralAssets/activityPlaceHolder2.png" },
     imageId: String,
     summary: String,
     description: String,

@@ -257,11 +257,26 @@ async function createFirstUpdateHistoryLog() {
     //*********************************
     req.body.activity.updateHistory = [];
     
+    var updateHistoryAuthor;
+    
+    if(req.user) {
+        updateHistoryAuthor = req.user._id;
+    } else {
+        //set it to be the community user (do a BD search to find the ID)
+        await User.findOne({ username: process.env.COMMUNITY_USERNAME }, function(err, user) {
+            if(err){
+                genericErrorResponse(req, res, err);
+            } else {
+                updateHistoryAuthor = user._id;
+            }
+        });
+    }
+    
     var updateLog = {};
-    updateLog.author = req.body.activity.author;
+    updateLog.author = updateHistoryAuthor;
     updateLog.updateType = "Activity Created";
-    updateLog.oldStatus = req.body.activity.status;
-    updateLog.newStatus = req.body.activity.status;
+    updateLog.oldStatus = "review";
+    updateLog.newStatus = "review";
     
     await ActivityUpdateHistory.create(updateLog, async function(err, updateLog){
         if(err){
@@ -328,7 +343,7 @@ async function addFirstCommentAndLove() {
     
         //if user is currently logged in the automatically add them to the love list as well
         if(req.user) {
-            req.body.activity.loves.push(req.user._id);
+            await req.body.activity.loves.push(req.user._id);
         }
     
         var firstComment = {};

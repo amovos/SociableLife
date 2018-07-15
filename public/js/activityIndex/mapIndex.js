@@ -50,15 +50,15 @@ function initActivityIndexMap() {
     
     var mapKeyHtml = '<div class="d-flex flex-row mb-1">' +
                         '<div id="allAgesKeyDiv" ' + allAgesKeyDivOpacity + 'class="d-flex flex-column align-items-center mr-2 mapKeyDiv">' +
-                            '<img src="/img/Brown.svg"</img>' +
+                            '<img src="/img/Brown.svg" alt="All Ages Map Icon Brown"</img>' +
                             '<span>All Ages<span>' +
                         '</div>' +
                         '<div id="adultsKeyDiv" ' + adultsKeyDivOpacity + 'class="d-flex flex-column align-items-center mr-2 mapKeyDiv">' +
-                            '<img src="/img/Blue.svg"</img>' +
+                            '<img src="/img/Blue.svg" alt="Adult Map Icon Blue"</img>' +
                             '<span>Adults</span>' +
                         '</div>' +
                         '<div id="childrenKeyDiv" ' + childrenKeyDivOpacity + 'class="d-flex flex-column align-items-center mapKeyDiv">' +
-                            '<img src="/img/Aqua.svg"</img>' +
+                            '<img src="/img/Aqua.svg" alt="Children Map Icon Light Blue"</img>' +
                             '<span>Children</span>' +
                         '</div>' +
                     '</div>';
