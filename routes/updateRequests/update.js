@@ -23,6 +23,7 @@ var updateUpdateRequestRoute = function(req, res){
             
             //set isDoneDate to current date;
             foundUpdateRequest.isDoneDate = new Date().toISOString();
+            foundUpdateRequest.updatedAt = new Date().toISOString(); //used for ordering on the "Pending Update Requests" Screen
             
             //set isDoneValue to the reason submitted in the req.body
             foundUpdateRequest.isDoneValue = req.body.changeValue;

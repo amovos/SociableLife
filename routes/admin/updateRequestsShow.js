@@ -23,8 +23,65 @@ var allUpdateRequestsShow = async function(req, res) {
         showAllUpdateRequests = true;
     }
     
-    res.render("admin/updateRequestsShow", {updateRequests: foundUpdateRequests, activities: allActivities, showAllUpdateRequests: showAllUpdateRequests});
+    
+    var currentWithUpdates = [];
+    var removedWithUpdates = [];
+    var reviewNoUpdates = [];
+    
+    await allActivitiesLoop(allActivities, foundUpdateRequests, "current", currentWithUpdates);
+    await allActivitiesLoop(allActivities, foundUpdateRequests, "removed", removedWithUpdates);
+    // await allActivitiesLoop(allActivities, foundUpdateRequests, "review", reviewNoUpdates);
+    
+    await allActivities.forEach(async function(activity) {
+        var counter = 0;
+        if(activity.status === "review") {
+            
+            //count all update requests with isDone
+            activity.updateRequests.forEach(function(updateRequestId) {
+                foundUpdateRequests.forEach(async function(updateRequest) {
+                    if(updateRequest._id.toString() === updateRequestId.toString()) {
+                        if(updateRequest.isDone) {
+                            await counter ++;
+                        }
+                    }
+                });
+            });
+            
+            //if isDone is the same as the total number of requests then it shouldn't be in "review"
+            if(activity.updateRequests.length === counter) {
+                await reviewNoUpdates.push(activity);
+            }
+        }
+    });
+
+    
+    
+    res.render("admin/updateRequestsShow", {    updateRequests: foundUpdateRequests, 
+                                                activities: allActivities, 
+                                                showAllUpdateRequests: showAllUpdateRequests,
+                                                currentWithUpdates: currentWithUpdates,
+                                                removedWithUpdates: removedWithUpdates,
+                                                reviewNoUpdates: reviewNoUpdates
+                                        });
 };
+
+async function allActivitiesLoop(allActivities, foundUpdateRequests, status, array) {
+    allActivities.forEach(function(activity) {
+        if(activity.status === status) {
+            activity.updateRequests.forEach(function(updateRequestId) {
+                foundUpdateRequests.forEach(async function(updateRequest) {
+                    if(updateRequest._id.toString() === updateRequestId.toString()) {
+                        if(!updateRequest.isDone) {
+                            if(!(array.includes(activity))) {
+                                await array.push(activity);
+                            }
+                        }
+                    }
+                });
+            });
+        }
+    });
+}
 
 // ==========================
 // MODULE.EXPORTS

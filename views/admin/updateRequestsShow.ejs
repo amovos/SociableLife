@@ -1,85 +1,175 @@
 <% include ../partials/header %>
 
 <div class="container col-md-6 pb-5">
-    <h1>Pending Update Requests (<%= updateRequests.length %>)</h1> 
-    
-    <% if(!showAllUpdateRequests) { %>
-        <a class="btn btn-info" href="/admin/updateRequests?showAllUpdateRequests=true">Show All Completed</a>
-    <% } else { %>
-        <a class="btn btn-info" href="/admin/updateRequests?showAllUpdateRequests=false">Hide All Completed</a>
-    <% } %>
-    
-<div class="row">
-    <% updateRequests.forEach(function(updateRequest){ %>
-        <% if(!updateRequest.isDone) { %>
-            <div class="mb-2 nopadding">
-                <div class="card card-grey">
-                    <div class="pl-3 pr-3 pt-3 pb-3">
-                        <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
-                            <div class="d-flex flex-row flex-wrap align-items-baseline">
-                                <strong>
-                                    <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
-                                        <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
-                                        <%= updateRequest.author.displayName %>
-                                    </a>
-                                </strong>
-                            </div>
-                            <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
-                        </div>
-                        <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2 mb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
-                        <div>Activity Link: 
-                            <% activities.forEach(function(activity){ %>
-                                <% activity.updateRequests.forEach(function(activityUpdateRequest){ %>
-                                    <% if(String(activityUpdateRequest) === String(updateRequest.id)) { %>
-                                        <% activityId = activity._id %>
-                                        <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
-                                    <% } %>
-                                <% }) %>
-                            <% }) %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% } else if(showAllUpdateRequests) { %>
-        <!-- If update request isDone -->
-            <!-- If url query param "showAllUpdateRequests" is set to true -->
-            <div class="col-md-12 mb-2 nopadding">
-                <div class="card card-green">
-                    <div class="pl-3 pr-3 pt-3 pb-3">
-                        <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
-                            <div class="d-flex flex-row flex-wrap align-items-baseline">
-                                <strong>
-                                    <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
-                                        <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
-                                        <%= updateRequest.author.displayName %>
-                                    </a>
-                                </strong>
-                            </div>
-                            <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
-                        </div>
-                        <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
-                        <hr>
-                        <div class="d-flex flew-column flex-wrap justify-content-between mt-2">
-                            
-                            <p>
-                                <strong>
-                                    <a class="mr-1" href="/users/<%= updateRequest.isDoneUser._id %>">
-                                        <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.isDoneUser.avatar.slice(46) %>" alt="Update Request isDone user avatar">
-                                        <%= updateRequest.isDoneUser.displayName %>
-                                    </a>
-                                </strong>
-                            
-                                selected "<strong><%= updateRequest.isDoneValue %></strong>" <%= moment(updateRequest.isDoneDate).fromNow() %>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% } %>
-    <% }); %>
 
-</div>
+    <% if(currentWithUpdates.length > 0 || removedWithUpdates.length > 0 || reviewNoUpdates.length > 0) { %>
+        <div class="mb-5">
+            
+            <h3>Uh oh, it looks like a few activites are in the wrong status!</h3> 
+            <h6>Please could you take a look at them and either:
+                <br>
+                <i class="fas fa-chevron-circle-right"></i> Move them to the correct status
+                <br>
+                or
+                <br>
+                <i class="fas fa-chevron-circle-right"></i> Create a new update request saying what needs updating
+            </h6>
+        
     
+            <% if(currentWithUpdates.length > 0) { %>
+                <div class="container border rounded card-grey pt-2 pr-2 pb-2 pl-2 mt-2">
+                    <div class="mb-2 text-center">
+                        <i class="fa fa-check-circle fa-lg text-success"></i> Current but <strong>with</strong> pending update requests <i class="fas fa-exclamation-circle fa-lg text-info"></i> 
+                        <br>
+                        (Should be In Review <i class="fa fa-question-circle fa-lg text-warning"></i>)
+                    </div>
+                    <div class="d-flex flex-column">
+                        <% currentWithUpdates.forEach(function(activity) { %>
+                            <div>
+                                <strong>Activity Link: </strong>
+                                <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+            
+            <% if(removedWithUpdates.length > 0) { %>
+                <div class="container border rounded card-grey pt-2 pr-2 pb-2 pl-2 mt-2">
+                    <div class="mb-2 text-center">
+                        <i class="fa fa-times-circle fa-lg text-danger"></i> Removed but <strong>with</strong> pending update requests <i class="fas fa-exclamation-circle fa-lg text-info"></i> 
+                        <br>
+                        (Should be In Review <i class="fa fa-question-circle fa-lg text-warning"></i>)
+                    </div>
+                    <div class="d-flex flex-column">
+                        <% removedWithUpdates.forEach(function(activity) { %>
+                            <div>
+                                <strong>Activity Link: </strong>
+                                <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+            
+            
+            <% if(reviewNoUpdates.length > 0) { %>
+                <div class="container border rounded card-grey pt-2 pr-2 pb-2 pl-2 mt-2">
+                    <div class="mb-2 text-center">
+                        <i class="fa fa-question-circle fa-lg text-warning"></i> In Review with <strong>no</strong> pending update requests <i class="fas fa-exclamation-circle fa-lg text-info"></i> 
+                        <br>
+                        (Should be Current <i class="fa fa-check-circle fa-lg text-success"></i> or Removed <i class="fa fa-times-circle fa-lg text-danger"></i>)
+                    </div>
+                    <div class="d-flex flex-column">
+                        <% reviewNoUpdates.forEach(function(activity) { %>
+                            <div>
+                                <strong>Activity Link: </strong>
+                                <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+        
+        </div>
+    <% } %>
+        
+    
+    <div class="d-flex flex-row flex-wrap align-items-center">
+        <h2 class="mr-2" style="display: inline;">Pending Update Requests (<span id="counter">0</span>)</h2> 
+        
+        <% if(!showAllUpdateRequests) { %>
+            <a class="btn btn-info" href="/admin/updateRequests?showAllUpdateRequests=true">Show All Completed</a>
+        <% } else { %>
+            <a class="btn btn-info" href="/admin/updateRequests?showAllUpdateRequests=false">Hide All Completed</a>
+        <% } %>
+    </div>
+    
+    <div class="container pr-0 pl-0 mt-2">
+        <% updateRequests.forEach(function(updateRequest){ %>
+            <% if(!updateRequest.isDone) { %>
+                <div class="mb-2 nopadding update-request">
+                    <div class="card card-grey">
+                        <div class="pl-3 pr-3 pt-3 pb-3">
+                            <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                    <strong>
+                                        <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
+                                            <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
+                                            <%= updateRequest.author.displayName %>
+                                        </a>
+                                    </strong>
+                                </div>
+                                <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
+                            </div>
+                            <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2 mb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
+                            <div><strong>Activity Link: </strong>
+                                <% activities.forEach(function(activity){ %>
+                                    <% activity.updateRequests.forEach(function(activityUpdateRequest){ %>
+                                        <% if(String(activityUpdateRequest) === String(updateRequest.id)) { %>
+                                            <% activityId = activity._id %>
+                                            <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
+                                        <% } %>
+                                    <% }) %>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else if(showAllUpdateRequests) { %>
+            <!-- If update request isDone -->
+                <!-- If url query param "showAllUpdateRequests" is set to true -->
+                <div class="col-md-12 mb-2 nopadding update-request">
+                    <div class="card card-green">
+                        <div class="pl-3 pr-3 pt-3 pb-3">
+                            <div class="card-title d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                <div class="d-flex flex-row flex-wrap align-items-baseline">
+                                    <strong>
+                                        <a class="mr-1" href="/users/<%= updateRequest.author._id %>">
+                                            <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.author.avatar.slice(46) %>" alt="Update Request author avatar">
+                                            <%= updateRequest.author.displayName %>
+                                        </a>
+                                    </strong>
+                                </div>
+                                <div class="d-flex flex-row flex-grow-1 justify-content-end"><em><%= moment(updateRequest.createdAt).fromNow() %></em></div>
+                            </div>
+                            <div class="card-text comment-text rounded pl-2 pr-2 pt-2 pb-2 mb-2" style="background-color: #8accd7"><%= updateRequest.text %></div>
+                            <div><strong>Activity Link: </strong>
+                                <% activities.forEach(function(activity){ %>
+                                    <% activity.updateRequests.forEach(function(activityUpdateRequest){ %>
+                                        <% if(String(activityUpdateRequest) === String(updateRequest.id)) { %>
+                                            <% activityId = activity._id %>
+                                            <a href="/activities/<%= activity._id %>"><%= activity.name %></a>
+                                        <% } %>
+                                    <% }) %>
+                                <% }) %>
+                            </div>
+                            <hr>
+                            <div class="d-flex flew-column flex-wrap justify-content-between mt-2">
+                                <p class="mb-0">
+                                    <strong>
+                                        <a class="mr-1" href="/users/<%= updateRequest.isDoneUser._id %>">
+                                            <img class="" height="40" width="40" src="<%= process.env.CLOUDINARY_URL_START %>c_fill,h_100,w_100,f_auto,q_auto,r_max<%= updateRequest.isDoneUser.avatar.slice(46) %>" alt="Update Request isDone user avatar">
+                                            <%= updateRequest.isDoneUser.displayName %>
+                                        </a>
+                                    </strong>
+                                    selected "<strong><%= updateRequest.isDoneValue %></strong>" <%= moment(updateRequest.isDoneDate).fromNow() %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %>
+    
+    </div>
+        
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#counter').html($('.update-request').length)
+    });
+</script>
 
 <% include ../partials/footer %>
