@@ -80,13 +80,13 @@ passport.deserializeUser(User.deserializeUser());
 // ==========================
 // ONLY IN DEV ENVIRONMENT
 var middleware = require("./middleware");
-// if (process.env.ENV_ID === "dev"){
+if (process.env.ENV_ID === "dev"){
     app.get('/seed', middleware.isAdmin, function(req, res){
         var seedDB = require("./seeds");
         seedDB(); //Run the seedDB file
         res.redirect("/activities");
     });
-// }
+}
 
 
 // ==========================
