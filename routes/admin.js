@@ -41,6 +41,21 @@ router.get("/allComments", middleware.isAdmin, require("./admin/allCommentsShow"
 // ============================
 router.get("/updateRequests", middleware.isAdminOrMod, require("./admin/updateRequestsShow"));
 
+// ==============================
+// FEATURED ACTIVITIES SHOW ROUTE
+// ==============================
+router.get("/featuredActivities", middleware.isAdmin, require("./admin/featuredActivitiesShow"));
+
+// ==============================
+// FEATURED ACTIVITIES ADD ROUTE
+// ==============================
+router.post("/featuredActivities/add", middleware.isAdmin, require("./admin/featuredActivitiesAdd"));
+
+// =================================
+// FEATURED ACTIVITIES REMOVE ROUTE
+// =================================
+router.post("/featuredActivities/:id/remove", middleware.isAdmin, require("./admin/featuredActivitiesRemove"));
+
 // ==========================
 // MODULE.EXPORTS
 // ==========================

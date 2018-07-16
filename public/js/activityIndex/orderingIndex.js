@@ -42,3 +42,35 @@ function compareByLoves(a,b) {
     return 1;
   return 0;
 }
+
+
+//ORDER BY FEATURED
+async function orderActivitiesByFeatured(activities){
+    
+    var featuredActivities = [];
+    
+    //find all featured activities
+    await activities.forEach(async function(activity) {
+      if(activity.featured) {
+        await featuredActivities.push(activity);
+      }
+    });
+    
+    featuredActivities.sort(compareByDateUpdated).reverse();
+    
+    var remainingActivities = activities;
+    
+    //remove featured activities from remainingActivities;
+    await activities.forEach(function(activity) {
+      if(featuredActivities.includes(activity)) {
+        //find index of current activity in remainingActivities and remove it
+        remainingActivities.splice(remainingActivities.indexOf(activity), 1);
+      }
+    });
+    
+    await remainingActivities.sort(compareByDateUpdated).reverse();
+    
+    var combinedActivities = featuredActivities.concat(remainingActivities);
+    
+    return combinedActivities;
+}

@@ -38,6 +38,7 @@ var activitySchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
     endDate: Date,
+    featured: Boolean,
     updateHistory: [
         {
             type: mongoose.Schema.Types.ObjectId,

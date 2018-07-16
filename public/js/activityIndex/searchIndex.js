@@ -316,7 +316,10 @@ function resetSearch(){
     $('#statusCheckboxToggle,#agesCheckboxToggle,#suitableCheckboxToggle,#typeCheckboxToggle').html('Clear All');
     
     //select "Updated Date" order by
-    $('#orderDateUpdatedCheck').prop('checked', true);
+    //$('#orderDateUpdatedCheck').prop('checked', true);
+    
+    //unselect all "Order By"
+    $('#orderDateUpdatedCheck,#orderDistanceCheck,#orderLovesCheck').prop('checked', false);
     
     //hide "Back to Top" button
     $('#backToTopBtn').hide();

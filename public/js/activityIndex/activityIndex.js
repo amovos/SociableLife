@@ -11,13 +11,13 @@ async function addActivities(activities) { //function used to add activities on 
     removeAllActivities(); //remove all activities before trying to add new ones
     
     //just before checking to see what the order should be, check if location has a value and if it doesn't, update the radio boxes
-    //and set the value to "Date Updated" if there's nothing set for location
     if(!($('#setLocationInput').val())){
         //disable the distance order radio checkbox
         $('#orderDistanceCheck').attr("disabled", true);
+        
         //and if the value was previously distance, change it to date updated
         if($('#orderDistanceCheck').prop('checked')){
-            $('#orderDateUpdatedCheck').prop('checked', true);
+            $('#orderDateUpdatedCheck').prop('checked', false);
         }
     } else {
         //if the location input does have a value, enable the ordering by distance
@@ -30,8 +30,10 @@ async function addActivities(activities) { //function used to add activities on 
        activities = await orderActivitiesByLoves(activities);
     } else if($('#orderDistanceCheck').prop('checked')){
         activities = await orderActivitiesByDistance(activities);
-    } else {
+    } else if($('#orderDateUpdatedCheck').prop('checked')){
         activities = await orderActivitiesByDateUpdated(activities);
+    } else {
+        activities = await orderActivitiesByFeatured(activities);
     }
     
     //once ordered set the window storage variable to filteredActivities so it can be used when moving to other activities
