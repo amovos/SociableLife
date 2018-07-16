@@ -39,7 +39,7 @@ async function addActivities(activities) { //function used to add activities on 
     //once ordered set the window storage variable to filteredActivities so it can be used when moving to other activities
     if (typeof(Storage) !== "undefined") {
         //store the object in localStorage under filteredActivities
-        localStorage.setItem("filteredActivities", JSON.stringify(filteredActivities));
+        localStorage.setItem("filteredActivities", JSON.stringify(activities));
     }
     
     activities.forEach(function(activity, index){
