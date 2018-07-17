@@ -54,8 +54,14 @@
         var counterBroken = 0;
         var returnedActivities = await $.getJSON("/api/activities/");
         
+        await returnedActivities.forEach(async function(activity, index) {
+            if(!(activity.website)) {
+                await returnedActivities.splice(index, 1);
+            }
+        });
+        
         //for each item in returnedActivities, count if it's been checked
-        returnedActivities.forEach(function(activity){
+        await returnedActivities.forEach(function(activity){
             if(activity.linkStatus.dateLastChecked === isodate) {
                 counter++;
                 if(activity.linkStatus.isLinkBroken) {
