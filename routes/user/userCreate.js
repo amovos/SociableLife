@@ -62,6 +62,7 @@ var createRoute = async function(req, res){
             username: req.body.email.toLowerCase(),
             email: req.body.email.toLowerCase(),
             displayName: req.body.displayName,
+            lowerDisplayName: req.body.displayName.toLowerCase(),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             mailingList: mailingList,

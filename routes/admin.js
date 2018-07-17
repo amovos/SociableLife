@@ -56,6 +56,11 @@ router.post("/featuredActivities/add", middleware.isAdmin, require("./admin/feat
 // =================================
 router.post("/featuredActivities/:id/remove", middleware.isAdmin, require("./admin/featuredActivitiesRemove"));
 
+// =================================
+// FEATURED ACTIVITIES REMOVE ROUTE
+// =================================
+router.get("/customScript", middleware.isAdmin, require("./admin/customScript"));
+
 // ==========================
 // MODULE.EXPORTS
 // ==========================
