@@ -13,12 +13,15 @@ async function checkAllBrokenLinks(timeStamp){
         
         if(activity.website) {
             
-            var websiteURL = activity.website;
+            var websiteURL;
         
             //if website doesn't have "http" or "https" at the start then add it
             if(!(activity.website.match(/^https?\:\/\/|\/$/i))) {
                 websiteURL = "http://" + activity.website;
+            } else {
+                websiteURL = activity.website;
             }
+            
             
             request(websiteURL, function (error, response, body) {
                 if (error) {
