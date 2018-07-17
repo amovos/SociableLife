@@ -68,7 +68,7 @@ var updateUserRoute = async function(req, res){
         if(changeFlag){
             await foundUser.save(function(err){
                 console.log(err);
-                if(err && err.message.includes("displayName_1")) {
+                if(err && err.message.includes("lowerDisplayName_1")) {
                     return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, the display name \"" + req.body.displayName + "\" is already being used, please try a different one</a>"});
                 } else if(err && err.message.includes("username_1")){
                     return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, a user with the email \"" + req.body.email + "\" already exists"});
