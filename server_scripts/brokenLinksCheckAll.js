@@ -22,9 +22,6 @@ async function checkAllBrokenLinks(timeStamp){
                 websiteURL = activity.website;
             }
             
-            console.log(websiteURL);
-            
-            
             request(websiteURL, function (error, response, body) {
                 if (error) {
                     //save "error" to error message
