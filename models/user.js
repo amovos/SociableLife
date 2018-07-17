@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, unique: true, required: true},
     password: String,
     displayName: String,
-    lowerDisplayName: String, //{type: String, unique: true, required: true},
+    lowerDisplayName: {type: String, unique: true, required: true},
     avatar: { type: String, default: "https://res.cloudinary.com/amovos/image/upload/v1526054504/avatarPlaceHolder.jpg" },
     avatarId: String,
     firstName: String,

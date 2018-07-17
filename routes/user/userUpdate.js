@@ -47,7 +47,11 @@ var updateUserRoute = async function(req, res){
         if(req.body.lastName !== foundUser.lastName) {                  foundUser.lastName = req.body.lastName; changeFlag = true; }
         
         // DISPLAY NAME CHANGE
-        if(req.body.displayName !== foundUser.displayName) {            foundUser.displayName = req.body.displayName; changeFlag = true; }
+        if(req.body.displayName !== foundUser.displayName) {            
+            foundUser.displayName = req.body.displayName; 
+            foundUser.lowerDisplayName = req.body.displayName.toLowerCase();
+            changeFlag = true; 
+        }
         
         // CONTACT EMAIL CHANGE
         if(req.body.contactEmail !== foundUser.contactInfo.contactEmail) {          foundUser.contactInfo.contactEmail = req.body.contactEmail; changeFlag = true; }
@@ -63,9 +67,11 @@ var updateUserRoute = async function(req, res){
         
         if(changeFlag){
             await foundUser.save(function(err){
-                if(err){
-                    console.log("ERROR: " + err);
-                    return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> A user with that email already exists"});
+                console.log(err);
+                if(err && err.message.includes("displayName_1")) {
+                    return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, the display name \"" + req.body.displayName + "\" is already being used, please try a different one</a>"});
+                } else if(err && err.message.includes("username_1")){
+                    return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, a user with the email \"" + req.body.email + "\" already exists"});
                 } else {
                     return res.send({type: "success"});
                 }
@@ -79,7 +85,7 @@ var updateUserRoute = async function(req, res){
 
 function checkUserInput(res, input, Str){
     if(!input.match(/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/)){ //Special characters (_, , -) have to be followed by an alphanumeric character. The first and last characters must be alphanumeric characters.
-        res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> " + Str + " isn't valid (it can only contain letters, numbers, -, _ , or spaces"});
+        res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> " + Str + " isn't valid (it can only contain letters, numbers, -, _ , or spaces (it also can't start or end with spaces)"});
         return true;
     } else {
         return false;

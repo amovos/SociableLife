@@ -5,7 +5,7 @@
 var User = require("../../models/user");
 
 var userPermissionsShow = async function(req, res) {
-    var foundUsers = await User.find().sort({createdAt: 1});
+    var foundUsers = await User.find().sort({createdAt: -1});
     
     res.render("admin/userPermissions", {users: foundUsers});
 };

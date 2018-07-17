@@ -71,13 +71,15 @@ var createRoute = async function(req, res){
     );
     
     User.register(newUser, req.body.password, function(err, registeredUser){ //pass the password to the passport-local-mongoose method. This means you don't store the password in plain text, only the hash.
-        if(err){
-            return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> A user with the given email is already registered, please <a href='/login'>login</a> or <a href='/forgot'>reset your password</a>"});
+        if(err && err.code === 11000){
+            return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, the display name \"" + req.body.displayName + "\" is already being used, please try a different one</a>"});
+        } else if(err) {
+            return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Sorry, a user with the email \"" + req.body.email + "\" is already registered, please <a href='/login'>login</a> or <a href='/forgot'>reset your password</a>"});
         } else req.logIn(registeredUser, function(err) { //as this is a custom callback we need to explicitly log the user in
             if (err) {
                 return res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> Error logging in, please try again"});
             } else {
-                //add the new user to mail chimp mailing list that only sends out the first intro email
+                //TO DO - add the new user to mail chimp mailing list that only sends out the first intro email
                 return res.send({type: "success", message: registeredUser._id}); //not currently doing anything with the id on the client side
             }
         });
@@ -86,7 +88,7 @@ var createRoute = async function(req, res){
 
 function checkUserInput(res, input, Str){
     if(!input.match(/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/)){ //Special characters (_, , -) have to be followed by an alphanumeric character. The first and last characters must be alphanumeric characters.
-        res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> " + Str + " isn't valid (it can only contain letters, numbers, -, _ , or spaces"});
+        res.send({type: "error", message: "<i class='fas fa-exclamation-triangle'></i> " + Str + " isn't valid (it can only contain letters, numbers, -, _ , or spaces (it also can't start or end with spaces)"});
         return true;
     } else {
         return false;

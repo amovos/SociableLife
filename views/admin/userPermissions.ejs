@@ -9,7 +9,6 @@
             <th class="border p-3">Display Name</th>
             <th class="border p-3">isAdmin</th>
             <th class="border p-3">isMod</th>
-            <th class="border p-3">isInactive</th>
         </tr>
         <% users.forEach(function(user){ %>
             <tr>
@@ -31,7 +30,6 @@
                             <input id="isMod" type="checkbox" name="isMod">
                         <% } %>
                     </td>
-                    <td class="border p-3 text-center"><%=  %></td>
                     <td class="border p-1"><button class="btn btn-sm btn-primary" <% if(user.username === process.env.ADMIN_USERNAME) { %> disabled <% } %>>Update</button></td>
                 </form>
             </tr>
