@@ -144,6 +144,11 @@
                             <% } %>
                             
                             <% if(currentUser && (activity.author._id.equals(currentUser._id) || isOwner || currentUser.isMod || currentUser.isAdmin)){ %>
+                                <div class="border rounded card-grey pt-1 pr-2 pb-1 pl-2 mb-2">
+                                    <% if(activity.endDate) { %>
+                                        <strong>Auto Removal Date:</strong> <%= moment(activity.endDate).format("Do MMM YYYY"); %>
+                                    <% } %>
+                                </div>
                                 <div class="d-flex flex-row flex-wrap flex-grow-1 justify-content-between mb-2">
                                     <div class="d-flex flex-row flex-wrap align-items-baseline mt-2">
                                         <div>
@@ -461,10 +466,6 @@
                                     <h4 class="mt-1">When</h4>
                                     <p class="mr-3">
                                         <%= activity.when %>
-                                        <% if(activity.endDate) { %>
-                                            <br>
-                                            <strong>End Date:</strong> <%= moment(activity.endDate).format("Do MMM YYYY"); %>
-                                        <% } %>
                                     </p>
                                 </div>
                                 <div class="col-md-6 pl-1">
