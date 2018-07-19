@@ -43,7 +43,7 @@ scheduledFunctions();
 // ==========================
 // DB CONFIG
 // ==========================
-var url = "mongodb://localhost/sl-dev"; //creates a backup so that if the environment variable isn't set up it has a backup
+var url = process.env.DATABASEURL //"mongodb://localhost/sl-dev"; //creates a backup so that if the environment variable isn't set up it has a backup
 mongoose.connect(url);
 mongoose.Promise = Promise;
 if (process.env.ENV_ID === "dev"){
