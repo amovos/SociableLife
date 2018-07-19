@@ -123,7 +123,7 @@ function addActivity(activity){ //function used whenever we want to add an item 
     
     var activityImgUrl;
     if(activity.imageId) {
-        activityImgUrl = "https://res.cloudinary.com/amovos/image/upload/f_auto,q_auto:good" + activity.image.slice(46);
+        activityImgUrl = "https://res.cloudinary.com/amovos/image/upload/f_auto,q_auto:low" + activity.image.slice(46);
     } else {
         activityImgUrl = activity.image;
     }
