@@ -9,6 +9,9 @@ function scheduledFunctions(){
         checkAllBrokenLinks(isodate);
     });
     
+    //remove activities past their endDate every 24 hours
+    
+    
     //put activities into review that haven't been updated in 6 months
     
     //"remove" activities that haven't been updated in 12 months

@@ -164,6 +164,21 @@ function addActivity(activity){ //function used whenever we want to add an item 
                 
                 '<div class="d-flex flex-row justify-content-between">' +
                     '<div class="d-flex flex-column nopadding text-left">' +
+                        '<div class="d-flex flex-column nopadding text-left">' +
+                            '<div>' +
+                                '<strong>When</strong>' +
+                            '</div>' +
+                            '<div>' +
+                                activity.when +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                
+                '<hr class="mb-2 mt-2">' +
+                
+                '<div class="d-flex flex-row justify-content-between">' +
+                    '<div class="d-flex flex-column nopadding text-left">' +
                         // '<div>' +
                         //     '<strong>Type</strong>' +
                         // '</div>' +
@@ -171,14 +186,6 @@ function addActivity(activity){ //function used whenever we want to add an item 
                             activity.location +
                         '</div>' +
                     '</div>' +
-                    // '<div class="d-flex flex-column col-7 nopadding text-left">' +
-                    //     '<div>' +
-                    //         '<strong>When</strong>' +
-                    //     '</div>' +
-                    //     '<div>' +
-                    //         activity.when +
-                    //     '</div>' +
-                    // '</div>' +
                 '</div>' +
                 
                 '<hr class="mb-2 mt-2">' +

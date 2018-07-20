@@ -4,6 +4,8 @@
 
 var User = require("../../models/user");
 
+var endDateRemove = require("../../server_scripts/endDateRemove");
+
 var customScript = async function(req, res){
     
     // var users = await User.find({});
@@ -13,10 +15,19 @@ var customScript = async function(req, res){
     //     user.save();
     // });
     
-    // req.flash("successMessage", "Custom Script Ran...");
     
     
-    req.flash("errorMessage", "No Custom Script Found");
+    
+    
+    
+    
+    endDateRemove();    
+    req.flash("successMessage", "Custom Script Ran...");
+
+    
+    
+    
+    //req.flash("errorMessage", "No Custom Script Found");
     
     res.redirect("/admin");
 };
