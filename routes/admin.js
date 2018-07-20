@@ -37,6 +37,11 @@ router.put("/userPermissions", middleware.isAdmin, require("./admin/userPermissi
 router.get("/allComments", middleware.isAdmin, require("./admin/allCommentsShow"));
 
 // ============================
+// ALL END DATES SHOW ROUTE
+// ============================
+router.get("/allEndDates", middleware.isAdmin, require("./admin/allEndDatesShow"));
+
+// ============================
 // UPDATE REQUESTS SHOW ROUTE
 // ============================
 router.get("/updateRequests", middleware.isAdminOrMod, require("./admin/updateRequestsShow"));

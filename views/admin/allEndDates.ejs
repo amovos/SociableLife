@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="container col-md-6 pb-5">
+    <h1>All End Dates</h1>
+    
+<div class="row">
+    <% activities.forEach(function(activity){ %>
+        <% if(activity.endDate) { %>
+            <div class="col-md-12 mb-2">
+                <div class="card">
+                    <div class="card-body card-grey">
+                        <a href="/activities/<%= activity._id %>"><%= activity.name %></a> (<%= activity.status %>)
+                        <br>
+                        <%= activity.endDate %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    <% }); %>
+</div>
+    
+</div>
+
+<% include ../partials/footer %>
