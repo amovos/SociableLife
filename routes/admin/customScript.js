@@ -17,17 +17,13 @@ var customScript = async function(req, res){
     
     
     
-    
-    
-    
-    
-    endDateRemove();    
-    req.flash("successMessage", "Custom Script Ran...");
+    // endDateRemove();    
+    // req.flash("successMessage", "Custom Script Ran...");
 
     
     
     
-    //req.flash("errorMessage", "No Custom Script Found");
+    req.flash("errorMessage", "No Custom Script Found");
     
     res.redirect("/admin");
 };
