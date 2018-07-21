@@ -30,7 +30,6 @@ var allUpdateRequestsShow = async function(req, res) {
     
     await allActivitiesLoop(allActivities, foundUpdateRequests, "current", currentWithUpdates);
     await allActivitiesLoop(allActivities, foundUpdateRequests, "removed", removedWithUpdates);
-    // await allActivitiesLoop(allActivities, foundUpdateRequests, "review", reviewNoUpdates);
     
     await allActivities.forEach(async function(activity) {
         var counter = 0;
