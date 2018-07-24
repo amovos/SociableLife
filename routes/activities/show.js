@@ -89,7 +89,8 @@ var showRoute = function(req, res){
                                             loveColorClass: loveColorClass, 
                                             showAllUpdateRequests: showAllUpdateRequests, 
                                             pendingUpdateRequests: pendingUpdateRequests,
-                                            isOwner: isOwner
+                                            isOwner: isOwner,
+                                            activityShowPage: true
                                         });
         }
     });

@@ -39,7 +39,7 @@
             <!-- INFO SECTION START -->
             <div class="card mb-3">
                 <% if(activity.imageId) { %>
-                    <img class="card-img-top activity-show-image" src="<%= process.env.CLOUDINARY_URL_START %>f_auto,q_auto:good<%= activity.image.slice(46) %>" alt="<%= activity.name %> Picture">
+                    <img class="card-img-top activity-show-image" src="<%= process.env.CLOUDINARY_URL_START %>f_auto,q_auto:eco<%= activity.image.slice(46) %>" alt="<%= activity.name %> Picture">
                 <% } else { %>
                     <img class="card-img-top activity-show-image" src="<%= activity.image %>" alt="<%= activity.name %> Picture">
                 <% } %>
