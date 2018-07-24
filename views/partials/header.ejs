@@ -50,13 +50,13 @@
 				</ul>
 				<ul class="navbar-nav">
 					<% if(currentUser && currentUser.isMod){ %>
-						<li class="nav-item mr-3 <%= typeof page !== 'undefined' && page === 'updateRequests' ? 'active' : '' %>">
+						<li class="nav-item mr-0 mr-md-3 <%= typeof page !== 'undefined' && page === 'updateRequests' ? 'active' : '' %>">
 							<a href="/admin/updateRequests" class="nav-link text-warning"><i class="fas fa-exclamation-circle fa-lg"></i></a>
 						</li>
 					<% } %>
 					<% if(currentUser && currentUser.isAdmin){ %>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'admin' ? 'active' : '' %>">
-							<a href="/admin" class="nav-link text-success mr-3"><i class="fa fa-lg fa-cogs"></i></a>
+							<a href="/admin" class="nav-link text-success mr-0 mr-md-3"><i class="fa fa-lg fa-cogs"></i></a>
 						</li>
 					<% } %>
 					<% if(!currentUser){ %>
