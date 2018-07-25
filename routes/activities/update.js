@@ -107,7 +107,7 @@ var updateRoute = function(localReq, localRes){
             //sanitize protocol from links if given (so that it works with the <a> tag as a link) and update
             if(req.body.activity.website){   activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/i, "") } else { activity.website = '' }
             if(req.body.activity.facebook){  activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/i, "") } else { activity.facebook = '' }
-            if(req.body.activity.twitter){   activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/i, "") } else { activity.twitter = '' }
+            if(req.body.activity.twitter){   activity.twitter = req.body.activity.twitter } else {  activity.twitter = '' }
             
             //Youtube URL
             activity.videoUrl = req.body.activity.videoUrl;

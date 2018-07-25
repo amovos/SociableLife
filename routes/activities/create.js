@@ -240,7 +240,6 @@ async function setValues() {
     //sanitize protocol from links if given (so that it works with the <a> tag as a link)
     if(req.body.activity.website){   req.body.activity.website = req.body.activity.website.replace(/^https?\:\/\/|\/$/, "") }
     if(req.body.activity.facebook){  req.body.activity.facebook = req.body.activity.facebook.replace(/^https?\:\/\/|\/$/, "") }
-    if(req.body.activity.twitter){   req.body.activity.twitter = req.body.activity.twitter.replace(/^https?\:\/\/|\/$/, "") }
     
     if(req.body.activity.videoUrl) {
         req.body.activity.videoUrl = req.body.activity.videoUrl;

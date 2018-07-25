@@ -86,7 +86,7 @@ $('#createNewUpdateRequestBtn, #iRunThisActivityInfoBtn, #ownerAuthorReactivateB
 });
 
 //Script to scroll to "Something not right?" section when "Update=true" in query param on load
-// $(document).ready(function(){
+$(document).ready(function(){
     
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -105,9 +105,13 @@ $('#createNewUpdateRequestBtn, #iRunThisActivityInfoBtn, #ownerAuthorReactivateB
             scrollTop: $(hash).offset().top
         }, 800, function(){
             window.location.hash = hash;
+            $('#addUpdateRequestInput').focus();
         });
         
-        $('#collapseAddUpdateRequest').collapse();
+        //put these outside the delay so you don't see the motion and it looks cleaner
+        $('#collapseAddUpdateRequest').collapse("show");
+        $('#somethingElseBtn').trigger('click');
+        
     }
     
     //if the activity is new don't show "next" button
@@ -119,4 +123,4 @@ $('#createNewUpdateRequestBtn, #iRunThisActivityInfoBtn, #ownerAuthorReactivateB
         $('#previousActivityBtn').hide();
     }
     
-// });
+});
