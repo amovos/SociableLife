@@ -48,29 +48,20 @@ function compareByLoves(a,b) {
 async function orderActivitiesByFeatured(activities){
     
     var featuredActivities = [];
+    var remainingActivities = activities;
     
     //find all featured activities
     await activities.forEach(async function(activity) {
       if(activity.featured) {
         await featuredActivities.push(activity);
+        await remainingActivities.splice(remainingActivities.indexOf(activity), 1);
       }
     });
     
-    featuredActivities.sort(compareByDateUpdated).reverse();
-    
-    var remainingActivities = activities;
-    
-    //remove featured activities from remainingActivities;
-    await activities.forEach(function(activity) {
-      if(featuredActivities.includes(activity)) {
-        //find index of current activity in remainingActivities and remove it
-        remainingActivities.splice(remainingActivities.indexOf(activity), 1);
-      }
-    });
-    
+    await featuredActivities.sort(compareByDateUpdated).reverse();
     await remainingActivities.sort(compareByDateUpdated).reverse();
     
     var combinedActivities = featuredActivities.concat(remainingActivities);
-    
+
     return combinedActivities;
 }

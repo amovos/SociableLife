@@ -9,6 +9,7 @@ async function addActivities(activities) { //function used to add activities on 
     activityCounter = 0;
     
     removeAllActivities(); //remove all activities before trying to add new ones
+    $('#backToTopBtn').hide();
     
     //just before checking to see what the order should be, check if location has a value and if it doesn't, update the radio boxes
     if(!($('#setLocationInput').val())){
@@ -41,6 +42,9 @@ async function addActivities(activities) { //function used to add activities on 
         //store the object in localStorage under filteredActivities
         localStorage.setItem("filteredActivities", JSON.stringify(activities));
     }
+    
+    //save the order of the activities to filtered activities
+    filteredActivities = activities;
     
     activities.forEach(function(activity, index){
         if(index <= pageNumber * perPage - 1){
