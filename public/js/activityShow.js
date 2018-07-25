@@ -65,8 +65,8 @@ function scrollToComments() {
     });
 }
 
-//Script to scroll to "Something not right?" section when createNewUpdateRequestBtn is clicked -->
-$('#createNewUpdateRequestBtn').on('click', function(){
+//Script to scroll to "Something not right?" section when createNewUpdateRequestBtn or iRunThisActivityInfoBtn is clicked -->
+$('#createNewUpdateRequestBtn, #iRunThisActivityInfoBtn, #ownerAuthorReactivateBtn').on('click', function(){
     event.preventDefault(); //Prevent default anchor click behavior
     var hash = "#addUpdateRequestBtn";
     
@@ -75,6 +75,13 @@ $('#createNewUpdateRequestBtn').on('click', function(){
     }, 800, function(){
         window.location.hash = hash;
     });
+    
+    if(this.id === "iRunThisActivityInfoBtn") {
+        $('#iRunThisActivityBtn').trigger('click');
+    }
+    if(this.id === "ownerAuthorReactivateBtn") {
+        $('#somethingElseBtn').trigger('click');
+    }
     
 });
 
@@ -102,6 +109,8 @@ $('#createNewUpdateRequestBtn').on('click', function(){
         
         $('#collapseAddUpdateRequest').collapse();
     }
+    
+    //if the activity is new don't show "next" button
     
     if(getParameterByName('isNew') === "true") {
         $('#nextActivityBtn').addClass("disabled");

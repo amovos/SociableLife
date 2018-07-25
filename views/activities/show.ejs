@@ -157,12 +157,23 @@
                                         <div>
                                             <a class="btn btn-primary mr-2 mb-2" href="/activities/<%= activity._id %>/editImage">Change Picture</a>
                                             <a class="btn btn-warning mr-2 mb-2" href="/activities/<%= activity._id %>/edit">Edit Info</a>
-                                            <button id="ownerAuthorRemovedBtn" class="btn btn-danger mb-2 text-white" <% if(activity.status === "removed") { %>disabled<% } %>>Remove</button>
+                                            <% if(activity.status !== "removed") { %>
+                                                <button id="ownerAuthorRemovedBtn" class="btn btn-danger mb-2 text-white">Remove</button>
+                                            <% } else { %>
+                                                <a id="ownerAuthorReactivateBtn" class="btn btn-success mb-2 text-white" role="button" data-toggle="collapse" href="#collapseAddUpdateRequest" aria-expanded="false" aria-controls="collapseAddUpdateRequest">Reactivate</a>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
                             <% } %>
                         </div>
+                        
+                        <% if(activity.owner.length === 0) { %>
+                            <div>
+                                <a id="iRunThisActivityInfoBtn" class="btn btn-info mb-2 mt-2 mr-3 text-white" role="button" data-toggle="collapse" href="#collapseAddUpdateRequest" aria-expanded="false" aria-controls="collapseAddUpdateRequest">I run this activity</a>
+                            </div>
+                        <% } %>    
+                        
                         <div id="showPageLoveAndComment" class="d-flex flex-row justify-content-center flex-md-grow-0 flex-grow-1 mb-2">
                             <div class="d-flex flex-column align-items-center mr-4">
                                 <span><strong>Loves</strong></span>
@@ -584,7 +595,7 @@
                                                         <a id="somethingElseBtn" class="btn btn-secondary mb-2 text-white">Something else?</a>
                                                     </div>
                                                     <div id="loginInToRequestOwner" class="alert alert-warning" role="alert" style="display: none;">
-                                                        If you organise or help to run this activity and would like to be able to edit its details on Sociable Life, please <a id="requestOwnerLogin" href='/login'>login</a> so we can add it to your account (it's free!).
+                                                        If you organise or help to run this activity and would like to be able to edit the information on Sociable Life, please <a id="requestOwnerLogin" href='/login'>login</a> so we can add it to your account (it's free!).
                                                         <br>
                                                         Once you've logged in, please click the "I run this activity" button again.
                                                     </div>
