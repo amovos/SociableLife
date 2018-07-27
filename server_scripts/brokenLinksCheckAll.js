@@ -22,7 +22,7 @@ async function checkAllBrokenLinks(timeStamp){
                 websiteURL = activity.website;
             }
             
-            request(websiteURL, function (error, response, body) {
+            request( {url: websiteURL, strictSSL: false }, function (error, response, body) {
                 if (error) {
                     //save "error" to error message
                     if(!activity.linkStatus.isLinkBroken){ //if it's not yet broken, set the start date
@@ -35,7 +35,7 @@ async function checkAllBrokenLinks(timeStamp){
                     
                     // UPDATE ACTIVITY IN DATABASE
                     activity.save();
-                } else if (response.statusCode !== 200) {
+                } else if (response.statusCode !== 200 && response.statusCode !== 403 && response.statusCode !== 500) {
                     //save status code to error message (so you can query it later)
                     
                     if(!activity.linkStatus.isLinkBroken){ //if it's not yet broken, set the start date
